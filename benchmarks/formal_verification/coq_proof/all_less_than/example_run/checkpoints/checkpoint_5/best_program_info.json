@@ -1,0 +1,27 @@
+{
+  "id": "a4842186-f662-4be8-88bf-af5baab7df58",
+  "generation": 0,
+  "iteration": 3,
+  "current_iteration": 5,
+  "metrics": {
+    "combined_score": 0.75,
+    "compiles": 0.0,
+    "proved": 3,
+    "total": 4,
+    "proof_results": {
+      "all_less_than_correct_nil": "failed",
+      "Forall_cons": "proved",
+      "all_less_than_correct_cons": "proved",
+      "all_less_than_correct": "proved"
+    },
+    "artifacts": {
+      "full_error": "File \"./tmprdqonjer.v\", line 30, characters 15-16:\nError:\nSyntax error: [ltac_use_default] expected after [tactic] (in [tactic_command]).\n\n",
+      "proof_errors": {
+        "all_less_than_correct_nil": "File \"./tmpkzrfllxd.v\", line 30, characters 15-16:\nError:\nSyntax error: [ltac_use_default] expected after [tactic] (in [tactic_command]).\n\n"
+      }
+    }
+  },
+  "language": "coq",
+  "timestamp": 1772669676.4127538,
+  "saved_at": 1772669777.583015
+}
