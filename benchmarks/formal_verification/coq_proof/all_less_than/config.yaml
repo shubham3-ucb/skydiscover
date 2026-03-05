@@ -1,0 +1,41 @@
+language: coq
+file_suffix: ".v"
+diff_based_generation: true
+max_iterations: 10
+checkpoint_interval: 5
+
+llm:
+  models:
+    - name: "gpt-5"
+      weight: 1.0
+  temperature: 0.7
+  max_tokens: 16000
+  timeout: 600
+  retries: 2
+  retry_delay: 5
+
+search:
+  type: "best_of_n"
+  num_context_programs: 2
+
+evaluator:
+  timeout: 120
+  cascade_evaluation: false
+
+prompt:
+  system_message: |
+    You are an expert Coq proof engineer. Your task is to write proof tactics
+    for lemmas about the `all_less_than` function.
+
+    The function checks whether all elements in a list of natural numbers
+    are less than a given bound. You must prove it is equivalent to the
+    standard library's `Forall` predicate.
+
+    Rules:
+    - Do NOT modify lemma statements, only write proof bodies.
+    - Replace `Admitted.` with real tactics ending in `Qed.`
+    - You may use: intros, split, inversion, constructor, assumption,
+      destruct, apply, rewrite, simpl, tauto, contradiction, reflexivity,
+      induction, unfold, eqn: naming.
+    - Key library lemmas: Nat.ltb_lt, Nat.ltb_ge, Nat.le_ngt.
+    - Proofs are checked by coqc (Rocq 9.1). They must compile.
