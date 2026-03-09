@@ -1,15 +1,17 @@
 {
-  "id": "a2da166c-dfdc-41d9-9e00-0dea461235fe",
+  "id": "7f998916-4d28-49c5-8262-9c0020a97e04",
   "generation": 0,
   "iteration": 7,
   "current_iteration": 10,
   "metrics": {
     "combined_score": 1.0,
     "compiles": 1.0,
-    "proved": 4,
-    "total": 4
+    "qed_count": 2,
+    "admitted_count": 0,
+    "todo_count": 0,
+    "done": 1.0
   },
   "language": "coq",
-  "timestamp": 1772669833.0067992,
-  "saved_at": 1772669997.988954
+  "timestamp": 1773027070.471819,
+  "saved_at": 1773027483.835215
 }

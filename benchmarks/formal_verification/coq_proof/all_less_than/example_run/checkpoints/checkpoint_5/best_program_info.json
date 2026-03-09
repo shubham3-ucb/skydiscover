@@ -1,27 +1,17 @@
 {
-  "id": "a4842186-f662-4be8-88bf-af5baab7df58",
+  "id": "db656d55-6f4c-4d6d-ac10-08cfbc0c134d",
   "generation": 0,
-  "iteration": 3,
+  "iteration": 1,
   "current_iteration": 5,
   "metrics": {
-    "combined_score": 0.75,
-    "compiles": 0.0,
-    "proved": 3,
-    "total": 4,
-    "proof_results": {
-      "all_less_than_correct_nil": "failed",
-      "Forall_cons": "proved",
-      "all_less_than_correct_cons": "proved",
-      "all_less_than_correct": "proved"
-    },
-    "artifacts": {
-      "full_error": "File \"./tmprdqonjer.v\", line 30, characters 15-16:\nError:\nSyntax error: [ltac_use_default] expected after [tactic] (in [tactic_command]).\n\n",
-      "proof_errors": {
-        "all_less_than_correct_nil": "File \"./tmpkzrfllxd.v\", line 30, characters 15-16:\nError:\nSyntax error: [ltac_use_default] expected after [tactic] (in [tactic_command]).\n\n"
-      }
-    }
+    "combined_score": 0.5,
+    "compiles": 1.0,
+    "qed_count": 1,
+    "admitted_count": 1,
+    "todo_count": 1,
+    "done": 0.0
   },
   "language": "coq",
-  "timestamp": 1772669676.4127538,
-  "saved_at": 1772669777.583015
+  "timestamp": 1773026779.11005,
+  "saved_at": 1773026886.179877
 }

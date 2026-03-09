@@ -1,44 +1,42 @@
-"""Evaluator for Coq proof evolution.
+"""Evaluator for Coq co-synthesis: implementation + proof together.
 
-Generic for any .v file using Lemma/Theorem/Proposition/Corollary/Fact.
+Generic for any .v file. Not problem-specific.
 
-Checks how many proof obligations the LLM successfully proved by:
-1. Trying to compile the full file with coqc.
-2. If that fails, testing each proof independently
-   (other proofs replaced with Admitted).
+Scoring (always in [0, 1]):
+  - Doesn't compile → 0.0, with coqc stderr as error (triggers retry)
+  - Compiles, not done → 1 - 1/(qed + 1)  (monotonic in qed, always < 1)
+  - Compiles, done (no Admitted, no todo) → 1.0
 """
 
 import re
 import subprocess
-import tempfile
 import os
 
-# Matches proof obligations: (Lemma|Theorem|...) name ... Proof. body (Qed.|Admitted.|Defined.)
-# Step 1: strip Coq comments before matching to avoid false hits on Qed./Admitted. in comments.
 _COQ_COMMENT = re.compile(r"\(\*.*?\*\)", re.DOTALL)
-_PROOF_KW = r"(?:Lemma|Theorem|Proposition|Corollary|Fact|Remark)"
-_TERM_KW = r"(?:Qed|Admitted|Defined)\."
-_PROOF_PATTERN = re.compile(
-    rf"({_PROOF_KW}\s+(\w+)\s*.*?)(Proof\.)(.*?)({_TERM_KW})",
-    re.DOTALL,
-)
+_AXIOM_TODO_LINE = re.compile(r"^\s*Axiom\s+todo\b.*$", re.MULTILINE)
 
 
 def _strip_comments(text):
-    """Replace Coq comments (* ... *) with whitespace of equal length to preserve positions."""
-    def _replace(m):
-        return " " * (m.end() - m.start())
-    return _COQ_COMMENT.sub(_replace, text)
+    return _COQ_COMMENT.sub("", text)
 
 
-def _find_proofs(content):
-    """Find proof obligations, matching against comment-stripped text but returning original positions."""
+def _count_proof_terms(content):
+    """Count Qed./Defined. and Admitted. outside comments."""
     stripped = _strip_comments(content)
-    return list(_PROOF_PATTERN.finditer(stripped))
+    qed = len(re.findall(r"\bQed\s*\.", stripped))
+    admitted = len(re.findall(r"\bAdmitted\s*\.", stripped))
+    defined = len(re.findall(r"\bDefined\s*\.", stripped))
+    return qed + defined, admitted
+
+
+def _count_todos(content):
+    """Count `todo` usage outside comments, excluding the Axiom declaration."""
+    stripped = _strip_comments(content)
+    without_axiom = _AXIOM_TODO_LINE.sub("", stripped)
+    return len(re.findall(r"\btodo\b", without_axiom))
 
 
 def _run_coqc(filepath):
-    """Run coqc, return (returncode, stderr)."""
     filepath = os.path.abspath(filepath)
     try:
         r = subprocess.run(
@@ -52,14 +50,12 @@ def _run_coqc(filepath):
 
 
 def _cleanup_coq_artifacts(filepath):
-    """Remove coqc build artifacts for a given .v file."""
     base = filepath.rsplit(".v", 1)[0]
     for ext in [".vo", ".vos", ".vok", ".glob", ".aux"]:
         try:
             os.remove(base + ext)
         except FileNotFoundError:
             pass
-    # Also .aux with dot prefix
     d, f = os.path.split(filepath)
     aux = os.path.join(d, "." + f.rsplit(".v", 1)[0] + ".aux")
     try:
@@ -68,80 +64,35 @@ def _cleanup_coq_artifacts(filepath):
         pass
 
 
-def _admit_all_except(content, matches, keep_idx):
-    """Replace all proof bodies with Admitted except the one at keep_idx."""
-    result = content
-    for i in reversed(range(len(matches))):
-        if i == keep_idx:
-            continue
-        m = matches[i]
-        result = result[:m.start(3)] + "Proof. Admitted." + result[m.end(5):]
-    return result
-
-
 def evaluate(program_path):
     content = open(program_path).read()
-    matches = _find_proofs(content)
-    total = len(matches)
-    if total == 0:
-        return {
-            "combined_score": 0.0,
-            "artifacts": {"error": "No proof obligations found (expected Lemma/Theorem/... Proof. ... Qed.)"},
-        }
 
-    # Count how many use Qed/Defined vs Admitted
-    proved_count = sum(1 for m in matches if m.group(5).strip() != "Admitted.")
+    qed_count, admitted_count = _count_proof_terms(content)
+    todo_count = _count_todos(content)
 
-    # Try full compile
     rc, stderr = _run_coqc(program_path)
     _cleanup_coq_artifacts(program_path)
 
-    if rc == 0:
-        return {
-            "combined_score": proved_count / total,
-            "compiles": 1.0,
-            "proved": proved_count,
-            "total": total,
-        }
+    compiles = rc == 0
+    done = compiles and admitted_count == 0 and todo_count == 0
 
-    # Full compile failed — test each proof independently
-    proved = 0
-    proof_results = {}
-    proof_errors = {}
+    if not compiles:
+        score = 0.0
+    elif done:
+        score = 1.0
+    else:
+        score = 1.0 - 1.0 / (qed_count + 1)
 
-    for i, m in enumerate(matches):
-        name = m.group(2)
-        if m.group(5).strip() == "Admitted.":
-            proof_results[name] = "skipped"
-            continue
-
-        test_content = _admit_all_except(content, matches, keep_idx=i)
-        with tempfile.NamedTemporaryFile(suffix=".v", mode="w", delete=False) as f:
-            f.write(test_content)
-            tmp = f.name
-        try:
-            rc_i, stderr_i = _run_coqc(tmp)
-            if rc_i == 0:
-                proved += 1
-                proof_results[name] = "proved"
-            else:
-                proof_results[name] = "failed"
-                proof_errors[name] = stderr_i[-500:]
-        finally:
-            _cleanup_coq_artifacts(tmp)
-            try:
-                os.remove(tmp)
-            except FileNotFoundError:
-                pass
-
-    return {
-        "combined_score": proved / total,
-        "compiles": 0.0,
-        "proved": proved,
-        "total": total,
-        "proof_results": proof_results,
-        "artifacts": {
-            "full_error": stderr[-1000:],
-            "proof_errors": proof_errors,
-        },
+    result = {
+        "combined_score": score,
+        "compiles": 1.0 if compiles else 0.0,
+        "qed_count": qed_count,
+        "admitted_count": admitted_count,
+        "todo_count": todo_count,
+        "done": 1.0 if done else 0.0,
     }
+
+    if not compiles and stderr:
+        result["error"] = stderr[-2000:]
+
+    return result

@@ -1,6 +1,6 @@
-# Formal Verification Benchmarks
+# Formal Verification Benchmark
 
-Use SkyDiscover to evolve Coq proofs. Given proof obligations with `Admitted.` placeholders, the LLM writes proof tactics until `coqc` accepts them.
+Co-synthesize Coq implementations and their machine-checked proofs from formal specifications using SkyDiscover.
 
 ## Setup
 
@@ -8,7 +8,7 @@ Use SkyDiscover to evolve Coq proofs. Given proof obligations with `Admitted.` p
 brew install coq   # needs Rocq/Coq 9.x
 ```
 
-## Run the example
+## Run
 
 ```bash
 export OPENAI_API_KEY="..."
@@ -18,7 +18,7 @@ uv run skydiscover-run \
   benchmarks/formal_verification/coq_proof/all_less_than/evaluator.py \
   -c benchmarks/formal_verification/coq_proof/all_less_than/config.yaml \
   -s best_of_n \
-  -i 10
+  -i 30
 ```
 
 ## How it works
@@ -26,82 +26,51 @@ uv run skydiscover-run \
 ```
 initial_program.v          evaluator.py
 ┌──────────────────┐       ┌──────────────────────────┐
-│ Implementation   │       │ 1. Run coqc on file       │
-│ (fixed)          │       │ 2. If compiles:           │
-│                  │       │    score = Qed / total    │
-│ Lemma foo: ...   │       │ 3. If fails:              │
-│ Proof. Admitted. │──────>│    test each proof alone  │
-│                  │       │    (others = Admitted)    │
-│ Lemma bar: ...   │       │ 4. Return partial score   │
-│ Proof. Admitted. │       │    + coqc error feedback  │
+│ Axiom todo ...   │       │ 1. Run coqc              │
+│ Parameter f ...  │       │ 2. Compiles → score =    │
+│                  │       │    Qed count             │
+│ Lemma spec: ...  │       │ 3. Fails → score = 0    │
+│ Proof. Admitted. │──────>│ 4. Return Qed/Admitted/  │
+│                  │       │    todo counts + errors  │
 └──────────────────┘       └──────────────────────────┘
         │                            │
         │         SkyDiscover        │
-        │   LLM replaces Admitted.   │
-        │   with real proof tactics  │
-        │   ending in Qed.           │
+        │   LLM fills one todo per   │
+        │   step, adds sub-lemmas,   │
+        │   proves parent lemma      │
         └────────────────────────────┘
 ```
 
-**Scoring**: `proved_count / total` (0.0 to 1.0). Each proof tested independently so partial progress gets partial credit.
+**Scoring** (always [0, 1]): `0` if doesn't compile (with coqc error for retry), `1 - 1/(Qed+1)` if compiles with work remaining, `1.0` when no `Admitted.` and no `todo` remain.
 
-**Feedback**: `coqc` error messages are passed back to the LLM as artifacts, so it knows exactly which tactic failed and why.
+**Feedback:** `coqc` errors returned to LLM as artifacts on compile failure.
 
 ## Adding a new problem
 
-The evaluator is generic — it works for any `.v` file. It handles:
-- `Lemma`, `Theorem`, `Proposition`, `Corollary`, `Fact`, `Remark`
-- `Qed.`, `Admitted.`, `Defined.` terminators
-- Comments containing `Qed.`/`Admitted.` (correctly ignored)
-
-### Steps
+The evaluator is generic — works for any `.v` file.
 
 1. Create `benchmarks/formal_verification/coq_proof/<name>/`
 
-2. Write `initial_program.v` — fixed code + proof obligations with `Admitted.`:
+2. Write `initial_program.v` — one or more `Parameter`s and spec theorems:
    ```coq
-   (* your fixed definitions *)
-   Definition my_func ... := ...
+   Axiom todo : forall {A : Type}, A.
 
-   (* EVOLVE-BLOCK-START *)
-   Theorem my_theorem: forall ..., ...
+   Parameter my_func : <type signature>.
+
+   Theorem my_spec : forall ..., <property about my_func>.
    Proof. Admitted.
-
-   Lemma helper: forall ..., ...
-   Proof. Admitted.
-   (* EVOLVE-BLOCK-END *)
    ```
+   You can have multiple `Parameter`s and multiple theorems. Add any
+   `Require Import` statements the problem needs.
 
-   Keep definitions **outside** the EVOLVE-BLOCK (they shouldn't change).
-   Put proof obligations **inside** the EVOLVE-BLOCK.
+3. Copy `evaluator.py` from an existing problem — no changes needed.
 
-3. Copy `evaluator.py` from the existing example — no changes needed.
+4. Write `config.yaml` — copy from existing, adjust `max_iterations` if needed.
+   The system prompt is generic and does not need per-problem changes.
 
-4. Write `config.yaml`:
-   ```yaml
-   language: coq
-   file_suffix: ".v"
-   diff_based_generation: true
-   max_iterations: 20
-
-   llm:
-     models:
-       - name: "gpt-5"
-         weight: 1.0
-     timeout: 600
-     retries: 2
-
-   evaluator:
-     timeout: 120
-     cascade_evaluation: false
-
-   prompt:
-     system_message: |
-       You are an expert Coq proof engineer.
-       <describe the problem, key tactics, relevant library lemmas>
-   ```
-
-   The only thing that changes per-problem is the `system_message`.
+**Limitation:** The evaluator runs plain `coqc` with no `-Q`/`-R` flags. If your
+problem needs external libraries (Iris, Verdi, etc.), modify `_run_coqc()` in the
+evaluator to pass the required flags.
 
 5. Run:
    ```bash
@@ -109,10 +78,5 @@ The evaluator is generic — it works for any `.v` file. It handles:
      benchmarks/formal_verification/coq_proof/<name>/initial_program.v \
      benchmarks/formal_verification/coq_proof/<name>/evaluator.py \
      -c benchmarks/formal_verification/coq_proof/<name>/config.yaml \
-     -s best_of_n -i 20
+     -s best_of_n -i 30
    ```
-
-### Limitations
-
-- **Stdlib imports only**: The evaluator runs `coqc` from the file's directory. If your problem needs custom libraries, you'll need to modify `_run_coqc()` to pass `-Q`/`-R` flags.
-- **Statement integrity**: The evaluator does not verify that the LLM preserved lemma statements unchanged. The system prompt instructs it not to, and the fixed implementation outside the EVOLVE-BLOCK constrains the types. For stronger guarantees, add statement checks to the evaluator.
