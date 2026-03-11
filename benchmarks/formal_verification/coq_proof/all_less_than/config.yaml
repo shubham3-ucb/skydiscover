@@ -38,7 +38,7 @@ search:
     paradigm_improvement_threshold: 0.02
     paradigm_num_to_generate: 2
     paradigm_max_uses: 2
-    paradigm_max_tried: 5
+    paradigm_max_tried: 20
     enable_error_retry: true
     max_error_retries: 2
 
