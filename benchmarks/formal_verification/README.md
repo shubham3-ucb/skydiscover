@@ -11,6 +11,8 @@ This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal
 | `all_less_than` | Easy | Check all list elements are below a bound | Score 1.0 at iteration 1 |
 | `insertion_sort` | Medium | Implement and verify a sorting algorithm | Score 1.0 at iteration 14 |
 | `regex_matcher` | Hard | Verified regex matcher via Brzozowski derivatives | Score 0.929 (13/14 proofs) at iteration 30 |
+| `bst_verification` | Hard | Implement and verify a binary search tree | — |
+| `pigeonhole` | Hard | Define `repeats` and prove the pigeonhole principle | — |
 
 Best synthesized programs are in `<problem>/outputs/best/best_program.v`.
 
