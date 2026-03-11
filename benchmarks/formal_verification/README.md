@@ -2,13 +2,9 @@
 
 ## What this is
 
-Writing software that is **provably correct** requires two things: an implementation, and a machine-checked proof that the implementation satisfies its specification. In Coq, this means writing both a function body and a theorem proof simultaneously — each constrains the other.
+This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal specification (Coq type signature + correctness theorem), build the implementation and its machine-checked proof together, step by step, until `coqc` accepts the entire file with no holes. Every intermediate state must type-check — there is no guess-and-check.
 
-This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal specification (function type + correctness theorem), iteratively build the implementation and its proof together, step by step, until Coq's type checker accepts the entire file with no holes.
-
-This is harder than ordinary code generation because the LLM cannot guess-and-check — every intermediate state must type-check, and the proof must be logically sound. It is a concrete instance of a general problem: building verified software from a spec.
-
-## Benchmark problems
+## Problems
 
 | Problem | Difficulty | Description |
 |---|---|---|
@@ -22,18 +18,18 @@ This is harder than ordinary code generation because the LLM cannot guess-and-ch
 brew install coq   # Rocq/Coq 9.x
 export OPENAI_API_KEY="..."
 cd skydiscover/
+source .venv/bin/activate
 ```
 
-## Run all benchmarks
+## Run
 
+All three benchmarks in parallel:
 ```bash
 bash benchmarks/formal_verification/coq_proof/run_all.sh
 ```
 
-Or a single benchmark:
-
+Single benchmark:
 ```bash
-source .venv/bin/activate
 skydiscover-run \
   benchmarks/formal_verification/coq_proof/regex_matcher/initial_program.v \
   benchmarks/formal_verification/coq_proof/regex_matcher/evaluator.py \
@@ -50,52 +46,33 @@ initial_program.v                        evaluator.py
 │                            │          │ 2. Count Qed / Admitted / todo │
 │ Definition f := todo.      │─────────>│ 3. score = Qed/(Qed+Adm+todo) │
 │                            │          │    0 if fails, 1.0 if complete │
-│ Theorem spec : ...         │          │ 4. Return score + NL feedback  │
+│ Theorem spec : ...         │          │ 4. Return NL feedback to LLM   │
 │ Proof. Admitted.           │          └────────────────────────────────┘
 └────────────────────────────┘                        │
                  ▲                                    │
-                 │           AdaEvolve                │
-                 │  (multi-island population search)  │
+                 │  AdaEvolve (multi-island search)   │
                  └────────────────────────────────────┘
-                         LLM takes ONE step per iteration:
-                         • Fill one todo with a concrete expression
-                         • Add sub-lemmas as Admitted.
-                         • Prove the parent lemma → Qed.
 ```
 
-**Scoring** (always in [0, 1]):
-- `0.0` — doesn't compile (coqc error returned to LLM for retry)
-- `Qed / (Qed + Admitted + todo)` — compiles, work remaining
-- `1.0` — fully done: no `Admitted.`, no `todo`
+Each iteration the LLM takes **one step**: fill one `todo`, add sub-lemmas as `Admitted.`, prove the parent lemma → `Qed.`
 
-**Search**: AdaEvolve maintains a population of partial solutions across multiple islands. Temporary score dips (from adding new sub-lemmas) are handled by population diversity. Paradigm breakthrough fires when all islands stagnate.
+Score is always in [0, 1]: `0.0` if it doesn't compile, `Qed / (Qed + Admitted + todo)` otherwise, `1.0` when fully done.
 
 ## Adding a new problem
 
-The evaluator and prompt are **fully generic** — no changes needed for new problems. Only `initial_program.v` is problem-specific.
+Only `initial_program.v` is problem-specific. Copy `evaluator.py` and `config.yaml` from any existing problem unchanged.
 
-1. Create `benchmarks/formal_verification/coq_proof/<name>/`
+```coq
+(* initial_program.v *)
+Require Import ...
+Axiom todo : forall {A : Type}, A.
 
-2. Write `initial_program.v` — give the spec, leave the implementation as `todo` and the proof as `Admitted.`:
-   ```coq
-   Require Import ...
-   Axiom todo : forall {A : Type}, A.
+Definition my_func : <type> := todo.
 
-   Definition my_func : <type> := todo.
+Theorem my_spec : forall ..., <correctness property>.
+Proof. Admitted.
+```
 
-   Theorem my_spec : forall ..., <correctness property>.
-   Proof. Admitted.
-   ```
+Then run with the same command pattern above substituting `<name>`.
 
-3. Copy `evaluator.py` and `config.yaml` from any existing problem. Adjust `max_iterations` in the config if needed.
-
-4. Run:
-   ```bash
-   skydiscover-run \
-     benchmarks/formal_verification/coq_proof/<name>/initial_program.v \
-     benchmarks/formal_verification/coq_proof/<name>/evaluator.py \
-     --config benchmarks/formal_verification/coq_proof/<name>/config.yaml \
-     -o benchmarks/formal_verification/coq_proof/<name>/outputs
-   ```
-
-**Note:** The evaluator runs plain `coqc`. If your problem needs external libraries (Iris, Verdi, etc.), modify `_run_coqc()` in `evaluator.py` to pass the required `-Q`/`-R` flags.
+> **Note:** If your problem needs external Coq libraries, modify `_run_coqc()` in `evaluator.py` to pass `-Q`/`-R` flags.
