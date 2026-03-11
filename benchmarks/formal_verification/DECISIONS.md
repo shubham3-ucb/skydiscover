@@ -4,49 +4,14 @@
 
 **Problem:** Given a formal specification (Coq type signature + correctness theorem), automatically synthesize both the implementation and a machine-checked proof of correctness.
 
-**Why it's hard:** Implementation and proof are mutually dependent — the proof structure dictates how the function must be written, and vice versa. Every intermediate state must type-check; the search space is enormous; feedback is sparse (compile or not, proved or not).
+**Why it's hard:** Implementation and proof are mutually dependent — the proof structure dictates how the function must be written, and vice versa. Every intermediate state must type-check; the search space is enormous; the feedback signal is sparse (compile or not, proved or not).
 
-**Approach:** SkyDiscover evolves a Coq `.v` file iteratively. Each iteration, the LLM takes one deductive step — fill one `todo`, prove its lemma — until the file is complete.
+**Approach:** SkyDiscover evolves a Coq `.v` file iteratively. Each iteration the LLM takes one deductive step — fill one `todo`, prove its lemma — until the file compiles fully with no holes.
 
----
-
-## Design Decisions
-
-### 1. One step per iteration
-One action per LLM call: replace one `todo` with a concrete expression, prove its parent lemma to `Qed.`, add sub-lemmas as `Admitted.` for any new `todo`s introduced. Enforced via prompt. If the LLM takes a bigger leap and it compiles — fine. If it breaks — score = 0, retry fires.
-
-### 2. Backtracking via population search
-No explicit proof tree. AdaEvolve maintains a population of partial solutions across multiple islands. A broken state (score = 0) causes the sampler to pick a different parent. Paradigm breakthrough fires when all islands stagnate, generating qualitatively new proof strategies.
-
-### 3. Scoring
-| State | Score |
-|---|---|
-| Doesn't compile | `0.0` + coqc stderr returned as `error` (triggers retry) |
-| Compiles, work remaining | `Qed / (Qed + Admitted + todo)` |
-| Fully done | `1.0` |
-
-Score honestly reflects proximity to completion. Temporary dips when the LLM decomposes a `todo` into sub-expressions are handled naturally by AdaEvolve's population diversity.
-
-**Known limitation:** No partial credit for a partially-written proof that fails to compile. Causes flat plateaus when stuck on one hard lemma.
-
-### 4. Feedback to LLM
-- `metrics["error"]` — coqc stderr on compile failure, shown on retry
-- `artifacts["feedback"]` — natural language count of remaining `Admitted`/`todo` and what to do next; injected into AdaEvolve prompt automatically
-
-### 5. Search: AdaEvolve
-Chosen over `best_of_n` for population diversity, tolerance of non-monotonic scores, paradigm breakthrough, and cross-island migration. All critical for a task where individual steps can temporarily lower the score.
-
-### 6. Prompt
-Generic for any Coq co-synthesis problem: step definition, prerequisite ordering (prove independent lemmas first), standard Coq tactic hints (`remember`, `generalize dependent`, induction on evidence). No problem-specific content.
-
-### 7. Initial program shape
-`Definition f := todo.` + `Theorem spec ... Proof. Admitted.` Pre-proved helper lemmas are fine — they raise the starting score, but `1.0` is only reached when all `Admitted.` and `todo` are eliminated.
-
-### 8. Typed holes
-`Axiom todo : forall {A : Type}, A.` — a Coq idiom for a typed hole at any type. The evaluator excludes this declaration itself from the `todo` count.
-
-### 9. LLM generates everything
-Implementation choices, sub-lemma statements, proof tactics — all by the LLM. The system provides no hints about proof structure or algorithm.
+**Results so far:**
+- `all_less_than` (easy): solved at iteration 1, score 1.0
+- `insertion_sort` (medium): solved at iteration 14, score 1.0
+- `regex_matcher` (hard): 13/14 proofs completed in 30 iterations, score 0.929
 
 ---
 
@@ -54,14 +19,55 @@ Implementation choices, sub-lemma statements, proof tactics — all by the LLM. 
 
 | File | Role | Problem-specific? |
 |---|---|---|
-| `initial_program.v` | Formal spec + holes | **Yes** — one per problem |
-| `evaluator.py` | Compile, score, NL feedback | **No** |
-| `config.yaml` | Search params + system prompt | **No** — only `max_iterations` may vary |
+| `initial_program.v` | Formal spec with `todo`/`Admitted.` holes for the LLM to fill | **Yes** — one per problem |
+| `evaluator.py` | Runs `coqc`, counts Qed/Admitted/todo, scores, returns NL feedback | **No** — generic for any `.v` file |
+| `config.yaml` | AdaEvolve search config + system prompt | **No** — only `max_iterations` may vary |
+
+---
+
+## Design Decisions
+
+### 1. One step per iteration
+One action per LLM call: replace one `todo` with a concrete expression, prove its parent lemma to `Qed.`, add sub-lemmas as `Admitted.` for any new `todo`s introduced. Enforced via prompt only — not mechanically. If the LLM takes a bigger leap and it compiles, fine. If it breaks, score = 0 and retry fires.
+
+### 2. Backtracking via population search
+No explicit proof tree. AdaEvolve maintains a population of partial solutions across multiple islands. A broken state (score = 0) causes the sampler to pick a different parent from the population. Paradigm breakthrough fires when all islands stagnate, generating qualitatively new proof strategies.
+
+### 3. Scoring
+| State | Score |
+|---|---|
+| Doesn't compile | `0.0` + coqc stderr returned as `error` (triggers SkyDiscover retry) |
+| Compiles, work remaining | `Qed / (Qed + Admitted + todo)` |
+| Fully done | `1.0` |
+
+`Qed / (Qed + Admitted + todo)` honestly reflects proximity to completion. It can temporarily dip when the LLM decomposes a `todo` into sub-expressions (adding new `Admitted`/`todo`) — this is the correct signal, and AdaEvolve's population handles dips naturally.
+
+**Known limitation:** No partial credit for a proof attempt that gets partway before failing to compile. This causes flat score plateaus when the LLM is stuck on one hard lemma (observed in `regex_matcher`).
+
+### 4. Feedback to LLM
+Two channels, both generic:
+- `metrics["error"]` — coqc stderr on compile failure, shown on retry
+- `artifacts["feedback"]` — natural language: count of remaining `Admitted`/`todo`, what to do next; injected into the AdaEvolve prompt automatically
+
+### 5. Search: AdaEvolve
+Chosen over `best_of_n` for population diversity (multiple partial solutions at different progress levels), tolerance of non-monotonic scores (score dips from new sub-lemmas), paradigm breakthrough (escape stagnation with fresh strategies), and cross-island migration.
+
+### 6. Prompt
+Fully generic — no problem-specific content. Covers: the one-step action definition, prerequisite ordering (prove independent `Admitted.` lemmas before dependent ones), standard Coq tactic hints (`remember`, `generalize dependent`, induction on evidence). Anti-gaming rules prevent using `exact todo` or trivial axiom applications to fake a `Qed.`
+
+### 7. Initial program shape
+`Definition f := todo.` + `Theorem spec ... Proof. Admitted.` Any number of functions and theorems. Pre-proved helper lemmas in the initial file are fine — they raise the starting score, but `1.0` is only reached when all `Admitted.` and `todo` are gone.
+
+### 8. Typed holes
+`Axiom todo : forall {A : Type}, A.` — a Coq idiom for a typed hole usable at any type. The evaluator excludes this declaration itself from the `todo` count.
+
+### 9. LLM owns all synthesis decisions
+Implementation algorithm, sub-lemma statements, proof tactics — all generated by the LLM. The system provides no hints about proof structure, algorithm choice, or decomposition strategy. This is the whole point: we want to discover whether LLMs can find these on their own.
 
 ---
 
 ## Open Questions
 
-- **Plateau**: stuck on one hard proof → score flat for many iterations, no gradient. Directions: coqc goal-state feedback, partial proof credit, structured stagnation recovery.
-- **Dependency inference**: LLM must read code to know which `Admitted.` lemmas block others. Explicit dependency info in feedback could help.
-- **Budget**: harder problems (`regex_matcher`) saturate near 0.85–0.93 in 50 iterations — more iterations of the same strategy may not help; a qualitatively different decomposition is needed.
+- **Plateau**: when stuck on one hard proof, score is flat for many iterations with no gradient. Directions: coqc goal-state feedback, partial proof credit, structured stagnation recovery.
+- **Dependency inference**: the LLM must infer from code which `Admitted.` lemmas block others. Explicit dependency info in feedback could help prioritize.
+- **Iteration budget**: `regex_matcher` saturates near 0.93 in 50 iterations — more of the same strategy may not help. A qualitatively different decomposition (or tactic) may be needed.

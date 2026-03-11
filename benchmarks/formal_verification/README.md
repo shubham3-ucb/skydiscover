@@ -6,16 +6,18 @@ This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal
 
 ## Problems
 
-| Problem | Difficulty | Description |
-|---|---|---|
-| `all_less_than` | Easy | Check all list elements are below a bound |
-| `insertion_sort` | Medium | Implement and verify a sorting algorithm |
-| `regex_matcher` | Hard | Verified regex matcher via Brzozowski derivatives |
+| Problem | Difficulty | Description | Result |
+|---|---|---|---|
+| `all_less_than` | Easy | Check all list elements are below a bound | Score 1.0 at iteration 1 |
+| `insertion_sort` | Medium | Implement and verify a sorting algorithm | Score 1.0 at iteration 14 |
+| `regex_matcher` | Hard | Verified regex matcher via Brzozowski derivatives | Score 0.929 (13/14 proofs) at iteration 30 |
+
+Best synthesized programs are in `<problem>/outputs/best/best_program.v`.
 
 ## Setup
 
 ```bash
-brew install coq   # Rocq/Coq 9.x
+brew install coq        # Rocq/Coq 9.x
 export OPENAI_API_KEY="..."
 cd skydiscover/
 source .venv/bin/activate
@@ -23,7 +25,7 @@ source .venv/bin/activate
 
 ## Run
 
-All three benchmarks in parallel:
+All three in parallel:
 ```bash
 bash benchmarks/formal_verification/coq_proof/run_all.sh
 ```
@@ -31,10 +33,10 @@ bash benchmarks/formal_verification/coq_proof/run_all.sh
 Single benchmark:
 ```bash
 skydiscover-run \
-  benchmarks/formal_verification/coq_proof/regex_matcher/initial_program.v \
-  benchmarks/formal_verification/coq_proof/regex_matcher/evaluator.py \
-  --config benchmarks/formal_verification/coq_proof/regex_matcher/config.yaml \
-  -o benchmarks/formal_verification/coq_proof/regex_matcher/outputs
+  benchmarks/formal_verification/coq_proof/<name>/initial_program.v \
+  benchmarks/formal_verification/coq_proof/<name>/evaluator.py \
+  --config benchmarks/formal_verification/coq_proof/<name>/config.yaml \
+  -o benchmarks/formal_verification/coq_proof/<name>/outputs
 ```
 
 ## How it works
@@ -54,7 +56,7 @@ initial_program.v                        evaluator.py
                  └────────────────────────────────────┘
 ```
 
-Each iteration the LLM takes **one step**: fill one `todo`, add sub-lemmas as `Admitted.`, prove the parent lemma → `Qed.`
+Each iteration the LLM takes **one step**: fill one `todo` with a concrete expression, add sub-lemmas as `Admitted.` for any new holes, then prove the parent lemma → `Qed.`
 
 Score is always in [0, 1]: `0.0` if it doesn't compile, `Qed / (Qed + Admitted + todo)` otherwise, `1.0` when fully done.
 
@@ -62,8 +64,9 @@ Score is always in [0, 1]: `0.0` if it doesn't compile, `Qed / (Qed + Admitted +
 
 Only `initial_program.v` is problem-specific. Copy `evaluator.py` and `config.yaml` from any existing problem unchanged.
 
+Write `initial_program.v` giving the spec with `todo`/`Admitted.` holes:
+
 ```coq
-(* initial_program.v *)
 Require Import ...
 Axiom todo : forall {A : Type}, A.
 
@@ -73,6 +76,6 @@ Theorem my_spec : forall ..., <correctness property>.
 Proof. Admitted.
 ```
 
-Then run with the same command pattern above substituting `<name>`.
+Then run using the single-benchmark command above with your `<name>`.
 
-> **Note:** If your problem needs external Coq libraries, modify `_run_coqc()` in `evaluator.py` to pass `-Q`/`-R` flags.
+> If your problem needs external Coq libraries, modify `_run_coqc()` in `evaluator.py` to pass `-Q`/`-R` flags.
