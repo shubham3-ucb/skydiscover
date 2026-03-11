@@ -61,7 +61,7 @@ One generic evaluator and prompt across all problems.
 **What:** Prove the strong pumping lemma for regular expressions, including 4 helper lemmas and the main theorem.
 **Initial spec:** 5 `Admitted` (no implementation, pure proof). `pumping_constant` and `napp` functions given.
 **Difficulty:** Very hard (5★ advanced optional in SF). Deep nested induction on `exp_match` evidence with existential witnesses. No implementation — pure proof reasoning.
-**Status:** Running (100 iters, Gemini 3 Pro)
+**Status:** Running (100 iters, Gemini 3 Pro). Best: 0.83 (5/6 Qed). LLM invented `pumping_strong` helper and generated a mathematically correct full proof — failed only due to Coq tactic timeout (`do 3 eexists` causes infinite unification). Fixed evaluator with 300s timeout + tactic guidance.
 **Source:** SF Vol. 1 — [IndProp, pumping exercise](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html)
 
 ---
@@ -71,5 +71,107 @@ One generic evaluator and prompt across all problems.
 **What:** Define the representation invariant `is_trie` for a binary trie, then prove 10 theorems relating trie operations to a `total_map` abstraction.
 **Initial spec:** 1 `todo` definition (`is_trie`), 10 `Admitted` theorems, 2 given `Qed` lemmas. `total_map` inlined from VFA/Maps. Uses stdlib `positive` type.
 **Difficulty:** Very hard. SF exercises range 1–3 stars individually, but the LLM must *invent* the representation invariant and prove abstraction theorems (`empty_relate`, `lookup_relate`, `insert_relate`) plus injectivity and structural lemmas.
-**Status:** Running (100 iters, Gemini 3 Pro)
+**Solved:** iter 24/100 · 12 Qed + `is_trie` invented · Gemini 3 Pro
 **Source:** SF Vol. 3 (VFA) — [Trie chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Trie.html)
+
+---
+
+## binomial_queue
+
+**What:** Verified mergeable priority queue (binomial heap). Invent `priqueue_elems` abstraction relation, prove 20 theorems about invariant preservation and abstraction correctness — including three 5★ theorems about `delete_max`.
+**Initial spec:** 1 `Axiom` to replace with `Inductive` (`priqueue_elems`), 20 `Admitted` theorems, 5 given `Qed`. All implementations given. 305 lines.
+**Difficulty:** Very hard. 56 total stars across exercises. Three 5★ theorems (`delete_max_Some_priq`, `delete_max_None_relate`, `delete_max_Some_relate`). LLM must invent the `priqueue_elems` inductive relation and prove correctness of all ADT operations.
+**Status:** Running (100 iters, Gemini 3 Pro).
+**Source:** SF Vol. 3 (VFA) — [Binom chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Binom.html)
+
+---
+
+# One-Shot Baseline (Gemini 3 Pro Preview)
+
+Single LLM call, no feedback, no retry. Shows which problems actually need iterative co-synthesis.
+
+| Problem | Score | Compiles | Verdict |
+|---|---|---|---|
+| `all_less_than` | 1.00 | Yes | **Solved** — trivial |
+| `insertion_sort` | 1.00 | Yes | **Solved** — LLM knows this |
+| `pigeonhole` | 1.00 | Yes | **Solved** — surprising, got `repeats` + proof first try |
+| `bst_verification` | 0.00 | No | Almost — one proof bullet error |
+| `regex_matcher` | 0.00 | No | Failed — complex type-level reasoning |
+| `trie_adt` | 0.00 | No | Failed — `look_ins_other` proof incomplete |
+| `strong_pumping` | 0.00 | No | Completely failed — 0 Qed, tactic syntax errors |
+| `binomial_queue` | 0.00 | No | Completely failed — only 4 given Qed survived |
+
+**Takeaway:** 3 easy problems are solvable in one shot. The 5 hard ones (`bst_verification`, `regex_matcher`, `trie_adt`, `strong_pumping`, `binomial_queue`) fail without iterative co-synthesis.
+
+Raw results in each problem's `baseline_oneshot/` folder.
+
+---
+
+# Potential Next Problems
+
+Problems targeting the path from textbook proofs toward certified systems.
+
+---
+
+## Tier 1: VFA — Verified Data Structures (single file, Coq stdlib, ready now)
+
+### Graph Coloring / Register Allocator (VFA/Color)
+**What:** Kempe's graph coloring algorithm with termination proof. Uses `FMaps`/`FSets`.
+**Key exercises:** `cardinal_map` (4★), `Sremove_cardinal_less` (4★), full coloring correctness.
+**Why:** This IS a verified compiler backend component — CompCert uses the same algorithm.
+**Source:** [VFA Color chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Color.html)
+
+---
+
+## Tier 2: SLF — Separation Logic (requires SLF library — the systems frontier)
+
+### Stack ADT with Encapsulation (SLF/Repr)
+**What:** Stack as (mutable list pointer + size counter). Define `Stack L s` representation predicate. Verify `push` (3★) and `pop` (4★).
+**Why:** THE verified ADT pattern. Exactly how seL4, CertiKOS verify data structures. First separation logic benchmark.
+**Source:** [SLF Repr chapter](https://softwarefoundations.cis.upenn.edu/slf-current/Repr.html)
+
+### Mutable List Iterator (SLF/Repr)
+**What:** Higher-order iterator over mutable linked list. Verify invariant preservation with frame reasoning.
+**Key exercise:** `triple_miter` (5★).
+**Why:** Verified `foreach` loop — bread and butter of verified OS container libraries.
+**Source:** [SLF Repr chapter](https://softwarefoundations.cis.upenn.edu/slf-current/Repr.html)
+
+---
+
+## Tier 3: VC — Verifiable C (requires VST — the ultimate goal)
+
+### Verified Hash Table (VC/Verif_hash)
+**What:** Complete C hash table verified against a functional model using VST separation logic.
+**Key exercises:** `body_hash` (3★), `body_get` (3★), `body_new_table` (2★) — ~20 stars total.
+**Why:** Real C program verification. This is what verified systems work actually looks like.
+**Source:** [VC Verif_hash chapter](https://softwarefoundations.cis.upenn.edu/vc-current/Verif_hash.html)
+
+### Verified String Library (VC/Verif_strlib)
+**What:** Verify C `strlen`, `strcpy`, `strcmp` with `cstring` representation predicates.
+**Key exercise:** `body_strcmp` (4★) — hardest single exercise in VC volume.
+**Why:** libc function verification. Buffer overflows in string functions are the most exploited vulnerability class.
+**Source:** [VC Verif_strlib chapter](https://softwarefoundations.cis.upenn.edu/vc-current/Verif_strlib.html)
+
+---
+
+## Tier 4: PLF — Verified Language Implementation
+
+### Extended STLC with Full Type Safety (PLF/MoreStlc)
+**What:** Build a complete programming language: numbers, let, pairs, sums, lists, fix. Define `subst` (3★), `step` (3★), `has_type` (3★). Prove Progress + Preservation.
+**Why:** This is building a verified interpreter/runtime. Same pattern as CompCert, CakeML.
+**Source:** [PLF MoreStlc chapter](https://softwarefoundations.cis.upenn.edu/plf-current/MoreStlc.html)
+
+---
+
+## Escalation Path
+
+```
+Done (VFA)        →  BST, Trie, Binomial Queue (benchmarks)
+Next (VFA)        →  Graph Coloring (compiler backend)
+                                    ↓
+Separation Logic  →  SLF Stack ADT  →  SLF Iterator
+                                    ↓
+C Verification    →  VC String Lib  →  VC Hash Table
+```
+
+Each step adds one new proof dimension. If SLF Stack ADT works, the claim becomes: *"AI co-synthesizes verified heap-manipulating ADTs with separation logic."*

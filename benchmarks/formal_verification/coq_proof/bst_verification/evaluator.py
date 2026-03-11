@@ -43,17 +43,48 @@ def _count_todos(content):
     return len(re.findall(r"\btodo\b", without_axiom))
 
 
+def _strip_markdown_fences(content):
+    """Strip markdown code fences if the LLM wrapped the file in them."""
+    lines = content.strip().splitlines()
+    if not lines:
+        return content
+    # If first line is a fence opener (```coq, ```Coq, ```v, ```, etc.)
+    if re.match(r'^```\s*[a-zA-Z]*\s*$', lines[0]):
+        lines = lines[1:]
+    # If last line is a fence closer
+    if lines and re.match(r'^```\s*$', lines[-1]):
+        lines = lines[:-1]
+    # If first line is just a bare language tag left by bad fence stripping (e.g. "Coq", "coq")
+    if lines and re.match(r'^[Cc]oq\s*$', lines[0]):
+        lines = lines[1:]
+    return '\n'.join(lines)
+
+
+_TIMEOUT_GUIDANCE = (
+    "Timeout: coqc exceeded 300s. "
+    "Your proof is likely structurally correct but uses tactics that cause "
+    "infinite unification loops. Common culprits:\n"
+    "  - `do N eexists` — use explicit `exists a, b, c` instead\n"
+    "  - `repeat rewrite app_assoc` — use a single targeted `rewrite` or "
+    "`replace ... with ... by (rewrite !app_assoc; reflexivity)`\n"
+    "  - `repeat split` with existential variables — use individual `split` "
+    "followed by the immediate proof of each conjunct\n"
+    "  - `auto` or `eauto` in large contexts — use explicit tactics\n"
+    "Rewrite the proof using explicit witnesses and targeted rewrites."
+)
+
+
 def _run_coqc(filepath):
     filepath = os.path.abspath(filepath)
     try:
         r = subprocess.run(
             ["coqc", os.path.basename(filepath)],
-            capture_output=True, text=True, timeout=120,
+            capture_output=True, text=True, timeout=300,
             cwd=os.path.dirname(filepath),
         )
         return r.returncode, r.stderr
     except subprocess.TimeoutExpired:
-        return 1, "Timeout: coqc exceeded 120s"
+        return 1, _TIMEOUT_GUIDANCE
 
 
 def _cleanup_coq_artifacts(filepath):
@@ -89,6 +120,11 @@ def _build_feedback(compiles, done, qed, admitted, todo):
 
 def evaluate(program_path):
     content = open(program_path).read()
+    cleaned = _strip_markdown_fences(content)
+    if cleaned != content:
+        with open(program_path, 'w') as f:
+            f.write(cleaned)
+        content = cleaned
 
     qed_count, admitted_count = _count_proof_terms(content)
     todo_count = _count_todos(content)

@@ -1,0 +1,11 @@
+{
+  "score": 0.0,
+  "compiles": false,
+  "qed": 3,
+  "admitted": 0,
+  "todo": 0,
+  "done": false,
+  "lines": 66,
+  "error": "File \"./tmpz4aq48os.v\", line 66, characters 32-33:\nError:\nSyntax error: [open_binders] expected after 'forall' (in [binder_constr]).\n\n",
+  "llm_time_s": 134.1
+}

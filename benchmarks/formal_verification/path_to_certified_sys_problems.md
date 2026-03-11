@@ -9,10 +9,11 @@
 | pigeonhole | 1 todo defn, 2 Admitted | 2 Qed | Predicate defn (`repeats`) | Gemini 3 Pro | Yes | 5/50 |
 | regex_matcher | 3 todo fns, 5 Admitted + 9 given Qed | 14 Qed total | — | Gemini 3 Pro | Yes | 12/50 |
 | bst_verification | 3 todo fns, 5 Admitted | 9 Qed (invented 4 sub-lemmas) | — | Gemini 3 Pro | Yes | 23/50 |
-| strong_pumping | 5 Admitted | 5 Qed target | — | Gemini 3 Pro | Running | 100 |
-| trie_adt | 1 todo defn, 10 Admitted + 2 given Qed | 12 Qed + 1 defn target | `is_trie` invariant | Gemini 3 Pro | Running | 100 |
+| strong_pumping | 5 Admitted | 5/6 Qed so far (LLM invented `pumping_strong` helper) | — | Gemini 3 Pro | 0.83 | 70+ |
+| trie_adt | 1 todo defn, 10 Admitted + 2 given Qed | 12 Qed + `is_trie` defn | `is_trie` invariant | Gemini 3 Pro | Yes | 24/100 |
+| binomial_queue | 1 Axiom defn, 20 Admitted + 5 given Qed | — | `priqueue_elems` relation | Gemini 3 Pro | Running | — |
 
-All single-file, <170 lines initial. Coq stdlib only. One generic evaluator and prompt across all problems.
+All single-file, <310 lines initial. Coq stdlib only. One generic evaluator and prompt across all problems.
 
 ---
 
@@ -54,13 +55,15 @@ Scale reference: FSCQ (verified file system) = ~30k lines Coq, ~40 person-months
 
 **Gaming.** `Qed` with `exact todo` inside would fake progress. Fix: evaluator counts `todo` occurrences; Coq's type checker rejects unsound proofs at `Qed`.
 
-**Diff parsing.** LLM sometimes wraps diffs in markdown fences, corrupting the Coq file. Infrastructure bug — needs stripping in diff applier.
+**Diff parsing.** LLM sometimes wraps diffs in markdown fences, corrupting the Coq file. Fixed: evaluator strips fences before compilation.
+
+**Tactic timeout.** LLM generates structurally correct proofs that hang Coq's unifier (`do N eexists`, `repeat rewrite`). Scores 0.0 with no actionable feedback. Fixed: 300s timeout, actionable timeout guidance, tactic performance hints in prompt.
 
 ---
 
 ## Honest Assessment
 
-**Can claim:** LLMs co-synthesize implementations and machine-checked proofs for textbook-scale Coq problems (up to 5-star SF exercises, up to 8 new proof obligations per problem, solved programs reaching ~300 lines). The approach is general — one evaluator, one prompt, 7 problems from trivial to 5-star. The LLM discovers decompositions (sub-functions, sub-lemmas, proof strategies) without human guidance. All proofs verified by `coqc`.
+**Can claim:** LLMs co-synthesize implementations and machine-checked proofs for textbook-scale Coq problems (up to 5-star SF exercises, up to 12 new proof obligations per problem, solved programs reaching ~300 lines). The approach is general — one evaluator, one prompt, 7 problems from trivial to 5-star. The LLM discovers decompositions (sub-functions, sub-lemmas, proof strategies, invariant definitions) without human guidance. All proofs verified by `coqc`. `trie_adt` demonstrates invariant invention (`is_trie`). `strong_pumping` demonstrates the LLM can generate mathematically correct proofs of 5-star exercises — the remaining gap is tactic efficiency, not mathematical reasoning.
 
 **Cannot claim:** This builds a certified file system, compiler, or network stack today. Multi-file context, separation logic, concurrency, and large-scale invariant design are untested.
 
@@ -73,7 +76,7 @@ Scale reference: FSCQ (verified file system) = ~30k lines Coq, ~40 person-months
 
 ## Next Steps (by impact)
 
-1. Complete `strong_pumping` + `trie_adt` runs — test pure proof difficulty and invariant invention.
+1. Complete `strong_pumping` run — `trie_adt` solved (24 iters, invariant invented). `strong_pumping` has correct proof structure, needs tactic efficiency fix (running with improved evaluator/prompt).
 2. **Multi-file benchmark.** VFA SearchTree importing Maps — minimal setup, tests the core gap.
 3. **Agent context.** On `Require Import Foo`, agent extracts `Foo.v` signatures into LLM context.
 4. **Goal-state feedback.** On proof failure, return Coq's pending goal to the LLM — breaks plateaus.

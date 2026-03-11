@@ -17,8 +17,9 @@
 | regex_matcher | Hard | Yes | 12 | 1.0 |
 | pigeonhole | Hard | Yes | 5 | 1.0 |
 | bst_verification | Hard | Yes | 23 | 1.0 |
-| strong_pumping | 5-star | Running | — | — |
-| trie_adt | Hard (ADT) | Running | — | — |
+| strong_pumping | 5-star | In progress | 70+ | 0.83 (5/6 Qed) |
+| trie_adt | Hard (ADT) | Yes | 24 | 1.0 |
+| binomial_queue | Very hard (ADT) | Running | — | — |
 
 ---
 
@@ -69,6 +70,17 @@ Fully generic — no problem-specific content. Covers: the one-step action defin
 
 ### 9. LLM owns all synthesis decisions
 Implementation algorithm, sub-lemma statements, proof tactics — all by the LLM. The system provides no hints about proof structure or algorithm.
+
+---
+
+## Key Findings
+
+### Tactic timeout trap (strong_pumping)
+The LLM generated a **mathematically correct** full proof of the 5-star Strong Pumping Lemma (218 lines, 0 Admitted). But it scored 0.0 because `coqc` timed out — tactics like `do 3 eexists` and `repeat rewrite app_assoc` cause infinite Coq unification loops. Manual fix: replace with explicit witnesses and targeted single rewrites. The proof then compiles in <1s.
+
+**Root cause:** The evaluator's 120s timeout killed correct proofs silently. The LLM received no guidance about *why* it failed, so it couldn't self-correct.
+
+**Fix applied (general):** (1) Evaluator timeout raised to 300s. (2) On timeout, evaluator returns actionable guidance about slow tactics. (3) Prompt includes general Coq tactic performance rules (no `eexists`, no `repeat rewrite`). All changes are domain-general — not problem-specific.
 
 ---
 

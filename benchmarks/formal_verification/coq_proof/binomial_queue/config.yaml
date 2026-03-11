@@ -1,6 +1,6 @@
 language: coq
 file_suffix: ".v"
-diff_based_generation: false
+diff_based_generation: true
 max_iterations: 100
 checkpoint_interval: 5
 
@@ -56,38 +56,24 @@ prompt:
 
     The .v file contains:
     - `Axiom todo : forall {A : Type}, A.` — typed hole for unfinished expressions
-    - A function signature with `todo` as the body.
-    - A lemma stating the specification of the function which is `Admitted.` —
-      placeholder for an unfinished proof.
+    - Functions with `todo` as the body.
+    - Lemmas/theorems marked `Admitted.` — placeholder for unfinished proofs.
+    - One `Axiom priqueue_elems` that must be replaced with an `Inductive` definition.
 
-    Your goal: fill every `todo`, and prove every lemma marked `Admitted.` with
-    `Qed.` After your edit, the file MUST compile with `coqc`. In particular, the
-    function should be fully implemented, and the lemma should prove its correctness.
+    Your goal: fill every `todo`, replace `Axiom priqueue_elems` with a proper
+    `Inductive priqueue_elems` definition, and prove every `Admitted.` with `Qed.`
+    After your edit, the file MUST compile with `coqc`.
 
     We want to synthesize the program and generate its proof step by step in the
     deductive synthesis style. You will be called multiple times. You are STRICTLY
     FORBIDDEN from taking multiple steps or generating the full solution in one call.
 
-    In each call, **replace exactly one `todo` with an expression and prove its
-    corresponding lemma**. Fill a `todo` with one concrete expression:
-       - A value: `true`, `0`, `nil`, etc.
-       - A pattern match: `match x with | C1 => todo | C2 y => todo end`
-       - A conditional: `if cond then todo else todo`
-       - A recursive or function call
-       Note that all the sub-expressions are `todo`.
-       Leave all other `todo`s untouched.
-       Add sub-lemmas (with appropriate preconditions) for any new `todo`
-       expression, and declare them as `Admitted.` If the expression is a leaf,
-       no new sub-lemma is declared.
-       Use the sub-lemmas to prove the lemma for the filled `todo` expression
-       (`Admitted.` → `Qed.`).
-       Example: `Definition f : (nat -> bool) := todo.` becomes
-       `Fixpoint f (n : nat) : bool := match n with | O => todo | S m => todo end.`
-       and the main lemma for `f` is proved by induction using the sub-lemmas for
-       the `todo`s in the base and inductive cases, which are declared `Admitted.`
+    In each call, do ONE of:
+    1. Replace `Axiom priqueue_elems` with a proper `Inductive` definition
+       (similar to `tree_elems` but for a list of trees).
+    2. Replace one `todo` with a concrete Coq expression.
+    3. Prove one `Admitted.` lemma with `Qed.`
 
-    If there are standalone `Admitted.` lemmas with no corresponding `todo`
-    (all expressions already filled), you may prove one such lemma directly.
     When choosing which `Admitted.` lemma to prove, prefer ones that do NOT
     depend on other `Admitted.` lemmas — prove prerequisites first.
 
@@ -98,17 +84,7 @@ prompt:
     - `generalize dependent` to strengthen the induction hypothesis
     - Inducting on evidence (`induction H`) rather than on the term
     - Introducing helper lemmas about list/nat structure
-
-    ## Coq Compatibility & Performance
-
-    - Use `length_app` NOT `app_length` (renamed in Coq 8.20+).
-    - Use `From Stdlib Require Import` NOT `From Coq Require Import`.
-    - NEVER use `do N eexists` — always provide explicit witnesses: `exists a, b, c.`
-    - NEVER use `repeat rewrite app_assoc` — it causes infinite loops. Use a
-      single `rewrite app_assoc` or `replace ... with ... by (rewrite !app_assoc; reflexivity)`.
-    - Avoid `repeat split` with existential variables. Use individual `split`
-      followed by `{ exact H. }` or `{ lia. }` for each conjunct.
-    - When `lia` fails on a goal involving `length`, try `simpl in *` first.
+    - The `bdall` tactic handles boolean comparison reflection
 
     ## Rules
 
@@ -117,9 +93,16 @@ prompt:
       Only fill in proofs.
     - Do NOT use `exact todo.` or a similar trivial tactic to close a proof —
       that defeats the purpose. Only close proofs with real tactics.
-    - Do NOT replace multiple `todo`s in one call.
     - Do NOT prove multiple `Admitted.` lemmas in one call.
     - Add `Require Import` statements as needed.
+
+    ## Coq Compatibility & Performance
+
+    - Use `From Stdlib Require Import` NOT `From Coq Require Import` (Coq 9.x).
+    - NEVER use `do N eexists` — always provide explicit witnesses.
+    - NEVER use `repeat rewrite` — use targeted single rewrites.
+    - Avoid `repeat split` with existential variables.
+    - When `lia` fails on a goal involving `length`, try `simpl in *` first.
 
     ## Scoring
 

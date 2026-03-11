@@ -74,9 +74,10 @@ Lemma napp_plus :
   forall T (n m : nat) (l : list T),
     napp (n + m) l = napp n l ++ napp m l.
 Proof.
-  intros T n m l. induction n as [|n' IHn'].
+  intros T n m l.
+  induction n as [| n' IHn'].
   - simpl. reflexivity.
-  - simpl. rewrite IHn'. rewrite <- app_assoc. reflexivity.
+  - simpl. rewrite IHn'. rewrite app_assoc. reflexivity.
 Qed.
 
 Lemma napp_star :
@@ -86,9 +87,11 @@ Lemma napp_star :
     napp m s1 ++ s2 =~ Star re.
 Proof.
   intros T m s1 s2 re H1 H2.
-  induction m as [|m' IHm'].
-  - simpl. apply H2.
-  - simpl. rewrite <- app_assoc. apply MStarApp; assumption.
+  induction m as [| m' IH].
+  - simpl. exact H2.
+  - simpl. rewrite <- app_assoc. apply MStarApp.
+    + exact H1.
+    + exact IH.
 Qed.
 
 (* === Main theorem: strong pumping lemma (5 stars, advanced) === *)

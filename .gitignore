@@ -51,3 +51,11 @@ benchmarks/ADRS/llm_sql/datasets/
 
 # Generated test outputs (re-generate with test_all_benchmarks.sh)
 tests/**/test_outputs_*/
+# Coq build artifacts
+*.vo
+*.vos
+*.vok
+*.glob
+*.aux
+.*.aux
+.lia.cache

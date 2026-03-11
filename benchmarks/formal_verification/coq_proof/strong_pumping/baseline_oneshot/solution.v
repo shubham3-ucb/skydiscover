@@ -3,7 +3,6 @@ Import ListNotations.
 Require Import Stdlib.Arith.PeanoNat.
 Require Import Stdlib.Arith.Arith.
 From Coq Require Import Lia.
-Axiom todo : forall {A : Type}, A.
 
 (* === Regular expression type === *)
 
@@ -63,50 +62,4 @@ Fixpoint napp {T} (n : nat) (l : list T) : list T :=
 Lemma pumping_constant_ge_1 :
   forall T (re : reg_exp T), pumping_constant re >= 1.
 Proof.
-  intros T re. induction re; simpl; lia.
-Qed.
-
-Lemma pumping_constant_0_false :
-  forall T (re : reg_exp T), pumping_constant re = 0 -> False.
-Proof.
-  intros T re H.
-  pose proof (pumping_constant_ge_1 T re).
-  lia.
-Qed.
-
-Lemma napp_plus :
-  forall T (n m : nat) (l : list T),
-    napp (n + m) l = napp n l ++ napp m l.
-Proof.
-  intros T n m l.
-  induction n as [| n' IHn'].
-  - simpl. reflexivity.
-  - simpl. rewrite IHn'. rewrite app_assoc. reflexivity.
-Qed.
-
-Lemma napp_star :
-  forall T m s1 s2 (re : reg_exp T),
-    s1 =~ re ->
-    s2 =~ Star re ->
-    napp m s1 ++ s2 =~ Star re.
-Proof.
-  intros T m s1 s2 re H1 H2.
-  induction m as [| m' IH].
-  - simpl. exact H2.
-  - simpl. rewrite <- app_assoc. apply MStarApp.
-    + exact H1.
-    + exact IH.
-Qed.
-
-(* === Main theorem: strong pumping lemma (5 stars, advanced) === *)
-
-Theorem pumping :
-  forall T (re : reg_exp T) s,
-    s =~ re ->
-    pumping_constant re <= length s ->
-    exists s1 s2 s3,
-      s = s1 ++ s2 ++ s3 /\
-      s2 <> [] /\
-      length s1 + length s2 <= pumping_constant re /\
-      forall m, s1 ++ napp m s2 ++ s3 =~ re.
-Proof. Admitted.
+  intros T

@@ -1,0 +1,11 @@
+{
+  "score": 0.0,
+  "compiles": false,
+  "qed": 0,
+  "admitted": 0,
+  "todo": 0,
+  "done": false,
+  "lines": 65,
+  "error": "File \"./tmpmdai4kem.v\", line 5, characters 0-28:\nWarning: \"From Coq\" has been replaced by \"From Stdlib\".\n[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]\nFile \"./tmpmdai4kem.v\", line 65, characters 10-11:\nError:\nSyntax error: [ltac_use_default] expected after [tactic] (in [tactic_command]).\n\n",
+  "llm_time_s": 116.9
+}

@@ -1,0 +1,11 @@
+{
+  "score": 0.0,
+  "compiles": false,
+  "qed": 5,
+  "admitted": 0,
+  "todo": 0,
+  "done": false,
+  "lines": 141,
+  "error": "File \"./tmpdnn1r40i.v\", line 77, characters 19-31:\nError: No such goal. Focus next goal with bullet +.\n\n",
+  "llm_time_s": 67.0
+}

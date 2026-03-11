@@ -1,0 +1,11 @@
+{
+  "score": 0.0,
+  "compiles": false,
+  "qed": 12,
+  "admitted": 0,
+  "todo": 0,
+  "done": false,
+  "lines": 178,
+  "error": "File \"./tmpju2nfr0_.v\", line 4, characters 0-28:\nWarning: \"From Coq\" has been replaced by \"From Stdlib\".\n[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]\nFile \"./tmpju2nfr0_.v\", line 104, characters 0-4:\nError:  (in proof look_ins_other): Attempt to save an incomplete proof\n(there are remaining open goals).\n\n",
+  "llm_time_s": 60.7
+}
