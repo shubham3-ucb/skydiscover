@@ -4,10 +4,9 @@ Axiom todo : forall {A : Type}, A.
 
 Definition excluded_middle := forall P : Prop, P \/ ~ P.
 
-(* === repeats: a list contains at least one duplicate element.
-       Replace this axiom with an Inductive definition. === *)
+(* === repeats: a list contains at least one duplicate element === *)
 
-Axiom repeats : forall {X : Type}, list X -> Prop.
+Definition repeats {X : Type} (l : list X) : Prop := todo.
 
 (* === Helper lemma === *)
 
