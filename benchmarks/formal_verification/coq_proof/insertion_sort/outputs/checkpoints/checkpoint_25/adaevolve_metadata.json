@@ -1,0 +1,289 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 24,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.20659999640001678,
+        "best_score": 1.0,
+        "improvement_count": 5,
+        "total_evaluations": 15,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.2501499998437499,
+        "best_score": 1.0,
+        "improvement_count": 3,
+        "total_evaluations": 11,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      15,
+      11
+    ],
+    "dimension_rewards": [
+      0.9830893698252007,
+      0.8122269974318042
+    ],
+    "decayed_visits": [
+      7.94108867905351,
+      6.861894039100001
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "bb351693-a0fe-4ce8-a513-1c5afb7a29b6",
+      "1397939d-28df-402e-9179-8b8e2ba0af87",
+      "f51975a5-b791-4ed2-a4e2-dfffa9366459",
+      "629e5ff8-ffc9-4d01-88ca-7ea89a57c970",
+      "ee37782f-09f0-4119-949e-7c5644cd524e",
+      "1b773223-8810-4e7f-99d3-5a5c4d8b284e",
+      "eda3cb3a-3980-48f7-975b-e7abd8fbea5c",
+      "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8",
+      "37d67b0c-5ca5-4d7e-b592-46ed153a5a18",
+      "5bb5abd0-7f9a-472a-bff8-e266da867ce1"
+    ],
+    [
+      "7f70ae7d-675b-42fd-ae85-b484736c8170",
+      "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf",
+      "cf1adefe-7f92-47af-9e42-2189ac530896",
+      "71339ae0-21e6-4625-9afa-1d5ad68fe1e7",
+      "abd8a1b8-203b-4f7b-a6f6-961b37141b3b",
+      "c6c5c781-0f98-49fa-8323-04e9ed5df8be",
+      "58c582bb-31f6-4bdd-bd71-27f16049e640",
+      "61b1289f-490b-4b33-a4e4-edff86e37dc8",
+      "7a4cdef5-c1c0-4b4d-a108-986fad669384",
+      "3c9f29f4-01a7-4eee-9508-dc889a94bf49"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "bb351693-a0fe-4ce8-a513-1c5afb7a29b6": [],
+        "1397939d-28df-402e-9179-8b8e2ba0af87": [
+          "bb351693-a0fe-4ce8-a513-1c5afb7a29b6"
+        ],
+        "f51975a5-b791-4ed2-a4e2-dfffa9366459": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "1b773223-8810-4e7f-99d3-5a5c4d8b284e": [
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ],
+        "eda3cb3a-3980-48f7-975b-e7abd8fbea5c": [
+          "f51975a5-b791-4ed2-a4e2-dfffa9366459"
+        ],
+        "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "37d67b0c-5ca5-4d7e-b592-46ed153a5a18": [
+          "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8"
+        ],
+        "5bb5abd0-7f9a-472a-bff8-e266da867ce1": [
+          "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8"
+        ]
+      },
+      "children": {
+        "bb351693-a0fe-4ce8-a513-1c5afb7a29b6": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "1397939d-28df-402e-9179-8b8e2ba0af87": [
+          "f51975a5-b791-4ed2-a4e2-dfffa9366459",
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "1b773223-8810-4e7f-99d3-5a5c4d8b284e"
+        ],
+        "f51975a5-b791-4ed2-a4e2-dfffa9366459": [
+          "eda3cb3a-3980-48f7-975b-e7abd8fbea5c"
+        ],
+        "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8": [
+          "37d67b0c-5ca5-4d7e-b592-46ed153a5a18",
+          "5bb5abd0-7f9a-472a-bff8-e266da867ce1"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "7f70ae7d-675b-42fd-ae85-b484736c8170": [],
+        "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf": [
+          "7f70ae7d-675b-42fd-ae85-b484736c8170"
+        ],
+        "cf1adefe-7f92-47af-9e42-2189ac530896": [
+          "7f70ae7d-675b-42fd-ae85-b484736c8170"
+        ],
+        "71339ae0-21e6-4625-9afa-1d5ad68fe1e7": [
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "c6c5c781-0f98-49fa-8323-04e9ed5df8be": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "58c582bb-31f6-4bdd-bd71-27f16049e640": [
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "61b1289f-490b-4b33-a4e4-edff86e37dc8": [
+          "c6c5c781-0f98-49fa-8323-04e9ed5df8be"
+        ],
+        "7a4cdef5-c1c0-4b4d-a108-986fad669384": [
+          "61b1289f-490b-4b33-a4e4-edff86e37dc8"
+        ],
+        "3c9f29f4-01a7-4eee-9508-dc889a94bf49": [
+          "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8"
+        ]
+      },
+      "children": {
+        "7f70ae7d-675b-42fd-ae85-b484736c8170": [
+          "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf",
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "cf1adefe-7f92-47af-9e42-2189ac530896": [
+          "71339ae0-21e6-4625-9afa-1d5ad68fe1e7",
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "c6c5c781-0f98-49fa-8323-04e9ed5df8be"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "58c582bb-31f6-4bdd-bd71-27f16049e640"
+        ],
+        "c6c5c781-0f98-49fa-8323-04e9ed5df8be": [
+          "61b1289f-490b-4b33-a4e4-edff86e37dc8"
+        ],
+        "61b1289f-490b-4b33-a4e4-edff86e37dc8": [
+          "7a4cdef5-c1c0-4b4d-a108-986fad669384"
+        ],
+        "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8": [
+          "3c9f29f4-01a7-4eee-9508-dc889a94bf49"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Verified quicksort via well-founded recursion and List.partition",
+        "description": "Implement quicksort over nat using list partitioning around a pivot and prove correctness. Define qs as a Program Fixpoint with measure length l, and use List.partition (with predicate fun x => Nat.leb x pivot) to split the tail into <= pivot and > pivot parts. Recursively sort both partitions and concatenate as qs left ++ pivot :: qs right. Prove well-foundedness by showing both partitions are strictly shorter than the input list; discharge those obligations with lia and bounds on partition lengths. Establish permutation via standard lemmas about partition (Permutation of l = left ++ right ++ [pivot]) and Permutation_app/perm_skip. Prove sortedness by combining sortedness of recursive calls with a bridging lemma: all elements in left <= pivot and pivot <= all elements in right, which follow from partition's specification and Nat.leb properties. This yields asymptotically better extracted performance than insertion sort while maintaining a concise, modular proof.",
+        "what_to_optimize": "Maintain combined_score=1.0 while reducing proof complexity and improving asymptotic runtime of the extracted code.",
+        "cautions": "Ensure the recursion is structurally decreasing w.r.t. a well-founded measure (length) and that both partition outputs are strictly smaller (handle duplicates carefully). Prove and reuse partition_spec lemmas that connect membership to the Nat.leb predicate. Be careful to use Forall-oriented lemmas to stitch sortedness across concatenation and pivot. Avoid non-available plugins; stick to stdlib (Permutation, Sorted) and lia.",
+        "approach_type": "Coq.Lists.List.partition"
+      },
+      {
+        "idea": "Counting sort via finite maps (FMapAVL.Make) and reconstruction from sorted keys",
+        "description": "Implement a counting sort by first mapping each nat to its frequency using a balanced AVL finite map, then reconstructing the sorted list by iterating over the map's elements in ascending key order and emitting each key repeated by its count. Instantiate an ordered map with FMapAVL.Make(Nat_as_OT), use fold to build the frequency map, and elements to get the ascending list of key-count pairs. Prove permutation by relating counts in the map to multiplicities in the original list (fold preserves counts) and reconstruction (repeat preserves multiplicity). Prove sortedness because elements returns keys in strictly increasing order, and repetition only duplicates each key contiguously. This approach can dramatically improve extracted runtime for integers with limited range or clustered duplicates, while providing a clean compositional proof structured around FMap properties.",
+        "what_to_optimize": "Preserve combined_score while improving extracted performance on multiset-heavy inputs and reducing ad-hoc list manipulation proofs by delegating order invariants to the map library.",
+        "cautions": "Choose the correct OrderedType instance (OrdersEx.Nat_as_OT) to ensure elements is sorted. Prove and use lemmas connecting multiplicities to map counts (requires careful fold invariants). Handle zero counts properly (never store zero counts) and ensure reconstruction uses Nat.iter or a custom repeat to avoid off-by-one mistakes.",
+        "approach_type": "Coq.FSets.FMapAVL.Make"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 1
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Discharge the pending lemma by case-analyzing Nat.leb and using le-transitivity",
+        "description": "Prove insert_preserves_sorted by structural induction on the input list l and a case split on Nat.leb a b in the cons case. In the true branch (Nat.leb a b = true), use Nat.leb_le to derive a <= b and construct sorted_cons immediately, preserving the tail\u2019s sortedness from the induction hypothesis. In the false branch, use Nat.leb_gt to derive b < a, and show the result is b :: insert a t, which remains sorted since b <= head(insert a t) holds (establish via a sub-lemma relating the head of insert to the comparison) and the tail is sorted by IH. Add small helper lemmas to reason about the minimum element at the head after insertion into a sorted tail, and use Nat.le_trans to chain inequalities. This keeps the algorithm intact and closes the only Admitted proof, raising Qed and eliminating the deficit in the score. The proof remains lightweight and purely structural, avoiding any heavy library instantiations.",
+        "what_to_optimize": "combined_score by turning the single Admitted into Qed using direct structural proof steps on Nat.leb and sorted constructors",
+        "cautions": "Import Coq.Arith.PeanoNat to use Nat.leb_le and Nat.leb_gt. Keep helper lemmas minimal and local; if you introduce them, prove them fully to avoid new Admitteds. Be precise when reasoning about the head element of insert in the false-branch; ensure you connect the comparison outcome to the constructed sorted_cons obligations using le and transitivity.",
+        "approach_type": "Coq.Arith.PeanoNat.Nat.leb_le",
+        "uses": 2,
+        "starting_score": 0.8,
+        "ending_score": 1.0,
+        "score_improvement": 0.19999999999999996,
+        "outcome": "SUCCESS"
+      },
+      {
+        "idea": "Swap to the proven library mergesort and bridge its Sorted to the custom sorted",
+        "description": "Replace the custom isort/insert route with the standard library mergesort using the OrderedType instance for nat. Require Coq.Sorting.Mergesort and Coq.Structures.OrdersEx, instantiate Mergesort functor with OrdersEx.Nat_as_OT, and define sort := Mergesort.sort. Leverage the library\u2019s theorems: permutation preservation and Sorted (in the library\u2019s sense) to obtain correctness. Add a short bridging lemma that library Sorted le (or StronglySorted le) implies the custom inductive sorted, proved by simple inversion/constructor chaining using le-transitivity and reflexivity. This eliminates the need for insert-specific lemmas entirely, while providing a battle-tested sorting implementation. The end result is a concise, proven-correct sort function and proof that directly satisfy the is_a_sorting_algorithm spec.",
+        "what_to_optimize": "combined_score by removing custom proof burden and relying on pre-proven correctness, thus eliminating Admitted and simplifying future obligations",
+        "cautions": "Ensure correct imports and module instantiation: use OrdersEx.Nat_as_OT to feed Mergesort. Verify that the comparison used by Mergesort aligns with le on nat. Carefully prove the bridge lemma from the library\u2019s Sorted notion to the custom sorted inductive; ensure no mismatch in definitions (e.g., strong vs weak sortedness) and use le_trans where needed.",
+        "approach_type": "Coq.Sorting.Mergesort.sort",
+        "uses": 2,
+        "starting_score": 0.8,
+        "ending_score": 1.0,
+        "score_improvement": 0.19999999999999996,
+        "outcome": "SUCCESS"
+      },
+      {
+        "idea": "Instantiate Coq.Sorting.Mergesort for nat and reuse its certified sort",
+        "description": "Replace the hand-written insertion sort with the standard library\u2019s certified mergesort by instantiating the Mergesort functor for nat. Import Coq.Structures.OrdersEx.Nat_as_OT and then define a module NatSort := Coq.Sorting.Mergesort.Sort Nat_as_OT, which provides a function sort along with built-in theorems establishing permutation and (strong) sortedness. Define your top-level sort as NatSort.sort and prove the main specification by directly reusing NatSort.Permuted and NatSort.Sorted results. If your current sorted predicate differs from the library\u2019s Sorted/StronglySorted, add small bridging lemmas (no admissions) to translate properties. This approach drastically reduces custom proof burden and leverages well-maintained, efficient code. It also improves robustness: future extensions (e.g., switching orders or element types) become a matter of changing the functor instantiation rather than rewriting proofs.",
+        "what_to_optimize": "combined_score via eliminating custom proof surface area and reducing risk of Admitted/todo while preserving correctness and maintainability",
+        "cautions": "Import the correct order instance (Nat_as_OT) and ensure the chosen Sorted predicate matches your spec or provide short bridging lemmas. Keep the function name consistent with your API to avoid breaking other proofs. Be careful with universe/module scoping when importing the functor. Do not weaken the spec: assert both permutation and sortedness as provided by the functor. Ensure no reliance on custom sorted constructors that cannot be related to Sorted le.",
+        "approach_type": "Coq.Sorting.Mergesort.Sort",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use well-founded recursion with Coq.Program.Wf to define a verified mergesort",
+        "description": "Define mergesort using Program Fixpoint with a well-founded measure (e.g., length) to justify termination automatically. Implement split and merge helpers, with merge maintaining sortedness and permutation; use a measure that strictly decreases on recursive calls (e.g., lengths of sublists). Program.Wf generates termination obligations that can typically be discharged by lia after simple arithmetic facts on lengths. Prove local lemmas for merge correctness (preserves permutation and sortedness) and for split (length decreases, permutation of concatenation) to modularize the main correctness proof. This approach yields an asymptotically faster algorithm than insertion sort while staying within the standard library and avoiding external plugins. It improves maintainability by separating termination concerns from core logic and minimizes the chance of introducing Admitted by having mechanically generated obligations.",
+        "what_to_optimize": "combined_score by maintaining zero Admitted/todo and improving structural proof robustness and clarity; secondary optimization: asymptotic complexity of the computed program",
+        "cautions": "Require Coq.Program.Wf and Lia for obligations; ensure the measure strictly decreases in all branches. Keep merge structurally recursive on the smaller list to avoid complex obligations. Provide precise specifications for helpers to avoid cascading proof complexity. Be cautious with dependent equalities introduced by Program; use simpl and functional induction lemmas when needed. Ensure that your final sort function matches the problem\u2019s API and that proofs connect to the existing permutation and sorted predicates (bridge if they differ).",
+        "approach_type": "Coq.Program.Wf.Program_Fixpoint",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

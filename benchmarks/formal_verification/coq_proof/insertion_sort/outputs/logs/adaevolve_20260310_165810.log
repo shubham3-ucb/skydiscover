@@ -1,0 +1,430 @@
+2026-03-10 16:58:10,516 - skydiscover.search.utils.logging_utils - INFO - Logging to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/logs/adaevolve_20260310_165810.log
+2026-03-10 16:58:10,517 - skydiscover.search.adaevolve.database - INFO - AdaEvolveDatabase initialized: num_islands=2, decay=0.9, intensity=[0.15, 0.5], migration=True (interval=10), unified_archive=True, adaptive_search=True, ucb_selection=True, dynamic_islands=False, paradigm_breakthrough=True
+2026-03-10 16:58:10,517 - skydiscover.runner - INFO - Runner ready: search=adaevolve, program=benchmarks/formal_verification/coq_proof/insertion_sort/initial_program.v
+2026-03-10 16:58:10,571 - skydiscover.llm - INFO - OpenAI LLM: gpt-5
+2026-03-10 16:58:10,607 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with benchmarks/formal_verification/coq_proof/insertion_sort/evaluator.py
+2026-03-10 16:58:10,608 - skydiscover.search.default_discovery_controller - INFO - DiscoveryController initialized: num_context_programs=2
+2026-03-10 16:58:10,626 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with benchmarks/formal_verification/coq_proof/insertion_sort/evaluator.py
+2026-03-10 16:58:10,626 - skydiscover.search.adaevolve.controller - INFO - Paradigm LLM: using guide_models [gpt-5]
+2026-03-10 16:58:10,627 - skydiscover.search.adaevolve.controller - INFO - AdaEvolveController initialized (language=coq, paradigm_breakthrough=True)
+2026-03-10 16:58:10,627 - skydiscover.runner - INFO - Adding initial program to database
+2026-03-10 16:58:10,985 - skydiscover.evaluation.evaluator - INFO - Evaluated program bb351693-a0fe-4ce8-a513-1c5afb7a29b6 in 0.36s: combined_score=0.0000, compiles=1.0000, qed_count=0.0000, admitted_count=1.0000, todo_count=1.0000, code_length=21.0000, done=0.0000
+2026-03-10 16:58:10,986 - skydiscover.search.base_database - INFO - Database has 1 programs, best program score is 0.000000
+2026-03-10 16:58:10,986 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve: Running 30 iterations across 2 islands
+2026-03-10 16:58:10,986 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve iteration stats will be logged to: benchmarks/formal_verification/coq_proof/insertion_sort/outputs/adaevolve_iteration_stats_20260310_165810.jsonl
+2026-03-10 16:58:10,986 - skydiscover.search.adaevolve.controller - INFO - Seeded island 1
+2026-03-10 16:59:21,758 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 16:59:22,024 - skydiscover.evaluation.evaluator - INFO - Evaluated program 1397939d-28df-402e-9179-8b8e2ba0af87 in 0.26s: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 16:59:22,024 - skydiscover.search.adaevolve.controller - INFO - Iteration 1: Program 1397939d (parent: bb351693) completed in 71.04s
+2026-03-10 16:59:22,024 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 16:59:22,024 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 1
+2026-03-10 17:02:05,107 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:02:05,260 - skydiscover.evaluation.evaluator - INFO - Evaluated program b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf in 0.15s: combined_score=0.0000, compiles=0.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=94.0000, done=0.0000, error=File "./tmp_i1zb_d3.v", line 41, characters 38-40:
+Error:
+In environment
+x, y : nat
+ys : list nat
+IH : Permutation (x :: ys) (insert x ys)
+E : (x <=? y) = false
+Unable to unify "Permutation (x :: ys) (insert x ys)" with 
+"y = y".
+
+
+2026-03-10 17:02:05,261 - skydiscover.search.adaevolve.controller - INFO - Iteration 2: Program b1398dfd (parent: 7f70ae7d) completed in 163.23s
+2026-03-10 17:02:05,261 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=94.0000, done=0.0000, error=File "./tmp_i1zb_d3.v", line 41, characters 38-40:
+Error:
+In environment
+x, y : nat
+ys : list nat
+IH : Permutation (x :: ys) (insert x ys)
+E : (x <=? y) = false
+Unable to unify "Permutation (x :: ys) (insert x ys)" with 
+"y = y".
+
+
+2026-03-10 17:02:44,171 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:02:44,412 - skydiscover.evaluation.evaluator - INFO - Evaluated program cf1adefe-7f92-47af-9e42-2189ac530896 in 0.24s: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 17:02:44,413 - skydiscover.search.adaevolve.controller - INFO - Iteration 3: Program cf1adefe (parent: 7f70ae7d) completed in 39.15s
+2026-03-10 17:02:44,413 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 17:06:02,022 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:06:02,285 - skydiscover.evaluation.evaluator - INFO - Evaluated program 71339ae0-21e6-4625-9afa-1d5ad68fe1e7 in 0.26s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=104.0000, done=0.0000, error=File "./tmpx9r5bd9b.v", line 30, characters 27-31:
+Error: The reference sort was not found in the current environment.
+
+
+2026-03-10 17:06:02,286 - skydiscover.search.adaevolve.controller - INFO - Iteration 4: Program 71339ae0 (parent: cf1adefe) completed in 197.87s
+2026-03-10 17:06:02,286 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=104.0000, done=0.0000, error=File "./tmpx9r5bd9b.v", line 30, characters 27-31:
+Error: The reference sort was not found in the current environment.
+
+
+2026-03-10 17:10:10,269 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:10:10,459 - skydiscover.evaluation.evaluator - INFO - Evaluated program f51975a5-b791-4ed2-a4e2-dfffa9366459 in 0.18s: combined_score=0.0000, compiles=0.0000, qed_count=7.0000, admitted_count=0.0000, todo_count=0.0000, code_length=131.0000, done=0.0000, error=File "./tmpf_y_bo7y.v", line 51, characters 36-38:
+Error:
+In environment
+x, y : nat
+ys : list nat
+IH : Permutation (x :: ys) (insert x ys)
+E : (x <=? y) = false
+The term "IH" has type "Permutation (x :: ys) (insert x ys)"
+while it is expected to have type "x = y".
+
+
+2026-03-10 17:10:10,459 - skydiscover.search.adaevolve.controller - INFO - Iteration 5: Program f51975a5 (parent: 1397939d) completed in 248.16s
+2026-03-10 17:10:10,460 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=7.0000, admitted_count=0.0000, todo_count=0.0000, code_length=131.0000, done=0.0000, error=File "./tmpf_y_bo7y.v", line 51, characters 36-38:
+Error:
+In environment
+x, y : nat
+ys : list nat
+IH : Permutation (x :: ys) (insert x ys)
+E : (x <=? y) = false
+The term "IH" has type "Permutation (x :: ys) (insert x ys)"
+while it is expected to have type "x = y".
+
+
+2026-03-10 17:10:10,460 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 5
+2026-03-10 17:10:10,460 - skydiscover.search.base_database - INFO - Database has 7 programs, best program score is 0.333333
+2026-03-10 17:10:10,462 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 7 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_5
+2026-03-10 17:10:10,462 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_5
+2026-03-10 17:10:10,463 - skydiscover.runner - INFO - Checkpoint 5: best=combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 17:10:10,463 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_5
+2026-03-10 17:12:24,790 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:12:24,936 - skydiscover.evaluation.evaluator - INFO - Evaluated program 629e5ff8-ffc9-4d01-88ca-7ea89a57c970 in 0.14s: combined_score=0.6000, compiles=1.0000, qed_count=3.0000, admitted_count=2.0000, todo_count=0.0000, code_length=80.0000, done=0.0000
+2026-03-10 17:12:24,936 - skydiscover.search.adaevolve.controller - INFO - Iteration 6: Program 629e5ff8 (parent: 1397939d) completed in 134.47s
+2026-03-10 17:12:24,936 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.6000, compiles=1.0000, qed_count=3.0000, admitted_count=2.0000, todo_count=0.0000, code_length=80.0000, done=0.0000
+2026-03-10 17:12:24,936 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 6
+2026-03-10 17:12:45,371 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:12:45,680 - skydiscover.evaluation.evaluator - INFO - Evaluated program ee37782f-09f0-4119-949e-7c5644cd524e in 0.30s: combined_score=0.8000, compiles=1.0000, qed_count=4.0000, admitted_count=1.0000, todo_count=0.0000, code_length=89.0000, done=0.0000
+2026-03-10 17:12:45,681 - skydiscover.search.adaevolve.controller - INFO - Iteration 7: Program ee37782f (parent: 629e5ff8) completed in 20.73s
+2026-03-10 17:12:45,681 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.8000, compiles=1.0000, qed_count=4.0000, admitted_count=1.0000, todo_count=0.0000, code_length=89.0000, done=0.0000
+2026-03-10 17:12:45,681 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 7
+2026-03-10 17:13:50,399 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:13:50,610 - skydiscover.evaluation.evaluator - INFO - Evaluated program abd8a1b8-203b-4f7b-a6f6-961b37141b3b in 0.21s: combined_score=0.8000, compiles=1.0000, qed_count=4.0000, admitted_count=1.0000, todo_count=0.0000, code_length=88.0000, done=0.0000
+2026-03-10 17:13:50,610 - skydiscover.search.adaevolve.controller - INFO - Iteration 8: Program abd8a1b8 (parent: cf1adefe) completed in 64.91s
+2026-03-10 17:13:50,610 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.8000, compiles=1.0000, qed_count=4.0000, admitted_count=1.0000, todo_count=0.0000, code_length=88.0000, done=0.0000
+2026-03-10 17:16:25,881 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:16:26,201 - skydiscover.evaluation.evaluator - INFO - Evaluated program d1322074-4844-477f-b2a4-521d7eac4d15 in 0.31s: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=0.0000, error=File "./tmpy6lko1jj.v", line 81, characters 30-47:
+Error: Found no subterm matching "a <=? y" in IH.
+
+
+2026-03-10 17:16:26,202 - skydiscover.search.adaevolve.controller - INFO - Iteration 9: Program d1322074 (parent: ee37782f) completed in 155.58s
+2026-03-10 17:16:26,202 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=0.0000, error=File "./tmpy6lko1jj.v", line 81, characters 30-47:
+Error: Found no subterm matching "a <=? y" in IH.
+
+
+2026-03-10 17:19:16,696 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:19:16,937 - skydiscover.evaluation.evaluator - INFO - Evaluated program c67e5982-037d-4362-a07f-fb8cd5338839 in 0.23s: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=110.0000, done=0.0000, error=File "./tmpn3l8zehh.v", line 75, characters 26-28:
+Error: No such hypothesis: IH
+
+
+2026-03-10 17:19:16,939 - skydiscover.search.adaevolve.controller - INFO - Iteration 10: Program c67e5982 (parent: abd8a1b8) completed in 170.71s
+2026-03-10 17:19:16,939 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=110.0000, done=0.0000, error=File "./tmpn3l8zehh.v", line 75, characters 26-28:
+Error: No such hypothesis: IH
+
+
+2026-03-10 17:19:16,939 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 10
+2026-03-10 17:19:16,940 - skydiscover.search.base_database - INFO - Database has 12 programs, best program score is 0.800000
+2026-03-10 17:19:16,947 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 12 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_10
+2026-03-10 17:19:16,947 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_10
+2026-03-10 17:19:16,948 - skydiscover.runner - INFO - Checkpoint 10: best=combined_score=0.8000, compiles=1.0000, qed_count=4.0000, admitted_count=1.0000, todo_count=0.0000, code_length=89.0000, done=0.0000
+2026-03-10 17:19:16,948 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_10
+2026-03-10 17:19:16,973 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 10
+2026-03-10 17:21:09,279 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:21:09,537 - skydiscover.evaluation.evaluator - INFO - Evaluated program eda3cb3a-3980-48f7-975b-e7abd8fbea5c in 0.25s: combined_score=0.0000, compiles=0.0000, qed_count=7.0000, admitted_count=0.0000, todo_count=0.0000, code_length=133.0000, done=0.0000, error=File "./tmp7bhva7j9.v", line 76, characters 14-30:
+Error: The variable insert_sorted_lb was not found in the current
+environment.
+
+
+2026-03-10 17:21:09,538 - skydiscover.search.adaevolve.controller - INFO - Iteration 11: Program eda3cb3a (parent: f51975a5) completed in 112.53s
+2026-03-10 17:21:09,538 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=7.0000, admitted_count=0.0000, todo_count=0.0000, code_length=133.0000, done=0.0000, error=File "./tmp7bhva7j9.v", line 76, characters 14-30:
+Error: The variable insert_sorted_lb was not found in the current
+environment.
+
+
+2026-03-10 17:21:09,624 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-10 17:21:53,816 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:21:53,822 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-10 17:21:53,822 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Discharge the pending lemma by case-analyzing Nat.leb and using le-transitivity (approach: Coq.Arith.PeanoNat.Nat.leb_le)
+2026-03-10 17:21:53,822 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Swap to the proven library mergesort and bridge its Sorted to the custom sorted (approach: Coq.Sorting.Mergesort.sort)
+2026-03-10 17:21:53,823 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 0.800000)
+2026-03-10 17:21:53,823 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-10 17:21:53,827 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Discharge the pending lemma by case-analyzing Nat.leb and using le-transitivity
+2026-03-10 17:24:02,875 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:24:03,058 - skydiscover.evaluation.evaluator - INFO - Evaluated program aa5293ac-7af6-4b19-8088-e6555f79c9d6 in 0.18s: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=0.0000, error=File "./tmp6fhix9at.v", line 81, characters 20-22:
+Error: No such hypothesis: IH
+
+
+2026-03-10 17:24:03,058 - skydiscover.search.adaevolve.controller - INFO - Iteration 12: Program aa5293ac (parent: ee37782f) completed in 129.23s
+2026-03-10 17:24:03,059 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=0.0000, error=File "./tmp6fhix9at.v", line 81, characters 20-22:
+Error: No such hypothesis: IH
+
+
+2026-03-10 17:24:03,121 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Swap to the proven library mergesort and bridge its Sorted to the custom sorted
+2026-03-10 17:25:33,923 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:25:34,077 - skydiscover.evaluation.evaluator - INFO - Evaluated program 6599484b-c6cf-4cb4-88ca-755bdb3c421e in 0.14s: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=0.0000, error=File "./tmpo_4fbn1w.v", line 73, characters 17-28:
+Error:
+In environment
+a, b, c : nat
+r : list nat
+Hs : sorted (b :: c :: r)
+IH : sorted (c :: r) -> sorted (insert a (c :: r))
+Hlebab : (a <=? b) = false
+Hbc : b <= c
+Ht : sorted (c :: r)
+Hlebac : (a <=? c) = true
+Unable to unify "sorted (?M1162 :: ?M1163 :: ?M1164)" with
+ "sorted (b :: insert a (c :: r))".
+
+
+2026-03-10 17:25:34,078 - skydiscover.search.adaevolve.controller - INFO - Iteration 13: Program 6599484b (parent: ee37782f) completed in 90.96s
+2026-03-10 17:25:34,078 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=0.0000, error=File "./tmpo_4fbn1w.v", line 73, characters 17-28:
+Error:
+In environment
+a, b, c : nat
+r : list nat
+Hs : sorted (b :: c :: r)
+IH : sorted (c :: r) -> sorted (insert a (c :: r))
+Hlebab : (a <=? b) = false
+Hbc : b <= c
+Ht : sorted (c :: r)
+Hlebac : (a <=? c) = true
+Unable to unify "sorted (?M1162 :: ?M1163 :: ?M1164)" with
+ "sorted (b :: insert a (c :: r))".
+
+
+2026-03-10 17:25:34,154 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Discharge the pending lemma by case-analyzing Nat.leb and using le-transitivity
+2026-03-10 17:27:58,476 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:27:58,736 - skydiscover.evaluation.evaluator - INFO - Evaluated program e83a5ac1-3e57-4f89-9064-9e3bfba09cb8 in 0.25s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 17:27:58,737 - skydiscover.search.adaevolve.controller - INFO - Iteration 14: Program e83a5ac1 (parent: ee37782f) completed in 144.58s
+2026-03-10 17:27:58,737 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 17:27:58,737 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 14
+2026-03-10 17:27:58,803 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Swap to the proven library mergesort and bridge its Sorted to the custom sorted
+2026-03-10 17:27:58,803 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:29:16,778 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:29:17,029 - skydiscover.evaluation.evaluator - INFO - Evaluated program 37d67b0c-5ca5-4d7e-b592-46ed153a5a18 in 0.24s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=1.0000
+2026-03-10 17:29:17,030 - skydiscover.search.adaevolve.controller - INFO - Iteration 15: Program 37d67b0c (parent: e83a5ac1) completed in 78.23s
+2026-03-10 17:29:17,030 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=1.0000
+2026-03-10 17:29:17,030 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 15
+2026-03-10 17:29:17,030 - skydiscover.search.base_database - INFO - Database has 20 programs, best program score is 1.000000
+2026-03-10 17:29:17,037 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_15
+2026-03-10 17:29:17,038 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_15
+2026-03-10 17:29:17,038 - skydiscover.runner - INFO - Checkpoint 15: best=combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 17:29:17,038 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_15
+2026-03-10 17:29:17,119 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:29:17,119 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:29:17,119 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:29:17,120 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:29:17,123 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:31:30,116 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:31:30,516 - skydiscover.evaluation.evaluator - INFO - Evaluated program 61b1289f-490b-4b33-a4e4-edff86e37dc8 in 0.31s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=114.0000, done=1.0000
+2026-03-10 17:31:30,535 - skydiscover.search.adaevolve.controller - INFO - Iteration 16: Program 61b1289f (parent: c6c5c781) completed in 133.39s
+2026-03-10 17:31:30,535 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=114.0000, done=1.0000
+2026-03-10 17:31:30,615 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:31:30,616 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:31:30,616 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:31:30,620 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:31:30,623 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:32:17,026 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:32:17,275 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9606252b-ad4a-4053-be12-7637835a25ec in 0.24s: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 17:32:17,286 - skydiscover.search.adaevolve.controller - INFO - Iteration 17: Program 9606252b (parent: 7f70ae7d) completed in 46.65s
+2026-03-10 17:32:17,286 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=41.0000, done=0.0000
+2026-03-10 17:32:17,286 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:32:17,286 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:32:17,286 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:32:17,287 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:32:17,291 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:00,054 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:33:00,355 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7a4cdef5-c1c0-4b4d-a108-986fad669384 in 0.30s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=114.0000, done=1.0000
+2026-03-10 17:33:00,376 - skydiscover.search.adaevolve.controller - INFO - Iteration 18: Program 7a4cdef5 (parent: 61b1289f) completed in 43.06s
+2026-03-10 17:33:00,376 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=114.0000, done=1.0000
+2026-03-10 17:33:00,451 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:00,451 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:00,451 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:00,452 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:00,456 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:33,983 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:33:34,287 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4159a097-c139-4f7d-91fb-4ac8739c54f6 in 0.30s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=108.0000, done=1.0000
+2026-03-10 17:33:34,306 - skydiscover.search.adaevolve.controller - INFO - Iteration 19: Program 4159a097 (parent: e83a5ac1) completed in 33.83s
+2026-03-10 17:33:34,310 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=108.0000, done=1.0000
+2026-03-10 17:33:34,388 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:34,388 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:34,388 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:34,389 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:33:34,392 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:34:20,885 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:34:21,176 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4d2154b8-8df1-4b2d-a80c-36c1a30a07de in 0.29s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=111.0000, done=1.0000
+2026-03-10 17:34:21,194 - skydiscover.search.adaevolve.controller - INFO - Iteration 20: Program 4d2154b8 (parent: cf1adefe) completed in 46.78s
+2026-03-10 17:34:21,194 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=111.0000, done=1.0000
+2026-03-10 17:34:21,194 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 20
+2026-03-10 17:34:21,195 - skydiscover.search.base_database - INFO - Database has 24 programs, best program score is 1.000000
+2026-03-10 17:34:21,208 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_20
+2026-03-10 17:34:21,209 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_20
+2026-03-10 17:34:21,209 - skydiscover.runner - INFO - Checkpoint 20: best=combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 17:34:21,209 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_20
+2026-03-10 17:34:21,282 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:34:21,282 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:34:21,282 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:34:21,693 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 20
+2026-03-10 17:34:21,693 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:34:21,693 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:34:21,693 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-10 17:35:53,997 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Instantiate Coq.Sorting.Mergesort for nat and reuse its certified sort (approach: Coq.Sorting.Mergesort.Sort)
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use well-founded recursion with Coq.Program.Wf to define a verified mergesort (approach: Coq.Program.Wf.Program_Fixpoint)
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.200000):
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [SUCCESS] Discharge the pending lemma by case-analyzing Nat.leb and using le-transitivity (uses: 2)
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [SUCCESS] Swap to the proven library mergesort and bridge its Sorted to the custom sorted (uses: 2)
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-10 17:35:54,004 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-10 17:35:54,090 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Instantiate Coq.Sorting.Mergesort for nat and reuse its certified sort
+2026-03-10 17:37:56,058 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:37:56,311 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5bb5abd0-7f9a-472a-bff8-e266da867ce1 in 0.25s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=108.0000, done=1.0000
+2026-03-10 17:37:56,332 - skydiscover.search.adaevolve.controller - INFO - Iteration 21: Program 5bb5abd0 (parent: e83a5ac1) completed in 122.22s
+2026-03-10 17:37:56,332 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=108.0000, done=1.0000
+2026-03-10 17:37:56,489 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use well-founded recursion with Coq.Program.Wf to define a verified mergesort
+2026-03-10 17:40:48,367 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:40:48,846 - skydiscover.evaluation.evaluator - INFO - Evaluated program 364a0a84-031f-4af3-b5ea-af97a679c324 in 0.47s: combined_score=0.0000, compiles=0.0000, qed_count=8.0000, admitted_count=0.0000, todo_count=0.0000, code_length=179.0000, done=0.0000, error=File "./tmpj4w4t8rr.v", line 127, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpj4w4t8rr.v", line 130, characters 0-223:
+Error: Cannot guess decreasing argument of fix.
+
+
+2026-03-10 17:40:48,869 - skydiscover.search.adaevolve.controller - INFO - Iteration 22: Program 364a0a84 (parent: e83a5ac1) completed in 172.36s
+2026-03-10 17:40:48,870 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=8.0000, admitted_count=0.0000, todo_count=0.0000, code_length=179.0000, done=0.0000, error=File "./tmpj4w4t8rr.v", line 127, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpj4w4t8rr.v", line 130, characters 0-223:
+Error: Cannot guess decreasing argument of fix.
+
+
+2026-03-10 17:40:48,875 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Instantiate Coq.Sorting.Mergesort for nat and reuse its certified sort
+2026-03-10 17:42:48,459 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:42:48,621 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3c9f29f4-01a7-4eee-9508-dc889a94bf49 in 0.16s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=108.0000, done=1.0000
+2026-03-10 17:42:48,640 - skydiscover.search.adaevolve.controller - INFO - Iteration 23: Program 3c9f29f4 (parent: e83a5ac1) completed in 119.75s
+2026-03-10 17:42:48,642 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=108.0000, done=1.0000
+2026-03-10 17:42:48,721 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use well-founded recursion with Coq.Program.Wf to define a verified mergesort
+2026-03-10 17:42:48,721 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:44:16,327 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:44:16,793 - skydiscover.evaluation.evaluator - INFO - Evaluated program b946f667-c81d-4b07-854f-401c5c10c4d2 in 0.46s: combined_score=0.0000, compiles=0.0000, qed_count=6.0000, admitted_count=0.0000, todo_count=0.0000, code_length=124.0000, done=0.0000, error=File "./tmp1l5rbd9z.v", line 5, characters 0-30:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp1l5rbd9z.v", line 6, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp1l5rbd9z.v", line 38, characters 0-16:
+Error: No obligations remaining
+
+
+2026-03-10 17:44:16,812 - skydiscover.search.adaevolve.controller - INFO - Iteration 24: Program b946f667 (parent: e83a5ac1) completed in 88.07s
+2026-03-10 17:44:16,813 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=6.0000, admitted_count=0.0000, todo_count=0.0000, code_length=124.0000, done=0.0000, error=File "./tmp1l5rbd9z.v", line 5, characters 0-30:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp1l5rbd9z.v", line 6, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp1l5rbd9z.v", line 38, characters 0-16:
+Error: No obligations remaining
+
+
+2026-03-10 17:44:16,813 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:44:16,818 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:44:16,818 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:44:16,818 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:44:16,818 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 17:44:16,818 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-10 17:45:29,879 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:45:29,884 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-10 17:45:29,884 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Verified quicksort via well-founded recursion and List.partition (approach: Coq.Lists.List.partition)
+2026-03-10 17:45:29,884 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Counting sort via finite maps (FMapAVL.Make) and reconstruction from sorted keys (approach: Coq.FSets.FMapAVL.Make)
+2026-03-10 17:45:29,884 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-10 17:45:29,884 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Instantiate Coq.Sorting.Mergesort for nat and reuse its certified sort (uses: 2)
+2026-03-10 17:45:29,885 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use well-founded recursion with Coq.Program.Wf to define a verified mergesort (uses: 2)
+2026-03-10 17:45:29,885 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-10 17:45:29,885 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-10 17:45:29,892 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Verified quicksort via well-founded recursion and List.partition
+2026-03-10 17:49:34,340 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 17:49:34,889 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5d565537-826c-492f-9df6-f51be0c91336 in 0.48s: combined_score=0.0000, compiles=0.0000, qed_count=17.0000, admitted_count=0.0000, todo_count=0.0000, code_length=258.0000, done=0.0000, error=File "./tmp1y810d7r.v", line 25, characters 25-28:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-10 17:49:34,918 - skydiscover.search.adaevolve.controller - INFO - Iteration 25: Program 5d565537 (parent: e83a5ac1) completed in 245.00s
+2026-03-10 17:49:34,921 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=17.0000, admitted_count=0.0000, todo_count=0.0000, code_length=258.0000, done=0.0000, error=File "./tmp1y810d7r.v", line 25, characters 25-28:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-10 17:49:34,921 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 25
+2026-03-10 17:49:34,921 - skydiscover.search.base_database - INFO - Database has 28 programs, best program score is 1.000000
+2026-03-10 17:49:34,929 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_25
+2026-03-10 17:49:34,930 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_25
+2026-03-10 17:49:34,931 - skydiscover.runner - INFO - Checkpoint 25: best=combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 17:49:34,931 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_25
+2026-03-10 17:49:34,936 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Counting sort via finite maps (FMapAVL.Make) and reconstruction from sorted keys
+2026-03-10 18:34:49,833 - openai._base_client - INFO - Retrying request to /chat/completions in 0.393234 seconds
+2026-03-10 18:34:49,828 - skydiscover.llm - WARNING - Timeout attempt 1/3, retrying...
+2026-03-10 18:36:34,079 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:37:04,502 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:37:05,098 - skydiscover.evaluation.evaluator - INFO - Evaluated program ed1d6d19-79ed-4595-9be5-0021b9778633 in 0.59s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=156.0000, done=1.0000
+2026-03-10 18:37:05,111 - skydiscover.search.adaevolve.controller - INFO - Iteration 26: Program ed1d6d19 (parent: e83a5ac1) completed in 2850.16s
+2026-03-10 18:37:05,111 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=156.0000, done=1.0000
+2026-03-10 18:37:05,162 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Verified quicksort via well-founded recursion and List.partition
+2026-03-10 18:41:14,647 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:41:14,660 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Counting sort via finite maps (FMapAVL.Make) and reconstruction from sorted keys
+2026-03-10 18:41:14,660 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 18:41:48,755 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:41:49,212 - skydiscover.evaluation.evaluator - INFO - Evaluated program c8ea5029-0b9a-4524-a4cb-d0f069c76eff in 0.45s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=168.0000, done=1.0000
+2026-03-10 18:41:49,227 - skydiscover.search.adaevolve.controller - INFO - Iteration 27: Program c8ea5029 (parent: e83a5ac1) completed in 34.55s
+2026-03-10 18:41:49,227 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=168.0000, done=1.0000
+2026-03-10 18:41:49,276 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 18:41:49,276 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 18:41:49,276 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 18:41:49,276 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 18:41:49,276 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 18:41:49,276 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-10 18:42:31,956 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Dependency-aware proof scheduling via topological sort (approach: networkx.algorithms.dag.topological_sort)
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Template-to-todo assignment with Hungarian algorithm (approach: scipy.optimize.linear_sum_assignment)
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Verified quicksort via well-founded recursion and List.partition (uses: 2)
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Counting sort via finite maps (FMapAVL.Make) and reconstruction from sorted keys (uses: 2)
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-10 18:42:31,963 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-10 18:42:31,970 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Dependency-aware proof scheduling via topological sort
+2026-03-10 18:43:24,604 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:43:24,862 - skydiscover.evaluation.evaluator - INFO - Evaluated program 003962ef-aad5-4601-a280-377548521013 in 0.25s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=116.0000, done=1.0000
+2026-03-10 18:43:24,875 - skydiscover.search.adaevolve.controller - INFO - Iteration 28: Program 003962ef (parent: e83a5ac1) completed in 52.89s
+2026-03-10 18:43:24,875 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=116.0000, done=1.0000
+2026-03-10 18:43:24,927 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Template-to-todo assignment with Hungarian algorithm
+2026-03-10 18:44:06,384 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:44:06,593 - skydiscover.evaluation.evaluator - INFO - Evaluated program e4d9af00-4e66-42d8-99cf-151d497f080b in 0.20s: combined_score=1.0000, compiles=1.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=104.0000, done=1.0000
+2026-03-10 18:44:06,606 - skydiscover.search.adaevolve.controller - INFO - Iteration 29: Program e4d9af00 (parent: e83a5ac1) completed in 41.67s
+2026-03-10 18:44:06,606 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=104.0000, done=1.0000
+2026-03-10 18:44:06,660 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Dependency-aware proof scheduling via topological sort
+2026-03-10 18:44:29,322 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 18:44:29,532 - skydiscover.evaluation.evaluator - INFO - Evaluated program 62a5bc55-e1b8-4a64-9882-1bf390f09c50 in 0.21s: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=1.0000
+2026-03-10 18:44:29,544 - skydiscover.search.adaevolve.controller - INFO - Iteration 30: Program 62a5bc55 (parent: e83a5ac1) completed in 22.87s
+2026-03-10 18:44:29,544 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=113.0000, done=1.0000
+2026-03-10 18:44:29,544 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 30
+2026-03-10 18:44:29,544 - skydiscover.search.base_database - INFO - Database has 25 programs, best program score is 1.000000
+2026-03-10 18:44:29,548 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_30
+2026-03-10 18:44:29,549 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_30
+2026-03-10 18:44:29,549 - skydiscover.runner - INFO - Checkpoint 30: best=combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 18:44:29,549 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_30
+2026-03-10 18:44:29,850 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 30
+2026-03-10 18:44:29,850 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve completed
+2026-03-10 18:44:29,850 - skydiscover.search.base_database - INFO - Database has 26 programs, best program score is 1.000000
+2026-03-10 18:44:29,850 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve iteration stats saved to: benchmarks/formal_verification/coq_proof/insertion_sort/outputs/adaevolve_iteration_stats_20260310_165810.jsonl
+2026-03-10 18:44:29,853 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_30
+2026-03-10 18:44:29,853 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_30
+2026-03-10 18:44:29,854 - skydiscover.runner - INFO - Checkpoint 30: best=combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 18:44:29,854 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/checkpoints/checkpoint_30
+2026-03-10 18:44:29,855 - skydiscover.runner - INFO - Discovery completed. Best: combined_score=1.0000, compiles=1.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=117.0000, done=1.0000
+2026-03-10 18:44:29,855 - skydiscover.runner - INFO - Best program saved to benchmarks/formal_verification/coq_proof/insertion_sort/outputs/best

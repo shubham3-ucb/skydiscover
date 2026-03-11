@@ -1,0 +1,301 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 44,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.05965062611113911,
+        "best_score": 1.0,
+        "improvement_count": 6,
+        "total_evaluations": 12,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.06928810302011561,
+        "best_score": 1.0,
+        "improvement_count": 5,
+        "total_evaluations": 11,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      12,
+      11
+    ],
+    "dimension_rewards": [
+      0.6069065860754507,
+      0.2944704218874465
+    ],
+    "decayed_visits": [
+      7.175704635190001,
+      6.861894039100001
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "0d2527bc-f543-4acc-8784-e86d9a540588",
+      "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd",
+      "4173df5e-4f5e-46b3-9f40-a478fb0476e9",
+      "27f85b84-4db8-4ed5-8f53-48799f0b8e32",
+      "eb47cc79-3712-4934-8455-2772d643974a",
+      "875bf109-a76f-4458-b013-a02f55254f75",
+      "2359be4c-1051-40ff-8948-869587080903",
+      "1c78cf64-539b-4b01-a6dd-bc11a80874f2",
+      "c5ea36a1-f239-4c85-b982-2eeccbb08147",
+      "36247887-f808-4ecd-afb0-497ab4445b08"
+    ],
+    [
+      "632ab835-8898-43b0-8fc6-649b779e958c",
+      "40a1194f-dcce-438d-8176-38e8ae2d35ce",
+      "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3",
+      "eb1317fe-4c52-43dc-8d0a-a60728083e86",
+      "939470a2-55a8-467f-bb20-b039f0c6f4f1",
+      "8d252578-3be8-4b46-9288-1df1a21645cb",
+      "18fe5a56-7032-4f20-9a95-c8bf86cbcfc6",
+      "58188568-edad-4694-b87a-81c52177ed82",
+      "38d11bc8-f822-4c65-a61f-fc3c454a18aa",
+      "a69a2f3d-1c44-4c22-873a-4e87442597b0"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "0d2527bc-f543-4acc-8784-e86d9a540588": [],
+        "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd": [
+          "0d2527bc-f543-4acc-8784-e86d9a540588"
+        ],
+        "4173df5e-4f5e-46b3-9f40-a478fb0476e9": [
+          "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd"
+        ],
+        "27f85b84-4db8-4ed5-8f53-48799f0b8e32": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "eb47cc79-3712-4934-8455-2772d643974a": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "875bf109-a76f-4458-b013-a02f55254f75": [
+          "e8345948-bb94-4e82-a55f-d1e2104b0b08"
+        ],
+        "2359be4c-1051-40ff-8948-869587080903": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ],
+        "1c78cf64-539b-4b01-a6dd-bc11a80874f2": [
+          "38d11bc8-f822-4c65-a61f-fc3c454a18aa"
+        ],
+        "c5ea36a1-f239-4c85-b982-2eeccbb08147": [
+          "2359be4c-1051-40ff-8948-869587080903"
+        ],
+        "36247887-f808-4ecd-afb0-497ab4445b08": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ]
+      },
+      "children": {
+        "0d2527bc-f543-4acc-8784-e86d9a540588": [
+          "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd"
+        ],
+        "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "4173df5e-4f5e-46b3-9f40-a478fb0476e9": [
+          "27f85b84-4db8-4ed5-8f53-48799f0b8e32",
+          "eb47cc79-3712-4934-8455-2772d643974a"
+        ],
+        "58188568-edad-4694-b87a-81c52177ed82": [
+          "2359be4c-1051-40ff-8948-869587080903",
+          "36247887-f808-4ecd-afb0-497ab4445b08"
+        ],
+        "38d11bc8-f822-4c65-a61f-fc3c454a18aa": [
+          "1c78cf64-539b-4b01-a6dd-bc11a80874f2"
+        ],
+        "2359be4c-1051-40ff-8948-869587080903": [
+          "c5ea36a1-f239-4c85-b982-2eeccbb08147"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "632ab835-8898-43b0-8fc6-649b779e958c": [],
+        "40a1194f-dcce-438d-8176-38e8ae2d35ce": [
+          "632ab835-8898-43b0-8fc6-649b779e958c"
+        ],
+        "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3": [
+          "40a1194f-dcce-438d-8176-38e8ae2d35ce"
+        ],
+        "eb1317fe-4c52-43dc-8d0a-a60728083e86": [
+          "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3"
+        ],
+        "939470a2-55a8-467f-bb20-b039f0c6f4f1": [
+          "eb47cc79-3712-4934-8455-2772d643974a"
+        ],
+        "8d252578-3be8-4b46-9288-1df1a21645cb": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "18fe5a56-7032-4f20-9a95-c8bf86cbcfc6": [
+          "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd"
+        ],
+        "58188568-edad-4694-b87a-81c52177ed82": [
+          "ab5a6cfa-484b-46cf-817e-e520ddfdb846"
+        ],
+        "38d11bc8-f822-4c65-a61f-fc3c454a18aa": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ],
+        "a69a2f3d-1c44-4c22-873a-4e87442597b0": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ]
+      },
+      "children": {
+        "632ab835-8898-43b0-8fc6-649b779e958c": [
+          "40a1194f-dcce-438d-8176-38e8ae2d35ce"
+        ],
+        "40a1194f-dcce-438d-8176-38e8ae2d35ce": [
+          "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3"
+        ],
+        "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3": [
+          "eb1317fe-4c52-43dc-8d0a-a60728083e86"
+        ],
+        "eb47cc79-3712-4934-8455-2772d643974a": [
+          "939470a2-55a8-467f-bb20-b039f0c6f4f1"
+        ],
+        "4173df5e-4f5e-46b3-9f40-a478fb0476e9": [
+          "8d252578-3be8-4b46-9288-1df1a21645cb"
+        ],
+        "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd": [
+          "18fe5a56-7032-4f20-9a95-c8bf86cbcfc6"
+        ],
+        "ab5a6cfa-484b-46cf-817e-e520ddfdb846": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ],
+        "58188568-edad-4694-b87a-81c52177ed82": [
+          "38d11bc8-f822-4c65-a61f-fc3c454a18aa",
+          "a69a2f3d-1c44-4c22-873a-4e87442597b0"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Optimize reflection proofs using Coq's SSReflect boolean tactics",
+        "description": "Refactor the boolean reflection proofs (`match_eps_refl` and `regex_match_correct`) using the SSReflect extension. SSReflect provides powerful tactics like `apply: (iffP idP)` and `case: ifP` which drastically simplify proofs involving the `reflect` predicate and boolean operations (`andb`, `orb`). This approach replaces deep manual case analysis with concise, structured reflection steps.",
+        "what_to_optimize": "code_length and proof readability",
+        "cautions": "Requires `From Coq Require Import ssreflect ssrbool.` which might change the default behavior of some basic tactics (like `rewrite`). Ensure the environment supports SSReflect.",
+        "approach_type": "coq.ssreflect.bool"
+      },
+      {
+        "idea": "Use Equation Compiler for dependent pattern matching",
+        "description": "Instead of standard `Fixpoint` and manual proofs, use the `Equations` plugin to define `match_eps`, `derive`, and `regex_match`. `Equations` automatically generates elimination principles and simplifies the proofs of correctness by providing dependent elimination tactics (`funelim`). This tightly couples the function definition with its structural properties, making the correctness theorems almost trivial to prove by applying the generated graph of the function.",
+        "what_to_optimize": "Function definition and proof generation coupling",
+        "cautions": "Requires the `Equations` package to be installed and imported. If the environment doesn't have it, compilation will fail. Fallback to standard `dependent induction` if `Equations` is unavailable.",
+        "approach_type": "coq.plugin.equations"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 1,
+      "1": 1
+    },
+    "current_paradigm_index": 0,
+    "tried_paradigms": [
+      {
+        "idea": "Prove the standalone derive_corr lemma",
+        "description": "Focus on discharging the `derive_corr` theorem which states that the `derive` function correctly computes the Brzozowski derivative. Unfold `derives` and `is_der`, then proceed by induction on the regular expression `re`. For the base cases, use `null_matches_none` and `empty_nomatch_ne`. For `App`, destruct `match_eps re1` and use `app_ne` along with `match_eps_refl`. For `Star`, use the `star_ne` helper lemma.",
+        "what_to_optimize": "admitted_count and Qed_count",
+        "cautions": "The `App` case is tricky because `match_eps` returns a boolean, so you need to destruct it and use `reflect` from `match_eps_refl` to convert it to a proposition. Do not touch the `todo` in this step, only replace `Admitted` with a proof.",
+        "approach_type": "coq.proof.induction",
+        "uses": 2,
+        "starting_score": 0.8,
+        "ending_score": 1.0,
+        "score_improvement": 0.19999999999999996,
+        "outcome": "SUCCESS"
+      },
+      {
+        "idea": "Use declarative automation with eauto and Hint databases",
+        "description": "Replace the explicit manual applications of equivalence lemmas (like `app_exists`, `union_disj`, `star_ne`) with Coq's automated proof search tactic `eauto`. By adding the provided helper lemmas to a custom Hint database (using `Hint Resolve` and `Hint Rewrite`), the repetitive inductive cases in `match_eps_refl` and `derive_corr` can be solved automatically. This drastically reduces the proof script length and improves maintainability without changing the underlying logical approach.",
+        "what_to_optimize": "code_length and proof readability",
+        "cautions": "Ensure that the search depth for eauto is appropriately bounded to avoid infinite loops during proof search. Be careful with bi-directional implications (<->); they may need to be split into separate forward and backward hints.",
+        "approach_type": "Coq.eauto",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Develop procedural automation using custom Ltac scripts",
+        "description": "Define a custom Ltac tactic (e.g., `solve_regex`) that automatically handles the structural induction and repetitive branching logic for regular expressions. The tactic would systematically apply `simpl`, `split`, `destruct` on reflection hypotheses (like `match_eps_refl`) and `ascii_dec`, and perform `inversion` on contradictions. This abstracts the low-level proof steps into a single reusable solver, reducing the main theorem proofs to just induction followed by the custom tactic.",
+        "what_to_optimize": "proof redundancy and script elegance",
+        "cautions": "The custom Ltac must carefully manage the `destruct` of `ascii_dec` to avoid losing context, and it should prevent overly aggressive inversions that could cause the proof state to explode or execution to time out.",
+        "approach_type": "Coq.Ltac",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Automate proofs using eauto and Hint Constructors",
+        "description": "Instead of manually applying constructors for the `exp_match` inductive relation, declare `Hint Constructors exp_match` and use `eauto` to automate the search. This will significantly reduce the size and complexity of the proofs, especially in `match_eps_refl` and `derive_corr` where many cases involve straightforward application of constructors. We can also add hints for the helper lemmas to fully automate the equivalence proofs.",
+        "what_to_optimize": "Proof length and maintainability",
+        "cautions": "Ensure that `eauto` depth is sufficient but not too high to cause performance issues. Sub-lemmas might need `Hint Resolve`.",
+        "approach_type": "coq.tactics.eauto",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Leverage generic boolean reflection combinators",
+        "description": "Since the problem defines a custom `reflect` inductive type, we can write reflection combinator lemmas for boolean operations like `andb` and `orb`. By proving generic lemmas such as `reflect_andb` and `reflect_orb`, the proof of `match_eps_refl` can be done by a simple structural induction followed by applying these combinators. This avoids manual `destruct` of the induction hypotheses in every boolean case.",
+        "what_to_optimize": "Modularity and structure of reflection proofs",
+        "cautions": "Requires defining and proving additional reflection combinator lemmas before using them in the main theorems.",
+        "approach_type": "coq.tactics.reflection",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

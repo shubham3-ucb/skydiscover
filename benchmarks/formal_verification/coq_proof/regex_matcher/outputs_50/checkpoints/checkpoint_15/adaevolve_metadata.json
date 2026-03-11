@@ -1,0 +1,238 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 14,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.06562101127505822,
+        "best_score": 0.9285714285714286,
+        "improvement_count": 6,
+        "total_evaluations": 9,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.06928810302011561,
+        "best_score": 1.0,
+        "improvement_count": 5,
+        "total_evaluations": 7,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      9,
+      7
+    ],
+    "dimension_rewards": [
+      0.8325193224628952,
+      0.44881942064844754
+    ],
+    "decayed_visits": [
+      6.12579511,
+      5.217031
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "0d2527bc-f543-4acc-8784-e86d9a540588",
+      "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd",
+      "4173df5e-4f5e-46b3-9f40-a478fb0476e9",
+      "27f85b84-4db8-4ed5-8f53-48799f0b8e32",
+      "eb47cc79-3712-4934-8455-2772d643974a",
+      "3c3e11ad-3ea0-405c-9501-0fe28947675f",
+      "e8345948-bb94-4e82-a55f-d1e2104b0b08",
+      "cf5b9796-7030-4279-a7ab-fec549c41a1b",
+      "ab5a6cfa-484b-46cf-817e-e520ddfdb846"
+    ],
+    [
+      "632ab835-8898-43b0-8fc6-649b779e958c",
+      "40a1194f-dcce-438d-8176-38e8ae2d35ce",
+      "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3",
+      "eb1317fe-4c52-43dc-8d0a-a60728083e86",
+      "ae23bd74-a1de-4fb7-9357-80335c855921",
+      "939470a2-55a8-467f-bb20-b039f0c6f4f1",
+      "8d252578-3be8-4b46-9288-1df1a21645cb",
+      "18fe5a56-7032-4f20-9a95-c8bf86cbcfc6",
+      "58188568-edad-4694-b87a-81c52177ed82",
+      "38d11bc8-f822-4c65-a61f-fc3c454a18aa"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "0d2527bc-f543-4acc-8784-e86d9a540588": [],
+        "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd": [
+          "0d2527bc-f543-4acc-8784-e86d9a540588"
+        ],
+        "4173df5e-4f5e-46b3-9f40-a478fb0476e9": [
+          "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd"
+        ],
+        "27f85b84-4db8-4ed5-8f53-48799f0b8e32": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "eb47cc79-3712-4934-8455-2772d643974a": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "3c3e11ad-3ea0-405c-9501-0fe28947675f": [
+          "eb47cc79-3712-4934-8455-2772d643974a"
+        ],
+        "e8345948-bb94-4e82-a55f-d1e2104b0b08": [
+          "ae23bd74-a1de-4fb7-9357-80335c855921"
+        ],
+        "cf5b9796-7030-4279-a7ab-fec549c41a1b": [
+          "eb1317fe-4c52-43dc-8d0a-a60728083e86"
+        ],
+        "ab5a6cfa-484b-46cf-817e-e520ddfdb846": [
+          "ae23bd74-a1de-4fb7-9357-80335c855921"
+        ]
+      },
+      "children": {
+        "0d2527bc-f543-4acc-8784-e86d9a540588": [
+          "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd"
+        ],
+        "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "4173df5e-4f5e-46b3-9f40-a478fb0476e9": [
+          "27f85b84-4db8-4ed5-8f53-48799f0b8e32",
+          "eb47cc79-3712-4934-8455-2772d643974a"
+        ],
+        "eb47cc79-3712-4934-8455-2772d643974a": [
+          "3c3e11ad-3ea0-405c-9501-0fe28947675f"
+        ],
+        "ae23bd74-a1de-4fb7-9357-80335c855921": [
+          "e8345948-bb94-4e82-a55f-d1e2104b0b08",
+          "ab5a6cfa-484b-46cf-817e-e520ddfdb846"
+        ],
+        "eb1317fe-4c52-43dc-8d0a-a60728083e86": [
+          "cf5b9796-7030-4279-a7ab-fec549c41a1b"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "632ab835-8898-43b0-8fc6-649b779e958c": [],
+        "40a1194f-dcce-438d-8176-38e8ae2d35ce": [
+          "632ab835-8898-43b0-8fc6-649b779e958c"
+        ],
+        "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3": [
+          "40a1194f-dcce-438d-8176-38e8ae2d35ce"
+        ],
+        "eb1317fe-4c52-43dc-8d0a-a60728083e86": [
+          "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3"
+        ],
+        "ae23bd74-a1de-4fb7-9357-80335c855921": [
+          "eb1317fe-4c52-43dc-8d0a-a60728083e86"
+        ],
+        "939470a2-55a8-467f-bb20-b039f0c6f4f1": [
+          "eb47cc79-3712-4934-8455-2772d643974a"
+        ],
+        "8d252578-3be8-4b46-9288-1df1a21645cb": [
+          "4173df5e-4f5e-46b3-9f40-a478fb0476e9"
+        ],
+        "18fe5a56-7032-4f20-9a95-c8bf86cbcfc6": [
+          "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd"
+        ],
+        "58188568-edad-4694-b87a-81c52177ed82": [
+          "ab5a6cfa-484b-46cf-817e-e520ddfdb846"
+        ],
+        "38d11bc8-f822-4c65-a61f-fc3c454a18aa": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ]
+      },
+      "children": {
+        "632ab835-8898-43b0-8fc6-649b779e958c": [
+          "40a1194f-dcce-438d-8176-38e8ae2d35ce"
+        ],
+        "40a1194f-dcce-438d-8176-38e8ae2d35ce": [
+          "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3"
+        ],
+        "ab6d30cb-f75e-4a04-9d98-e57b5355e7c3": [
+          "eb1317fe-4c52-43dc-8d0a-a60728083e86"
+        ],
+        "eb1317fe-4c52-43dc-8d0a-a60728083e86": [
+          "ae23bd74-a1de-4fb7-9357-80335c855921"
+        ],
+        "eb47cc79-3712-4934-8455-2772d643974a": [
+          "939470a2-55a8-467f-bb20-b039f0c6f4f1"
+        ],
+        "4173df5e-4f5e-46b3-9f40-a478fb0476e9": [
+          "8d252578-3be8-4b46-9288-1df1a21645cb"
+        ],
+        "d854c29c-2dd3-415b-8c5f-bf46bb73d6bd": [
+          "18fe5a56-7032-4f20-9a95-c8bf86cbcfc6"
+        ],
+        "ab5a6cfa-484b-46cf-817e-e520ddfdb846": [
+          "58188568-edad-4694-b87a-81c52177ed82"
+        ],
+        "58188568-edad-4694-b87a-81c52177ed82": [
+          "38d11bc8-f822-4c65-a61f-fc3c454a18aa"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Implement regex_match and prove regex_match_correct",
+        "description": "Replace the `todo` in `regex_match` with a Fixpoint that recurses on the string `s`. Base case `[]` returns `match_eps re`. Inductive case `a :: s'` returns `regex_match s' (derive a re)`. To prove `regex_match_correct`, do induction on `s` generalizing `re`. For `s = []`, apply `match_eps_refl`. For `s = a :: s'`, use the induction hypothesis and rewrite with `derive_corr`. This completes the implementation of the main function and its specification.",
+        "what_to_optimize": "todo_count and Qed_count",
+        "cautions": "Make sure to change `Definition` to `Fixpoint` for `regex_match`. In the proof, `derive_corr` is an Admitted lemma, which is perfectly fine to use to discharge this proof obligation according to the deductive synthesis rules.",
+        "approach_type": "coq.synthesis.fixpoint"
+      },
+      {
+        "idea": "Prove the standalone derive_corr lemma",
+        "description": "Focus on discharging the `derive_corr` theorem which states that the `derive` function correctly computes the Brzozowski derivative. Unfold `derives` and `is_der`, then proceed by induction on the regular expression `re`. For the base cases, use `null_matches_none` and `empty_nomatch_ne`. For `App`, destruct `match_eps re1` and use `app_ne` along with `match_eps_refl`. For `Star`, use the `star_ne` helper lemma.",
+        "what_to_optimize": "admitted_count and Qed_count",
+        "cautions": "The `App` case is tricky because `match_eps` returns a boolean, so you need to destruct it and use `reflect` from `match_eps_refl` to convert it to a proposition. Do not touch the `todo` in this step, only replace `Admitted` with a proof.",
+        "approach_type": "coq.proof.induction"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [],
+    "best_score_at_paradigm_gen": 0.8,
+    "best_score_during_paradigm": 1.0
+  }
+}

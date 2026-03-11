@@ -1,0 +1,283 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 19,
+  "global_best_score": 0.8,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.07907107107216733,
+        "best_score": 0.8,
+        "improvement_count": 4,
+        "total_evaluations": 11,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.08693847201523892,
+        "best_score": 0.7333333333333333,
+        "improvement_count": 2,
+        "total_evaluations": 9,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      11,
+      9
+    ],
+    "dimension_rewards": [
+      0.6016548885992636,
+      0.15306763655924033
+    ],
+    "decayed_visits": [
+      6.861894039100001,
+      6.12579511
+    ],
+    "global_best_score": 0.8,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "7ec23b92-ac97-42b3-ba6c-912fd0cb8a3b",
+      "ee1c83cf-a15c-42b1-a26d-6b7454435df8",
+      "7849662d-26b7-4d9e-b75d-b2ae014e6465",
+      "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf",
+      "550cd76f-fb99-414c-a3f4-971a4f8ea02e",
+      "0f7eb323-08f8-4f02-aec2-1619264dee59",
+      "74f1a3f4-5e33-4549-883a-395d133fff13",
+      "3ee51de7-7c75-4b33-883f-01d956e7ed8c",
+      "fde341e0-7e27-4c84-b253-30c7b7c984b8",
+      "387e3e45-a1c3-4e63-a430-0f6942209f08"
+    ],
+    [
+      "61607758-dd87-4879-815a-724a0c925904",
+      "eb1bde28-bb8d-45da-969a-dda772a56dd7",
+      "45dd6282-4d55-419e-9a88-fb0841be099d",
+      "63a4fb62-9fa0-4afe-b186-eed899d734a7",
+      "1a23c0a7-a301-43e4-8e6f-efc6dbe18fe1",
+      "4514e0a9-a07d-4ccb-be71-e5c649acf32c",
+      "9b1a5929-1d60-4ece-aa51-e6d28edcbb20",
+      "87dcd3d3-6dd5-4317-a4c5-069aea851250",
+      "dfab0ba7-cd5a-4978-b358-910c8c559d10",
+      "33325e13-a614-4698-92af-1a090696ec93"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "7ec23b92-ac97-42b3-ba6c-912fd0cb8a3b": [],
+        "ee1c83cf-a15c-42b1-a26d-6b7454435df8": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "7849662d-26b7-4d9e-b75d-b2ae014e6465": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "550cd76f-fb99-414c-a3f4-971a4f8ea02e": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "0f7eb323-08f8-4f02-aec2-1619264dee59": [
+          "eb1bde28-bb8d-45da-969a-dda772a56dd7"
+        ],
+        "74f1a3f4-5e33-4549-883a-395d133fff13": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "3ee51de7-7c75-4b33-883f-01d956e7ed8c": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "fde341e0-7e27-4c84-b253-30c7b7c984b8": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "387e3e45-a1c3-4e63-a430-0f6942209f08": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ]
+      },
+      "children": {
+        "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf": [
+          "550cd76f-fb99-414c-a3f4-971a4f8ea02e",
+          "74f1a3f4-5e33-4549-883a-395d133fff13",
+          "3ee51de7-7c75-4b33-883f-01d956e7ed8c",
+          "fde341e0-7e27-4c84-b253-30c7b7c984b8",
+          "387e3e45-a1c3-4e63-a430-0f6942209f08"
+        ],
+        "eb1bde28-bb8d-45da-969a-dda772a56dd7": [
+          "0f7eb323-08f8-4f02-aec2-1619264dee59"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "61607758-dd87-4879-815a-724a0c925904": [],
+        "eb1bde28-bb8d-45da-969a-dda772a56dd7": [
+          "61607758-dd87-4879-815a-724a0c925904"
+        ],
+        "45dd6282-4d55-419e-9a88-fb0841be099d": [
+          "eb1bde28-bb8d-45da-969a-dda772a56dd7"
+        ],
+        "63a4fb62-9fa0-4afe-b186-eed899d734a7": [
+          "61607758-dd87-4879-815a-724a0c925904"
+        ],
+        "1a23c0a7-a301-43e4-8e6f-efc6dbe18fe1": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "4514e0a9-a07d-4ccb-be71-e5c649acf32c": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "9b1a5929-1d60-4ece-aa51-e6d28edcbb20": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "87dcd3d3-6dd5-4317-a4c5-069aea851250": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "dfab0ba7-cd5a-4978-b358-910c8c559d10": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "33325e13-a614-4698-92af-1a090696ec93": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ]
+      },
+      "children": {
+        "61607758-dd87-4879-815a-724a0c925904": [
+          "eb1bde28-bb8d-45da-969a-dda772a56dd7",
+          "63a4fb62-9fa0-4afe-b186-eed899d734a7"
+        ],
+        "eb1bde28-bb8d-45da-969a-dda772a56dd7": [
+          "45dd6282-4d55-419e-9a88-fb0841be099d"
+        ],
+        "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf": [
+          "1a23c0a7-a301-43e4-8e6f-efc6dbe18fe1",
+          "4514e0a9-a07d-4ccb-be71-e5c649acf32c",
+          "87dcd3d3-6dd5-4317-a4c5-069aea851250",
+          "dfab0ba7-cd5a-4978-b358-910c8c559d10",
+          "33325e13-a614-4698-92af-1a090696ec93"
+        ],
+        "36869397-77d6-4b82-9d00-356a1aa5e2a9": [
+          "9b1a5929-1d60-4ece-aa51-e6d28edcbb20"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Implement Brzozowski derivative using Ascii.eqb and prove derives via structural induction",
+        "description": "Define derive structurally on reg_exp using the standard Brzozowski rules: for Char c, return EmptyStr if Ascii.eqb a c else EmptySet; for App r1 r2, return Union (App (derive a r1) r2) (if match_eps r1 then derive a r2 else EmptySet); for Union r1 r2, return Union (derive a r1) (derive a r2); for Star r, return App (derive a r) (Star r); and for EmptySet/EmptyStr cases return EmptySet. Use Ascii.eqb with its spec (Ascii.eqb_eq or Ascii.eqb_spec) to bridge the boolean equality to propositional equality in the Char case. Then prove derive_corr by induction on re, using previously established reflection theorem for match_eps and the provided lemmas union_disj, app_exists, and the sub-lemmas app_ne/star_ne (temporarily as helper lemmas if needed). This avoids the pitfalls of ascii_dec by staying in the boolean world with reflect, making case splits clean and proof obligations local to each constructor. Keep regex_match unchanged: it already folds derive along the string and calls match_eps.",
+        "what_to_optimize": "Reduce the remaining todo expressions by filling derive; discharge the main correctness lemma derive_corr with Qed to decrease Admitted count, improving the combined_score.",
+        "cautions": "Import and use the exact boolean equality lemmas available for ascii (Ascii.eqb_eq or Ascii.eqb_spec depending on Coq version). Ensure match_eps is used only for gating the second App branch; do not forget Star is always nullable. When proving derive_corr, carefully separate the non-empty App case via app_ne and the Star case via star_ne to avoid stuck inversions. Keep proofs constructive and refrain from classical axioms.",
+        "approach_type": "Coq.Strings.Ascii.eqb"
+      },
+      {
+        "idea": "Prove the key decomposition lemmas for non-empty matches using List concatenation reasoning",
+        "description": "First, prove app_ne: characterize a :: s =~ App re0 re1 by splitting via app_exists and case-analyzing the left split s0 as either [] or a :: s0', yielding the precise disjunction in its statement. Second, prove star_ne: from a :: s =~ Star re, invert the MStarApp structure to obtain a non-empty first chunk matching re and a suffix matching Star re, yielding the required existential. These lemmas rely on standard List concatenation reasoning: destruct equality of concatenations, and use simple inversions on exp_match constructors. With these in place, the induction steps in derive_corr become straightforward, as they isolate where the head symbol is consumed. This structurally reduces proof friction and eliminates the current Admitted helper lemmas, directly improving the score.",
+        "what_to_optimize": "Decrease the Admitted lemma count by proving app_ne and star_ne with Qed, thereby improving the combined_score and unblocking the derive_corr proof path.",
+        "cautions": "Use app_exists to avoid re-proving concatenation existence facts. Be meticulous when destructing the left split: the [] case vs a :: s0' case must be handled separately to prevent spurious contradictions. In the Star case, avoid the empty iteration (MStar0) by leveraging the non-empty hypothesis (head symbol present). Keep proofs inversion-safe and avoid dependent equalities by using standard inversion on exp_match.",
+        "approach_type": "Coq.Lists.List.app"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 1
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Compile to \u03b5-NFA and simulate using MSets for finite-state execution",
+        "description": "Translate the regular expression into an \u03b5-NFA (Thompson construction) inside Coq, representing sets of states with finite sets from MSets. Define epsilon-closure and move functions and a simulator that computes the reachable state set after consuming the input list. Prove that the compiler preserves semantics (soundness and completeness) by induction on the regex structure and by simulation invariants on runs vs. execution over sets. Implement regex_match by running the simulator and checking if any accepting state is reached. This approach replaces derivatives with state-set transitions and can be cleaner for unions, concatenations, and stars via standard NFA composition. Use fold_left to iterate transitions over the input string, taking epsilon-closures at each step.",
+        "what_to_optimize": "Reduce admitted_count by providing a complete, alternative decision procedure with clean invariants, and eliminate todos by implementing regex_match through NFA simulation.",
+        "cautions": "Choose a concrete finite set implementation (e.g., MSetWeakList over a decidable state type) and prove necessary lemmas about closures and unions. Carefully define epsilon-closure to ensure termination (use a worklist algorithm over finite sets). Keep state identifiers finite and avoid fresh name collisions by threading a counter through the compiler. Proofs require invariants relating NFA paths to regex matches; structure them to avoid rewriting explosions. Imports from Coq.MSets and decidable equality for state types are necessary.",
+        "approach_type": "Coq.MSets.MSetWeakList.Make",
+        "uses": 2,
+        "starting_score": 0.625,
+        "ending_score": 0.7333333333333333,
+        "score_improvement": 0.10833333333333328,
+        "outcome": "SUCCESS"
+      },
+      {
+        "idea": "Implement Brzozowski derivative with ascii_dec and match_eps gating",
+        "description": "Fill the derive function with the standard Brzozowski rules: EmptySet\u2192EmptySet, EmptyStr\u2192EmptySet, Char c\u2192(if ascii_dec c a then EmptyStr else EmptySet), Union r1 r2\u2192Union (derive a r1) (derive a r2), App r1 r2\u2192Union (App (derive a r1) r2) (if match_eps r1 then derive a r2 else EmptySet), Star r\u2192App (derive a r) (Star r). Then prove the two helper lemmas app_ne and star_ne (about non-empty strings matching App/Star) to support the main correctness theorem. Finally, prove derive_corr by structural induction on re, using the provided equivalences (app_exists, union_disj, empty_matches_eps, char lemmas) and the newly proved helper lemmas. For App, split by match_eps r1 using match_eps_refl to handle the nullable-first-component case. For Char, dispatch with ascii_dec and char lemmas.",
+        "what_to_optimize": "Reduce the number of remaining todos and Admitted by completing derive and discharging derive_corr; correctness proof size and branching in App/Star cases.",
+        "cautions": "Require Import Coq.Strings.Ascii for ascii_dec; ensure the fixpoint for match_eps is already available and used only as a boolean in derive. Be careful to use reflect lemmas from match_eps_refl to bridge match_eps r1 = true/false to propositional nullable facts. Avoid simplifying App/Union aggressively in derive itself to keep equivalence proofs straightforward; use only union/app constructors as specified.",
+        "approach_type": "Coq.Strings.Ascii.ascii_dec",
+        "uses": 2,
+        "starting_score": 0.7333333333333333,
+        "ending_score": 0.7333333333333333,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Prove derive correctness via inversion on match derivations with app_ne/star_ne",
+        "description": "First close the admitted helper lemmas app_ne and star_ne. Then prove a stronger, inversion-driven version of derive_corr: for all re, s, a, a::s =~ re <-> s =~ derive a re, by analyzing the last constructor used in the derivation of a::s =~ re. Proceed by induction on the match derivation (not on re): handle MChar with char_eps_suffix and ascii_dec; handle MApp by splitting with app_ne and app_exists; handle MUnionL/MUnionR with union_disj; handle MStarApp with star_ne. This approach keeps proofs localized to the structure of the given derivation, often reducing the need for complex structural case splits on re and avoiding nested boolean reasoning.",
+        "what_to_optimize": "Discharge the two admitted structural lemmas early and streamline derive_corr proof obligations, reducing proof branching and proof script size.",
+        "cautions": "In the MApp case, carefully distinguish the empty/non-empty prefix using app_ne; ensure consistent use of associativity of ++ if needed. For Star, repeatedly use star_ne and MStar0 to manage the recursive suffix. Keep inversion steps tidy (remember to subst after inversion) to avoid stale equalities. Where boolean conditions arise (e.g., match_eps r1), use match_eps_refl to bridge booleans to propositions.",
+        "approach_type": "Coq.Lists.List.app",
+        "uses": 2,
+        "starting_score": 0.7333333333333333,
+        "ending_score": 0.7333333333333333,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Brzozowski derivative with normalization and structural proofs",
+        "description": "Define the derivative function derive structurally on reg_exp with Ascii.eqb for character comparison, and include a normalization function norm that simplifies regex constructors (e.g., App EmptySet r = EmptySet, App EmptyStr r = r, Union EmptySet r = r, Union r r = r, Star (Star r) = Star r). Prove helper lemmas for app_ne and star_ne to reason about non-empty matches, then prove derive_corr by induction on the regex using these lemmas. Keep match_eps as is and use fold_left over the input string to compute the iterated derivative, followed by nullability check via match_eps. Use reflection lemmas to bridge boolean equalities (Ascii.eqb_spec) with propositional equalities in the Char case. Carefully structure the induction to use app_exists and union_disj to decompose matches and close goals after normalization steps. Add separate normalization-correctness lemmas (norm_sound: s =~ r <-> s =~ norm r) to rewrite derivatives into simplified normal forms without changing semantics. This keeps the proof obligations small and avoids explosion in derive_corr. Finish by plugging derive into regex_match and discharging all remaining Admitted proofs.",
+        "what_to_optimize": "combined_score (by eliminating the single todo and proving derive_corr, app_ne, star_ne), and proof robustness via normalization",
+        "cautions": "Be precise with Ascii.eqb and use the corresponding spec lemma to avoid stuck goals; ensure norm is structurally recursive and terminates. Do not over-aggressively normalize in ways that change language (e.g., Star EmptyStr must remain EmptyStr | Star EmptyStr = EmptyStr is incorrect; it should be EmptyStr | Star EmptyStr = EmptyStr? actually Star EmptyStr matches only empty, so normalize carefully). For App normalization, ensure right/left identity laws are applied only when safe. Keep normalization proofs modular so they can be reused in derive_corr. Avoid introducing mutual recursion that breaks termination.",
+        "approach_type": "Stdlib.Strings.Ascii.eqb",
+        "uses": 2,
+        "starting_score": 0.7333333333333333,
+        "ending_score": 0.7333333333333333,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Antimirov partial derivatives with finite-set execution",
+        "description": "Switch from single Brzozowski derivative to Antimirov partial derivatives: define pderive: ascii -> reg_exp -> set (reg_exp) that returns a finite set of regexes. Represent sets with FSetAVL.Make over a custom decidable equality on reg_exp, and define pmatch s r as whether empty is in the epsilon-closure of the iterated application of pderive over s (i.e., fold_left over the string while unioning next-state sets). Prove soundness and completeness via standard partial-derivative correctness: a :: s =~ r iff there exists r' in pderive a r such that s =~ r'. Use match_eps over each element and decide overall acceptance with existsb. Implement normalization on regex elements inserted into the set to keep the state space small and prove normalization soundness once. Structure proofs by induction on s, and within, use set reasoning lemmas from FSetAVL (In, Empty, Union) to manage existentials over derivative elements. This avoids heavy nested App reasoning in derive_corr and replaces it with relational properties over sets of derivatives.",
+        "what_to_optimize": "combined_score (by replacing the remaining todo and Admitted proofs with a complete partial-derivative development), and proof modularity via set-theoretic reasoning",
+        "cautions": "You must provide a decidable equality for reg_exp to instantiate FSetAVL.Make; ensure it respects normalization equivalence if you normalize before insertion. Keep termination and structural recursion explicit; avoid non-structural folds that Coq rejects. Carefully bridge exists over sets with FSetAVL.In and reason with existsb/reflection lemmas to avoid propositional-boolean mismatch. Mind epsilon handling: partial derivatives for App must carry nullable information properly when combining derivatives of the right component. Prove and reuse lemmas for correctness of set operations (union correctness, map correctness if used) to keep the main correctness proof clean.",
+        "approach_type": "Coq.FSets.FSetAVL.Make",
+        "uses": 2,
+        "starting_score": 0.7333333333333333,
+        "ending_score": 0.7333333333333333,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 0.7333333333333333,
+    "best_score_during_paradigm": 0.8
+  }
+}

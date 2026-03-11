@@ -1,0 +1,297 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 50,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.2763999946500001,
+        "best_score": 1.0,
+        "improvement_count": 4,
+        "total_evaluations": 18,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.2763999946500001,
+        "best_score": 1.0,
+        "improvement_count": 3,
+        "total_evaluations": 16,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      18,
+      16
+    ],
+    "dimension_rewards": [
+      0.5356530327587081,
+      0.5744616625103701
+    ],
+    "decayed_visits": [
+      8.49905364703001,
+      8.14697981114816
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "99c7e514-fcca-4ce4-a20a-d9501d168110",
+      "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b",
+      "f1dc47f2-e63f-4896-98fa-933af06db7d5",
+      "754b5d4b-19f0-47a8-aa04-82b34ba412d0",
+      "cd42aea5-bc9a-4d19-a750-77cfbc430d56",
+      "2be7aa4e-30b2-411f-9b65-0c771a350e68",
+      "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732",
+      "9ca42e2a-4216-4de1-ab3d-184e9ea90668",
+      "7dc42cd0-3cfd-4809-8b9b-3b29c1b01c9b",
+      "b55fb807-9a13-497a-a456-e7f2948d53cd"
+    ],
+    [
+      "31814979-fa1f-4c12-8f33-28a66eb1aa9f",
+      "7b4be5be-dd9d-4452-b8ff-3c62e54e767b",
+      "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4",
+      "13d108aa-645d-412e-983c-d6abe7e0f6f1",
+      "f35b3ea2-118f-4799-af27-62cde341eb07",
+      "4cb5292f-0433-42f9-99e6-1098ffefa5d0",
+      "326e35e1-d2f3-4998-86db-ae0174b05c73",
+      "ca1507dc-661b-4a78-9493-3f7364b86b84",
+      "4dd31aa0-2b84-453a-8d16-981209fcf27f",
+      "aafc9f22-7f28-40ec-8816-14f7edbf9e3b"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "99c7e514-fcca-4ce4-a20a-d9501d168110": [],
+        "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b": [
+          "99c7e514-fcca-4ce4-a20a-d9501d168110"
+        ],
+        "f1dc47f2-e63f-4896-98fa-933af06db7d5": [
+          "99c7e514-fcca-4ce4-a20a-d9501d168110"
+        ],
+        "754b5d4b-19f0-47a8-aa04-82b34ba412d0": [
+          "f1dc47f2-e63f-4896-98fa-933af06db7d5"
+        ],
+        "cd42aea5-bc9a-4d19-a750-77cfbc430d56": [
+          "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b"
+        ],
+        "2be7aa4e-30b2-411f-9b65-0c771a350e68": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732": [
+          "f35b3ea2-118f-4799-af27-62cde341eb07"
+        ],
+        "9ca42e2a-4216-4de1-ab3d-184e9ea90668": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "7dc42cd0-3cfd-4809-8b9b-3b29c1b01c9b": [
+          "ca1507dc-661b-4a78-9493-3f7364b86b84"
+        ],
+        "b55fb807-9a13-497a-a456-e7f2948d53cd": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ]
+      },
+      "children": {
+        "99c7e514-fcca-4ce4-a20a-d9501d168110": [
+          "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b",
+          "f1dc47f2-e63f-4896-98fa-933af06db7d5"
+        ],
+        "f1dc47f2-e63f-4896-98fa-933af06db7d5": [
+          "754b5d4b-19f0-47a8-aa04-82b34ba412d0"
+        ],
+        "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b": [
+          "cd42aea5-bc9a-4d19-a750-77cfbc430d56"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "2be7aa4e-30b2-411f-9b65-0c771a350e68",
+          "9ca42e2a-4216-4de1-ab3d-184e9ea90668",
+          "b55fb807-9a13-497a-a456-e7f2948d53cd"
+        ],
+        "f35b3ea2-118f-4799-af27-62cde341eb07": [
+          "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732"
+        ],
+        "ca1507dc-661b-4a78-9493-3f7364b86b84": [
+          "7dc42cd0-3cfd-4809-8b9b-3b29c1b01c9b"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "31814979-fa1f-4c12-8f33-28a66eb1aa9f": [],
+        "7b4be5be-dd9d-4452-b8ff-3c62e54e767b": [
+          "31814979-fa1f-4c12-8f33-28a66eb1aa9f"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "e400ef62-a719-4afb-91e6-08830c3b15ca"
+        ],
+        "13d108aa-645d-412e-983c-d6abe7e0f6f1": [
+          "7b4be5be-dd9d-4452-b8ff-3c62e54e767b"
+        ],
+        "f35b3ea2-118f-4799-af27-62cde341eb07": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "4cb5292f-0433-42f9-99e6-1098ffefa5d0": [
+          "cd42aea5-bc9a-4d19-a750-77cfbc430d56"
+        ],
+        "326e35e1-d2f3-4998-86db-ae0174b05c73": [
+          "754b5d4b-19f0-47a8-aa04-82b34ba412d0"
+        ],
+        "ca1507dc-661b-4a78-9493-3f7364b86b84": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "4dd31aa0-2b84-453a-8d16-981209fcf27f": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "aafc9f22-7f28-40ec-8816-14f7edbf9e3b": [
+          "dbba4bea-f396-4b88-8c47-0f78574e1ac1"
+        ]
+      },
+      "children": {
+        "31814979-fa1f-4c12-8f33-28a66eb1aa9f": [
+          "7b4be5be-dd9d-4452-b8ff-3c62e54e767b"
+        ],
+        "7b4be5be-dd9d-4452-b8ff-3c62e54e767b": [
+          "13d108aa-645d-412e-983c-d6abe7e0f6f1"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "f35b3ea2-118f-4799-af27-62cde341eb07",
+          "ca1507dc-661b-4a78-9493-3f7364b86b84",
+          "4dd31aa0-2b84-453a-8d16-981209fcf27f"
+        ],
+        "cd42aea5-bc9a-4d19-a750-77cfbc430d56": [
+          "4cb5292f-0433-42f9-99e6-1098ffefa5d0"
+        ],
+        "754b5d4b-19f0-47a8-aa04-82b34ba412d0": [
+          "326e35e1-d2f3-4998-86db-ae0174b05c73"
+        ],
+        "dbba4bea-f396-4b88-8c47-0f78574e1ac1": [
+          "aafc9f22-7f28-40ec-8816-14f7edbf9e3b"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Induction on list length rather than structure",
+        "description": "Instead of structural induction on the list l1, use strong induction on the length of l1. By generalizing the theorem to hold for all lists up to a certain length, the induction hypothesis becomes much stronger and more flexible. This allows for arbitrary restructuring of the lists in the inductive step, making it easier to match elements between l1 and l2 without being constrained to the specific head/tail breakdown of structural induction.",
+        "what_to_optimize": "Proof robustness and flexibility of the induction hypothesis",
+        "cautions": "Requires using `remember (length l1) as n` and generalizing both l1 and l2 before applying induction. Strong induction on nat might require well-founded induction (`induction n using lt_wf_ind`) or a custom nat induction lemma.",
+        "approach_type": "coq.tactics.length_induction"
+      },
+      {
+        "idea": "Algebraic proof using element counting (count_occ)",
+        "description": "Transform the structural problem into an algebraic one by using `count_occ` to count element occurrences. Using the provided `excluded_middle` axiom, construct a decidable equality for the type X to use with `count_occ`. Then, prove that if all elements of l1 are in l2, the sum of their counts in l2 bounds the length of l1. A strict inequality in lengths will algebraically force at least one element to have a count greater than 1 in l1, which directly implies the `repeats` property.",
+        "what_to_optimize": "Avoidance of complex list splitting and direct structural manipulation",
+        "cautions": "Requires defining a non-computable equality decider using EM. You will need to introduce and prove auxiliary lemmas about the summation of `count_occ` over lists, which shifts the difficulty from structural list proofs to arithmetic summation proofs.",
+        "approach_type": "coq.lists.count_occ"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Index-based formulation using nth_error and finite mappings",
+        "description": "Shift the reasoning from structural list properties to index-based mappings using `nth_error`. First, prove a helper lemma that `repeats l1` is implied by the existence of two distinct indices `i < j < length l1` such that `nth_error l1 i = nth_error l1 j`. Next, use the inclusion hypothesis `forall x, In x l1 -> In x l2` to establish a relation between the valid indices of `l1` and `l2`. Because `length l2 < length l1`, any total relation mapping `length l1` items into `length l2` slots must map two distinct indices of `l1` to the same index in `l2` (the standard arithmetic pigeonhole principle). This implies the elements at those indices in `l1` are identical, satisfying the index-based repetition condition.",
+        "what_to_optimize": "Algorithmic separation of list logic and arithmetic",
+        "cautions": "Since `excluded_middle` is provided but not `constructive_definite_description`, you must use relational reasoning (e.g., `exists j, ...`) rather than constructing a pure Coq function from indices to indices. Managing `nth_error` options requires careful unwrapping.",
+        "approach_type": "Coq.Lists.List.nth_error",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use automated proof search with eauto and Hint databases",
+        "description": "Instead of manual destructs and asserts for list membership, register list inclusion properties (like `in_or_app`, `in_app_or`) and custom helper lemmas into a specific Hint database. Use `eauto with ...` to automatically find the proof terms for the inductive cases. This reduces the proof length, making it more declarative and easier to maintain while still achieving full correctness.",
+        "what_to_optimize": "proof length, readability, and automation level",
+        "cautions": "The depth of `eauto` must be carefully controlled to avoid infinite searches or timeouts. Additionally, since `eauto` does not handle arithmetic natively, `lia` must be explicitly combined with the automation.",
+        "approach_type": "coq.tactics.eauto",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Develop a custom Ltac decision procedure for list membership and lengths",
+        "description": "Create a domain-specific Ltac tactic that automates the extraction of elements using the `in_split` helper lemma, substitutes them, and discharges the length inequalities using `lia`. This abstracts away the manual `in_app_or`, `in_or_app`, and `exfalso` boilerplate into a single reusable tactic, streamlining the main theorem's inductive step.",
+        "what_to_optimize": "proof modularity and structural clarity",
+        "cautions": "Ltac pattern matching can be fragile with existential variables or complex nested applications; ensure the tactic robustly handles the specific shape of the `In` and `length` hypotheses generated during the list induction.",
+        "approach_type": "coq.ltac.custom",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use well-founded induction on list length",
+        "description": "Instead of structural induction on l1, apply well-founded induction on the length of l1 using `well_founded_induction` and `PeanoNat.Nat.lt_wf_0`. This allows more flexible manipulation of the lists during the inductive step, such as removing arbitrary elements or partitioning the list. The induction hypothesis will apply to any list of strictly smaller length, not just the immediate tail, which simplifies reasoning when elements are removed from the middle of the list.",
+        "what_to_optimize": "proof_modularity",
+        "cautions": "Requires setting up the well-founded relation for list lengths and proving that the length strictly decreases after element removal, which entails additional helper lemmas.",
+        "approach_type": "Coq.Init.Wf.well_founded_induction",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use element counting with List.count_occ",
+        "description": "Leverage `List.count_occ` to transform the logical inclusion into an arithmetic property. By counting how many times each element appears, you can prove that if `l1` has no repeats, the sum of counts equals its length. The inclusion `In x l1 -> In x l2` implies bounds on these counts. Summing these counts over `l2` and comparing with `l1` directly contradicts `length l2 < length l1`, allowing `lia` to solve the core goal algebraically.",
+        "what_to_optimize": "arithmetic_simplification",
+        "cautions": "Requires constructing a decidable equality for type X using the provided `excluded_middle` axiom in order to use `count_occ`, and requires proving summation lemmas over lists.",
+        "approach_type": "Coq.Lists.List.count_occ",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

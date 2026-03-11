@@ -1,0 +1,183 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 9,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.18999999999999995,
+        "best_score": 1.0,
+        "improvement_count": 2,
+        "total_evaluations": 6,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.18999999999999995,
+        "best_score": 1.0,
+        "improvement_count": 1,
+        "total_evaluations": 5,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      6,
+      5
+    ],
+    "dimension_rewards": [
+      1.24659,
+      0.6560999934390002
+    ],
+    "decayed_visits": [
+      4.68559,
+      4.0951
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "d198b48a-60cd-41f2-9cbc-6de2a42f85eb",
+      "e8f85ae1-5dab-4123-8150-bdf8eca08ceb",
+      "f40694bf-2cee-4675-86dc-a38fd1d03b13",
+      "8a5fea67-fb26-4349-9de5-0435ae1abfb6",
+      "7361665f-3193-4057-8fa6-3d3214ace1a9",
+      "bc145e5c-7c90-40b9-b8f3-d948819aee9b"
+    ],
+    [
+      "0c06749d-6376-4218-a6a3-22849f21c361",
+      "c30444f9-a442-4947-8a5a-1c96fae72f0c",
+      "f998519b-387a-4615-96be-18450284f2ef",
+      "7e351ded-692f-4cc0-8948-a627aa311625",
+      "368c72b9-ac6c-47a5-a0ab-00766fb605cd",
+      "1a42e064-e193-42e7-8108-5d302567021b"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "d198b48a-60cd-41f2-9cbc-6de2a42f85eb": [],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "d198b48a-60cd-41f2-9cbc-6de2a42f85eb"
+        ],
+        "f40694bf-2cee-4675-86dc-a38fd1d03b13": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "8a5fea67-fb26-4349-9de5-0435ae1abfb6": [
+          "d198b48a-60cd-41f2-9cbc-6de2a42f85eb"
+        ],
+        "7361665f-3193-4057-8fa6-3d3214ace1a9": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "bc145e5c-7c90-40b9-b8f3-d948819aee9b": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ]
+      },
+      "children": {
+        "d198b48a-60cd-41f2-9cbc-6de2a42f85eb": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb",
+          "8a5fea67-fb26-4349-9de5-0435ae1abfb6"
+        ],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "f40694bf-2cee-4675-86dc-a38fd1d03b13",
+          "7361665f-3193-4057-8fa6-3d3214ace1a9",
+          "bc145e5c-7c90-40b9-b8f3-d948819aee9b"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "0c06749d-6376-4218-a6a3-22849f21c361": [],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "0c06749d-6376-4218-a6a3-22849f21c361"
+        ],
+        "f998519b-387a-4615-96be-18450284f2ef": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "7e351ded-692f-4cc0-8948-a627aa311625": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "368c72b9-ac6c-47a5-a0ab-00766fb605cd": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "1a42e064-e193-42e7-8108-5d302567021b": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ]
+      },
+      "children": {
+        "0c06749d-6376-4218-a6a3-22849f21c361": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "f998519b-387a-4615-96be-18450284f2ef",
+          "7e351ded-692f-4cc0-8948-a627aa311625"
+        ],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "368c72b9-ac6c-47a5-a0ab-00766fb605cd",
+          "1a42e064-e193-42e7-8108-5d302567021b"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Dependency-aware obligation targeting via NetworkX minimum dominating set",
+        "description": "Model the file\u2019s obligations (todos and Admitted lemmas) as a dependency graph: a node per obligation, with edges indicating that one obligation is referenced by or required to prove another. Build this graph deterministically by parsing names appearing in proof scripts and statements (e.g., a lemma used in another proof creates an edge). Convert to an undirected graph and call the minimum dominating set approximation to find a small set of obligations that collectively touch (dominate) all others. Prioritize solving these dominating nodes first, as each unlocks or simplifies many neighbors, accelerating the increase in Qed count with minimal steps. Use simple static features (number of references, position in file, section scope) to weight edges if needed, but keep the core selection to a single dominating-set call. Recompute the dominating set after each iteration as the graph changes when obligations get solved. This approach is robust to varying file structures and focuses on maximal structural impact per edit, aligning with the evaluator\u2019s combined_score and one-change-per-call constraint.",
+        "what_to_optimize": "combined_score by reducing remaining obligations quickly; target obligations whose resolution maximally reduces dependencies and unlocks cascading proofs",
+        "cautions": "Ensure dependency extraction is conservative to avoid missing edges; treat the graph as undirected for the dominating-set call; handle isolated nodes by always including them; keep graph construction deterministic; for large files, consider sparsifying low-confidence edges to keep the approximation fast",
+        "approach_type": "networkx.algorithms.approximation.minimum_dominating_set"
+      },
+      {
+        "idea": "Hungarian assignment of tactic templates to obligations using scipy.optimize.linear_sum_assignment",
+        "description": "Define a library of tactic/code templates (e.g., intros-induction, inversion-solve, rewrite-simpl, discriminate, reflexivity, constructor chains) and statically score their suitability per obligation using lightweight features (goal shape, presence of Fixpoint, Forall, and pattern keywords). Build a cost matrix where rows are obligations and columns are templates, with lower cost indicating higher estimated success probability and speed. Call the Hungarian algorithm to produce an optimal one-to-one assignment that maximizes global fit between current obligations and available templates. Use the assignment to pick the single best (lowest-cost) obligation\u2013template pair to enact this iteration, complying with the single-change constraint while planning globally. Update scores after each iteration to reflect newly solved obligations and refined estimates. This balances easy wins across the file and avoids repeatedly trying suboptimal templates for tricky goals, boosting Qed count steadily. The approach scales well and is deterministic given fixed features.",
+        "what_to_optimize": "immediate Qed gains per iteration, overall success rate of attempts, and time-to-proof by matching obligations with the most promising tactic/code templates",
+        "cautions": "Ensure matrix dimensions are compatible (pad with dummy rows/columns if counts differ); normalize costs to avoid numerical issues; keep feature extraction fast and deterministic; when multiple pairs tie, break ties consistently; verify that selected templates respect the one-change-per-call rule (e.g., avoid multi-edit scripts)",
+        "approach_type": "scipy.optimize.linear_sum_assignment"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

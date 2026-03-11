@@ -1,0 +1,283 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 19,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.2763999946500001,
+        "best_score": 1.0,
+        "improvement_count": 4,
+        "total_evaluations": 11,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.2763999946500001,
+        "best_score": 1.0,
+        "improvement_count": 3,
+        "total_evaluations": 11,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      11,
+      11
+    ],
+    "dimension_rewards": [
+      1.1199174252618154,
+      0.9728558697189961
+    ],
+    "decayed_visits": [
+      6.861894039100001,
+      6.861894039100001
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "99c7e514-fcca-4ce4-a20a-d9501d168110",
+      "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b",
+      "f1dc47f2-e63f-4896-98fa-933af06db7d5",
+      "754b5d4b-19f0-47a8-aa04-82b34ba412d0",
+      "cd42aea5-bc9a-4d19-a750-77cfbc430d56",
+      "2be7aa4e-30b2-411f-9b65-0c771a350e68",
+      "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732",
+      "044c9b17-806d-4353-b493-84440947eedb",
+      "9ca42e2a-4216-4de1-ab3d-184e9ea90668",
+      "7c9e351e-6d99-488a-a428-bad061e93236"
+    ],
+    [
+      "31814979-fa1f-4c12-8f33-28a66eb1aa9f",
+      "7b4be5be-dd9d-4452-b8ff-3c62e54e767b",
+      "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4",
+      "13d108aa-645d-412e-983c-d6abe7e0f6f1",
+      "f35b3ea2-118f-4799-af27-62cde341eb07",
+      "4cb5292f-0433-42f9-99e6-1098ffefa5d0",
+      "326e35e1-d2f3-4998-86db-ae0174b05c73",
+      "48d9baa2-3c0e-482f-a6da-bc0f1cbebffa",
+      "f767d943-f444-4cab-9a84-ba90e285a18f",
+      "13f2c5ae-8d69-4ed1-96f8-eac1df24e00c"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "99c7e514-fcca-4ce4-a20a-d9501d168110": [],
+        "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b": [
+          "99c7e514-fcca-4ce4-a20a-d9501d168110"
+        ],
+        "f1dc47f2-e63f-4896-98fa-933af06db7d5": [
+          "99c7e514-fcca-4ce4-a20a-d9501d168110"
+        ],
+        "754b5d4b-19f0-47a8-aa04-82b34ba412d0": [
+          "f1dc47f2-e63f-4896-98fa-933af06db7d5"
+        ],
+        "cd42aea5-bc9a-4d19-a750-77cfbc430d56": [
+          "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b"
+        ],
+        "2be7aa4e-30b2-411f-9b65-0c771a350e68": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732": [
+          "f35b3ea2-118f-4799-af27-62cde341eb07"
+        ],
+        "044c9b17-806d-4353-b493-84440947eedb": [
+          "e400ef62-a719-4afb-91e6-08830c3b15ca"
+        ],
+        "9ca42e2a-4216-4de1-ab3d-184e9ea90668": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "7c9e351e-6d99-488a-a428-bad061e93236": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ]
+      },
+      "children": {
+        "99c7e514-fcca-4ce4-a20a-d9501d168110": [
+          "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b",
+          "f1dc47f2-e63f-4896-98fa-933af06db7d5"
+        ],
+        "f1dc47f2-e63f-4896-98fa-933af06db7d5": [
+          "754b5d4b-19f0-47a8-aa04-82b34ba412d0"
+        ],
+        "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b": [
+          "cd42aea5-bc9a-4d19-a750-77cfbc430d56"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "2be7aa4e-30b2-411f-9b65-0c771a350e68",
+          "9ca42e2a-4216-4de1-ab3d-184e9ea90668",
+          "7c9e351e-6d99-488a-a428-bad061e93236"
+        ],
+        "f35b3ea2-118f-4799-af27-62cde341eb07": [
+          "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732"
+        ],
+        "e400ef62-a719-4afb-91e6-08830c3b15ca": [
+          "044c9b17-806d-4353-b493-84440947eedb"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "31814979-fa1f-4c12-8f33-28a66eb1aa9f": [],
+        "7b4be5be-dd9d-4452-b8ff-3c62e54e767b": [
+          "31814979-fa1f-4c12-8f33-28a66eb1aa9f"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "e400ef62-a719-4afb-91e6-08830c3b15ca"
+        ],
+        "13d108aa-645d-412e-983c-d6abe7e0f6f1": [
+          "7b4be5be-dd9d-4452-b8ff-3c62e54e767b"
+        ],
+        "f35b3ea2-118f-4799-af27-62cde341eb07": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "4cb5292f-0433-42f9-99e6-1098ffefa5d0": [
+          "cd42aea5-bc9a-4d19-a750-77cfbc430d56"
+        ],
+        "326e35e1-d2f3-4998-86db-ae0174b05c73": [
+          "754b5d4b-19f0-47a8-aa04-82b34ba412d0"
+        ],
+        "48d9baa2-3c0e-482f-a6da-bc0f1cbebffa": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "f767d943-f444-4cab-9a84-ba90e285a18f": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "13f2c5ae-8d69-4ed1-96f8-eac1df24e00c": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ]
+      },
+      "children": {
+        "31814979-fa1f-4c12-8f33-28a66eb1aa9f": [
+          "7b4be5be-dd9d-4452-b8ff-3c62e54e767b"
+        ],
+        "7b4be5be-dd9d-4452-b8ff-3c62e54e767b": [
+          "13d108aa-645d-412e-983c-d6abe7e0f6f1"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "f35b3ea2-118f-4799-af27-62cde341eb07",
+          "48d9baa2-3c0e-482f-a6da-bc0f1cbebffa",
+          "f767d943-f444-4cab-9a84-ba90e285a18f",
+          "13f2c5ae-8d69-4ed1-96f8-eac1df24e00c"
+        ],
+        "cd42aea5-bc9a-4d19-a750-77cfbc430d56": [
+          "4cb5292f-0433-42f9-99e6-1098ffefa5d0"
+        ],
+        "754b5d4b-19f0-47a8-aa04-82b34ba412d0": [
+          "326e35e1-d2f3-4998-86db-ae0174b05c73"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Leverage ssreflect for concise list manipulation and structural proofs",
+        "description": "Transition the proof style to use the ssreflect extension (Small Scale Reflection). This involves replacing standard Coq tactics with ssreflect's more powerful bookkeeping and rewrite tactics (e.g., `move=>`, `elim`, `rewrite`). By using ssreflect, the proof scripts become more robust and significantly shorter, reducing the likelihood of context management errors during deductive synthesis. It is particularly effective for list inductions and logical case analysis. The implementation should focus on refactoring the `in_split` and main pigeonhole theorem using `elim: l1 => [|x l1' IH] //=` and boolean reflection if applicable.",
+        "what_to_optimize": "code_length and proof readability",
+        "cautions": "Requires `Require Import ssreflect.` and may require adapting standard library list lemmas to their boolean reflection counterparts if using `mathcomp`.",
+        "approach_type": "coq.tactics.ssreflect"
+      },
+      {
+        "idea": "Utilize forward reasoning and declarative proof styles with Coq's C-B-C",
+        "description": "Adopt a forward-reasoning approach using `assert` and `pose proof` extensively before branching, or use the `Require Import Coq.Program.Wf` for well-founded recursion if the function structure changes. For the pigeonhole principle, instead of deep nested destructs, build the context forward by explicitly asserting the sizes of the split lists and their properties. This reduces the cognitive load on the deductive synthesizer by keeping the goal state shallow. It makes step-by-step synthesis easier because each `todo` can be filled with a straightforward context-building step rather than a complex branching tactic.",
+        "what_to_optimize": "qed_count by simplifying sub-lemma generation",
+        "cautions": "Avoid overly large contexts which might slow down `coqc`; ensure that asserted intermediate lemmas are properly cleared if no longer needed.",
+        "approach_type": "coq.tactics.forward_reasoning"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 1,
+      "1": 1
+    },
+    "current_paradigm_index": 0,
+    "tried_paradigms": [
+      {
+        "idea": "Automate list manipulation proofs using eauto and hint databases",
+        "description": "The current proof manually destructs and applies list lemmas like in_split, in_app_or, and in_or_app. We can optimize the code length and readability by defining a custom Hint database with these lemmas and using `eauto` or `intuition eauto`. This reduces the step-by-step manual proof script into a few automated tactic calls, improving the code_length metric while retaining correctness.",
+        "what_to_optimize": "code_length",
+        "cautions": "eauto can be slow or fail if the search depth is insufficient or if existential variables are not instantiated correctly. Use `eauto` with a specified depth if necessary.",
+        "approach_type": "Coq.Init.Tactics.eauto",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use reflection or element counting for list membership",
+        "description": "Instead of relying purely on propositional logic and the excluded middle axiom for every step, we can use the `count_occ` function to count element occurrences. By isolating the use of `excluded_middle` to prove decidable equality for the elements present in the lists, we can use `lia` on the counts of elements. This transforms the logical pigeonhole problem into a purely arithmetic one over list lengths and element counts.",
+        "what_to_optimize": "proof structure and robustness",
+        "cautions": "Requires translating `In` to `count_occ` and proving the equivalence, which might temporarily increase code length unless standard library lemmas are heavily leveraged.",
+        "approach_type": "Coq.Lists.List.count_occ",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Leverage Coq's standard library NoDup and NoDup_incl_length",
+        "description": "The current proof manually splits lists and manages list inclusion using structural induction. A more elegant and maintainable approach is to relate the custom `repeats` predicate to the standard library's `NoDup` predicate. First, prove a helper lemma: `~ repeats l -> NoDup l`. Then, use classical logic (`excluded_middle`) to proceed by contradiction: assume `~ repeats l1`. This implies `NoDup l1`. Since the hypothesis `forall x, In x l1 -> In x l2` is exactly the definition of `incl l1 l2`, we can directly apply the standard library lemma `NoDup_incl_length` which states `NoDup l1 -> incl l1 l2 -> length l1 <= length l2`. This immediately contradicts the hypothesis `length l2 < length l1`, which can be solved instantly by `lia`. This drastically reduces the manual proof burden and relies on robust standard library lemmas.",
+        "what_to_optimize": "code_length, proof elegance, and maintainability",
+        "cautions": "You must carefully prove the implication between `~ repeats l` and `NoDup l`, which requires `excluded_middle` to handle the classical reasoning step.",
+        "approach_type": "Coq.Lists.List.NoDup_incl_length",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use well-founded induction on the length of lists",
+        "description": "Instead of structural induction on `l1`, use well-founded induction on `length l1` via `induction_ltof`. This allows you to remove elements from anywhere in the list rather than just the head, which is highly beneficial for pigeonhole-style proofs. In the inductive step, take the first element `x` of `l1`. If `In x (tail l1)`, then `repeats l1` holds immediately. If not, remove `x` from `l2` using a removal function. The new list `l1'` is `tail l1` and `l2'` is `remove x l2`. The lengths of both lists decrease by exactly 1, preserving the `length l2' < length l1'` invariant. You can then apply the well-founded inductive hypothesis. This strategy naturally separates the logic of element removal from the inductive structure, avoiding the complex nested `in_split` and `app_length` reasoning seen in the current program.",
+        "what_to_optimize": "Logical structure of the proof and decoupling of list operations",
+        "cautions": "Well-founded induction requires importing `Coq.Arith.Wf_nat` and can introduce slight complexity when proving the decreasing measure for the recursive call.",
+        "approach_type": "Coq.Arith.Wf_nat.induction_ltof",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

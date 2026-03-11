@@ -1,0 +1,18 @@
+{
+  "id": "692166bb-72e7-4332-a58e-a28377cb58d1",
+  "generation": 3,
+  "iteration": 5,
+  "current_iteration": 5,
+  "metrics": {
+    "combined_score": 0.6,
+    "compiles": 1.0,
+    "qed_count": 3.0,
+    "admitted_count": 2.0,
+    "todo_count": 0.0,
+    "code_length": 105.0,
+    "done": 0.0
+  },
+  "language": "coq",
+  "timestamp": 1773253481.305452,
+  "saved_at": 1773253481.3085701
+}

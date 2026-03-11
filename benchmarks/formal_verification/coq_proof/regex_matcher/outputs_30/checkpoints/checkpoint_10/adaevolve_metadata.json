@@ -1,0 +1,185 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 9,
+  "global_best_score": 0.7333333333333333,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.08693847201523892,
+        "best_score": 0.7333333333333333,
+        "improvement_count": 3,
+        "total_evaluations": 6,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.08693847201523892,
+        "best_score": 0.7333333333333333,
+        "improvement_count": 2,
+        "total_evaluations": 5,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      6,
+      5
+    ],
+    "dimension_rewards": [
+      0.8649524952663752,
+      0.23329924791836656
+    ],
+    "decayed_visits": [
+      4.68559,
+      4.0951
+    ],
+    "global_best_score": 0.7333333333333333,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "7ec23b92-ac97-42b3-ba6c-912fd0cb8a3b",
+      "36869397-77d6-4b82-9d00-356a1aa5e2a9",
+      "ee1c83cf-a15c-42b1-a26d-6b7454435df8",
+      "7849662d-26b7-4d9e-b75d-b2ae014e6465",
+      "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf",
+      "550cd76f-fb99-414c-a3f4-971a4f8ea02e"
+    ],
+    [
+      "61607758-dd87-4879-815a-724a0c925904",
+      "eb1bde28-bb8d-45da-969a-dda772a56dd7",
+      "45dd6282-4d55-419e-9a88-fb0841be099d",
+      "63a4fb62-9fa0-4afe-b186-eed899d734a7",
+      "1a23c0a7-a301-43e4-8e6f-efc6dbe18fe1",
+      "4514e0a9-a07d-4ccb-be71-e5c649acf32c"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "7ec23b92-ac97-42b3-ba6c-912fd0cb8a3b": [],
+        "36869397-77d6-4b82-9d00-356a1aa5e2a9": [
+          "7ec23b92-ac97-42b3-ba6c-912fd0cb8a3b"
+        ],
+        "ee1c83cf-a15c-42b1-a26d-6b7454435df8": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "7849662d-26b7-4d9e-b75d-b2ae014e6465": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "550cd76f-fb99-414c-a3f4-971a4f8ea02e": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ]
+      },
+      "children": {
+        "7ec23b92-ac97-42b3-ba6c-912fd0cb8a3b": [
+          "36869397-77d6-4b82-9d00-356a1aa5e2a9"
+        ],
+        "36869397-77d6-4b82-9d00-356a1aa5e2a9": [
+          "ee1c83cf-a15c-42b1-a26d-6b7454435df8",
+          "7849662d-26b7-4d9e-b75d-b2ae014e6465",
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf": [
+          "550cd76f-fb99-414c-a3f4-971a4f8ea02e"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "61607758-dd87-4879-815a-724a0c925904": [],
+        "eb1bde28-bb8d-45da-969a-dda772a56dd7": [
+          "61607758-dd87-4879-815a-724a0c925904"
+        ],
+        "45dd6282-4d55-419e-9a88-fb0841be099d": [
+          "eb1bde28-bb8d-45da-969a-dda772a56dd7"
+        ],
+        "63a4fb62-9fa0-4afe-b186-eed899d734a7": [
+          "61607758-dd87-4879-815a-724a0c925904"
+        ],
+        "1a23c0a7-a301-43e4-8e6f-efc6dbe18fe1": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ],
+        "4514e0a9-a07d-4ccb-be71-e5c649acf32c": [
+          "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf"
+        ]
+      },
+      "children": {
+        "61607758-dd87-4879-815a-724a0c925904": [
+          "eb1bde28-bb8d-45da-969a-dda772a56dd7",
+          "63a4fb62-9fa0-4afe-b186-eed899d734a7"
+        ],
+        "eb1bde28-bb8d-45da-969a-dda772a56dd7": [
+          "45dd6282-4d55-419e-9a88-fb0841be099d"
+        ],
+        "0055d7d7-74a7-4260-932d-5b1f9b1a8fbf": [
+          "1a23c0a7-a301-43e4-8e6f-efc6dbe18fe1",
+          "4514e0a9-a07d-4ccb-be71-e5c649acf32c"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Brzozowski derivatives with reflection and fold_left",
+        "description": "Implement the matching algorithm via Brzozowski derivatives: define derive a re to compute the derivative of re with respect to character a, and make regex_match s re = match_eps (fold_left derive s re). Prove derive_corr (derivation correctness) by structural induction on re using the standard derivative equations, and use app_ne and star_ne lemmas to handle the cons case a :: s for App and Star. Prove match_eps_refl (already provided) to reflect nullable. Then prove regex_match_correct by induction on s, rewriting with derive_corr at each step and finishing with match_eps_refl. Keep derive purely structural (no simplification needed for correctness) to make proofs straightforward. The key is to set up helper lemmas for App and Star with non-empty inputs, which are already stated; you can use them to bridge the cons case equivalences. Finally, define regex_match using List.fold_left derive over the string and feed the result to match_eps.",
+        "what_to_optimize": "Increase qed_count by fully defining derive and regex_match and discharging derive_corr and regex_match_correct; reduce todo_count and admitted_count without adding extra obligations.",
+        "cautions": "Be precise with the derivative of App: der(App r1 r2) = Union (App (der r1) r2) (if match_eps r1 then der r2 else EmptySet). For Star: der(Star r) = App (der r) (Star r). Ensure reflect lemmas convert iff to reflect cleanly. Do not over-simplify regex constructors in code; keep soundness proofs simple first. When proving cons cases, use app_ne and star_ne to avoid manual destructs on concatenations. Keep recursion structural on the regex in derive to satisfy Coq\u2019s termination checker.",
+        "approach_type": "Coq.Lists.List.fold_left"
+      },
+      {
+        "idea": "Compile to \u03b5-NFA and simulate using MSets for finite-state execution",
+        "description": "Translate the regular expression into an \u03b5-NFA (Thompson construction) inside Coq, representing sets of states with finite sets from MSets. Define epsilon-closure and move functions and a simulator that computes the reachable state set after consuming the input list. Prove that the compiler preserves semantics (soundness and completeness) by induction on the regex structure and by simulation invariants on runs vs. execution over sets. Implement regex_match by running the simulator and checking if any accepting state is reached. This approach replaces derivatives with state-set transitions and can be cleaner for unions, concatenations, and stars via standard NFA composition. Use fold_left to iterate transitions over the input string, taking epsilon-closures at each step.",
+        "what_to_optimize": "Reduce admitted_count by providing a complete, alternative decision procedure with clean invariants, and eliminate todos by implementing regex_match through NFA simulation.",
+        "cautions": "Choose a concrete finite set implementation (e.g., MSetWeakList over a decidable state type) and prove necessary lemmas about closures and unions. Carefully define epsilon-closure to ensure termination (use a worklist algorithm over finite sets). Keep state identifiers finite and avoid fresh name collisions by threading a counter through the compiler. Proofs require invariants relating NFA paths to regex matches; structure them to avoid rewriting explosions. Imports from Coq.MSets and decidable equality for state types are necessary.",
+        "approach_type": "Coq.MSets.MSetWeakList.Make"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [],
+    "best_score_at_paradigm_gen": 0.625,
+    "best_score_during_paradigm": 0.7333333333333333
+  }
+}

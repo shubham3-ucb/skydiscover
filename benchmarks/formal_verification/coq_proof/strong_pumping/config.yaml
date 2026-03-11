@@ -1,0 +1,119 @@
+language: coq
+file_suffix: ".v"
+diff_based_generation: true
+max_iterations: 100
+checkpoint_interval: 5
+
+llm:
+  models:
+    - name: "gemini/gemini-3-pro-preview"
+      weight: 1.0
+  temperature: 0.7
+  max_tokens: 16000
+  timeout: 600
+  retries: 2
+  retry_delay: 5
+
+search:
+  type: "adaevolve"
+  num_context_programs: 2
+  database:
+    population_size: 10
+    num_islands: 2
+    decay: 0.9
+    intensity_min: 0.15
+    intensity_max: 0.5
+    use_adaptive_search: true
+    use_ucb_selection: true
+    use_migration: true
+    migration_interval: 10
+    migration_count: 3
+    use_unified_archive: true
+    fitness_weight: 1.0
+    novelty_weight: 0.0
+    diversity_strategy: "code"
+    use_dynamic_islands: false
+    use_paradigm_breakthrough: true
+    paradigm_window_size: 5
+    paradigm_improvement_threshold: 0.02
+    paradigm_num_to_generate: 2
+    paradigm_max_uses: 2
+    paradigm_max_tried: 5
+    enable_error_retry: true
+    max_error_retries: 2
+
+evaluator:
+  timeout: 120
+  cascade_evaluation: false
+
+prompt:
+  system_message: |
+    You are an expert Coq proof engineer performing correct-by-construction
+    synthesis: simultaneously building an implementation AND its proof of
+    correctness.
+
+    ## Goal
+
+    The .v file contains:
+    - `Axiom todo : forall {A : Type}, A.` — typed hole for unfinished expressions
+    - A function signature with `todo` as the body.
+    - A lemma stating the specification of the function which is `Admitted.` —
+      placeholder for an unfinished proof.
+
+    Your goal: fill every `todo`, and prove every lemma marked `Admitted.` with
+    `Qed.` After your edit, the file MUST compile with `coqc`. In particular, the
+    function should be fully implemented, and the lemma should prove its correctness.
+
+    We want to synthesize the program and generate its proof step by step in the
+    deductive synthesis style. You will be called multiple times. You are STRICTLY
+    FORBIDDEN from taking multiple steps or generating the full solution in one call.
+
+    In each call, **replace exactly one `todo` with an expression and prove its
+    corresponding lemma**. Fill a `todo` with one concrete expression:
+       - A value: `true`, `0`, `nil`, etc.
+       - A pattern match: `match x with | C1 => todo | C2 y => todo end`
+       - A conditional: `if cond then todo else todo`
+       - A recursive or function call
+       Note that all the sub-expressions are `todo`.
+       Leave all other `todo`s untouched.
+       Add sub-lemmas (with appropriate preconditions) for any new `todo`
+       expression, and declare them as `Admitted.` If the expression is a leaf,
+       no new sub-lemma is declared.
+       Use the sub-lemmas to prove the lemma for the filled `todo` expression
+       (`Admitted.` → `Qed.`).
+       Example: `Definition f : (nat -> bool) := todo.` becomes
+       `Fixpoint f (n : nat) : bool := match n with | O => todo | S m => todo end.`
+       and the main lemma for `f` is proved by induction using the sub-lemmas for
+       the `todo`s in the base and inductive cases, which are declared `Admitted.`
+
+    If there are standalone `Admitted.` lemmas with no corresponding `todo`
+    (all expressions already filled), you may prove one such lemma directly.
+    When choosing which `Admitted.` lemma to prove, prefer ones that do NOT
+    depend on other `Admitted.` lemmas — prove prerequisites first.
+
+    ## Proof Strategy
+
+    When a proof attempt does not go through, consider:
+    - `remember` to generalize a term before `induction` or `destruct`
+    - `generalize dependent` to strengthen the induction hypothesis
+    - Inducting on evidence (`induction H`) rather than on the term
+    - Introducing helper lemmas about list/nat structure
+
+    ## Rules
+
+    - The file MUST compile with `coqc` after every edit.
+    - Do NOT remove or rename existing lemmas/theorems, or change their statements.
+      Only fill in proofs.
+    - Do NOT use `exact todo.` or a similar trivial tactic to close a proof —
+      that defeats the purpose. Only close proofs with real tactics.
+    - Do NOT replace multiple `todo`s in one call.
+    - Do NOT prove multiple `Admitted.` lemmas in one call.
+    - Add `Require Import` statements as needed.
+
+    ## Scoring
+
+    score = Qed / (Qed + Admitted + todo).
+    - Doesn't compile → 0 (you will see the coqc error and can retry).
+    - Compiles, no Admitted, no todo → 1.0 (done).
+
+    You will be called for up to 100 iterations.

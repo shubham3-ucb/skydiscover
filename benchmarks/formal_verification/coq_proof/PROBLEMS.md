@@ -2,49 +2,74 @@
 
 Each problem is a self-contained Coq file with function stubs (`todo`) and theorem stubs (`Admitted`).
 The LLM must co-synthesize the implementation and its machine-checked proof step by step.
-All solutions verified by `coqc` with score 1.0.
+One generic evaluator and prompt across all problems.
 
 ---
 
 ## all_less_than
 
-**What:** Check whether all elements of a `list nat` are less than a bound `n`.  
-**Why easy:** Single recursive function, one inductive proof by list cases. Trivial for a capable LLM.  
-**Solved:** iter 30/30 · 1 Qed  
-**Source:** Custom toy example used to prototype the benchmark setup.
+**What:** Check whether all elements of a `list nat` are less than a bound `n`.
+**Initial spec:** 1 `todo` function, 1 `Admitted` theorem.
+**Difficulty:** Easy. Single recursive function, one inductive proof.
+**Solved:** iter 1/50 · 1 Qed · GPT-5
+**Source:** Custom toy example.
 
 ---
 
 ## insertion_sort
 
-**What:** Implement insertion sort on `list nat` and prove the result is sorted.  
-**Why medium:** Requires a helper `insert` function, an `Inductive sorted` predicate, and a correctness proof that chains lemmas about `insert` preserving sortedness.  
-**Solved:** iter 30/30 · 5 Qed  
-**Source:** Inspired by SF Vol. 1 (Logical Foundations) — [Lists chapter](https://softwarefoundations.cis.upenn.edu/lf-current/Lists.html)
-
----
-
-## regex_matcher
-
-**What:** Implement a regex matcher via Brzozowski derivatives (`match_eps`, `derive`, `regex_match`) and prove correctness (`derive_corr`, `regex_match_correct`) against a relational `exp_match` spec.  
-**Why hard:** Requires knowing the derivative construction, careful 3-way case analysis in proofs, and use of `remember` / `induction on evidence` to avoid ill-typed induction. The `derive_corr` proof is a 50-line structural induction.  
-**Solved:** iter 12/50 · 14 Qed  
-**Source:** SF Vol. 1 — [IndProp chapter, regex exercises](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html)
+**What:** Implement a sorting function on `list nat` and prove it produces a sorted permutation of the input.
+**Initial spec:** 1 `todo` function (`sort`), 1 `Admitted` theorem. `Inductive sorted` and `is_a_sorting_algorithm` given.
+**Difficulty:** Medium. LLM must discover it needs a helper `insert` function and chain 4 sub-lemmas. SF exercises for this problem range 1–3 stars.
+**Solved:** iter 14/50 · 5 Qed (4 invented sub-lemmas) · GPT-5
+**Source:** SF Vol. 3 (VFA) — [Sort chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Sort.html)
 
 ---
 
 ## pigeonhole
 
-**What:** Define an `Inductive`-style `repeats` predicate (list has a duplicate) and prove the pigeonhole principle: if `|l1| > |l2|` and every element of `l1` is in `l2`, then `l1` has a repeat.  
-**Why hard:** The LLM must *invent* the right definition of `repeats`, then prove a theorem that requires `excluded_middle`, careful list surgery via `in_split`, and `lia` for length arithmetic. A 4-star SF exercise.  
-**Solved:** iter 5/50 · 2 Qed  
-**Source:** SF Vol. 1 — [IndProp chapter, pigeonhole exercise](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html#lab261)
+**What:** Define a `repeats` predicate (list has a duplicate) and prove the pigeonhole principle.
+**Initial spec:** 1 `todo` definition (`repeats`), 2 `Admitted` theorems (`in_split`, `pigeonhole_principle`).
+**Difficulty:** Hard (5★ advanced optional in SF). LLM must *invent* the definition of `repeats`, then prove a theorem requiring `excluded_middle`, list surgery via `in_split`, and `lia` for length arithmetic.
+**Solved:** iter 5/50 · 2 Qed · Gemini 3 Pro
+**Source:** SF Vol. 1 — [IndProp, pigeonhole exercise](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html#lab261)
+
+---
+
+## regex_matcher
+
+**What:** Implement a regex matcher via Brzozowski derivatives (`match_eps`, `derive`, `regex_match`) and prove correctness against a relational `exp_match` spec.
+**Initial spec:** 3 `todo` functions, 5 `Admitted` theorems, 9 given `Qed` helper lemmas. 164 lines.
+**Difficulty:** Hard. Individual SF exercises range 2–4 stars (hardest: `derive_corr` at 4★). Requires knowing the derivative construction, careful case analysis, and `remember` / induction-on-evidence.
+**Solved:** iter 12/50 · 14 Qed (5 new + 9 given) · Gemini 3 Pro
+**Source:** SF Vol. 1 — [IndProp, regex exercises](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html)
 
 ---
 
 ## bst_verification
 
-**What:** Implement `bound`, `lookup`, `insert` on a binary search tree (keyed by `nat`) and prove: `empty_tree_BST`, `ForallT_insert`, `insert_BST`, `lookup_insert_eq`, `lookup_insert_neq`.  
-**Why hard:** Requires 3-way key comparison (`k <? k'`, `k' <? k`), a non-trivial auxiliary lemma (`ForallT_insert`) that must be proved *before* `insert_BST`, and two commutativity-style equational proofs about `lookup ∘ insert`. Needs `lia` for arithmetic reasoning on keys.  
-**Solved:** iter 41/50 · 9 Qed  
+**What:** Implement `bound`, `lookup`, `insert` on a BST and prove invariant preservation and lookup correctness.
+**Initial spec:** 3 `todo` functions, 5 `Admitted` theorems. `ForallT`, `BST` inductive invariant given.
+**Difficulty:** Hard. SF exercises: `empty_tree_BST` (1★), `insert_BST` (3★), lookup theorems (2★ each). Requires 3-way key comparison, non-trivial auxiliary lemma ordering, equational proofs about `lookup ∘ insert`.
+**Solved:** iter 23/50 · 9 Qed (4 invented sub-lemmas) · Gemini 3 Pro
 **Source:** SF Vol. 3 (VFA) — [SearchTree chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/SearchTree.html)
+
+---
+
+## strong_pumping
+
+**What:** Prove the strong pumping lemma for regular expressions, including 4 helper lemmas and the main theorem.
+**Initial spec:** 5 `Admitted` (no implementation, pure proof). `pumping_constant` and `napp` functions given.
+**Difficulty:** Very hard (5★ advanced optional in SF). Deep nested induction on `exp_match` evidence with existential witnesses. No implementation — pure proof reasoning.
+**Status:** Running (100 iters, Gemini 3 Pro)
+**Source:** SF Vol. 1 — [IndProp, pumping exercise](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html)
+
+---
+
+## trie_adt
+
+**What:** Define the representation invariant `is_trie` for a binary trie, then prove 10 theorems relating trie operations to a `total_map` abstraction.
+**Initial spec:** 1 `todo` definition (`is_trie`), 10 `Admitted` theorems, 2 given `Qed` lemmas. `total_map` inlined from VFA/Maps. Uses stdlib `positive` type.
+**Difficulty:** Very hard. SF exercises range 1–3 stars individually, but the LLM must *invent* the representation invariant and prove abstraction theorems (`empty_relate`, `lookup_relate`, `insert_relate`) plus injectivity and structural lemmas.
+**Status:** Running (100 iters, Gemini 3 Pro)
+**Source:** SF Vol. 3 (VFA) — [Trie chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Trie.html)

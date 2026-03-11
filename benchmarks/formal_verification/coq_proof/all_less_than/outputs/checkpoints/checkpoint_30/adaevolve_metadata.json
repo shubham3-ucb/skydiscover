@@ -1,0 +1,290 @@
+{
+  "num_islands": 2,
+  "current_island": 0,
+  "iteration_count": 30,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.18999999999999995,
+        "best_score": 1.0,
+        "improvement_count": 2,
+        "total_evaluations": 17,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.18999999999999995,
+        "best_score": 1.0,
+        "improvement_count": 1,
+        "total_evaluations": 15,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      17,
+      15
+    ],
+    "dimension_rewards": [
+      0.3911931509798332,
+      0.22876792226193088
+    ],
+    "decayed_visits": [
+      8.332281830033345,
+      7.94108867905351
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "d198b48a-60cd-41f2-9cbc-6de2a42f85eb",
+      "e8f85ae1-5dab-4123-8150-bdf8eca08ceb",
+      "f40694bf-2cee-4675-86dc-a38fd1d03b13",
+      "8a5fea67-fb26-4349-9de5-0435ae1abfb6",
+      "7361665f-3193-4057-8fa6-3d3214ace1a9",
+      "a4ca3dfa-675f-4acc-8451-7f7641143162",
+      "d4809a66-dd34-4475-a339-d37af1a0818e",
+      "af8f7f7e-9534-4c33-b8f2-295bfbe7d068",
+      "f176e1ea-b0cc-4792-a2dd-e720c39a229d",
+      "b2b3cf6e-6cf5-414b-97a9-044b0713eb63"
+    ],
+    [
+      "0c06749d-6376-4218-a6a3-22849f21c361",
+      "c30444f9-a442-4947-8a5a-1c96fae72f0c",
+      "f998519b-387a-4615-96be-18450284f2ef",
+      "7e351ded-692f-4cc0-8948-a627aa311625",
+      "368c72b9-ac6c-47a5-a0ab-00766fb605cd",
+      "68311481-fead-4b9b-89e9-7921780b1241",
+      "59fd6680-6c7f-44a4-8ae9-439a03c3fa40",
+      "f2278653-0a1f-493a-8353-3e09e9eb2d15",
+      "22e67201-367c-4acc-af42-95000197e115",
+      "812788a9-93fa-4d52-83e0-7327a1bb98f3"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "d198b48a-60cd-41f2-9cbc-6de2a42f85eb": [],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "d198b48a-60cd-41f2-9cbc-6de2a42f85eb"
+        ],
+        "f40694bf-2cee-4675-86dc-a38fd1d03b13": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "8a5fea67-fb26-4349-9de5-0435ae1abfb6": [
+          "d198b48a-60cd-41f2-9cbc-6de2a42f85eb"
+        ],
+        "7361665f-3193-4057-8fa6-3d3214ace1a9": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "a4ca3dfa-675f-4acc-8451-7f7641143162": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "d4809a66-dd34-4475-a339-d37af1a0818e": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "af8f7f7e-9534-4c33-b8f2-295bfbe7d068": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "f176e1ea-b0cc-4792-a2dd-e720c39a229d": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "b2b3cf6e-6cf5-414b-97a9-044b0713eb63": [
+          "7e351ded-692f-4cc0-8948-a627aa311625"
+        ]
+      },
+      "children": {
+        "d198b48a-60cd-41f2-9cbc-6de2a42f85eb": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb",
+          "8a5fea67-fb26-4349-9de5-0435ae1abfb6"
+        ],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "f40694bf-2cee-4675-86dc-a38fd1d03b13",
+          "7361665f-3193-4057-8fa6-3d3214ace1a9",
+          "d4809a66-dd34-4475-a339-d37af1a0818e",
+          "af8f7f7e-9534-4c33-b8f2-295bfbe7d068",
+          "f176e1ea-b0cc-4792-a2dd-e720c39a229d"
+        ],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "a4ca3dfa-675f-4acc-8451-7f7641143162"
+        ],
+        "7e351ded-692f-4cc0-8948-a627aa311625": [
+          "b2b3cf6e-6cf5-414b-97a9-044b0713eb63"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "0c06749d-6376-4218-a6a3-22849f21c361": [],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "0c06749d-6376-4218-a6a3-22849f21c361"
+        ],
+        "f998519b-387a-4615-96be-18450284f2ef": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "7e351ded-692f-4cc0-8948-a627aa311625": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "368c72b9-ac6c-47a5-a0ab-00766fb605cd": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "68311481-fead-4b9b-89e9-7921780b1241": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "59fd6680-6c7f-44a4-8ae9-439a03c3fa40": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "f2278653-0a1f-493a-8353-3e09e9eb2d15": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "22e67201-367c-4acc-af42-95000197e115": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "812788a9-93fa-4d52-83e0-7327a1bb98f3": [
+          "f40694bf-2cee-4675-86dc-a38fd1d03b13"
+        ]
+      },
+      "children": {
+        "0c06749d-6376-4218-a6a3-22849f21c361": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "f998519b-387a-4615-96be-18450284f2ef",
+          "7e351ded-692f-4cc0-8948-a627aa311625"
+        ],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "368c72b9-ac6c-47a5-a0ab-00766fb605cd",
+          "68311481-fead-4b9b-89e9-7921780b1241",
+          "59fd6680-6c7f-44a4-8ae9-439a03c3fa40",
+          "f2278653-0a1f-493a-8353-3e09e9eb2d15",
+          "22e67201-367c-4acc-af42-95000197e115"
+        ],
+        "f40694bf-2cee-4675-86dc-a38fd1d03b13": [
+          "812788a9-93fa-4d52-83e0-7327a1bb98f3"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Template selection via string similarity using difflib.get_close_matches",
+        "description": "Maintain a small library of proven Coq templates/snippets (both code skeletons and proof scripts) keyed by short textual cues extracted from goals and surrounding context. For each selected todo or Admitted proof, build a concise context string (e.g., head symbol of the goal, available hypotheses, and nearby comments). Use difflib.get_close_matches to retrieve the top-k closest templates by textual similarity to that context. Insert the best-matching template directly, then minimally adapt only identifiers (e.g., variable names) deterministically. This allows one-step insertions that are syntactically and proof-pattern aligned, reducing compile failures and increasing Qed completions. Because the call returns ranked candidates, you can pick the first match or probabilistically sample among top matches to balance exploitation and exploration. This is a single-function decision core that avoids brittle regex logic and does not require external compilers for selection.",
+        "what_to_optimize": "combined_score",
+        "cautions": "Ensure the context string is stable and concise to avoid noise; set a sensible cutoff to avoid very weak matches; guard against variable capture by consistent renaming; keep the template library curated and deduplicated; handle the case of no matches by falling back to a safe minimal skeleton.",
+        "approach_type": "difflib.get_close_matches"
+      },
+      {
+        "idea": "Batch assignment of candidate fixes to multiple obligations using scipy.optimize.linear_sum_assignment",
+        "description": "When multiple todos/Admitted items exist, generate a small, fixed set of candidate patches per obligation (e.g., 2\u20134 plausible expressions or proof outlines). Define a lightweight, static score for each candidate-obligation pair based on structural compatibility features (e.g., number of matching constructors, expected induction availability, or goal head symbol). Assemble these scores into a cost matrix and apply scipy.optimize.linear_sum_assignment to compute an optimal one-to-one assignment of candidates to obligations that maximizes total expected gain (converted to a minimization cost). Apply the assigned patches in a single coherent batch to minimize cross-interference and rework. This approach reduces duplicate effort, exploits global structure, and boosts the likelihood of multiple Qed per iteration. It is a single-function combinatorial core that is fundamentally different from linear programming and regex-based selection.",
+        "what_to_optimize": "combined_score",
+        "cautions": "Normalize and bound costs to avoid numerical issues; ensure matrix is square by padding with dummy candidates/obligations if needed; avoid assigning the same candidate to multiple obligations by respecting the one-to-one constraint; validate that each candidate is syntactically applicable before building the matrix; prefer conservative candidates to ensure compilation stability.",
+        "approach_type": "scipy.optimize.linear_sum_assignment"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Tight compile-and-score loop with subprocess to gate edits",
+        "description": "Wrap each tentative single-obligation edit in a compile gate by invoking coqc with subprocess.run to verify that the file still compiles. If compilation succeeds, compute the new score by counting Qed./Admitted./todo occurrences and accept only if the combined_score does not decrease; otherwise revert the change. Capture stderr to surface exact Coq errors for targeted repair and to refine generation heuristics (e.g., missing constructors, wrong arity). Use a short timeout to prevent stalls and fail fast on long-running proofs. When no todos remain, switch the target to the first 'Admitted.' proof and attempt a localized proof patch, again guarded by a compile-and-score check. This simple execution loop provides immediate, reliable feedback and prevents regressions across iterations. It also enforces the single-change rule by compiling after each atomic edit.",
+        "what_to_optimize": "combined_score stability and monotonic improvement by only accepting edits that compile and do not introduce new Admitted or todo markers",
+        "cautions": "Set reasonable timeouts and handle timeouts as failures to revert safely. Pass the correct working directory and file path, and capture both stdout and stderr to avoid deadlocks. Ensure only one file is compiled to keep the loop fast. Be careful not to mask warnings that could hint at impending failures.",
+        "approach_type": "subprocess.run",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Deterministic single-edit synthesis via regex replacement",
+        "description": "Use Python's regular expression substitution to deterministically replace exactly one occurrence of Axiom-backed 'todo' with a safe, compilable skeleton. The core operation is a single re.sub call with a callback (function match) that injects a pattern-match or leaf constant tailored to the local context (e.g., if the signature is Fixpoint over list, inject 'match l with | nil => todo | _ :: _ => todo end' to preserve types). The regex captures the smallest enclosing definition body ':= todo.' to avoid unintended edits elsewhere. Ensure the replacement also inserts minimal scaffolding proofs or sub-lemmas marked Admitted only when absolutely necessary to keep the file compiling in one pass. This approach strictly performs one textual transformation per iteration, preserving the evaluator\u2019s rule of one change at a time. Prefer leaf constants when the return type is easily inferred (e.g., bool \u2192 true, nat \u2192 0, list \u2192 nil), and otherwise choose a match-skeleton. Keep the pattern stable and predictable to maximize forward progress in subsequent iterations. This strategy keeps the file compiling while steadily decreasing the todo count.",
+        "what_to_optimize": "combined_score by reducing the todo count without increasing Admitted proofs unnecessarily; maintain compilation success across iterations",
+        "cautions": "Ensure the regex is precise to avoid touching the Axiom todo declaration; verify exactly one replacement per iteration; preserve Coq syntax (whitespace, periods, and indentation are not significant but delimiters are); avoid introducing multiple new todos beyond the required skeleton; match the return type to a valid placeholder term to keep type-checking intact",
+        "approach_type": "re.sub",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Validation-driven leaf insertion using coqc as an oracle",
+        "description": "Leverage a subprocess call to Coq (coqc) as an oracle to validate candidate leaf replacements for a single 'todo'. Prepare a small, typed dictionary of canonical leaf terms by return type (e.g., bool \u2192 true, nat \u2192 0, list _ \u2192 nil, option _ \u2192 None, unit \u2192 tt) and attempt a single candidate insertion by textual replacement. Use subprocess.run to compile immediately after inserting one candidate; if it compiles, commit the change; if not, roll back and try the next candidate in the dictionary. This keeps each iteration to a single validation call, aligning with the single-function constraint where subprocess.run is the core operation. Start with the most general, type-likely constants to minimize the need for scaffolding. This method is robust across diverse contexts because type errors are caught by Coq, and only successful patches are kept. Over time, this steadily eliminates todos while preserving compilation and improving the combined score.",
+        "what_to_optimize": "combined_score via safe, incremental elimination of todos with compilation-checked edits; minimize added Admitted proofs",
+        "cautions": "Respect the rule of exactly one edit per iteration; guard against timeouts in coqc; ensure file paths and working directory are correct; always restore the original file on a failed attempt before trying the next candidate; limit the candidate set per iteration to avoid excessive compile attempts within the timeout",
+        "approach_type": "subprocess.run",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use difflib.get_close_matches for nearest-template retrieval",
+        "description": "Maintain a small library of proven Coq snippets (definitions and proofs) keyed by short textual signatures of goals (e.g., top symbol names, head constructor, and size). For the current obligation, build a concise string signature from the goal and the immediate context (e.g., \"Fixpoint on list nat with Nat.ltb and andb\"). Call difflib.get_close_matches to retrieve the most similar template signature from the library. Use the associated template to generate the next edit (either a pattern match skeleton or a standard lemma structure like Forall/ltb equivalences) in a single step. Calibrate the cutoff parameter to avoid spurious matches; if no match is above the threshold, fall back to a safe default edit (like a minimal pattern match introducing exactly one new todo per branch). This retrieval-based step is O(n) over the template keys and is robust to minor syntactic differences. It directly targets producing compilable edits and tends to reduce the number of new todos by leveraging high-fidelity templates. Over time, keep only templates that led to successful Qed to improve precision.",
+        "what_to_optimize": "combined_score (maximize Qed count while minimizing new todos and Admitted lemmas)",
+        "cautions": "Ensure the signature extraction is deterministic and short to avoid noisy matches; set a reasonable cutoff (e.g., 0.85) to prevent poor fits. Handle the empty-library case gracefully by returning a safe default. Watch for overly generic templates that may introduce too many todos; prefer templates with few placeholders. Normalize whitespace and strip identifiers that vary across problems to improve matching quality. Verify that the selected template compiles after substitution; if it fails, immediately revert and try the next match.",
+        "approach_type": "difflib.get_close_matches",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use scipy.spatial.cKDTree.query for vector-space nearest neighbor of obligations",
+        "description": "Embed each obligation (goal + context) into a fixed-length numeric feature vector (e.g., counts of constructors/tactics seen, goal size, presence flags for standard library lemmas). Build a cKDTree once from a corpus of previously solved obligations and their successful edits. For a new obligation, compute its feature vector and call cKDTree.query to get the nearest solved case in Euclidean space. Reuse the associated edit pattern (e.g., a specific match/induction skeleton or a canonical lemma to Rewrite) to produce a one-shot code edit that tends to compile. This approach is fast (logarithmic query) and scales to thousands of exemplars while staying within a single query call per decision. It is fundamentally different from graph or optimization-based selection and exploits metric structure in obligation space. The method can be extended with distance thresholds to avoid applying low-similarity patches and fallback to conservative skeletons. Periodically refresh the tree with newly solved obligations to improve coverage.",
+        "what_to_optimize": "combined_score by increasing Qed per step and reducing the rate of non-compiling edits",
+        "cautions": "Keep feature vectors normalized so distance is meaningful; use simple bounded counts and binary flags to avoid dominance by large values. Guard against empty or tiny corpora with a deterministic fallback. Ensure the KDTree and query dimensions match exactly; validate vector shapes at build and query time. Choose k=1 or small k with tie-breaking to avoid inconsistent selections. Cache the tree across iterations to avoid rebuild overhead and keep run time under the evaluator timeout.",
+        "approach_type": "scipy.spatial.cKDTree.query",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

@@ -8,10 +8,17 @@
 
 **Approach:** SkyDiscover evolves a Coq `.v` file iteratively. Each iteration the LLM takes one deductive step — fill one `todo`, prove its lemma — until the file compiles fully with no holes.
 
-**Results so far:**
-- `all_less_than` (easy): solved at iteration 1, score 1.0
-- `insertion_sort` (medium): solved at iteration 14, score 1.0
-- `regex_matcher` (hard): 13/14 proofs in 30 iterations, score 0.929
+**Results:**
+
+| Problem | Difficulty | Solved | Iter | Score |
+|---|---|---|---|---|
+| all_less_than | Easy | Yes | 1 | 1.0 |
+| insertion_sort | Medium | Yes | 14 | 1.0 |
+| regex_matcher | Hard | Yes | 12 | 1.0 |
+| pigeonhole | Hard | Yes | 5 | 1.0 |
+| bst_verification | Hard | Yes | 23 | 1.0 |
+| strong_pumping | 5-star | Running | — | — |
+| trie_adt | Hard (ADT) | Running | — | — |
 
 ---
 
@@ -31,7 +38,7 @@
 One action per LLM call: replace one `todo` with a concrete expression, prove its parent lemma to `Qed.`, add sub-lemmas as `Admitted.` for any new `todo`s introduced. Enforced via prompt only — not mechanically. If the LLM takes a bigger leap and it compiles, fine. If it breaks, score = 0 and retry fires.
 
 ### 2. Backtracking
-No explicit proof tree. The search maintains a population of partial solutions at different progress levels. A broken state (score = 0) causes the sampler to pick a different parent. When all islands stagnate, paradigm breakthrough generates a qualitatively new high-level strategy.
+No explicit proof tree. AdaEvolve maintains a population of partial solutions at different progress levels. A broken state (score = 0) causes the sampler to pick a different parent. When all islands stagnate, paradigm breakthrough generates a qualitatively new high-level strategy.
 
 ### 3. Scoring
 | State | Score |
@@ -40,34 +47,33 @@ No explicit proof tree. The search maintains a population of partial solutions a
 | Compiles, work remaining | `Qed / (Qed + Admitted + todo)` |
 | Fully done | `1.0` |
 
-`Qed / (Qed + Admitted + todo)` honestly reflects proximity to completion. It can temporarily dip when the LLM decomposes a `todo` into sub-expressions (adding new `Admitted`/`todo`) — this is the correct signal.
+Score can temporarily dip when the LLM decomposes a `todo` into sub-expressions (adding new `Admitted`/`todo`). AdaEvolve handles this — a monotonic search like `best_of_n` would reject valid progress.
 
-**Known limitation:** No partial credit for a proof attempt that fails to compile. Causes flat score plateaus when the LLM is stuck on one hard lemma — observed in `regex_matcher` on `star_ne` and `derive_corr`.
+**Known limitation:** No partial credit for a proof attempt that fails to compile. Causes flat score plateaus when the LLM is stuck on one hard lemma.
 
 ### 4. Feedback to LLM
 - `metrics["error"]` — coqc stderr on compile failure, shown on retry
-- `artifacts["feedback"]` — natural language count of remaining `Admitted`/`todo` and what to do next; injected into the prompt automatically
+- `artifacts["feedback"]` — natural language count of remaining `Admitted`/`todo` and what to do next
 
 ### 5. Search
-AdaEvolve (multi-island population search). Key reason: individual steps can temporarily lower the score when the LLM adds new sub-lemmas — a monotonic search like `best_of_n` would reject these valid progress states.
+AdaEvolve (multi-island population search). Non-monotonic scoring requires population diversity — single-path search rejects valid decomposition steps.
 
 ### 6. Prompt
-Fully generic — no problem-specific content. Covers: the one-step action definition, prerequisite ordering (prove independent `Admitted.` lemmas before dependent ones), standard Coq tactic hints (`remember`, `generalize dependent`, induction on evidence). Anti-gaming rules prevent closing proofs with `exact todo` or trivial axiom applications.
+Fully generic — no problem-specific content. Covers: the one-step action definition, prerequisite ordering, standard Coq tactic hints (`remember`, `generalize dependent`, induction on evidence). Anti-gaming rules prevent closing proofs with `exact todo`.
 
 ### 7. Initial program shape
-`Definition f := todo.` + `Theorem spec ... Proof. Admitted.` Pre-proved helper lemmas in the initial file are fine — they raise the starting score, but `1.0` is only reached when all `Admitted.` and `todo` are gone.
+`Definition f := todo.` + `Theorem spec ... Proof. Admitted.` Pre-proved helper lemmas are fine — they raise the starting score, but `1.0` requires all `Admitted.` and `todo` gone.
 
 ### 8. Typed holes
-`Axiom todo : forall {A : Type}, A.` — a Coq idiom for a typed hole at any type. The evaluator excludes this declaration itself from the `todo` count.
+`Axiom todo : forall {A : Type}, A.` — a Coq idiom for a typed hole at any type. The evaluator excludes this declaration from the `todo` count.
 
 ### 9. LLM owns all synthesis decisions
-Implementation algorithm, sub-lemma statements, proof tactics — all by the LLM. The system provides no hints about proof structure or algorithm. This is the point: can LLMs discover correct decompositions on their own?
+Implementation algorithm, sub-lemma statements, proof tactics — all by the LLM. The system provides no hints about proof structure or algorithm.
 
 ---
 
 ## Open Questions
 
-- **Plateau**: stuck on one hard lemma → score flat, no gradient. Directions: expose coqc goal state as feedback, add partial proof credit, structured stagnation recovery.
-- **Dependency inference**: LLM must read code to know which `Admitted.` lemmas block others. Explicit dependency graph in feedback could help prioritize.
-- **Iteration budget**: `regex_matcher` saturates near 0.93 in 50 iterations. The missing proof (`star_ne`) requires a non-obvious induction strategy — more iterations of the same approach won't help; a different decomposition is needed.
-- **Scoring granularity**: score is binary per obligation (proved or not). A finer signal — e.g. how many subgoals remain in an open proof — could help escape plateaus without full credit.
+- **Plateau problem:** Stuck on one hard lemma → score flat, no gradient. Directions: expose Coq goal state as feedback, partial credit for proof subgoals.
+- **Dependency inference:** LLM must read code to know which `Admitted.` lemmas block others. Explicit dependency graph in feedback could help.
+- **Scoring granularity:** Score is binary per obligation (proved or not). Finer signal (e.g. remaining subgoals) could help escape plateaus.

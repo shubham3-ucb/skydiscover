@@ -1,0 +1,745 @@
+2026-03-11 01:07:47,053 - skydiscover.search.utils.logging_utils - INFO - Logging to benchmarks/formal_verification/coq_proof/bst_verification/outputs/logs/adaevolve_20260311_010747.log
+2026-03-11 01:07:47,054 - skydiscover.search.adaevolve.database - INFO - AdaEvolveDatabase initialized: num_islands=2, decay=0.9, intensity=[0.15, 0.5], migration=True (interval=10), unified_archive=True, adaptive_search=True, ucb_selection=True, dynamic_islands=False, paradigm_breakthrough=True
+2026-03-11 01:07:47,054 - skydiscover.runner - INFO - Runner ready: search=adaevolve, program=benchmarks/formal_verification/coq_proof/bst_verification/initial_program.v
+2026-03-11 01:07:47,100 - skydiscover.llm - INFO - Gemini LLM: gemini-3-pro-preview
+2026-03-11 01:07:47,123 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with benchmarks/formal_verification/coq_proof/bst_verification/evaluator.py
+2026-03-11 01:07:47,124 - skydiscover.search.default_discovery_controller - INFO - DiscoveryController initialized: num_context_programs=2
+2026-03-11 01:07:47,135 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with benchmarks/formal_verification/coq_proof/bst_verification/evaluator.py
+2026-03-11 01:07:47,135 - skydiscover.search.adaevolve.controller - INFO - Paradigm LLM: using guide_models [gemini-3-pro-preview]
+2026-03-11 01:07:47,135 - skydiscover.search.adaevolve.controller - INFO - AdaEvolveController initialized (language=coq, paradigm_breakthrough=True)
+2026-03-11 01:07:47,135 - skydiscover.runner - INFO - Adding initial program to database
+2026-03-11 01:07:47,460 - skydiscover.evaluation.evaluator - INFO - Evaluated program f1921b49-ee46-4ad0-829d-b092acb2f05a in 0.32s: combined_score=0.0000, compiles=1.0000, qed_count=0.0000, admitted_count=5.0000, todo_count=3.0000, code_length=62.0000, done=0.0000
+2026-03-11 01:07:47,460 - skydiscover.search.base_database - INFO - Database has 1 programs, best program score is 0.000000
+2026-03-11 01:07:47,460 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve: Running 50 iterations across 2 islands
+2026-03-11 01:07:47,460 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve iteration stats will be logged to: benchmarks/formal_verification/coq_proof/bst_verification/outputs/adaevolve_iteration_stats_20260311_010747.jsonl
+2026-03-11 01:07:47,461 - skydiscover.search.adaevolve.controller - INFO - Seeded island 1
+2026-03-11 01:08:45,739 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:08:46,124 - skydiscover.evaluation.evaluator - INFO - Evaluated program e277de4c-bd63-4053-af04-2db51ebbf3ff in 0.37s: combined_score=0.1250, compiles=1.0000, qed_count=1.0000, admitted_count=4.0000, todo_count=3.0000, code_length=64.0000, done=0.0000
+2026-03-11 01:08:46,124 - skydiscover.search.adaevolve.controller - INFO - Iteration 1: Program e277de4c (parent: f1921b49) completed in 58.66s
+2026-03-11 01:08:46,124 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.1250, compiles=1.0000, qed_count=1.0000, admitted_count=4.0000, todo_count=3.0000, code_length=64.0000, done=0.0000
+2026-03-11 01:08:46,124 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 1
+2026-03-11 01:08:53,920 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:08:54,190 - skydiscover.evaluation.evaluator - INFO - Evaluated program f7c5fe3c-e5f2-4247-8c08-6303f6aad86c in 0.27s: combined_score=0.1250, compiles=1.0000, qed_count=1.0000, admitted_count=4.0000, todo_count=3.0000, code_length=64.0000, done=0.0000
+2026-03-11 01:08:54,191 - skydiscover.search.adaevolve.controller - INFO - Iteration 2: Program f7c5fe3c (parent: 3d67b221) completed in 8.06s
+2026-03-11 01:08:54,191 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.1250, compiles=1.0000, qed_count=1.0000, admitted_count=4.0000, todo_count=3.0000, code_length=64.0000, done=0.0000
+2026-03-11 01:11:00,797 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:11:01,224 - skydiscover.evaluation.evaluator - INFO - Evaluated program 49ff5735-0ca6-4bd4-a85c-14337b8e5fcc in 0.39s: combined_score=0.2308, compiles=1.0000, qed_count=3.0000, admitted_count=6.0000, todo_count=4.0000, code_length=105.0000, done=0.0000
+2026-03-11 01:11:01,225 - skydiscover.search.adaevolve.controller - INFO - Iteration 3: Program 49ff5735 (parent: f7c5fe3c) completed in 127.03s
+2026-03-11 01:11:01,225 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.2308, compiles=1.0000, qed_count=3.0000, admitted_count=6.0000, todo_count=4.0000, code_length=105.0000, done=0.0000
+2026-03-11 01:11:01,225 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 3
+2026-03-11 01:11:32,420 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:11:32,737 - skydiscover.evaluation.evaluator - INFO - Evaluated program fbd70cea-818f-42b7-b714-2e505bf39111 in 0.31s: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=4.0000, todo_count=3.0000, code_length=113.0000, done=0.0000, error=File "./tmpf5cxwbyw.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpf5cxwbyw.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpf5cxwbyw.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpf5cxwbyw.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpf5cxwbyw.v", line 56, characters 0-4:
+Error:  (in proof ForallT_insert_E): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:11:32,738 - skydiscover.search.adaevolve.controller - INFO - Iteration 4: Program fbd70cea (parent: 49ff5735) completed in 31.51s
+2026-03-11 01:11:32,738 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=4.0000, todo_count=3.0000, code_length=113.0000, done=0.0000, error=File "./tmpf5cxwbyw.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpf5cxwbyw.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpf5cxwbyw.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpf5cxwbyw.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpf5cxwbyw.v", line 56, characters 0-4:
+Error:  (in proof ForallT_insert_E): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:13:22,158 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:13:22,507 - skydiscover.evaluation.evaluator - INFO - Evaluated program 20074a90-145f-480c-844c-d9a7c426f416 in 0.31s: combined_score=0.1818, compiles=1.0000, qed_count=2.0000, admitted_count=5.0000, todo_count=4.0000, code_length=89.0000, done=0.0000
+2026-03-11 01:13:22,509 - skydiscover.search.adaevolve.controller - INFO - Iteration 5: Program 20074a90 (parent: e277de4c) completed in 109.76s
+2026-03-11 01:13:22,509 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.1818, compiles=1.0000, qed_count=2.0000, admitted_count=5.0000, todo_count=4.0000, code_length=89.0000, done=0.0000
+2026-03-11 01:13:22,509 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 5
+2026-03-11 01:13:22,509 - skydiscover.search.base_database - INFO - Database has 7 programs, best program score is 0.230769
+2026-03-11 01:13:22,511 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 7 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_5
+2026-03-11 01:13:22,512 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_5
+2026-03-11 01:13:22,512 - skydiscover.runner - INFO - Checkpoint 5: best=combined_score=0.2308, compiles=1.0000, qed_count=3.0000, admitted_count=6.0000, todo_count=4.0000, code_length=105.0000, done=0.0000
+2026-03-11 01:13:22,512 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_5
+2026-03-11 01:14:02,420 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:14:02,774 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9235c0b3-c3bf-4d3b-9011-2160d29f487c in 0.35s: combined_score=0.0000, compiles=0.0000, qed_count=3.0000, admitted_count=4.0000, todo_count=3.0000, code_length=92.0000, done=0.0000, error=File "./tmpl6wpw8qm.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpl6wpw8qm.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpl6wpw8qm.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpl6wpw8qm.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpl6wpw8qm.v", line 57, characters 0-4:
+Error:  (in proof ForallT_insert_E): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:14:02,774 - skydiscover.search.adaevolve.controller - INFO - Iteration 6: Program 9235c0b3 (parent: 20074a90) completed in 40.26s
+2026-03-11 01:14:02,774 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=3.0000, admitted_count=4.0000, todo_count=3.0000, code_length=92.0000, done=0.0000, error=File "./tmpl6wpw8qm.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpl6wpw8qm.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpl6wpw8qm.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpl6wpw8qm.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpl6wpw8qm.v", line 57, characters 0-4:
+Error:  (in proof ForallT_insert_E): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:14:24,154 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:14:24,377 - skydiscover.evaluation.evaluator - INFO - Evaluated program 647c7883-78fc-4303-ba02-7d183ca90584 in 0.22s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=5.0000, todo_count=3.0000, code_length=111.0000, done=0.0000, error=File "./tmp4dx20vqc.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp4dx20vqc.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp4dx20vqc.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp4dx20vqc.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp4dx20vqc.v", line 57, characters 2-7:
+Error: Not an inductive definition.
+
+
+2026-03-11 01:14:24,378 - skydiscover.search.adaevolve.controller - INFO - Iteration 7: Program 647c7883 (parent: 49ff5735) completed in 21.60s
+2026-03-11 01:14:24,378 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=5.0000, todo_count=3.0000, code_length=111.0000, done=0.0000, error=File "./tmp4dx20vqc.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp4dx20vqc.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp4dx20vqc.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp4dx20vqc.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp4dx20vqc.v", line 57, characters 2-7:
+Error: Not an inductive definition.
+
+
+2026-03-11 01:16:08,107 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:16:08,482 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3 in 0.34s: combined_score=0.4444, compiles=1.0000, qed_count=4.0000, admitted_count=3.0000, todo_count=2.0000, code_length=100.0000, done=0.0000
+2026-03-11 01:16:08,483 - skydiscover.search.adaevolve.controller - INFO - Iteration 8: Program 3bfef7ee (parent: 9235c0b3) completed in 104.09s
+2026-03-11 01:16:08,483 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.4444, compiles=1.0000, qed_count=4.0000, admitted_count=3.0000, todo_count=2.0000, code_length=100.0000, done=0.0000
+2026-03-11 01:16:08,483 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 8
+2026-03-11 01:18:26,033 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:18:26,312 - skydiscover.evaluation.evaluator - INFO - Evaluated program 2910a15a-d629-4888-a2a5-410ac790aac9 in 0.23s: combined_score=0.6250, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=1.0000, code_length=120.0000, done=0.0000
+2026-03-11 01:18:26,312 - skydiscover.search.adaevolve.controller - INFO - Iteration 9: Program 2910a15a (parent: 3bfef7ee) completed in 137.82s
+2026-03-11 01:18:26,312 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.6250, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=1.0000, code_length=120.0000, done=0.0000
+2026-03-11 01:18:26,312 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 9
+2026-03-11 01:19:46,259 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:19:46,659 - skydiscover.evaluation.evaluator - INFO - Evaluated program f226e3ea-c94a-4fb1-847a-e739d6816dff in 0.37s: combined_score=0.4545, compiles=1.0000, qed_count=5.0000, admitted_count=4.0000, todo_count=2.0000, code_length=133.0000, done=0.0000
+2026-03-11 01:19:46,659 - skydiscover.search.adaevolve.controller - INFO - Iteration 10: Program f226e3ea (parent: 647c7883) completed in 80.33s
+2026-03-11 01:19:46,659 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.4545, compiles=1.0000, qed_count=5.0000, admitted_count=4.0000, todo_count=2.0000, code_length=133.0000, done=0.0000
+2026-03-11 01:19:46,659 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 10
+2026-03-11 01:19:46,659 - skydiscover.search.base_database - INFO - Database has 12 programs, best program score is 0.625000
+2026-03-11 01:19:46,663 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 12 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_10
+2026-03-11 01:19:46,664 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_10
+2026-03-11 01:19:46,664 - skydiscover.runner - INFO - Checkpoint 10: best=combined_score=0.6250, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=1.0000, code_length=120.0000, done=0.0000
+2026-03-11 01:19:46,664 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_10
+2026-03-11 01:19:46,679 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 10
+2026-03-11 01:21:15,931 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:21:16,335 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9dfb0733-0105-466d-91df-4a701646e565 in 0.37s: combined_score=0.6250, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=1.0000, code_length=126.0000, done=0.0000
+2026-03-11 01:21:16,336 - skydiscover.search.adaevolve.controller - INFO - Iteration 11: Program 9dfb0733 (parent: 3bfef7ee) completed in 89.64s
+2026-03-11 01:21:16,336 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.6250, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=1.0000, code_length=126.0000, done=0.0000
+2026-03-11 01:23:12,940 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:23:13,332 - skydiscover.evaluation.evaluator - INFO - Evaluated program d7ea211e-03ed-4293-9803-acc7a6d3ed72 in 0.35s: combined_score=0.5455, compiles=1.0000, qed_count=6.0000, admitted_count=3.0000, todo_count=2.0000, code_length=160.0000, done=0.0000
+2026-03-11 01:23:13,332 - skydiscover.search.adaevolve.controller - INFO - Iteration 12: Program d7ea211e (parent: f226e3ea) completed in 116.94s
+2026-03-11 01:23:13,332 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.5455, compiles=1.0000, qed_count=6.0000, admitted_count=3.0000, todo_count=2.0000, code_length=160.0000, done=0.0000
+2026-03-11 01:24:04,814 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:24:05,196 - skydiscover.evaluation.evaluator - INFO - Evaluated program b151c4d0-a36e-4fb1-a379-f231750b0653 in 0.38s: combined_score=0.4545, compiles=1.0000, qed_count=5.0000, admitted_count=4.0000, todo_count=2.0000, code_length=133.0000, done=0.0000
+2026-03-11 01:24:05,206 - skydiscover.search.adaevolve.controller - INFO - Iteration 13: Program b151c4d0 (parent: 647c7883) completed in 51.82s
+2026-03-11 01:24:05,207 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.4545, compiles=1.0000, qed_count=5.0000, admitted_count=4.0000, todo_count=2.0000, code_length=133.0000, done=0.0000
+2026-03-11 01:25:03,794 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:25:04,184 - skydiscover.evaluation.evaluator - INFO - Evaluated program fd21b10a-b835-47a3-b6af-7e44675066d1 in 0.38s: combined_score=0.7000, compiles=1.0000, qed_count=7.0000, admitted_count=2.0000, todo_count=1.0000, code_length=180.0000, done=0.0000
+2026-03-11 01:25:04,196 - skydiscover.search.adaevolve.controller - INFO - Iteration 14: Program fd21b10a (parent: d7ea211e) completed in 58.97s
+2026-03-11 01:25:04,197 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.7000, compiles=1.0000, qed_count=7.0000, admitted_count=2.0000, todo_count=1.0000, code_length=180.0000, done=0.0000
+2026-03-11 01:25:04,197 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 14
+2026-03-11 01:25:35,951 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:25:36,316 - skydiscover.evaluation.evaluator - INFO - Evaluated program fa1645b6-4566-4a7a-8441-1f7d7f5886ca in 0.35s: combined_score=0.5556, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=2.0000, code_length=124.0000, done=0.0000
+2026-03-11 01:25:36,317 - skydiscover.search.adaevolve.controller - INFO - Iteration 15: Program fa1645b6 (parent: 2910a15a) completed in 32.07s
+2026-03-11 01:25:36,317 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.5556, compiles=1.0000, qed_count=5.0000, admitted_count=2.0000, todo_count=2.0000, code_length=124.0000, done=0.0000
+2026-03-11 01:25:36,317 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 15
+2026-03-11 01:25:36,317 - skydiscover.search.base_database - INFO - Database has 20 programs, best program score is 0.700000
+2026-03-11 01:25:36,320 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 19 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_15
+2026-03-11 01:25:36,321 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_15
+2026-03-11 01:25:36,321 - skydiscover.runner - INFO - Checkpoint 15: best=combined_score=0.7000, compiles=1.0000, qed_count=7.0000, admitted_count=2.0000, todo_count=1.0000, code_length=180.0000, done=0.0000
+2026-03-11 01:25:36,321 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_15
+2026-03-11 01:27:55,154 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:27:55,558 - skydiscover.evaluation.evaluator - INFO - Evaluated program d6f3cae7-7f22-42d1-af95-65d877be7fd2 in 0.36s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=5.0000, todo_count=6.0000, code_length=89.0000, done=0.0000, error=File "./tmp6qcctuc8.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp6qcctuc8.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6qcctuc8.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6qcctuc8.v", line 38, characters 0-129:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6qcctuc8.v", line 68, characters 11-35:
+Error:
+In environment
+V : Type
+P : key -> V -> Prop
+Ht : ForallT P E
+k : key
+v : V
+Hkv : P k v
+Unable to unify "ForallT P todo" with "ForallT P (insert k v E)".
+
+
+2026-03-11 01:27:55,568 - skydiscover.search.adaevolve.controller - INFO - Iteration 16: Program d6f3cae7 (parent: f7c5fe3c) completed in 139.20s
+2026-03-11 01:27:55,568 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=5.0000, todo_count=6.0000, code_length=89.0000, done=0.0000, error=File "./tmp6qcctuc8.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp6qcctuc8.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6qcctuc8.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6qcctuc8.v", line 38, characters 0-129:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6qcctuc8.v", line 68, characters 11-35:
+Error:
+In environment
+V : Type
+P : key -> V -> Prop
+Ht : ForallT P E
+k : key
+v : V
+Hkv : P k v
+Unable to unify "ForallT P todo" with "ForallT P (insert k v E)".
+
+
+2026-03-11 01:28:29,971 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:28:30,325 - skydiscover.evaluation.evaluator - INFO - Evaluated program 429eb670-02f1-4065-9076-ed826f5e9bf4 in 0.35s: combined_score=0.8000, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=1.0000, code_length=186.0000, done=0.0000
+2026-03-11 01:28:30,337 - skydiscover.search.adaevolve.controller - INFO - Iteration 17: Program 429eb670 (parent: fd21b10a) completed in 34.75s
+2026-03-11 01:28:30,339 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.8000, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=1.0000, code_length=186.0000, done=0.0000
+2026-03-11 01:28:30,339 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 17
+2026-03-11 01:29:33,785 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:29:34,156 - skydiscover.evaluation.evaluator - INFO - Evaluated program 29b2f81c-8aef-46b9-8ac4-d4b93a46434b in 0.36s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=3.0000, todo_count=2.0000, code_length=99.0000, done=0.0000, error=File "./tmp6sr5_2x7.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp6sr5_2x7.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6sr5_2x7.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6sr5_2x7.v", line 69, characters 2-3:
+Error: [Focus] Wrong bullet -: Current bullet - is not finished.
+
+
+2026-03-11 01:29:34,157 - skydiscover.search.adaevolve.controller - INFO - Iteration 18: Program 29b2f81c (parent: e277de4c) completed in 63.75s
+2026-03-11 01:29:34,157 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=3.0000, todo_count=2.0000, code_length=99.0000, done=0.0000, error=File "./tmp6sr5_2x7.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp6sr5_2x7.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6sr5_2x7.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmp6sr5_2x7.v", line 69, characters 2-3:
+Error: [Focus] Wrong bullet -: Current bullet - is not finished.
+
+
+2026-03-11 01:29:48,113 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:29:48,407 - skydiscover.evaluation.evaluator - INFO - Evaluated program 13f7d7df-7192-421f-b998-e44691538b38 in 0.29s: combined_score=0.7778, compiles=1.0000, qed_count=7.0000, admitted_count=2.0000, todo_count=0.0000, code_length=187.0000, done=0.0000
+2026-03-11 01:29:48,420 - skydiscover.search.adaevolve.controller - INFO - Iteration 19: Program 13f7d7df (parent: fd21b10a) completed in 14.20s
+2026-03-11 01:29:48,421 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.7778, compiles=1.0000, qed_count=7.0000, admitted_count=2.0000, todo_count=0.0000, code_length=187.0000, done=0.0000
+2026-03-11 01:31:40,707 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:31:41,159 - skydiscover.evaluation.evaluator - INFO - Evaluated program 02756e99-f0b1-4137-be5d-85072fd5d743 in 0.42s: combined_score=0.7500, compiles=1.0000, qed_count=6.0000, admitted_count=1.0000, todo_count=1.0000, code_length=150.0000, done=0.0000
+2026-03-11 01:31:41,171 - skydiscover.search.adaevolve.controller - INFO - Iteration 20: Program 02756e99 (parent: 9dfb0733) completed in 112.69s
+2026-03-11 01:31:41,171 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.7500, compiles=1.0000, qed_count=6.0000, admitted_count=1.0000, todo_count=1.0000, code_length=150.0000, done=0.0000
+2026-03-11 01:31:41,171 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 20
+2026-03-11 01:31:41,171 - skydiscover.search.base_database - INFO - Database has 23 programs, best program score is 0.800000
+2026-03-11 01:31:41,182 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_20
+2026-03-11 01:31:41,183 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_20
+2026-03-11 01:31:41,183 - skydiscover.runner - INFO - Checkpoint 20: best=combined_score=0.8000, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=1.0000, code_length=186.0000, done=0.0000
+2026-03-11 01:31:41,183 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_20
+2026-03-11 01:31:41,387 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 20
+2026-03-11 01:33:00,618 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:33:01,050 - skydiscover.evaluation.evaluator - INFO - Evaluated program d7c6e3c4-7b46-4379-87b3-713cad80d741 in 0.40s: combined_score=0.7273, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=2.0000, code_length=191.0000, done=0.0000
+2026-03-11 01:33:01,063 - skydiscover.search.adaevolve.controller - INFO - Iteration 21: Program d7c6e3c4 (parent: 429eb670) completed in 79.66s
+2026-03-11 01:33:01,063 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.7273, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=2.0000, code_length=191.0000, done=0.0000
+2026-03-11 01:35:07,613 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:35:08,033 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3ded9851-9ea0-4522-a29a-6578b37fb452 in 0.38s: combined_score=0.7273, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=2.0000, code_length=190.0000, done=0.0000
+2026-03-11 01:35:08,046 - skydiscover.search.adaevolve.controller - INFO - Iteration 22: Program 3ded9851 (parent: 429eb670) completed in 126.97s
+2026-03-11 01:35:08,046 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.7273, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=2.0000, code_length=190.0000, done=0.0000
+2026-03-11 01:37:00,354 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:37:00,751 - skydiscover.evaluation.evaluator - INFO - Evaluated program 5fb964c6-4178-4a9c-ac90-3b7ae222bca1 in 0.36s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:37:00,765 - skydiscover.search.adaevolve.controller - INFO - Iteration 23: Program 5fb964c6 (parent: 429eb670) completed in 112.70s
+2026-03-11 01:37:00,765 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:37:00,765 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 23
+2026-03-11 01:37:13,192 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:37:13,437 - skydiscover.evaluation.evaluator - INFO - Evaluated program 10ed248b-c224-49cc-8e89-00ac088f1890 in 0.24s: combined_score=0.8889, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=0.0000, code_length=193.0000, done=0.0000
+2026-03-11 01:37:13,450 - skydiscover.search.adaevolve.controller - INFO - Iteration 24: Program 10ed248b (parent: bdd02918) completed in 12.61s
+2026-03-11 01:37:13,450 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.8889, compiles=1.0000, qed_count=8.0000, admitted_count=1.0000, todo_count=0.0000, code_length=193.0000, done=0.0000
+2026-03-11 01:37:46,674 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:37:46,992 - skydiscover.evaluation.evaluator - INFO - Evaluated program 8d337ab7-261a-477f-9f9c-3d8d3c0e67e2 in 0.31s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=5.0000, todo_count=3.0000, code_length=111.0000, done=0.0000, error=File "./tmpi4f73488.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpi4f73488.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpi4f73488.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpi4f73488.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpi4f73488.v", line 57, characters 2-7:
+Error: Not an inductive definition.
+
+
+2026-03-11 01:37:47,001 - skydiscover.search.adaevolve.controller - INFO - Iteration 25: Program 8d337ab7 (parent: 49ff5735) completed in 33.49s
+2026-03-11 01:37:47,001 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=5.0000, todo_count=3.0000, code_length=111.0000, done=0.0000, error=File "./tmpi4f73488.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpi4f73488.v", line 34, characters 0-64:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpi4f73488.v", line 36, characters 0-70:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpi4f73488.v", line 38, characters 0-134:
+Warning: Not a truly recursive fixpoint. [non-recursive,fixpoints,default]
+File "./tmpi4f73488.v", line 57, characters 2-7:
+Error: Not an inductive definition.
+
+
+2026-03-11 01:37:47,001 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 25
+2026-03-11 01:37:47,001 - skydiscover.search.base_database - INFO - Database has 25 programs, best program score is 1.000000
+2026-03-11 01:37:47,005 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_25
+2026-03-11 01:37:47,006 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_25
+2026-03-11 01:37:47,006 - skydiscover.runner - INFO - Checkpoint 25: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:37:47,006 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_25
+2026-03-11 01:38:22,878 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:38:23,298 - skydiscover.evaluation.evaluator - INFO - Evaluated program d4d1feba-88df-41e4-a116-a3d8bb12df20 in 0.41s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:38:23,312 - skydiscover.search.adaevolve.controller - INFO - Iteration 26: Program d4d1feba (parent: 10ed248b) completed in 36.24s
+2026-03-11 01:38:23,313 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:40:02,193 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:40:02,600 - skydiscover.evaluation.evaluator - INFO - Evaluated program eee2133f-1491-413b-8bb2-76de29199f33 in 0.38s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:40:02,613 - skydiscover.search.adaevolve.controller - INFO - Iteration 27: Program eee2133f (parent: 429eb670) completed in 99.23s
+2026-03-11 01:40:02,613 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:42:09,180 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:42:09,338 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3b5e898c-7b4a-418b-bad0-d95689d04937 in 0.12s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=63.0000, done=0.0000, error=File "./tmp6k9m9ugb.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 01:42:09,346 - skydiscover.search.adaevolve.controller - INFO - Iteration 28: Program 3b5e898c (parent: d4d1feba) completed in 126.67s
+2026-03-11 01:42:09,346 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=63.0000, done=0.0000, error=File "./tmp6k9m9ugb.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 01:42:09,397 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 01:42:37,832 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:42:37,836 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 01:42:37,837 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Leverage Coq's built-in automation with custom Hint databases and eauto (approach: coq.tactics.automation)
+2026-03-11 01:42:37,837 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Utilize Boolean Reflection for arithmetic comparisons (approach: coq.tactics.reflection)
+2026-03-11 01:42:37,837 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 01:42:37,837 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 01:42:37,843 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Leverage Coq's built-in automation with custom Hint databases and eauto
+2026-03-11 01:47:10,310 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:47:10,729 - skydiscover.evaluation.evaluator - INFO - Evaluated program 723dc383-836f-4669-afef-b5630ad0c21c in 0.33s: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=151.0000, done=0.0000, error=File "./tmp22_rkmzz.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp22_rkmzz.v", line 99, characters 0-4:
+Error:  (in proof ForallT_insert_E): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:47:10,740 - skydiscover.search.adaevolve.controller - INFO - Iteration 29: Program 723dc383 (parent: 5fb964c6) completed in 272.89s
+2026-03-11 01:47:10,740 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=151.0000, done=0.0000, error=File "./tmp22_rkmzz.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp22_rkmzz.v", line 99, characters 0-4:
+Error:  (in proof ForallT_insert_E): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:47:10,745 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Utilize Boolean Reflection for arithmetic comparisons
+2026-03-11 01:49:25,859 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:49:26,244 - skydiscover.evaluation.evaluator - INFO - Evaluated program f04c3a9e-146a-45f8-ae2c-e32b50531e5f in 0.34s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=202.0000, done=1.0000
+2026-03-11 01:49:26,259 - skydiscover.search.adaevolve.controller - INFO - Iteration 30: Program f04c3a9e (parent: 5fb964c6) completed in 135.50s
+2026-03-11 01:49:26,259 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=202.0000, done=1.0000
+2026-03-11 01:49:26,259 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 30
+2026-03-11 01:49:26,259 - skydiscover.search.base_database - INFO - Database has 24 programs, best program score is 1.000000
+2026-03-11 01:49:26,268 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_30
+2026-03-11 01:49:26,268 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_30
+2026-03-11 01:49:26,269 - skydiscover.runner - INFO - Checkpoint 30: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 01:49:26,269 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_30
+2026-03-11 01:49:26,354 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 30
+2026-03-11 01:49:26,407 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Leverage Coq's built-in automation with custom Hint databases and eauto
+2026-03-11 01:53:35,404 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:53:35,809 - skydiscover.evaluation.evaluator - INFO - Evaluated program cf251340-83be-41a1-b712-d6fa8d8b849a in 0.37s: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=120.0000, done=0.0000, error=File "./tmp02tgveum.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp02tgveum.v", line 107, characters 20-42:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./tmp02tgveum.v", line 107, characters 20-42:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./tmp02tgveum.v", line 107, characters 20-42:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./tmp02tgveum.v", line 108, characters 0-4:
+Error:  (in proof insert_BST): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:53:35,819 - skydiscover.search.adaevolve.controller - INFO - Iteration 31: Program cf251340 (parent: 5fb964c6) completed in 249.40s
+2026-03-11 01:53:35,819 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=5.0000, admitted_count=0.0000, todo_count=0.0000, code_length=120.0000, done=0.0000, error=File "./tmp02tgveum.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp02tgveum.v", line 107, characters 20-42:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./tmp02tgveum.v", line 107, characters 20-42:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./tmp02tgveum.v", line 107, characters 20-42:
+Warning:
+"auto with *" was used through the default "intuition_solver" tactic.
+This will be replaced by just "auto" in the future.
+[intuition-auto-with-star,deprecated-since-8.17,deprecated,default]
+File "./tmp02tgveum.v", line 108, characters 0-4:
+Error:  (in proof insert_BST): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 01:53:35,823 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Utilize Boolean Reflection for arithmetic comparisons
+2026-03-11 01:53:35,823 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:55:44,114 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:55:44,548 - skydiscover.evaluation.evaluator - INFO - Evaluated program 65751f80-5800-4d37-9a0d-ad89ea32a0a1 in 0.40s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=208.0000, done=1.0000
+2026-03-11 01:55:44,563 - skydiscover.search.adaevolve.controller - INFO - Iteration 32: Program 65751f80 (parent: 5fb964c6) completed in 128.73s
+2026-03-11 01:55:44,564 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=208.0000, done=1.0000
+2026-03-11 01:55:44,617 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:55:44,617 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:55:44,617 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:55:44,618 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:55:44,618 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:55:44,618 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 01:56:07,877 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:56:07,879 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Systematic use of Coq automation tactics (lia, auto) for proof compression (approach: coq.tactics.lia)
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Correct-by-construction using Coq's Program framework (approach: coq.program.fixpoint)
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Leverage Coq's built-in automation with custom Hint databases and eauto (uses: 2)
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Utilize Boolean Reflection for arithmetic comparisons (uses: 2)
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 01:56:07,880 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 01:56:07,888 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Systematic use of Coq automation tactics (lia, auto) for proof compression
+2026-03-11 01:58:32,920 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:58:33,098 - skydiscover.evaluation.evaluator - INFO - Evaluated program bff041b1-bca0-44f1-ac90-a3f273ae2606 in 0.13s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=63.0000, done=0.0000, error=File "./tmpsh7zjquj.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 01:58:33,106 - skydiscover.search.adaevolve.controller - INFO - Iteration 33: Program bff041b1 (parent: 5fb964c6) completed in 145.21s
+2026-03-11 01:58:33,106 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=63.0000, done=0.0000, error=File "./tmpsh7zjquj.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 01:58:33,161 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Correct-by-construction using Coq's Program framework
+2026-03-11 02:02:54,071 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:02:54,563 - skydiscover.evaluation.evaluator - INFO - Evaluated program 1ea460db-59d5-4ae2-8b9a-17471b4322a5 in 0.37s: combined_score=0.0000, compiles=0.0000, qed_count=13.0000, admitted_count=0.0000, todo_count=0.0000, code_length=265.0000, done=0.0000, error=File "./tmpc26fmv_f.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpc26fmv_f.v", line 52, characters 0-32:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpc26fmv_f.v", line 73, characters 2-112:
+Error: No matching clauses for match.
+
+
+2026-03-11 02:02:54,583 - skydiscover.search.adaevolve.controller - INFO - Iteration 34: Program 1ea460db (parent: 5fb964c6) completed in 261.40s
+2026-03-11 02:02:54,584 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=13.0000, admitted_count=0.0000, todo_count=0.0000, code_length=265.0000, done=0.0000, error=File "./tmpc26fmv_f.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpc26fmv_f.v", line 52, characters 0-32:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpc26fmv_f.v", line 73, characters 2-112:
+Error: No matching clauses for match.
+
+
+2026-03-11 02:02:54,588 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Systematic use of Coq automation tactics (lia, auto) for proof compression
+2026-03-11 02:07:10,065 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:07:10,082 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Correct-by-construction using Coq's Program framework
+2026-03-11 02:07:10,082 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:09:21,783 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:09:22,211 - skydiscover.evaluation.evaluator - INFO - Evaluated program 6cd71a44-0bfb-4834-9545-c3f1418cf5af in 0.37s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=1.0000
+2026-03-11 02:09:22,219 - skydiscover.search.adaevolve.controller - INFO - Iteration 35: Program 6cd71a44 (parent: 5fb964c6) completed in 132.13s
+2026-03-11 02:09:22,219 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=1.0000
+2026-03-11 02:09:22,219 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 35
+2026-03-11 02:09:22,219 - skydiscover.search.base_database - INFO - Database has 24 programs, best program score is 1.000000
+2026-03-11 02:09:22,225 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_35
+2026-03-11 02:09:22,225 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_35
+2026-03-11 02:09:22,226 - skydiscover.runner - INFO - Checkpoint 35: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 02:09:22,226 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_35
+2026-03-11 02:09:22,276 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:09:22,277 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:09:22,277 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:09:22,278 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:09:22,278 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:09:22,278 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 02:09:50,862 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:09:50,869 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 02:09:50,869 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Refactor using SSReflect for concise proof scripts (approach: coq.tactics.ssreflect)
+2026-03-11 02:09:50,869 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Refactor proofs using explicit forward reasoning (approach: coq.tactics.forward)
+2026-03-11 02:09:50,870 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 02:09:50,870 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Systematic use of Coq automation tactics (lia, auto) for proof compression (uses: 2)
+2026-03-11 02:09:50,870 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Correct-by-construction using Coq's Program framework (uses: 2)
+2026-03-11 02:09:50,870 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 02:09:50,870 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 02:09:50,877 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Refactor using SSReflect for concise proof scripts
+2026-03-11 02:14:16,466 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:14:17,011 - skydiscover.evaluation.evaluator - INFO - Evaluated program 804d5849-814e-4dba-9ff6-dcd0e0f13a2c in 0.45s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=213.0000, done=1.0000
+2026-03-11 02:14:17,026 - skydiscover.search.adaevolve.controller - INFO - Iteration 36: Program 804d5849 (parent: 5fb964c6) completed in 266.13s
+2026-03-11 02:14:17,026 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=213.0000, done=1.0000
+2026-03-11 02:14:17,083 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Refactor proofs using explicit forward reasoning
+2026-03-11 02:16:28,998 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:16:29,403 - skydiscover.evaluation.evaluator - INFO - Evaluated program d5837d93-1cce-435f-9235-fa4d91c3afd4 in 0.37s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=215.0000, done=1.0000
+2026-03-11 02:16:29,417 - skydiscover.search.adaevolve.controller - INFO - Iteration 37: Program d5837d93 (parent: 5fb964c6) completed in 132.32s
+2026-03-11 02:16:29,417 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=215.0000, done=1.0000
+2026-03-11 02:16:29,473 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Refactor using SSReflect for concise proof scripts
+2026-03-11 02:18:41,941 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:18:42,378 - skydiscover.evaluation.evaluator - INFO - Evaluated program 2652fc42-4b0c-4c6b-9853-41c59f652119 in 0.39s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=213.0000, done=1.0000
+2026-03-11 02:18:42,393 - skydiscover.search.adaevolve.controller - INFO - Iteration 38: Program 2652fc42 (parent: 5fb964c6) completed in 132.91s
+2026-03-11 02:18:42,394 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=213.0000, done=1.0000
+2026-03-11 02:18:42,452 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Refactor proofs using explicit forward reasoning
+2026-03-11 02:18:42,452 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:20:20,594 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:20:20,939 - skydiscover.evaluation.evaluator - INFO - Evaluated program caf5002e-517f-4aed-99a4-6e08cb7c1e60 in 0.32s: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=211.0000, done=0.0000, error=File "./tmp4zw22bhw.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp4zw22bhw.v", line 123, characters 10-17:
+Error: Cannot infer the implicit parameter V of ForallT whose type is 
+"Type" in environment:
+V : Type
+k : key
+v : V
+Hl, Hr : BST E
+
+
+2026-03-11 02:20:20,955 - skydiscover.search.adaevolve.controller - INFO - Iteration 39: Program caf5002e (parent: 5fb964c6) completed in 98.49s
+2026-03-11 02:20:20,955 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=211.0000, done=0.0000, error=File "./tmp4zw22bhw.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp4zw22bhw.v", line 123, characters 10-17:
+Error: Cannot infer the implicit parameter V of ForallT whose type is 
+"Type" in environment:
+V : Type
+k : key
+v : V
+Hl, Hr : BST E
+
+
+2026-03-11 02:20:20,956 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:20:20,956 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:20:20,956 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:20:20,958 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:20:20,958 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:20:20,958 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 02:20:40,153 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:20:40,158 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Rewrite proofs using SSReflect tactics for conciseness (approach: coq.tactics.ssreflect)
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Replace tactic-based proofs with exact Gallina proof terms (approach: coq.proofs.gallina)
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Refactor using SSReflect for concise proof scripts (uses: 2)
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Refactor proofs using explicit forward reasoning (uses: 2)
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 02:20:40,159 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 02:20:40,166 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Rewrite proofs using SSReflect tactics for conciseness
+2026-03-11 02:22:58,582 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:22:59,001 - skydiscover.evaluation.evaluator - INFO - Evaluated program 43be45de-df70-44db-8b06-efed2aa914de in 0.39s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=213.0000, done=1.0000
+2026-03-11 02:22:59,015 - skydiscover.search.adaevolve.controller - INFO - Iteration 40: Program 43be45de (parent: 5fb964c6) completed in 138.84s
+2026-03-11 02:22:59,016 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=213.0000, done=1.0000
+2026-03-11 02:22:59,016 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 40
+2026-03-11 02:22:59,016 - skydiscover.search.base_database - INFO - Database has 24 programs, best program score is 1.000000
+2026-03-11 02:22:59,024 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_40
+2026-03-11 02:22:59,025 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_40
+2026-03-11 02:22:59,025 - skydiscover.runner - INFO - Checkpoint 40: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 02:22:59,025 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_40
+2026-03-11 02:22:59,156 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 40
+2026-03-11 02:22:59,208 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Replace tactic-based proofs with exact Gallina proof terms
+2026-03-11 02:25:03,697 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:25:04,127 - skydiscover.evaluation.evaluator - INFO - Evaluated program 41419c79-5929-481c-a763-efe033d40823 in 0.41s: combined_score=1.0000, compiles=1.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=179.0000, done=1.0000
+2026-03-11 02:25:04,141 - skydiscover.search.adaevolve.controller - INFO - Iteration 41: Program 41419c79 (parent: 5fb964c6) completed in 124.92s
+2026-03-11 02:25:04,141 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=179.0000, done=1.0000
+2026-03-11 02:25:04,247 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Rewrite proofs using SSReflect tactics for conciseness
+2026-03-11 02:28:49,948 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:28:50,348 - skydiscover.evaluation.evaluator - INFO - Evaluated program ea83a57f-7eae-4311-95be-78cb26857d0e in 0.35s: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=159.0000, done=0.0000, error=File "./tmpnp_j7wa1.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpnp_j7wa1.v", line 4, characters 0-42:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpnp_j7wa1.v", line 91, characters 25-35:
+Error: Not an inductive definition.
+
+
+2026-03-11 02:28:50,360 - skydiscover.search.adaevolve.controller - INFO - Iteration 42: Program ea83a57f (parent: 5fb964c6) completed in 226.10s
+2026-03-11 02:28:50,360 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=159.0000, done=0.0000, error=File "./tmpnp_j7wa1.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpnp_j7wa1.v", line 4, characters 0-42:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpnp_j7wa1.v", line 91, characters 25-35:
+Error: Not an inductive definition.
+
+
+2026-03-11 02:28:50,363 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Replace tactic-based proofs with exact Gallina proof terms
+2026-03-11 02:28:50,366 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:33:06,149 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:33:06,658 - skydiscover.evaluation.evaluator - INFO - Evaluated program 47511474-3b91-4f3e-b845-dcd181498dac in 0.42s: combined_score=1.0000, compiles=1.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=179.0000, done=1.0000
+2026-03-11 02:33:06,673 - skydiscover.search.adaevolve.controller - INFO - Iteration 43: Program 47511474 (parent: 5fb964c6) completed in 256.29s
+2026-03-11 02:33:06,674 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=179.0000, done=1.0000
+2026-03-11 02:33:06,723 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:33:06,723 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:33:06,723 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:33:06,724 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:33:06,724 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:33:06,724 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 02:33:30,777 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:33:30,780 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Use Functional Induction for recursive functions (approach: coq.struct.funind)
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use Sumbool (Compare_dec) instead of boolean reflection (approach: coq.struct.sumbool)
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Rewrite proofs using SSReflect tactics for conciseness (uses: 2)
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Replace tactic-based proofs with exact Gallina proof terms (uses: 2)
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 02:33:30,781 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 02:33:30,787 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Use Functional Induction for recursive functions
+2026-03-11 02:35:50,131 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:35:50,854 - skydiscover.evaluation.evaluator - INFO - Evaluated program 17cc877b-7d28-47e6-800c-df43ded07d2a in 0.69s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=215.0000, done=1.0000
+2026-03-11 02:35:50,868 - skydiscover.search.adaevolve.controller - INFO - Iteration 44: Program 17cc877b (parent: 5fb964c6) completed in 140.07s
+2026-03-11 02:35:50,869 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=215.0000, done=1.0000
+2026-03-11 02:35:50,924 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use Sumbool (Compare_dec) instead of boolean reflection
+2026-03-11 02:37:24,783 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:37:25,216 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3d3a0ce1-7aff-458d-8202-6da3fc106f10 in 0.41s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=200.0000, done=1.0000
+2026-03-11 02:37:25,229 - skydiscover.search.adaevolve.controller - INFO - Iteration 45: Program 3d3a0ce1 (parent: 5fb964c6) completed in 94.29s
+2026-03-11 02:37:25,230 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=200.0000, done=1.0000
+2026-03-11 02:37:25,230 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 45
+2026-03-11 02:37:25,230 - skydiscover.search.base_database - INFO - Database has 27 programs, best program score is 1.000000
+2026-03-11 02:37:25,239 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_45
+2026-03-11 02:37:25,240 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_45
+2026-03-11 02:37:25,240 - skydiscover.runner - INFO - Checkpoint 45: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 02:37:25,240 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_45
+2026-03-11 02:37:25,300 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Use Functional Induction for recursive functions
+2026-03-11 02:39:44,875 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:39:45,267 - skydiscover.evaluation.evaluator - INFO - Evaluated program ef31b64c-c5e5-466c-9856-56ce146e9411 in 0.35s: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=209.0000, done=0.0000, error=File "./tmpik3w_g98.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpik3w_g98.v", line 4, characters 15-21:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require FunInd" or the deprecated "From Coq Require FunInd"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpik3w_g98.v", line 111, characters 2-37:
+Error: Cannot find induction information on insert
+
+
+2026-03-11 02:39:45,281 - skydiscover.search.adaevolve.controller - INFO - Iteration 46: Program ef31b64c (parent: 5fb964c6) completed in 139.97s
+2026-03-11 02:39:45,281 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=209.0000, done=0.0000, error=File "./tmpik3w_g98.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpik3w_g98.v", line 4, characters 15-21:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require FunInd" or the deprecated "From Coq Require FunInd"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpik3w_g98.v", line 111, characters 2-37:
+Error: Cannot find induction information on insert
+
+
+2026-03-11 02:39:45,341 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use Sumbool (Compare_dec) instead of boolean reflection
+2026-03-11 02:39:45,341 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:41:37,040 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:41:37,474 - skydiscover.evaluation.evaluator - INFO - Evaluated program 2cdc7673-f8ff-4550-bb11-6b40bf1a43ed in 0.41s: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=200.0000, done=1.0000
+2026-03-11 02:41:37,488 - skydiscover.search.adaevolve.controller - INFO - Iteration 47: Program 2cdc7673 (parent: 5fb964c6) completed in 112.13s
+2026-03-11 02:41:37,491 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=200.0000, done=1.0000
+2026-03-11 02:41:37,546 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:41:37,546 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:41:37,546 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:41:37,547 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:41:37,547 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 02:41:37,547 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 02:41:57,697 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:41:57,700 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 02:41:57,700 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Leverage Coq's intuition and firstorder tactics for logical simplification (approach: coq.tactics.intuition)
+2026-03-11 02:41:57,701 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Utilize Coq's abstract data types for finite maps (FMapAVL) (approach: coq.structures.fmap)
+2026-03-11 02:41:57,701 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 02:41:57,701 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use Functional Induction for recursive functions (uses: 2)
+2026-03-11 02:41:57,701 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use Sumbool (Compare_dec) instead of boolean reflection (uses: 2)
+2026-03-11 02:41:57,701 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 02:41:57,701 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 02:41:57,707 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Leverage Coq's intuition and firstorder tactics for logical simplification
+2026-03-11 02:43:31,984 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:43:32,366 - skydiscover.evaluation.evaluator - INFO - Evaluated program 1d3c1376-5db6-4dfc-9f03-38796cf5b367 in 0.36s: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=141.0000, done=0.0000, error=File "./tmpymp_hfa7.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpymp_hfa7.v", line 81, characters 0-4:
+Error:  (in proof ForallT_insert_T): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 02:43:32,381 - skydiscover.search.adaevolve.controller - INFO - Iteration 48: Program 1d3c1376 (parent: 5fb964c6) completed in 94.66s
+2026-03-11 02:43:32,382 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=141.0000, done=0.0000, error=File "./tmpymp_hfa7.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpymp_hfa7.v", line 81, characters 0-4:
+Error:  (in proof ForallT_insert_T): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 02:43:32,443 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Utilize Coq's abstract data types for finite maps (FMapAVL)
+2026-03-11 02:45:48,901 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:45:49,398 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7f7e199d-899f-4e29-af13-776b60fdb762 in 0.45s: combined_score=1.0000, compiles=1.0000, qed_count=0.0000, admitted_count=0.0000, todo_count=0.0000, code_length=4.0000, done=1.0000
+2026-03-11 02:45:49,405 - skydiscover.search.adaevolve.controller - INFO - Iteration 49: Program 7f7e199d (parent: 5fb964c6) completed in 136.96s
+2026-03-11 02:45:49,405 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=0.0000, admitted_count=0.0000, todo_count=0.0000, code_length=4.0000, done=1.0000
+2026-03-11 02:45:49,466 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Leverage Coq's intuition and firstorder tactics for logical simplification
+2026-03-11 02:47:38,859 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 02:47:39,260 - skydiscover.evaluation.evaluator - INFO - Evaluated program 6bb878ed-8bcd-4e7f-809e-e9afb5d7f7d1 in 0.37s: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=144.0000, done=0.0000, error=File "./tmp4fiyl1d6.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp4fiyl1d6.v", line 81, characters 0-4:
+Error:  (in proof ForallT_insert_T): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 02:47:39,273 - skydiscover.search.adaevolve.controller - INFO - Iteration 50: Program 6bb878ed (parent: 5fb964c6) completed in 109.79s
+2026-03-11 02:47:39,273 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=144.0000, done=0.0000, error=File "./tmp4fiyl1d6.v", line 3, characters 0-28:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp4fiyl1d6.v", line 81, characters 0-4:
+Error:  (in proof ForallT_insert_T): Attempt to save an incomplete proof
+(there are remaining open goals).
+
+
+2026-03-11 02:47:39,273 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 50
+2026-03-11 02:47:39,273 - skydiscover.search.base_database - INFO - Database has 25 programs, best program score is 1.000000
+2026-03-11 02:47:39,283 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_50
+2026-03-11 02:47:39,283 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_50
+2026-03-11 02:47:39,284 - skydiscover.runner - INFO - Checkpoint 50: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 02:47:39,284 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_50
+2026-03-11 02:47:39,432 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 50
+2026-03-11 02:47:39,432 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve completed
+2026-03-11 02:47:39,432 - skydiscover.search.base_database - INFO - Database has 23 programs, best program score is 1.000000
+2026-03-11 02:47:39,432 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve iteration stats saved to: benchmarks/formal_verification/coq_proof/bst_verification/outputs/adaevolve_iteration_stats_20260311_010747.jsonl
+2026-03-11 02:47:39,439 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_50
+2026-03-11 02:47:39,439 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_50
+2026-03-11 02:47:39,439 - skydiscover.runner - INFO - Checkpoint 50: best=combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 02:47:39,439 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/checkpoints/checkpoint_50
+2026-03-11 02:47:39,441 - skydiscover.runner - INFO - Discovery completed. Best: combined_score=1.0000, compiles=1.0000, qed_count=9.0000, admitted_count=0.0000, todo_count=0.0000, code_length=212.0000, done=1.0000
+2026-03-11 02:47:39,441 - skydiscover.runner - INFO - Best program saved to benchmarks/formal_verification/coq_proof/bst_verification/outputs/best

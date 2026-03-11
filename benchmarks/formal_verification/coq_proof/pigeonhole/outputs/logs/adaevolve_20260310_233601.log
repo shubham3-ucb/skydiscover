@@ -1,0 +1,1009 @@
+2026-03-10 23:36:01,344 - skydiscover.search.utils.logging_utils - INFO - Logging to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/logs/adaevolve_20260310_233601.log
+2026-03-10 23:36:01,344 - skydiscover.search.adaevolve.database - INFO - AdaEvolveDatabase initialized: num_islands=2, decay=0.9, intensity=[0.15, 0.5], migration=True (interval=10), unified_archive=True, adaptive_search=True, ucb_selection=True, dynamic_islands=False, paradigm_breakthrough=True
+2026-03-10 23:36:01,344 - skydiscover.runner - INFO - Runner ready: search=adaevolve, program=benchmarks/formal_verification/coq_proof/pigeonhole/initial_program.v
+2026-03-10 23:36:01,386 - skydiscover.llm - INFO - Gemini LLM: gemini-3-pro-preview
+2026-03-10 23:36:01,410 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with benchmarks/formal_verification/coq_proof/pigeonhole/evaluator.py
+2026-03-10 23:36:01,411 - skydiscover.search.default_discovery_controller - INFO - DiscoveryController initialized: num_context_programs=2
+2026-03-10 23:36:01,423 - skydiscover.evaluation.evaluator - INFO - Initialized evaluator with benchmarks/formal_verification/coq_proof/pigeonhole/evaluator.py
+2026-03-10 23:36:01,423 - skydiscover.search.adaevolve.controller - INFO - Paradigm LLM: using guide_models [gemini-3-pro-preview]
+2026-03-10 23:36:01,423 - skydiscover.search.adaevolve.controller - INFO - AdaEvolveController initialized (language=coq, paradigm_breakthrough=True)
+2026-03-10 23:36:01,423 - skydiscover.runner - INFO - Adding initial program to database
+2026-03-10 23:36:01,653 - skydiscover.evaluation.evaluator - INFO - Evaluated program 99c7e514-fcca-4ce4-a20a-d9501d168110 in 0.23s: combined_score=0.0000, compiles=1.0000, qed_count=0.0000, admitted_count=2.0000, todo_count=1.0000, code_length=25.0000, done=0.0000
+2026-03-10 23:36:01,654 - skydiscover.search.base_database - INFO - Database has 1 programs, best program score is 0.000000
+2026-03-10 23:36:01,654 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve: Running 50 iterations across 2 islands
+2026-03-10 23:36:01,654 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve iteration stats will be logged to: benchmarks/formal_verification/coq_proof/pigeonhole/outputs/adaevolve_iteration_stats_20260310_233601.jsonl
+2026-03-10 23:36:01,654 - skydiscover.search.adaevolve.controller - INFO - Seeded island 1
+2026-03-10 23:36:35,637 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:36:35,835 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b in 0.19s: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=32.0000, done=0.0000
+2026-03-10 23:36:35,835 - skydiscover.search.adaevolve.controller - INFO - Iteration 1: Program 9e4fca24 (parent: 99c7e514) completed in 34.18s
+2026-03-10 23:36:35,835 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=32.0000, done=0.0000
+2026-03-10 23:36:35,835 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 1
+2026-03-10 23:37:19,257 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:37:19,447 - skydiscover.evaluation.evaluator - INFO - Evaluated program f1dc47f2-e63f-4896-98fa-933af06db7d5 in 0.18s: combined_score=0.0000, compiles=1.0000, qed_count=0.0000, admitted_count=2.0000, todo_count=2.0000, code_length=29.0000, done=0.0000
+2026-03-10 23:37:19,447 - skydiscover.search.adaevolve.controller - INFO - Iteration 2: Program f1dc47f2 (parent: 99c7e514) completed in 43.61s
+2026-03-10 23:37:19,447 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=1.0000, qed_count=0.0000, admitted_count=2.0000, todo_count=2.0000, code_length=29.0000, done=0.0000
+2026-03-10 23:37:37,241 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:37:37,419 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7b4be5be-dd9d-4452-b8ff-3c62e54e767b in 0.17s: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=32.0000, done=0.0000
+2026-03-10 23:37:37,420 - skydiscover.search.adaevolve.controller - INFO - Iteration 3: Program 7b4be5be (parent: 31814979) completed in 17.97s
+2026-03-10 23:37:37,420 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.3333, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=1.0000, code_length=32.0000, done=0.0000
+2026-03-10 23:38:33,158 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:38:33,348 - skydiscover.evaluation.evaluator - INFO - Evaluated program e400ef62-a719-4afb-91e6-08830c3b15ca in 0.19s: combined_score=0.5000, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=0.0000, code_length=37.0000, done=0.0000
+2026-03-10 23:38:33,349 - skydiscover.search.adaevolve.controller - INFO - Iteration 4: Program e400ef62 (parent: 7b4be5be) completed in 55.93s
+2026-03-10 23:38:33,349 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.5000, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=0.0000, code_length=37.0000, done=0.0000
+2026-03-10 23:38:33,349 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 4
+2026-03-10 23:39:33,788 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:39:34,129 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4 in 0.34s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-10 23:39:34,130 - skydiscover.search.adaevolve.controller - INFO - Iteration 5: Program 4fe38d7a (parent: e400ef62) completed in 60.78s
+2026-03-10 23:39:34,130 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-10 23:39:34,130 - skydiscover.search.adaevolve.controller - INFO - New best solution found at iteration 5
+2026-03-10 23:39:34,130 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 5
+2026-03-10 23:39:34,130 - skydiscover.search.base_database - INFO - Database has 7 programs, best program score is 1.000000
+2026-03-10 23:39:34,131 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 7 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_5
+2026-03-10 23:39:34,132 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_5
+2026-03-10 23:39:34,132 - skydiscover.runner - INFO - Checkpoint 5: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-10 23:39:34,132 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_5
+2026-03-10 23:39:51,215 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:39:51,437 - skydiscover.evaluation.evaluator - INFO - Evaluated program 13d108aa-645d-412e-983c-d6abe7e0f6f1 in 0.22s: combined_score=0.5000, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=0.0000, code_length=37.0000, done=0.0000
+2026-03-10 23:39:51,438 - skydiscover.search.adaevolve.controller - INFO - Iteration 6: Program 13d108aa (parent: 7b4be5be) completed in 17.30s
+2026-03-10 23:39:51,438 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.5000, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=0.0000, code_length=37.0000, done=0.0000
+2026-03-10 23:40:25,918 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:40:26,034 - skydiscover.evaluation.evaluator - INFO - Evaluated program 754b5d4b-19f0-47a8-aa04-82b34ba412d0 in 0.11s: combined_score=0.2500, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=2.0000, code_length=36.0000, done=0.0000
+2026-03-10 23:40:26,034 - skydiscover.search.adaevolve.controller - INFO - Iteration 7: Program 754b5d4b (parent: f1dc47f2) completed in 34.59s
+2026-03-10 23:40:26,034 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.2500, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=2.0000, code_length=36.0000, done=0.0000
+2026-03-10 23:42:08,124 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:42:08,479 - skydiscover.evaluation.evaluator - INFO - Evaluated program f35b3ea2-118f-4799-af27-62cde341eb07 in 0.32s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=1.0000
+2026-03-10 23:42:08,479 - skydiscover.search.adaevolve.controller - INFO - Iteration 8: Program f35b3ea2 (parent: 4fe38d7a) completed in 102.44s
+2026-03-10 23:42:08,479 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=1.0000
+2026-03-10 23:42:32,373 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:42:32,588 - skydiscover.evaluation.evaluator - INFO - Evaluated program cd42aea5-bc9a-4d19-a750-77cfbc430d56 in 0.21s: combined_score=0.5000, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=0.0000, code_length=36.0000, done=0.0000
+2026-03-10 23:42:32,588 - skydiscover.search.adaevolve.controller - INFO - Iteration 9: Program cd42aea5 (parent: 9e4fca24) completed in 24.10s
+2026-03-10 23:42:32,588 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.5000, compiles=1.0000, qed_count=1.0000, admitted_count=1.0000, todo_count=0.0000, code_length=36.0000, done=0.0000
+2026-03-10 23:44:33,170 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:44:33,570 - skydiscover.evaluation.evaluator - INFO - Evaluated program 566f6ca2-778e-4b0f-9db2-868a2eb9e378 in 0.37s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=44.0000, done=0.0000, error=File "./tmpexoj1swh.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpexoj1swh.v", line 36, characters 70-73:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-10 23:44:33,570 - skydiscover.search.adaevolve.controller - INFO - Iteration 10: Program 566f6ca2 (parent: 4fe38d7a) completed in 120.98s
+2026-03-10 23:44:33,570 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=44.0000, done=0.0000, error=File "./tmpexoj1swh.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpexoj1swh.v", line 36, characters 70-73:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-10 23:44:33,571 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 10
+2026-03-10 23:44:33,571 - skydiscover.search.base_database - INFO - Database has 12 programs, best program score is 1.000000
+2026-03-10 23:44:33,574 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 12 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_10
+2026-03-10 23:44:33,574 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_10
+2026-03-10 23:44:33,574 - skydiscover.runner - INFO - Checkpoint 10: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-10 23:44:33,574 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_10
+2026-03-10 23:44:33,585 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 10
+2026-03-10 23:44:33,585 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-10 23:44:56,584 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:44:56,588 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-10 23:44:56,588 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Automate list manipulation proofs using eauto and hint databases (approach: Coq.Init.Tactics.eauto)
+2026-03-10 23:44:56,588 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use reflection or element counting for list membership (approach: Coq.Lists.List.count_occ)
+2026-03-10 23:44:56,588 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-10 23:44:56,588 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-10 23:44:56,590 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Automate list manipulation proofs using eauto and hint databases
+2026-03-10 23:44:56,742 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 503 Service Unavailable"
+2026-03-10 23:44:56,742 - openai._base_client - INFO - Retrying request to /chat/completions in 0.459032 seconds
+2026-03-10 23:47:15,966 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:47:16,135 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9ca42e2a-4216-4de1-ab3d-184e9ea90668 in 0.13s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmp3mrbnj_b.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-10 23:47:16,136 - skydiscover.search.adaevolve.controller - INFO - Iteration 11: Program 9ca42e2a (parent: 4fe38d7a) completed in 139.55s
+2026-03-10 23:47:16,137 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmp3mrbnj_b.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-10 23:47:16,182 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use reflection or element counting for list membership
+2026-03-10 23:49:49,603 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:49:49,721 - skydiscover.evaluation.evaluator - INFO - Evaluated program 48d9baa2-3c0e-482f-a6da-bc0f1cbebffa in 0.11s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=49.0000, done=0.0000, error=File "./tmpa7iw3f4o.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-10 23:49:49,721 - skydiscover.search.adaevolve.controller - INFO - Iteration 12: Program 48d9baa2 (parent: 4fe38d7a) completed in 153.54s
+2026-03-10 23:49:49,721 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=49.0000, done=0.0000, error=File "./tmpa7iw3f4o.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-10 23:49:49,745 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Automate list manipulation proofs using eauto and hint databases
+2026-03-10 23:52:09,402 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:52:09,557 - skydiscover.evaluation.evaluator - INFO - Evaluated program 08b46fbf-265d-4d10-b294-d4f4424cb003 in 0.11s: combined_score=0.0000, compiles=0.0000, qed_count=0.0000, admitted_count=0.0000, todo_count=0.0000, code_length=4.0000, done=0.0000, error=File "./tmppzp86_v0.v", line 1, characters 0-6:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-10 23:52:09,560 - skydiscover.search.adaevolve.controller - INFO - Iteration 13: Program 08b46fbf (parent: 4fe38d7a) completed in 139.81s
+2026-03-10 23:52:09,560 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=0.0000, admitted_count=0.0000, todo_count=0.0000, code_length=4.0000, done=0.0000, error=File "./tmppzp86_v0.v", line 1, characters 0-6:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-10 23:52:09,561 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use reflection or element counting for list membership
+2026-03-10 23:52:09,561 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 23:54:16,527 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:54:16,924 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9dadee1f-d75e-4d01-b3e2-e2105400d56d in 0.32s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=49.0000, done=0.0000, error=File "./tmp4csqck6y.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 57-60:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-10 23:54:16,929 - skydiscover.search.adaevolve.controller - INFO - Iteration 14: Program 9dadee1f (parent: 4fe38d7a) completed in 127.36s
+2026-03-10 23:54:16,929 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=49.0000, done=0.0000, error=File "./tmp4csqck6y.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 20-30:
+Warning: Notation app_length is deprecated since 8.20.
+Use length_app instead.
+[deprecated-syntactic-definition-since-8.20,deprecated-since-8.20,deprecated-syntactic-definition,deprecated,default]
+File "./tmp4csqck6y.v", line 48, characters 57-60:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-10 23:54:16,949 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 23:54:16,949 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 23:54:16,949 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 23:54:16,950 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 23:54:16,950 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-10 23:54:16,950 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-10 23:54:44,896 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Leverage Coq's standard library NoDup and NoDup_incl_length (approach: Coq.Lists.List.NoDup_incl_length)
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use well-founded induction on the length of lists (approach: Coq.Arith.Wf_nat.induction_ltof)
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Automate list manipulation proofs using eauto and hint databases (uses: 2)
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use reflection or element counting for list membership (uses: 2)
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-10 23:54:44,904 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-10 23:54:44,907 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Leverage Coq's standard library NoDup and NoDup_incl_length
+2026-03-10 23:55:43,657 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:55:43,986 - skydiscover.evaluation.evaluator - INFO - Evaluated program 84d725e1-52e2-49db-b2df-85f2be352acc in 0.32s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=45.0000, done=1.0000
+2026-03-10 23:55:43,991 - skydiscover.search.adaevolve.controller - INFO - Iteration 15: Program 84d725e1 (parent: 4fe38d7a) completed in 59.08s
+2026-03-10 23:55:43,991 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=45.0000, done=1.0000
+2026-03-10 23:55:43,991 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 15
+2026-03-10 23:55:43,991 - skydiscover.search.base_database - INFO - Database has 21 programs, best program score is 1.000000
+2026-03-10 23:55:43,994 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 19 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_15
+2026-03-10 23:55:43,995 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_15
+2026-03-10 23:55:43,995 - skydiscover.runner - INFO - Checkpoint 15: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-10 23:55:43,995 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_15
+2026-03-10 23:55:44,016 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use well-founded induction on the length of lists
+2026-03-10 23:57:58,266 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:57:58,679 - skydiscover.evaluation.evaluator - INFO - Evaluated program 773484bf-5404-4c48-9b44-4c2bc05882a7 in 0.34s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=62.0000, done=1.0000
+2026-03-10 23:57:58,680 - skydiscover.search.adaevolve.controller - INFO - Iteration 16: Program 773484bf (parent: 4fe38d7a) completed in 134.66s
+2026-03-10 23:57:58,680 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=62.0000, done=1.0000
+2026-03-10 23:57:58,702 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Leverage Coq's standard library NoDup and NoDup_incl_length
+2026-03-10 23:59:17,844 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-10 23:59:18,197 - skydiscover.evaluation.evaluator - INFO - Evaluated program 783c92c1-deb4-4b5c-bb22-bfa3095fb45b in 0.33s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=45.0000, done=0.0000, error=File "./tmps_kjggzz.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmps_kjggzz.v", line 43, characters 34-35:
+Error:
+In environment
+EM : excluded_middle
+X : Type
+l1, l2 : list X
+H_incl : forall x : X, In x l1 -> In x l2
+H_len : length l2 < length l1
+H_not_rep : NoDup l1
+H_incl_prop : incl l1 l2
+The term "X" has type "Type" while it is expected to have type "NoDup ?l".
+
+
+2026-03-10 23:59:18,201 - skydiscover.search.adaevolve.controller - INFO - Iteration 17: Program 783c92c1 (parent: 4fe38d7a) completed in 79.50s
+2026-03-10 23:59:18,202 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=45.0000, done=0.0000, error=File "./tmps_kjggzz.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmps_kjggzz.v", line 43, characters 34-35:
+Error:
+In environment
+EM : excluded_middle
+X : Type
+l1, l2 : list X
+H_incl : forall x : X, In x l1 -> In x l2
+H_len : length l2 < length l1
+H_not_rep : NoDup l1
+H_incl_prop : incl l1 l2
+The term "X" has type "Type" while it is expected to have type "NoDup ?l".
+
+
+2026-03-10 23:59:18,204 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use well-founded induction on the length of lists
+2026-03-10 23:59:18,204 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:01:34,875 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:01:35,364 - skydiscover.evaluation.evaluator - INFO - Evaluated program f767d943-f444-4cab-9a84-ba90e285a18f in 0.44s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=66.0000, done=0.0000, error=File "./tmpimondm7w.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpimondm7w.v", line 4, characters 0-32:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpimondm7w.v", line 41, characters 33-47:
+Error: The variable induction_ltof was not found in the current environment.
+
+
+2026-03-11 00:01:35,370 - skydiscover.search.adaevolve.controller - INFO - Iteration 18: Program f767d943 (parent: 4fe38d7a) completed in 137.16s
+2026-03-11 00:01:35,370 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=66.0000, done=0.0000, error=File "./tmpimondm7w.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpimondm7w.v", line 4, characters 0-32:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmpimondm7w.v", line 41, characters 33-47:
+Error: The variable induction_ltof was not found in the current environment.
+
+
+2026-03-11 00:01:35,391 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:01:35,392 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:01:35,392 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:01:35,393 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:01:35,393 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:01:35,393 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:01:48,382 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Leverage ssreflect for concise list manipulation and structural proofs (approach: coq.tactics.ssreflect)
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Utilize forward reasoning and declarative proof styles with Coq's C-B-C (approach: coq.tactics.forward_reasoning)
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Leverage Coq's standard library NoDup and NoDup_incl_length (uses: 2)
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use well-founded induction on the length of lists (uses: 2)
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:01:48,384 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:01:48,388 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Leverage ssreflect for concise list manipulation and structural proofs
+2026-03-11 00:04:07,303 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:04:08,044 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7c9e351e-6d99-488a-a428-bad061e93236 in 0.70s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=62.0000, done=1.0000
+2026-03-11 00:04:08,051 - skydiscover.search.adaevolve.controller - INFO - Iteration 19: Program 7c9e351e (parent: 4fe38d7a) completed in 139.66s
+2026-03-11 00:04:08,051 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=62.0000, done=1.0000
+2026-03-11 00:04:08,074 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Utilize forward reasoning and declarative proof styles with Coq's C-B-C
+2026-03-11 00:05:19,451 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:05:19,808 - skydiscover.evaluation.evaluator - INFO - Evaluated program 13f2c5ae-8d69-4ed1-96f8-eac1df24e00c in 0.35s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=60.0000, done=1.0000
+2026-03-11 00:05:19,813 - skydiscover.search.adaevolve.controller - INFO - Iteration 20: Program 13f2c5ae (parent: 4fe38d7a) completed in 71.73s
+2026-03-11 00:05:19,813 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=60.0000, done=1.0000
+2026-03-11 00:05:19,813 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 20
+2026-03-11 00:05:19,813 - skydiscover.search.base_database - INFO - Database has 23 programs, best program score is 1.000000
+2026-03-11 00:05:19,818 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_20
+2026-03-11 00:05:19,819 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_20
+2026-03-11 00:05:19,819 - skydiscover.runner - INFO - Checkpoint 20: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 00:05:19,819 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_20
+2026-03-11 00:05:19,856 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 20
+2026-03-11 00:05:19,858 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Leverage ssreflect for concise list manipulation and structural proofs
+2026-03-11 00:07:47,656 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:07:48,066 - skydiscover.evaluation.evaluator - INFO - Evaluated program bb249eb1-e196-4f1e-a4d1-50f462bc4553 in 0.36s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=62.0000, done=1.0000
+2026-03-11 00:07:48,116 - skydiscover.search.adaevolve.controller - INFO - Iteration 21: Program bb249eb1 (parent: 4fe38d7a) completed in 148.21s
+2026-03-11 00:07:48,118 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=62.0000, done=1.0000
+2026-03-11 00:07:48,183 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Utilize forward reasoning and declarative proof styles with Coq's C-B-C
+2026-03-11 00:07:48,183 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:08:23,803 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:08:24,139 - skydiscover.evaluation.evaluator - INFO - Evaluated program 063cdd1e-4823-4efa-a9f8-a3d4678da3d7 in 0.33s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=64.0000, done=1.0000
+2026-03-11 00:08:24,145 - skydiscover.search.adaevolve.controller - INFO - Iteration 22: Program 063cdd1e (parent: 4fe38d7a) completed in 35.96s
+2026-03-11 00:08:24,145 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=64.0000, done=1.0000
+2026-03-11 00:08:24,166 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:08:24,166 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:08:24,166 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:08:24,167 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:08:24,167 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:08:24,167 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:08:44,199 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:08:44,211 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:08:44,212 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Use Coq.Sorting.Permutation to reason about list lengths and elements (approach: Coq.Sorting.Permutation)
+2026-03-11 00:08:44,212 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use structural induction on l2 instead of l1 (approach: Coq.Init.Tactics.induction)
+2026-03-11 00:08:44,215 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:08:44,215 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Leverage ssreflect for concise list manipulation and structural proofs (uses: 2)
+2026-03-11 00:08:44,215 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Utilize forward reasoning and declarative proof styles with Coq's C-B-C (uses: 2)
+2026-03-11 00:08:44,215 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:08:44,215 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:08:44,219 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Use Coq.Sorting.Permutation to reason about list lengths and elements
+2026-03-11 00:11:17,273 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:11:17,636 - skydiscover.evaluation.evaluator - INFO - Evaluated program 2d33c927-5212-4238-8097-d6b9cdee10b7 in 0.33s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=50.0000, done=1.0000
+2026-03-11 00:11:17,642 - skydiscover.search.adaevolve.controller - INFO - Iteration 23: Program 2d33c927 (parent: 4fe38d7a) completed in 153.42s
+2026-03-11 00:11:17,642 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=50.0000, done=1.0000
+2026-03-11 00:11:17,669 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use structural induction on l2 instead of l1
+2026-03-11 00:15:07,693 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:15:08,089 - skydiscover.evaluation.evaluator - INFO - Evaluated program 0f23a1ac-e885-47c4-a788-d249e2d265ec in 0.33s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=71.0000, done=0.0000, error=File "./tmpl9br03v8.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpl9br03v8.v", line 26, characters 36-38:
+Error: The variable l1 was not found in the current environment.
+
+
+2026-03-11 00:15:08,095 - skydiscover.search.adaevolve.controller - INFO - Iteration 24: Program 0f23a1ac (parent: 4fe38d7a) completed in 230.42s
+2026-03-11 00:15:08,095 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=71.0000, done=0.0000, error=File "./tmpl9br03v8.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpl9br03v8.v", line 26, characters 36-38:
+Error: The variable l1 was not found in the current environment.
+
+
+2026-03-11 00:15:08,098 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Use Coq.Sorting.Permutation to reason about list lengths and elements
+2026-03-11 00:17:31,800 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:17:31,948 - skydiscover.evaluation.evaluator - INFO - Evaluated program bdb0506c-7df9-4e8b-ab36-a254b0dfd050 in 0.12s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=0.0000, error=File "./tmpqb6z2u6s.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 00:17:31,954 - skydiscover.search.adaevolve.controller - INFO - Iteration 25: Program bdb0506c (parent: 4fe38d7a) completed in 143.85s
+2026-03-11 00:17:31,954 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=0.0000, error=File "./tmpqb6z2u6s.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 00:17:31,954 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 25
+2026-03-11 00:17:31,954 - skydiscover.search.base_database - INFO - Database has 25 programs, best program score is 1.000000
+2026-03-11 00:17:31,958 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_25
+2026-03-11 00:17:31,959 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_25
+2026-03-11 00:17:31,964 - skydiscover.runner - INFO - Checkpoint 25: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 00:17:31,965 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_25
+2026-03-11 00:17:31,968 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use structural induction on l2 instead of l1
+2026-03-11 00:17:31,968 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:20:45,445 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:20:45,811 - skydiscover.evaluation.evaluator - INFO - Evaluated program 752089a9-d707-4ce4-bbb8-5c9aea0cd1eb in 0.32s: combined_score=1.0000, compiles=1.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=89.0000, done=1.0000
+2026-03-11 00:20:45,818 - skydiscover.search.adaevolve.controller - INFO - Iteration 26: Program 752089a9 (parent: 4fe38d7a) completed in 193.84s
+2026-03-11 00:20:45,818 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=89.0000, done=1.0000
+2026-03-11 00:20:45,841 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:20:45,841 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:20:45,841 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:20:45,841 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:20:45,842 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:20:45,842 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:21:08,519 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:21:08,526 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:21:08,526 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Use Coq.Sorting.Permutation to establish length bounds (approach: Coq.Sorting.Permutation)
+2026-03-11 00:21:08,527 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use List.remove and induction on list length (approach: Coq.Lists.List.remove)
+2026-03-11 00:21:08,528 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:21:08,528 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use Coq.Sorting.Permutation to reason about list lengths and elements (uses: 2)
+2026-03-11 00:21:08,528 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use structural induction on l2 instead of l1 (uses: 2)
+2026-03-11 00:21:08,528 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:21:08,528 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:21:08,532 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Use Coq.Sorting.Permutation to establish length bounds
+2026-03-11 00:24:35,023 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:24:35,401 - skydiscover.evaluation.evaluator - INFO - Evaluated program 3998ac7c-61d1-4f27-aa06-5de428f62e01 in 0.32s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmp42xawn4l.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp42xawn4l.v", line 4, characters 0-39:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp42xawn4l.v", line 44, characters 16-21:
+Error:
+In environment
+EM : excluded_middle
+X : Type
+x : X
+l1' : list X
+IH :
+  forall l2 : list X,
+  (forall x : X, In x l1' -> In x l2) ->
+  length l2 < length l1' -> repeats l1'
+l2 : list X
+H_in : forall x0 : X, In x0 (x :: l1') -> In x0 l2
+l2a, l2b : list X
+H_len : length (l2a ++ x :: l2b) < length (x :: l1')
+Hx : ~ In x l1'
+Hxl2 : In x l2
+Heq : l2 = l2a ++ x :: l2b
+Unable to unify
+ "Permutation (?M1426 :: ?M1424 ++ ?M1425) (?M1424 ++ ?M1426 :: ?M1425)"
+with "Permutation (l2a ++ x :: l2b) (x :: l2a ++ l2b)".
+
+
+2026-03-11 00:24:35,407 - skydiscover.search.adaevolve.controller - INFO - Iteration 27: Program 3998ac7c (parent: 4fe38d7a) completed in 206.87s
+2026-03-11 00:24:35,407 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmp42xawn4l.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp42xawn4l.v", line 4, characters 0-39:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp42xawn4l.v", line 44, characters 16-21:
+Error:
+In environment
+EM : excluded_middle
+X : Type
+x : X
+l1' : list X
+IH :
+  forall l2 : list X,
+  (forall x : X, In x l1' -> In x l2) ->
+  length l2 < length l1' -> repeats l1'
+l2 : list X
+H_in : forall x0 : X, In x0 (x :: l1') -> In x0 l2
+l2a, l2b : list X
+H_len : length (l2a ++ x :: l2b) < length (x :: l1')
+Hx : ~ In x l1'
+Hxl2 : In x l2
+Heq : l2 = l2a ++ x :: l2b
+Unable to unify
+ "Permutation (?M1426 :: ?M1424 ++ ?M1425) (?M1424 ++ ?M1426 :: ?M1425)"
+with "Permutation (l2a ++ x :: l2b) (x :: l2a ++ l2b)".
+
+
+2026-03-11 00:24:35,410 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use List.remove and induction on list length
+2026-03-11 00:25:47,430 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:25:47,788 - skydiscover.evaluation.evaluator - INFO - Evaluated program ca1507dc-661b-4a78-9493-3f7364b86b84 in 0.33s: combined_score=1.0000, compiles=1.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=74.0000, done=1.0000
+2026-03-11 00:25:47,794 - skydiscover.search.adaevolve.controller - INFO - Iteration 28: Program ca1507dc (parent: 4fe38d7a) completed in 72.38s
+2026-03-11 00:25:47,794 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=74.0000, done=1.0000
+2026-03-11 00:25:47,819 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Use Coq.Sorting.Permutation to establish length bounds
+2026-03-11 00:29:39,342 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:29:39,836 - skydiscover.evaluation.evaluator - INFO - Evaluated program 7120025e-eac7-40ab-94cd-61fc62ee6556 in 0.40s: combined_score=0.0000, compiles=0.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=68.0000, done=0.0000, error=File "./tmp0lln4saw.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp0lln4saw.v", line 17, characters 0-39:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp0lln4saw.v", line 50, characters 43-48:
+Error:
+In environment
+EM : excluded_middle
+X : Type
+x : X
+l1' : list X
+IH :
+  forall l2 : list X,
+  ~ repeats l1' ->
+  (forall x : X, In x l1' -> In x l2) ->
+  exists l3 : list X, Permutation l2 (l1' ++ l3)
+l2 : list X
+H_rep : ~ repeats (x :: l1')
+H_in : forall x0 : X, In x0 (x :: l1') -> In x0 l2
+Hnx : ~ In x l1'
+Hrep' : ~ repeats l1'
+Hxl2 : In x l2
+l2a, l2b : list X
+Heq : l2 = l2a ++ x :: l2b
+H_in' : forall y : X, In y l1' -> In y (l2a ++ l2b)
+l3 : list X
+Hperm : Permutation (l2a ++ l2b) (l1' ++ l3)
+The term "Hperm" has type "Permutation (l2a ++ l2b) (l1' ++ l3)"
+while it is expected to have type "x = x".
+
+
+2026-03-11 00:29:39,843 - skydiscover.search.adaevolve.controller - INFO - Iteration 29: Program 7120025e (parent: 4fe38d7a) completed in 232.02s
+2026-03-11 00:29:39,843 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=3.0000, admitted_count=0.0000, todo_count=0.0000, code_length=68.0000, done=0.0000, error=File "./tmp0lln4saw.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp0lln4saw.v", line 17, characters 0-39:
+Warning: "From Coq" has been replaced by "From Stdlib".
+[deprecated-from-Coq,deprecated-since-9.0,deprecated,default]
+File "./tmp0lln4saw.v", line 50, characters 43-48:
+Error:
+In environment
+EM : excluded_middle
+X : Type
+x : X
+l1' : list X
+IH :
+  forall l2 : list X,
+  ~ repeats l1' ->
+  (forall x : X, In x l1' -> In x l2) ->
+  exists l3 : list X, Permutation l2 (l1' ++ l3)
+l2 : list X
+H_rep : ~ repeats (x :: l1')
+H_in : forall x0 : X, In x0 (x :: l1') -> In x0 l2
+Hnx : ~ In x l1'
+Hrep' : ~ repeats l1'
+Hxl2 : In x l2
+l2a, l2b : list X
+Heq : l2 = l2a ++ x :: l2b
+H_in' : forall y : X, In y l1' -> In y (l2a ++ l2b)
+l3 : list X
+Hperm : Permutation (l2a ++ l2b) (l1' ++ l3)
+The term "Hperm" has type "Permutation (l2a ++ l2b) (l1' ++ l3)"
+while it is expected to have type "x = x".
+
+
+2026-03-11 00:29:39,846 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use List.remove and induction on list length
+2026-03-11 00:29:39,846 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:32:00,733 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:32:00,892 - skydiscover.evaluation.evaluator - INFO - Evaluated program eaa64744-7a34-4e00-bbeb-2fbaca3d6aaa in 0.12s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=52.0000, done=0.0000, error=File "./tmp_fyczr_y.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 00:32:00,900 - skydiscover.search.adaevolve.controller - INFO - Iteration 30: Program eaa64744 (parent: 4fe38d7a) completed in 141.05s
+2026-03-11 00:32:00,900 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=52.0000, done=0.0000, error=File "./tmp_fyczr_y.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 00:32:00,900 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 30
+2026-03-11 00:32:00,900 - skydiscover.search.base_database - INFO - Database has 22 programs, best program score is 1.000000
+2026-03-11 00:32:00,916 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_30
+2026-03-11 00:32:00,917 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_30
+2026-03-11 00:32:00,918 - skydiscover.runner - INFO - Checkpoint 30: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 00:32:00,918 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_30
+2026-03-11 00:32:00,918 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:32:00,918 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:32:00,918 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:32:00,929 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 30
+2026-03-11 00:32:00,930 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:32:00,930 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:32:00,930 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:32:25,441 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:32:25,445 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Use classical contradiction and NoDup equivalence (approach: Coq.Lists.List.NoDup)
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Define a custom element removal function using excluded middle (approach: Coq.Logic.Classical_Prop)
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use Coq.Sorting.Permutation to establish length bounds (uses: 2)
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use List.remove and induction on list length (uses: 2)
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:32:25,446 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:32:25,449 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Use classical contradiction and NoDup equivalence
+2026-03-11 00:34:46,920 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:34:47,110 - skydiscover.evaluation.evaluator - INFO - Evaluated program aecbd538-e204-424c-997c-b5b77f91e79b in 0.15s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=55.0000, done=0.0000, error=File "./tmpn_6u7bjj.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 00:34:47,137 - skydiscover.search.adaevolve.controller - INFO - Iteration 31: Program aecbd538 (parent: 4fe38d7a) completed in 141.66s
+2026-03-11 00:34:47,138 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=55.0000, done=0.0000, error=File "./tmpn_6u7bjj.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 00:34:47,168 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Define a custom element removal function using excluded middle
+2026-03-11 00:36:43,292 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:36:43,638 - skydiscover.evaluation.evaluator - INFO - Evaluated program acb19792-0837-41f5-b9e0-3096916d6733 in 0.33s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=84.0000, done=0.0000, error=File "./tmp02voy_hj.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp02voy_hj.v", line 83, characters 38-41:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-11 00:36:43,648 - skydiscover.search.adaevolve.controller - INFO - Iteration 32: Program acb19792 (parent: 4fe38d7a) completed in 116.47s
+2026-03-11 00:36:43,648 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=84.0000, done=0.0000, error=File "./tmp02voy_hj.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp02voy_hj.v", line 83, characters 38-41:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-11 00:36:43,652 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Use classical contradiction and NoDup equivalence
+2026-03-11 00:38:08,094 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:38:08,404 - skydiscover.evaluation.evaluator - INFO - Evaluated program 28f1a22d-3ed0-41ef-9a7e-e755ffcb41ed in 0.28s: combined_score=1.0000, compiles=1.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=81.0000, done=1.0000
+2026-03-11 00:38:08,413 - skydiscover.search.adaevolve.controller - INFO - Iteration 33: Program 28f1a22d (parent: 4fe38d7a) completed in 84.75s
+2026-03-11 00:38:08,413 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=81.0000, done=1.0000
+2026-03-11 00:38:08,454 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Define a custom element removal function using excluded middle
+2026-03-11 00:38:08,454 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:40:03,410 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:40:03,774 - skydiscover.evaluation.evaluator - INFO - Evaluated program d44b9a35-4d5c-44d0-8b5a-627f6f92e6e6 in 0.34s: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=76.0000, done=0.0000, error=File "./tmpu5x969hc.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpu5x969hc.v", line 34, characters 33-34:
+Error: Cannot infer the type of X.
+
+
+2026-03-11 00:40:03,783 - skydiscover.search.adaevolve.controller - INFO - Iteration 34: Program d44b9a35 (parent: 4fe38d7a) completed in 115.32s
+2026-03-11 00:40:03,784 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=4.0000, admitted_count=0.0000, todo_count=0.0000, code_length=76.0000, done=0.0000, error=File "./tmpu5x969hc.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpu5x969hc.v", line 34, characters 33-34:
+Error: Cannot infer the type of X.
+
+
+2026-03-11 00:40:03,784 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:40:03,784 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:40:03,784 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:40:03,785 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:40:03,785 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:40:03,785 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:40:48,568 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:40:48,581 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Leverage List.NoDup and NoDup_incl_length (approach: Coq.Lists.List.NoDup)
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Index-based formulation using nth_error and finite mappings (approach: Coq.Lists.List.nth_error)
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use classical contradiction and NoDup equivalence (uses: 2)
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Define a custom element removal function using excluded middle (uses: 2)
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:40:48,582 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:40:48,585 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Leverage List.NoDup and NoDup_incl_length
+2026-03-11 00:42:02,839 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:42:03,187 - skydiscover.evaluation.evaluator - INFO - Evaluated program b14b045b-0f47-4508-9780-a4216065db0a in 0.34s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=44.0000, done=0.0000, error=File "./tmplgaun2d0.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmplgaun2d0.v", line 43, characters 16-44:
+Error: Illegal application (Non-functional construction): 
+The expression "NoDup_incl_length ?n ?i" of type "length ?l <= length ?l'"
+cannot be applied to the term
+ "Hnodup" : "NoDup l1"
+
+
+2026-03-11 00:42:03,192 - skydiscover.search.adaevolve.controller - INFO - Iteration 35: Program b14b045b (parent: 4fe38d7a) completed in 74.60s
+2026-03-11 00:42:03,192 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=44.0000, done=0.0000, error=File "./tmplgaun2d0.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmplgaun2d0.v", line 43, characters 16-44:
+Error: Illegal application (Non-functional construction): 
+The expression "NoDup_incl_length ?n ?i" of type "length ?l <= length ?l'"
+cannot be applied to the term
+ "Hnodup" : "NoDup l1"
+
+
+2026-03-11 00:42:03,192 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 35
+2026-03-11 00:42:03,192 - skydiscover.search.base_database - INFO - Database has 23 programs, best program score is 1.000000
+2026-03-11 00:42:03,197 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_35
+2026-03-11 00:42:03,198 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_35
+2026-03-11 00:42:03,198 - skydiscover.runner - INFO - Checkpoint 35: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 00:42:03,198 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_35
+2026-03-11 00:42:03,200 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Index-based formulation using nth_error and finite mappings
+2026-03-11 00:43:46,099 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:43:46,474 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4614f10c-c138-454b-92b9-4b1d7abf0aa8 in 0.34s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=42.0000, done=0.0000, error=File "./tmp04pbq62a.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp04pbq62a.v", line 36, characters 12-13:
+Error: H is already used.
+
+
+2026-03-11 00:43:46,479 - skydiscover.search.adaevolve.controller - INFO - Iteration 36: Program 4614f10c (parent: 4fe38d7a) completed in 103.27s
+2026-03-11 00:43:46,479 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=42.0000, done=0.0000, error=File "./tmp04pbq62a.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmp04pbq62a.v", line 36, characters 12-13:
+Error: H is already used.
+
+
+2026-03-11 00:43:46,481 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Leverage List.NoDup and NoDup_incl_length
+2026-03-11 00:44:57,100 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:44:57,342 - skydiscover.evaluation.evaluator - INFO - Evaluated program a4288f0b-264c-4be6-a214-8560ab605712 in 0.24s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=47.0000, done=1.0000
+2026-03-11 00:44:57,348 - skydiscover.search.adaevolve.controller - INFO - Iteration 37: Program a4288f0b (parent: 4fe38d7a) completed in 70.86s
+2026-03-11 00:44:57,348 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=47.0000, done=1.0000
+2026-03-11 00:44:57,375 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Index-based formulation using nth_error and finite mappings
+2026-03-11 00:44:57,375 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:49:02,565 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:49:03,112 - skydiscover.evaluation.evaluator - INFO - Evaluated program 527e942f-87df-47f1-8c65-e180bca63d52 in 0.46s: combined_score=0.0000, compiles=0.0000, qed_count=8.0000, admitted_count=0.0000, todo_count=0.0000, code_length=182.0000, done=0.0000, error=File "./tmpaxsd8owx.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpaxsd8owx.v", line 111, characters 72-73:
+Error: Syntax error: [term] expected after '<' (in [term]).
+
+
+2026-03-11 00:49:03,124 - skydiscover.search.adaevolve.controller - INFO - Iteration 38: Program 527e942f (parent: 4fe38d7a) completed in 245.74s
+2026-03-11 00:49:03,126 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=8.0000, admitted_count=0.0000, todo_count=0.0000, code_length=182.0000, done=0.0000, error=File "./tmpaxsd8owx.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpaxsd8owx.v", line 111, characters 72-73:
+Error: Syntax error: [term] expected after '<' (in [term]).
+
+
+2026-03-11 00:49:03,126 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:49:03,126 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:49:03,126 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:49:03,127 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:49:03,127 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:49:03,127 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:49:21,752 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:49:21,757 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:49:21,757 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Use automated proof search with eauto and Hint databases (approach: coq.tactics.eauto)
+2026-03-11 00:49:21,758 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Develop a custom Ltac decision procedure for list membership and lengths (approach: coq.ltac.custom)
+2026-03-11 00:49:21,758 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:49:21,758 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Leverage List.NoDup and NoDup_incl_length (uses: 2)
+2026-03-11 00:49:21,758 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Index-based formulation using nth_error and finite mappings (uses: 2)
+2026-03-11 00:49:21,758 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:49:21,758 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:49:21,762 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Use automated proof search with eauto and Hint databases
+2026-03-11 00:51:42,412 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:51:42,574 - skydiscover.evaluation.evaluator - INFO - Evaluated program c1af4ec3-b187-455c-9b42-10250f388246 in 0.11s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmpfyz74z24.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 00:51:42,579 - skydiscover.search.adaevolve.controller - INFO - Iteration 39: Program c1af4ec3 (parent: 4fe38d7a) completed in 140.81s
+2026-03-11 00:51:42,580 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmpfyz74z24.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 00:51:42,582 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Develop a custom Ltac decision procedure for list membership and lengths
+2026-03-11 00:55:02,304 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:55:02,724 - skydiscover.evaluation.evaluator - INFO - Evaluated program 4dd31aa0-2b84-453a-8d16-981209fcf27f in 0.36s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=73.0000, done=1.0000
+2026-03-11 00:55:02,730 - skydiscover.search.adaevolve.controller - INFO - Iteration 40: Program 4dd31aa0 (parent: 4fe38d7a) completed in 200.14s
+2026-03-11 00:55:02,730 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=73.0000, done=1.0000
+2026-03-11 00:55:02,730 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 40
+2026-03-11 00:55:02,730 - skydiscover.search.base_database - INFO - Database has 22 programs, best program score is 1.000000
+2026-03-11 00:55:02,733 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_40
+2026-03-11 00:55:02,734 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_40
+2026-03-11 00:55:02,734 - skydiscover.runner - INFO - Checkpoint 40: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 00:55:02,734 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_40
+2026-03-11 00:55:02,768 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 40
+2026-03-11 00:55:02,789 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Use automated proof search with eauto and Hint databases
+2026-03-11 00:57:08,332 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:57:08,728 - skydiscover.evaluation.evaluator - INFO - Evaluated program b55fb807-9a13-497a-a456-e7f2948d53cd in 0.36s: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=49.0000, done=1.0000
+2026-03-11 00:57:08,734 - skydiscover.search.adaevolve.controller - INFO - Iteration 41: Program b55fb807 (parent: 4fe38d7a) completed in 125.94s
+2026-03-11 00:57:08,734 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=49.0000, done=1.0000
+2026-03-11 00:57:08,787 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Develop a custom Ltac decision procedure for list membership and lengths
+2026-03-11 00:57:08,787 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:59:25,785 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:59:25,954 - skydiscover.evaluation.evaluator - INFO - Evaluated program edde1450-0188-4ec0-a3e9-5de01a18349a in 0.13s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=81.0000, done=0.0000, error=File "./tmptr7vx3d4.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 00:59:25,962 - skydiscover.search.adaevolve.controller - INFO - Iteration 42: Program edde1450 (parent: 4fe38d7a) completed in 137.17s
+2026-03-11 00:59:25,962 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=81.0000, done=0.0000, error=File "./tmptr7vx3d4.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 00:59:25,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:59:25,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:59:25,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:59:25,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:59:25,963 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 00:59:25,963 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 00:59:50,060 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 00:59:50,063 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 00:59:50,063 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Use well-founded induction on list length (approach: Coq.Init.Wf.well_founded_induction)
+2026-03-11 00:59:50,063 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Use element counting with List.count_occ (approach: Coq.Lists.List.count_occ)
+2026-03-11 00:59:50,064 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 00:59:50,064 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use automated proof search with eauto and Hint databases (uses: 2)
+2026-03-11 00:59:50,064 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Develop a custom Ltac decision procedure for list membership and lengths (uses: 2)
+2026-03-11 00:59:50,064 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 00:59:50,064 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 00:59:50,071 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Use well-founded induction on list length
+2026-03-11 01:02:15,797 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:02:15,946 - skydiscover.evaluation.evaluator - INFO - Evaluated program da9bb550-9107-48e7-82aa-64eddffeaaec in 0.10s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmpbu7fbk8m.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 01:02:15,952 - skydiscover.search.adaevolve.controller - INFO - Iteration 43: Program da9bb550 (parent: 4fe38d7a) completed in 145.87s
+2026-03-11 01:02:15,952 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=46.0000, done=0.0000, error=File "./tmpbu7fbk8m.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 01:02:15,954 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Use element counting with List.count_occ
+2026-03-11 01:04:34,440 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:04:34,607 - skydiscover.evaluation.evaluator - INFO - Evaluated program c4055b1a-df80-4ee7-8cc9-c44472fd9e9b in 0.12s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=45.0000, done=0.0000, error=File "./tmppv0hpzqt.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 01:04:34,613 - skydiscover.search.adaevolve.controller - INFO - Iteration 44: Program c4055b1a (parent: 4fe38d7a) completed in 138.65s
+2026-03-11 01:04:34,613 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=45.0000, done=0.0000, error=File "./tmppv0hpzqt.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 01:04:34,615 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Use well-founded induction on list length
+2026-03-11 01:06:11,150 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:06:11,537 - skydiscover.evaluation.evaluator - INFO - Evaluated program dc663500-eb47-459d-bcf3-943a321a5b67 in 0.36s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=69.0000, done=0.0000, error=File "./tmpny5_u7x1.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpny5_u7x1.v", line 4, characters 15-23:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require PeanoNat"
+or the deprecated "From Coq Require PeanoNat"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpny5_u7x1.v", line 47, characters 20-23:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-11 01:06:11,544 - skydiscover.search.adaevolve.controller - INFO - Iteration 45: Program dc663500 (parent: 4fe38d7a) completed in 96.92s
+2026-03-11 01:06:11,545 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=69.0000, done=0.0000, error=File "./tmpny5_u7x1.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpny5_u7x1.v", line 4, characters 15-23:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require PeanoNat"
+or the deprecated "From Coq Require PeanoNat"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpny5_u7x1.v", line 47, characters 20-23:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-11 01:06:11,545 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 45
+2026-03-11 01:06:11,545 - skydiscover.search.base_database - INFO - Database has 23 programs, best program score is 1.000000
+2026-03-11 01:06:11,552 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_45
+2026-03-11 01:06:11,553 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_45
+2026-03-11 01:06:11,553 - skydiscover.runner - INFO - Checkpoint 45: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 01:06:11,553 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_45
+2026-03-11 01:06:11,555 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Use element counting with List.count_occ
+2026-03-11 01:06:11,555 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:08:34,044 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:08:34,201 - skydiscover.evaluation.evaluator - INFO - Evaluated program 011b97f7-0c26-4549-addd-eda5cce3389b in 0.11s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=51.0000, done=0.0000, error=File "./tmph12it8sk.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 01:08:34,208 - skydiscover.search.adaevolve.controller - INFO - Iteration 46: Program 011b97f7 (parent: 4fe38d7a) completed in 142.65s
+2026-03-11 01:08:34,208 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=51.0000, done=0.0000, error=File "./tmph12it8sk.v", line 1, characters 0-1:
+Error: Syntax Error: Lexer: Undefined token
+
+
+2026-03-11 01:08:34,208 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:08:34,208 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:08:34,208 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:08:34,210 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:08:34,210 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:08:34,210 - skydiscover.search.adaevolve.controller - INFO - Global paradigm stagnation detected, generating breakthrough ideas...
+2026-03-11 01:09:09,072 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.generator - INFO - Generated 2 paradigms:
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [1] Induction on list length rather than structure (approach: coq.tactics.length_induction)
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.generator - INFO -   [2] Algebraic proof using element counting (count_occ) (approach: coq.lists.count_occ)
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Archived 2 paradigms (improvement: +0.000000):
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use well-founded induction on list length (uses: 2)
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.tracker - INFO -   [FAILED] Use element counting with List.count_occ (uses: 2)
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Set 2 new paradigms (best score: 1.000000)
+2026-03-11 01:09:09,082 - skydiscover.search.adaevolve.controller - INFO - Generated 2 breakthrough paradigms
+2026-03-11 01:09:09,087 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (1/2): Induction on list length rather than structure
+2026-03-11 01:11:04,977 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:11:05,242 - skydiscover.evaluation.evaluator - INFO - Evaluated program 6be9f13a-18ea-4f13-8869-30e9ab1f9016 in 0.23s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=67.0000, done=0.0000, error=File "./tmpdn3j6i7e.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpdn3j6i7e.v", line 4, characters 15-21:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Wf_nat" or the deprecated "From Coq Require Wf_nat"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpdn3j6i7e.v", line 45, characters 20-23:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-11 01:11:05,247 - skydiscover.search.adaevolve.controller - INFO - Iteration 47: Program 6be9f13a (parent: 4fe38d7a) completed in 116.16s
+2026-03-11 01:11:05,247 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=67.0000, done=0.0000, error=File "./tmpdn3j6i7e.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpdn3j6i7e.v", line 4, characters 15-21:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Wf_nat" or the deprecated "From Coq Require Wf_nat"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpdn3j6i7e.v", line 45, characters 20-23:
+Error: Tactic failure:  Cannot find witness.
+
+
+2026-03-11 01:11:05,250 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (1/2): Algebraic proof using element counting (count_occ)
+2026-03-11 01:13:21,232 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:13:21,400 - skydiscover.evaluation.evaluator - INFO - Evaluated program 619f80ce-a954-4ac9-95c6-425f479c970e in 0.12s: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=0.0000, error=File "./tmpc_fa5rqy.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 01:13:21,406 - skydiscover.search.adaevolve.controller - INFO - Iteration 48: Program 619f80ce (parent: 4fe38d7a) completed in 136.15s
+2026-03-11 01:13:21,406 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=1.0000, admitted_count=0.0000, todo_count=0.0000, code_length=43.0000, done=0.0000, error=File "./tmpc_fa5rqy.v", line 1, characters 0-2:
+Error: Syntax error: illegal begin of vernac.
+
+
+2026-03-11 01:13:21,409 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 1/2 (2/2): Induction on list length rather than structure
+2026-03-11 01:14:26,566 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:14:26,838 - skydiscover.evaluation.evaluator - INFO - Evaluated program 9c66c639-9b54-4677-81f0-f84e95a1840b in 0.26s: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=65.0000, done=0.0000, error=File "./tmph20w5rbh.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmph20w5rbh.v", line 40, characters 75-77:
+Error: The variable l2 was not found in the current environment.
+
+
+2026-03-11 01:14:26,844 - skydiscover.search.adaevolve.controller - INFO - Iteration 49: Program 9c66c639 (parent: 4fe38d7a) completed in 65.43s
+2026-03-11 01:14:26,844 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=65.0000, done=0.0000, error=File "./tmph20w5rbh.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmph20w5rbh.v", line 40, characters 75-77:
+Error: The variable l2 was not found in the current environment.
+
+
+2026-03-11 01:14:26,847 - skydiscover.search.adaevolve.paradigm.tracker - INFO - Using paradigm 2/2 (2/2): Algebraic proof using element counting (count_occ)
+2026-03-11 01:14:26,847 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:18:17,506 - httpx - INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/openai/chat/completions "HTTP/1.1 200 OK"
+2026-03-11 01:18:18,035 - skydiscover.evaluation.evaluator - INFO - Evaluated program 720aba69-09ea-4500-9533-94917429b93c in 0.44s: combined_score=0.0000, compiles=0.0000, qed_count=6.0000, admitted_count=0.0000, todo_count=0.0000, code_length=84.0000, done=0.0000, error=File "./tmpjb9w8tr_.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpjb9w8tr_.v", line 4, characters 15-31:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require ClassicalEpsilon"
+or the deprecated "From Coq Require ClassicalEpsilon"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpjb9w8tr_.v", line 29, characters 4-18:
+Error: Unable to find an instance for the variable x.
+
+
+2026-03-11 01:18:18,043 - skydiscover.search.adaevolve.controller - INFO - Iteration 50: Program 720aba69 (parent: 4fe38d7a) completed in 231.19s
+2026-03-11 01:18:18,043 - skydiscover.search.adaevolve.controller - INFO - Metrics: combined_score=0.0000, compiles=0.0000, qed_count=6.0000, admitted_count=0.0000, todo_count=0.0000, code_length=84.0000, done=0.0000, error=File "./tmpjb9w8tr_.v", line 3, characters 15-18:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require Lia" or the deprecated "From Coq Require Lia"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpjb9w8tr_.v", line 4, characters 15-31:
+Warning: Loading Stdlib without prefix is deprecated.
+Use "From Stdlib Require ClassicalEpsilon"
+or the deprecated "From Coq Require ClassicalEpsilon"
+for compatibility with older Coq versions.
+[deprecated-missing-stdlib,deprecated-since-9.0,deprecated,default]
+File "./tmpjb9w8tr_.v", line 29, characters 4-18:
+Error: Unable to find an instance for the variable x.
+
+
+2026-03-11 01:18:18,043 - skydiscover.search.adaevolve.controller - INFO - Checkpoint interval reached at iteration 50
+2026-03-11 01:18:18,043 - skydiscover.search.base_database - INFO - Database has 20 programs, best program score is 1.000000
+2026-03-11 01:18:18,049 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_50
+2026-03-11 01:18:18,050 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_50
+2026-03-11 01:18:18,051 - skydiscover.runner - INFO - Checkpoint 50: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 01:18:18,051 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_50
+2026-03-11 01:18:18,051 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:18:18,051 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:18:18,051 - skydiscover.search.adaevolve.paradigm.tracker - INFO - All paradigms exhausted, will archive on next check
+2026-03-11 01:18:18,052 - skydiscover.search.adaevolve.database - INFO - Migration completed at iteration 50
+2026-03-11 01:18:18,052 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve completed
+2026-03-11 01:18:18,052 - skydiscover.search.base_database - INFO - Database has 20 programs, best program score is 1.000000
+2026-03-11 01:18:18,052 - skydiscover.search.adaevolve.controller - INFO - AdaEvolve iteration stats saved to: benchmarks/formal_verification/coq_proof/pigeonhole/outputs/adaevolve_iteration_stats_20260310_233601.jsonl
+2026-03-11 01:18:18,059 - skydiscover.search.utils.checkpoint_manager - INFO - [CHECKPOINT] Saved database with 20 programs to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_50
+2026-03-11 01:18:18,059 - skydiscover.search.adaevolve.database - INFO - Saved AdaEvolve state to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_50
+2026-03-11 01:18:18,060 - skydiscover.runner - INFO - Checkpoint 50: best=combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 01:18:18,060 - skydiscover.runner - INFO - Checkpoint saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/checkpoints/checkpoint_50
+2026-03-11 01:18:18,061 - skydiscover.runner - INFO - Discovery completed. Best: combined_score=1.0000, compiles=1.0000, qed_count=2.0000, admitted_count=0.0000, todo_count=0.0000, code_length=61.0000, done=1.0000
+2026-03-11 01:18:18,061 - skydiscover.runner - INFO - Best program saved to benchmarks/formal_verification/coq_proof/pigeonhole/outputs/best

@@ -8,26 +8,28 @@ This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal
 
 | Problem | Difficulty | Description | Result |
 |---|---|---|---|
-| `all_less_than` | Easy | Check all list elements are below a bound | Score 1.0 at iteration 1 |
-| `insertion_sort` | Medium | Implement and verify a sorting algorithm | Score 1.0 at iteration 14 |
-| `regex_matcher` | Hard | Verified regex matcher via Brzozowski derivatives | Score 0.929 (13/14 proofs) at iteration 30 |
-| `bst_verification` | Hard | Implement and verify a binary search tree | — |
-| `pigeonhole` | Hard | Define `repeats` and prove the pigeonhole principle | — |
+| `all_less_than` | Easy | Check all list elements are below a bound | 1.0 at iter 1 (GPT-5) |
+| `insertion_sort` | Medium | Implement and verify a sorting algorithm | 1.0 at iter 14 (GPT-5) |
+| `pigeonhole` | Hard (5★) | Define `repeats` and prove the pigeonhole principle | 1.0 at iter 5 (Gemini 3 Pro) |
+| `regex_matcher` | Hard (2–4★) | Verified regex matcher via Brzozowski derivatives | 1.0 at iter 12 (Gemini 3 Pro) |
+| `bst_verification` | Hard | Implement and verify a binary search tree | 1.0 at iter 23 (Gemini 3 Pro) |
+| `strong_pumping` | Very hard (5★) | Prove the strong pumping lemma | Running |
+| `trie_adt` | Very hard | Define `is_trie` invariant, prove 10 ADT theorems | Running |
 
-Best synthesized programs are in `<problem>/outputs/best/best_program.v`.
+See [`coq_proof/PROBLEMS.md`](coq_proof/PROBLEMS.md) for detailed descriptions and SF source links.
 
 ## Setup
 
 ```bash
 brew install coq        # Rocq/Coq 9.x
-export OPENAI_API_KEY="..."
+export GEMINI_API_KEY="..."   # or OPENAI_API_KEY for GPT models
 cd skydiscover/
 source .venv/bin/activate
 ```
 
 ## Run
 
-All three in parallel:
+All benchmarks in parallel:
 ```bash
 bash benchmarks/formal_verification/coq_proof/run_all.sh
 ```

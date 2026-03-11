@@ -1,0 +1,236 @@
+{
+  "num_islands": 2,
+  "current_island": 0,
+  "iteration_count": 14,
+  "global_best_score": 0.8333333333333334,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.0929982317548189,
+        "best_score": 0.8333333333333334,
+        "improvement_count": 8,
+        "total_evaluations": 10,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.15575237129710717,
+        "best_score": 0.6666666666666666,
+        "improvement_count": 4,
+        "total_evaluations": 8,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      10,
+      8
+    ],
+    "dimension_rewards": [
+      1.4787030080069867,
+      0.7534146527419818
+    ],
+    "decayed_visits": [
+      6.5132155990000005,
+      5.6953279000000006
+    ],
+    "global_best_score": 0.8333333333333334,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "0e8c9508-921e-42a3-9952-332595787165",
+      "e594e68b-4029-412b-aab0-7e80efd322f8",
+      "3352bd54-0be8-4bfe-b835-b1c8c6bc52cd",
+      "aa15f890-9ea6-405d-be08-c4633ef35d27",
+      "2c9ae2d5-370e-4b98-91e3-05ded15f9db9",
+      "b5942f7a-1f23-46e2-bd7c-ec651d802dca",
+      "548caef1-e002-4d61-8259-82d3b92ff963",
+      "e7cd1e8c-743b-40e8-92c2-3bccbaa91fa7",
+      "d38cfb68-4c3c-4b2c-ab25-75de64c44db7",
+      "1b6bca14-cf8e-4f4c-9e36-2c1d7ae109b3"
+    ],
+    [
+      "aee17e4f-e7a4-47c5-8fc5-3b08f4f7adb9",
+      "4dab07f0-123f-419c-b2be-eed78bf3d31b",
+      "50335479-a221-40eb-9f03-de412c52fdd6",
+      "1fec29b1-cb47-4ddb-9250-ebbb1dd2aecd",
+      "dfd52f8d-7818-41bc-83b9-b8ab21cedb93",
+      "f08ae757-32ae-4bf5-bf4c-d642900a63a0",
+      "ed093d2b-2137-4633-9bca-14b9dfcb1d15",
+      "e4c50176-015f-4e38-bf19-f11b009011a2",
+      "45740eaf-0e27-4870-a081-800632bf9743"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "0e8c9508-921e-42a3-9952-332595787165": [],
+        "e594e68b-4029-412b-aab0-7e80efd322f8": [
+          "0e8c9508-921e-42a3-9952-332595787165"
+        ],
+        "3352bd54-0be8-4bfe-b835-b1c8c6bc52cd": [
+          "e594e68b-4029-412b-aab0-7e80efd322f8"
+        ],
+        "aa15f890-9ea6-405d-be08-c4633ef35d27": [
+          "3352bd54-0be8-4bfe-b835-b1c8c6bc52cd"
+        ],
+        "2c9ae2d5-370e-4b98-91e3-05ded15f9db9": [
+          "aa15f890-9ea6-405d-be08-c4633ef35d27"
+        ],
+        "b5942f7a-1f23-46e2-bd7c-ec651d802dca": [
+          "2c9ae2d5-370e-4b98-91e3-05ded15f9db9"
+        ],
+        "548caef1-e002-4d61-8259-82d3b92ff963": [
+          "e594e68b-4029-412b-aab0-7e80efd322f8"
+        ],
+        "e7cd1e8c-743b-40e8-92c2-3bccbaa91fa7": [
+          "45740eaf-0e27-4870-a081-800632bf9743"
+        ],
+        "d38cfb68-4c3c-4b2c-ab25-75de64c44db7": [
+          "e7cd1e8c-743b-40e8-92c2-3bccbaa91fa7"
+        ],
+        "1b6bca14-cf8e-4f4c-9e36-2c1d7ae109b3": [
+          "d38cfb68-4c3c-4b2c-ab25-75de64c44db7"
+        ]
+      },
+      "children": {
+        "0e8c9508-921e-42a3-9952-332595787165": [
+          "e594e68b-4029-412b-aab0-7e80efd322f8"
+        ],
+        "e594e68b-4029-412b-aab0-7e80efd322f8": [
+          "3352bd54-0be8-4bfe-b835-b1c8c6bc52cd",
+          "548caef1-e002-4d61-8259-82d3b92ff963"
+        ],
+        "3352bd54-0be8-4bfe-b835-b1c8c6bc52cd": [
+          "aa15f890-9ea6-405d-be08-c4633ef35d27"
+        ],
+        "aa15f890-9ea6-405d-be08-c4633ef35d27": [
+          "2c9ae2d5-370e-4b98-91e3-05ded15f9db9"
+        ],
+        "2c9ae2d5-370e-4b98-91e3-05ded15f9db9": [
+          "b5942f7a-1f23-46e2-bd7c-ec651d802dca"
+        ],
+        "45740eaf-0e27-4870-a081-800632bf9743": [
+          "e7cd1e8c-743b-40e8-92c2-3bccbaa91fa7"
+        ],
+        "e7cd1e8c-743b-40e8-92c2-3bccbaa91fa7": [
+          "d38cfb68-4c3c-4b2c-ab25-75de64c44db7"
+        ],
+        "d38cfb68-4c3c-4b2c-ab25-75de64c44db7": [
+          "1b6bca14-cf8e-4f4c-9e36-2c1d7ae109b3"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "aee17e4f-e7a4-47c5-8fc5-3b08f4f7adb9": [],
+        "4dab07f0-123f-419c-b2be-eed78bf3d31b": [
+          "aee17e4f-e7a4-47c5-8fc5-3b08f4f7adb9"
+        ],
+        "50335479-a221-40eb-9f03-de412c52fdd6": [
+          "aee17e4f-e7a4-47c5-8fc5-3b08f4f7adb9"
+        ],
+        "1fec29b1-cb47-4ddb-9250-ebbb1dd2aecd": [
+          "4dab07f0-123f-419c-b2be-eed78bf3d31b"
+        ],
+        "dfd52f8d-7818-41bc-83b9-b8ab21cedb93": [
+          "50335479-a221-40eb-9f03-de412c52fdd6"
+        ],
+        "f08ae757-32ae-4bf5-bf4c-d642900a63a0": [
+          "b5942f7a-1f23-46e2-bd7c-ec651d802dca"
+        ],
+        "ed093d2b-2137-4633-9bca-14b9dfcb1d15": [
+          "2c9ae2d5-370e-4b98-91e3-05ded15f9db9"
+        ],
+        "e4c50176-015f-4e38-bf19-f11b009011a2": [
+          "aa15f890-9ea6-405d-be08-c4633ef35d27"
+        ],
+        "45740eaf-0e27-4870-a081-800632bf9743": [
+          "b5942f7a-1f23-46e2-bd7c-ec651d802dca"
+        ]
+      },
+      "children": {
+        "aee17e4f-e7a4-47c5-8fc5-3b08f4f7adb9": [
+          "4dab07f0-123f-419c-b2be-eed78bf3d31b",
+          "50335479-a221-40eb-9f03-de412c52fdd6"
+        ],
+        "4dab07f0-123f-419c-b2be-eed78bf3d31b": [
+          "1fec29b1-cb47-4ddb-9250-ebbb1dd2aecd"
+        ],
+        "50335479-a221-40eb-9f03-de412c52fdd6": [
+          "dfd52f8d-7818-41bc-83b9-b8ab21cedb93"
+        ],
+        "b5942f7a-1f23-46e2-bd7c-ec651d802dca": [
+          "f08ae757-32ae-4bf5-bf4c-d642900a63a0",
+          "45740eaf-0e27-4870-a081-800632bf9743"
+        ],
+        "2c9ae2d5-370e-4b98-91e3-05ded15f9db9": [
+          "ed093d2b-2137-4633-9bca-14b9dfcb1d15"
+        ],
+        "aa15f890-9ea6-405d-be08-c4633ef35d27": [
+          "e4c50176-015f-4e38-bf19-f11b009011a2"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      1.0,
+      1.0,
+      1.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Prove empty_relate using functional extensionality",
+        "description": "The empty_relate theorem establishes that the abstraction of an empty trie matches the empty total_map. Since Abs is defined as abstract t = m, and both are functions from nat to A, we need to prove function equality. We can use the functional extensionality axiom (which is already imported via Stdlib.Logic.FunctionalExtensionality). The proof steps are: unfold Abs, abstract, lookup, empty, and t_empty; apply the extensionality tactic to introduce a natural number n; then apply the existing look_leaf lemma or destruct the positive index to conclude the proof.",
+        "what_to_optimize": "qed_count",
+        "cautions": "Remember to use 'extensionality n' before trying to simplify the application of the functions, as Abs compares two functions.",
+        "approach_type": "Stdlib.Logic.FunctionalExtensionality.extensionality"
+      },
+      {
+        "idea": "Prove insert_is_trie trivially using True constructor",
+        "description": "The insert_is_trie theorem states that inserting an element into a valid trie results in a valid trie. Looking at the definition of is_trie, it is defined simply as True. Therefore, any proposition of the form is_trie X is trivially true. The proof requires no induction or unfolding of the insert operation. We can simply start the proof, ignore the hypotheses, and use the exact I or constructor tactic to discharge the goal. This is a quick win that reduces the Admitted count without complex dependencies.",
+        "what_to_optimize": "qed_count",
+        "cautions": "Do not overcomplicate the proof by unfolding insert or doing induction, as the goal is just True.",
+        "approach_type": "Coq.Init.Logic.True"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [],
+    "best_score_at_paradigm_gen": 0.5833333333333334,
+    "best_score_during_paradigm": 0.8333333333333334
+  }
+}

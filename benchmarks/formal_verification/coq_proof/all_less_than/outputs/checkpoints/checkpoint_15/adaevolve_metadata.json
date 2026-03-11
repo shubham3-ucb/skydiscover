@@ -1,0 +1,279 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 14,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.18999999999999995,
+        "best_score": 1.0,
+        "improvement_count": 2,
+        "total_evaluations": 10,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.18999999999999995,
+        "best_score": 1.0,
+        "improvement_count": 1,
+        "total_evaluations": 8,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      10,
+      8
+    ],
+    "dimension_rewards": [
+      0.817887699,
+      0.4782968952170311
+    ],
+    "decayed_visits": [
+      6.5132155990000005,
+      5.6953279000000006
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "d198b48a-60cd-41f2-9cbc-6de2a42f85eb",
+      "e8f85ae1-5dab-4123-8150-bdf8eca08ceb",
+      "f40694bf-2cee-4675-86dc-a38fd1d03b13",
+      "8a5fea67-fb26-4349-9de5-0435ae1abfb6",
+      "7361665f-3193-4057-8fa6-3d3214ace1a9",
+      "bc145e5c-7c90-40b9-b8f3-d948819aee9b",
+      "a4ca3dfa-675f-4acc-8451-7f7641143162",
+      "c7e010b8-fe41-4cae-9672-460346e37d26",
+      "fa30d181-b0db-4b11-8605-005e0e9ba339",
+      "d4809a66-dd34-4475-a339-d37af1a0818e"
+    ],
+    [
+      "0c06749d-6376-4218-a6a3-22849f21c361",
+      "c30444f9-a442-4947-8a5a-1c96fae72f0c",
+      "f998519b-387a-4615-96be-18450284f2ef",
+      "7e351ded-692f-4cc0-8948-a627aa311625",
+      "368c72b9-ac6c-47a5-a0ab-00766fb605cd",
+      "1a42e064-e193-42e7-8108-5d302567021b",
+      "68311481-fead-4b9b-89e9-7921780b1241",
+      "12df2550-f629-4ac1-ba78-7e95e063755f",
+      "062e2005-7237-4b0c-87b8-a9cf81546fe0",
+      "47cd4e5d-25b5-4e81-9d23-e4f1e9bba4ca"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "d198b48a-60cd-41f2-9cbc-6de2a42f85eb": [],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "d198b48a-60cd-41f2-9cbc-6de2a42f85eb"
+        ],
+        "f40694bf-2cee-4675-86dc-a38fd1d03b13": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "8a5fea67-fb26-4349-9de5-0435ae1abfb6": [
+          "d198b48a-60cd-41f2-9cbc-6de2a42f85eb"
+        ],
+        "7361665f-3193-4057-8fa6-3d3214ace1a9": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "bc145e5c-7c90-40b9-b8f3-d948819aee9b": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "a4ca3dfa-675f-4acc-8451-7f7641143162": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "c7e010b8-fe41-4cae-9672-460346e37d26": [
+          "f998519b-387a-4615-96be-18450284f2ef"
+        ],
+        "fa30d181-b0db-4b11-8605-005e0e9ba339": [
+          "7e351ded-692f-4cc0-8948-a627aa311625"
+        ],
+        "d4809a66-dd34-4475-a339-d37af1a0818e": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ]
+      },
+      "children": {
+        "d198b48a-60cd-41f2-9cbc-6de2a42f85eb": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb",
+          "8a5fea67-fb26-4349-9de5-0435ae1abfb6"
+        ],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "f40694bf-2cee-4675-86dc-a38fd1d03b13",
+          "7361665f-3193-4057-8fa6-3d3214ace1a9",
+          "bc145e5c-7c90-40b9-b8f3-d948819aee9b",
+          "d4809a66-dd34-4475-a339-d37af1a0818e"
+        ],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "a4ca3dfa-675f-4acc-8451-7f7641143162"
+        ],
+        "f998519b-387a-4615-96be-18450284f2ef": [
+          "c7e010b8-fe41-4cae-9672-460346e37d26"
+        ],
+        "7e351ded-692f-4cc0-8948-a627aa311625": [
+          "fa30d181-b0db-4b11-8605-005e0e9ba339"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "0c06749d-6376-4218-a6a3-22849f21c361": [],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "0c06749d-6376-4218-a6a3-22849f21c361"
+        ],
+        "f998519b-387a-4615-96be-18450284f2ef": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "7e351ded-692f-4cc0-8948-a627aa311625": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "368c72b9-ac6c-47a5-a0ab-00766fb605cd": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "1a42e064-e193-42e7-8108-5d302567021b": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "68311481-fead-4b9b-89e9-7921780b1241": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "12df2550-f629-4ac1-ba78-7e95e063755f": [
+          "f40694bf-2cee-4675-86dc-a38fd1d03b13"
+        ],
+        "062e2005-7237-4b0c-87b8-a9cf81546fe0": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ],
+        "47cd4e5d-25b5-4e81-9d23-e4f1e9bba4ca": [
+          "e8f85ae1-5dab-4123-8150-bdf8eca08ceb"
+        ]
+      },
+      "children": {
+        "0c06749d-6376-4218-a6a3-22849f21c361": [
+          "c30444f9-a442-4947-8a5a-1c96fae72f0c"
+        ],
+        "c30444f9-a442-4947-8a5a-1c96fae72f0c": [
+          "f998519b-387a-4615-96be-18450284f2ef",
+          "7e351ded-692f-4cc0-8948-a627aa311625"
+        ],
+        "e8f85ae1-5dab-4123-8150-bdf8eca08ceb": [
+          "368c72b9-ac6c-47a5-a0ab-00766fb605cd",
+          "1a42e064-e193-42e7-8108-5d302567021b",
+          "68311481-fead-4b9b-89e9-7921780b1241",
+          "062e2005-7237-4b0c-87b8-a9cf81546fe0",
+          "47cd4e5d-25b5-4e81-9d23-e4f1e9bba4ca"
+        ],
+        "f40694bf-2cee-4675-86dc-a38fd1d03b13": [
+          "12df2550-f629-4ac1-ba78-7e95e063755f"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Deterministic single-obligation selection using regex scanning",
+        "description": "Use Python\u2019s regex engine to deterministically locate and select exactly one actionable obligation per iteration. First, strip Coq block comments with a DOTALL pattern and skip the specific Axiom todo line using an anchored MULTILINE pattern to avoid false positives. Then call re.finditer on the cleaned text to find the first unmatched 'todo' token (word-bounded) and replace only that occurrence with a synthesized skeleton expression tailored to the nearby context (e.g., if immediately after ':=' in a Fixpoint, insert a match skeleton; if inside a boolean expression, insert a conditional). Maintain index mapping between stripped and original text to perform the replacement in the unmodified source. When no todos remain, apply a similar scan for 'Admitted.' to pick a single lemma to prove in that iteration. This approach precisely enforces the problem\u2019s constraint of changing one hole per call and prevents accidental multiple changes. Keep backups to revert if needed.",
+        "what_to_optimize": "combined_score via consistently reducing the todo count by exactly one per iteration and enabling predictable, incremental Qed increases",
+        "cautions": "Ensure the regex does not match inside comments or the Axiom declaration; use word boundaries to avoid partial matches (e.g., identifiers containing 'todo'). Preserve indentation and Coq syntax when inserting skeletons. Avoid multi-replacement operations\u2014replace exactly one match. Validate surrounding syntax to choose a compatible skeleton to prevent parse errors.",
+        "approach_type": "re.finditer"
+      },
+      {
+        "idea": "Tight compile-and-score loop with subprocess to gate edits",
+        "description": "Wrap each tentative single-obligation edit in a compile gate by invoking coqc with subprocess.run to verify that the file still compiles. If compilation succeeds, compute the new score by counting Qed./Admitted./todo occurrences and accept only if the combined_score does not decrease; otherwise revert the change. Capture stderr to surface exact Coq errors for targeted repair and to refine generation heuristics (e.g., missing constructors, wrong arity). Use a short timeout to prevent stalls and fail fast on long-running proofs. When no todos remain, switch the target to the first 'Admitted.' proof and attempt a localized proof patch, again guarded by a compile-and-score check. This simple execution loop provides immediate, reliable feedback and prevents regressions across iterations. It also enforces the single-change rule by compiling after each atomic edit.",
+        "what_to_optimize": "combined_score stability and monotonic improvement by only accepting edits that compile and do not introduce new Admitted or todo markers",
+        "cautions": "Set reasonable timeouts and handle timeouts as failures to revert safely. Pass the correct working directory and file path, and capture both stdout and stderr to avoid deadlocks. Ensure only one file is compiled to keep the loop fast. Be careful not to mask warnings that could hint at impending failures.",
+        "approach_type": "subprocess.run"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 1
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Dependency-aware obligation targeting via NetworkX minimum dominating set",
+        "description": "Model the file\u2019s obligations (todos and Admitted lemmas) as a dependency graph: a node per obligation, with edges indicating that one obligation is referenced by or required to prove another. Build this graph deterministically by parsing names appearing in proof scripts and statements (e.g., a lemma used in another proof creates an edge). Convert to an undirected graph and call the minimum dominating set approximation to find a small set of obligations that collectively touch (dominate) all others. Prioritize solving these dominating nodes first, as each unlocks or simplifies many neighbors, accelerating the increase in Qed count with minimal steps. Use simple static features (number of references, position in file, section scope) to weight edges if needed, but keep the core selection to a single dominating-set call. Recompute the dominating set after each iteration as the graph changes when obligations get solved. This approach is robust to varying file structures and focuses on maximal structural impact per edit, aligning with the evaluator\u2019s combined_score and one-change-per-call constraint.",
+        "what_to_optimize": "combined_score by reducing remaining obligations quickly; target obligations whose resolution maximally reduces dependencies and unlocks cascading proofs",
+        "cautions": "Ensure dependency extraction is conservative to avoid missing edges; treat the graph as undirected for the dominating-set call; handle isolated nodes by always including them; keep graph construction deterministic; for large files, consider sparsifying low-confidence edges to keep the approximation fast",
+        "approach_type": "networkx.algorithms.approximation.minimum_dominating_set",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Hungarian assignment of tactic templates to obligations using scipy.optimize.linear_sum_assignment",
+        "description": "Define a library of tactic/code templates (e.g., intros-induction, inversion-solve, rewrite-simpl, discriminate, reflexivity, constructor chains) and statically score their suitability per obligation using lightweight features (goal shape, presence of Fixpoint, Forall, and pattern keywords). Build a cost matrix where rows are obligations and columns are templates, with lower cost indicating higher estimated success probability and speed. Call the Hungarian algorithm to produce an optimal one-to-one assignment that maximizes global fit between current obligations and available templates. Use the assignment to pick the single best (lowest-cost) obligation\u2013template pair to enact this iteration, complying with the single-change constraint while planning globally. Update scores after each iteration to reflect newly solved obligations and refined estimates. This balances easy wins across the file and avoids repeatedly trying suboptimal templates for tricky goals, boosting Qed count steadily. The approach scales well and is deterministic given fixed features.",
+        "what_to_optimize": "immediate Qed gains per iteration, overall success rate of attempts, and time-to-proof by matching obligations with the most promising tactic/code templates",
+        "cautions": "Ensure matrix dimensions are compatible (pad with dummy rows/columns if counts differ); normalize costs to avoid numerical issues; keep feature extraction fast and deterministic; when multiple pairs tie, break ties consistently; verify that selected templates respect the one-change-per-call rule (e.g., avoid multi-edit scripts)",
+        "approach_type": "scipy.optimize.linear_sum_assignment",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Model obligation dependencies as a DAG and pick the next action via longest-path planning",
+        "description": "Represent every outstanding item (each todo expression and each Admitted lemma) as a node in a directed acyclic graph. Add a directed edge u -> v when v cannot be completed before u (e.g., a lemma that depends on a function containing a todo, or a sub-lemma required by a main lemma), and store on each node an estimated payoff equal to the expected increase in combined_score if that node is resolved next (e.g., +1 for a Qed minus penalties for introducing new sub-lemmas). Convert node payoffs to edge weights by pushing node weights onto incoming edges or by storing them as a node attribute and using a custom weight function. Call dag_longest_path on this weighted DAG to obtain the sequence of actions that maximizes cumulative payoff under dependencies. Execute only the first actionable node on this path (the next edit), then rebuild the DAG after each iteration. This focuses effort on high-leverage actions that unlock many downstream obligations while prioritizing score gains. Regularly recompute payoffs based on updated counts (qed, admitted, todo) to keep planning aligned with the evaluator\u2019s metric.",
+        "what_to_optimize": "combined_score (maximize Qed count early while minimizing introduction of new Admitted and todo obligations), plus maintaining compiles=1.0",
+        "cautions": "Ensure the graph is acyclic; if cycles are detected, break them by removing speculative edges or by collapsing strongly connected components first. Carefully normalize payoff estimates so long paths don\u2019t dominate purely by length; use weights reflecting true score deltas per action. Exclude nodes already completed and avoid selecting nodes whose prerequisites are not yet satisfied. Re-run planning after each change because edges and payoffs can shift. If some dependencies are uncertain, include them with lower confidence (smaller weights) rather than omitting them entirely.",
+        "approach_type": "networkx.algorithms.dag.dag_longest_path",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "One-step action selection via linear programming over candidate edits",
+        "description": "Enumerate a set of concrete, compilable candidate actions for the next step (e.g., filling a specific todo with a particular pattern match, or attempting a targeted lemma proof script). For each candidate i, estimate its immediate score benefit b_i on the evaluator\u2019s metric (e.g., predicted delta in Qed minus expected new Admitted and new todos) and feasibility (hard reject infeasible candidates). Form a linear program with decision variables x_i \u2208 [0,1], objective maximize \u03a3 b_i x_i subject to \u03a3 x_i \u2264 1 (choose at most one action), and bounds 0 \u2264 x_i \u2264 1; convert this to minimization by setting c = \u2212b and use method='highs'. Solve the LP with linprog to select the highest-benefit action: take the index with the largest x_i in the optimal solution (ties broken deterministically). This converts noisy heuristics into a principled single call that chooses the best next edit under the one-action-per-iteration constraint. Recompute candidate benefits after each iteration to adapt to changing counts and compile outcomes. This approach cleanly integrates heterogeneous heuristics (templates, tactic success priors, complexity) into a single numeric decision.",
+        "what_to_optimize": "combined_score (maximize the expected Qed increment while minimizing expected new Admitted and todo), with a hard feasibility filter to preserve compiles=1.0",
+        "cautions": "Validate each candidate\u2019s feasibility to avoid solver choosing an un-compilable action; set its benefit to \u2212inf (large negative c) or remove it. Remember linprog minimizes, so negate the benefits to form c. Add small L2-like regularization or epsilon jitter if many candidates have identical benefits to avoid degeneracy. Check solver status and fall back to picking the maximum b_i greedily if the LP is infeasible. Keep benefit estimates consistent in scale so the optimizer meaningfully discriminates between actions.",
+        "approach_type": "scipy.optimize.linprog",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

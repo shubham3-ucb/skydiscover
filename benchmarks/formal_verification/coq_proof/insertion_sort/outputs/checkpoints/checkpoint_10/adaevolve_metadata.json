@@ -1,0 +1,169 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 9,
+  "global_best_score": 0.8,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.22261110728474087,
+        "best_score": 0.8,
+        "improvement_count": 4,
+        "total_evaluations": 6,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.2709999999999999,
+        "best_score": 0.8,
+        "improvement_count": 2,
+        "total_evaluations": 5,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      6,
+      5
+    ],
+    "dimension_rewards": [
+      2.194589975560001,
+      1.2539999715675008
+    ],
+    "decayed_visits": [
+      4.68559,
+      4.0951
+    ],
+    "global_best_score": 0.8,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "bb351693-a0fe-4ce8-a513-1c5afb7a29b6",
+      "1397939d-28df-402e-9179-8b8e2ba0af87",
+      "f51975a5-b791-4ed2-a4e2-dfffa9366459",
+      "629e5ff8-ffc9-4d01-88ca-7ea89a57c970",
+      "ee37782f-09f0-4119-949e-7c5644cd524e",
+      "d1322074-4844-477f-b2a4-521d7eac4d15"
+    ],
+    [
+      "7f70ae7d-675b-42fd-ae85-b484736c8170",
+      "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf",
+      "cf1adefe-7f92-47af-9e42-2189ac530896",
+      "71339ae0-21e6-4625-9afa-1d5ad68fe1e7",
+      "abd8a1b8-203b-4f7b-a6f6-961b37141b3b",
+      "c67e5982-037d-4362-a07f-fb8cd5338839"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "bb351693-a0fe-4ce8-a513-1c5afb7a29b6": [],
+        "1397939d-28df-402e-9179-8b8e2ba0af87": [
+          "bb351693-a0fe-4ce8-a513-1c5afb7a29b6"
+        ],
+        "f51975a5-b791-4ed2-a4e2-dfffa9366459": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "d1322074-4844-477f-b2a4-521d7eac4d15": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ]
+      },
+      "children": {
+        "bb351693-a0fe-4ce8-a513-1c5afb7a29b6": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "1397939d-28df-402e-9179-8b8e2ba0af87": [
+          "f51975a5-b791-4ed2-a4e2-dfffa9366459",
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "d1322074-4844-477f-b2a4-521d7eac4d15"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "7f70ae7d-675b-42fd-ae85-b484736c8170": [],
+        "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf": [
+          "7f70ae7d-675b-42fd-ae85-b484736c8170"
+        ],
+        "cf1adefe-7f92-47af-9e42-2189ac530896": [
+          "7f70ae7d-675b-42fd-ae85-b484736c8170"
+        ],
+        "71339ae0-21e6-4625-9afa-1d5ad68fe1e7": [
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "c67e5982-037d-4362-a07f-fb8cd5338839": [
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ]
+      },
+      "children": {
+        "7f70ae7d-675b-42fd-ae85-b484736c8170": [
+          "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf",
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "cf1adefe-7f92-47af-9e42-2189ac530896": [
+          "71339ae0-21e6-4625-9afa-1d5ad68fe1e7",
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "c67e5982-037d-4362-a07f-fb8cd5338839"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      1.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [],
+    "paradigm_usage_counts": {},
+    "current_paradigm_index": 0,
+    "tried_paradigms": [],
+    "best_score_at_paradigm_gen": 0.0,
+    "best_score_during_paradigm": 0.0
+  }
+}

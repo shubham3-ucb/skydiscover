@@ -1,0 +1,298 @@
+{
+  "num_islands": 2,
+  "current_island": 1,
+  "iteration_count": 39,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.1776834185422042,
+        "best_score": 1.0,
+        "improvement_count": 8,
+        "total_evaluations": 18,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.22445004507357716,
+        "best_score": 1.0,
+        "improvement_count": 6,
+        "total_evaluations": 17,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      18,
+      17
+    ],
+    "dimension_rewards": [
+      0.9592733940660051,
+      0.6774006050672927
+    ],
+    "decayed_visits": [
+      8.49905364703001,
+      8.332281830033345
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "f1921b49-ee46-4ad0-829d-b092acb2f05a",
+      "e277de4c-bd63-4053-af04-2db51ebbf3ff",
+      "20074a90-145f-480c-844c-d9a7c426f416",
+      "3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3",
+      "9dfb0733-0105-466d-91df-4a701646e565",
+      "29b2f81c-8aef-46b9-8ac4-d4b93a46434b",
+      "d4d1feba-88df-41e4-a116-a3d8bb12df20",
+      "9f87279d-0f5a-44ba-af22-187a5f0ff21d",
+      "bff041b1-bca0-44f1-ac90-a3f273ae2606",
+      "2652fc42-4b0c-4c6b-9853-41c59f652119"
+    ],
+    [
+      "3d67b221-e380-46e9-bded-b650ffc28b85",
+      "49ff5735-0ca6-4bd4-a85c-14337b8e5fcc",
+      "fbd70cea-818f-42b7-b714-2e505bf39111",
+      "5330655a-1d4c-48cd-8707-aa708f497d9e",
+      "c4114072-2caa-483f-8d2e-1a40a5e5b1e4",
+      "5fb964c6-4178-4a9c-ac90-3b7ae222bca1",
+      "8d337ab7-261a-477f-9f9c-3d8d3c0e67e2",
+      "eee2133f-1491-413b-8bb2-76de29199f33",
+      "6cd71a44-0bfb-4834-9545-c3f1418cf5af",
+      "43be45de-df70-44db-8b06-efed2aa914de"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "f1921b49-ee46-4ad0-829d-b092acb2f05a": [],
+        "e277de4c-bd63-4053-af04-2db51ebbf3ff": [
+          "f1921b49-ee46-4ad0-829d-b092acb2f05a"
+        ],
+        "20074a90-145f-480c-844c-d9a7c426f416": [
+          "e277de4c-bd63-4053-af04-2db51ebbf3ff"
+        ],
+        "3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3": [
+          "9235c0b3-c3bf-4d3b-9011-2160d29f487c"
+        ],
+        "9dfb0733-0105-466d-91df-4a701646e565": [
+          "3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3"
+        ],
+        "29b2f81c-8aef-46b9-8ac4-d4b93a46434b": [
+          "e277de4c-bd63-4053-af04-2db51ebbf3ff"
+        ],
+        "d4d1feba-88df-41e4-a116-a3d8bb12df20": [
+          "10ed248b-c224-49cc-8e89-00ac088f1890"
+        ],
+        "9f87279d-0f5a-44ba-af22-187a5f0ff21d": [
+          "f04c3a9e-146a-45f8-ae2c-e32b50531e5f"
+        ],
+        "bff041b1-bca0-44f1-ac90-a3f273ae2606": [
+          "5fb964c6-4178-4a9c-ac90-3b7ae222bca1"
+        ],
+        "2652fc42-4b0c-4c6b-9853-41c59f652119": [
+          "5fb964c6-4178-4a9c-ac90-3b7ae222bca1"
+        ]
+      },
+      "children": {
+        "f1921b49-ee46-4ad0-829d-b092acb2f05a": [
+          "e277de4c-bd63-4053-af04-2db51ebbf3ff"
+        ],
+        "e277de4c-bd63-4053-af04-2db51ebbf3ff": [
+          "20074a90-145f-480c-844c-d9a7c426f416",
+          "29b2f81c-8aef-46b9-8ac4-d4b93a46434b"
+        ],
+        "3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3": [
+          "9dfb0733-0105-466d-91df-4a701646e565"
+        ],
+        "f04c3a9e-146a-45f8-ae2c-e32b50531e5f": [
+          "9f87279d-0f5a-44ba-af22-187a5f0ff21d"
+        ],
+        "5fb964c6-4178-4a9c-ac90-3b7ae222bca1": [
+          "bff041b1-bca0-44f1-ac90-a3f273ae2606",
+          "2652fc42-4b0c-4c6b-9853-41c59f652119"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "3d67b221-e380-46e9-bded-b650ffc28b85": [],
+        "49ff5735-0ca6-4bd4-a85c-14337b8e5fcc": [
+          "f7c5fe3c-e5f2-4247-8c08-6303f6aad86c"
+        ],
+        "fbd70cea-818f-42b7-b714-2e505bf39111": [
+          "49ff5735-0ca6-4bd4-a85c-14337b8e5fcc"
+        ],
+        "5330655a-1d4c-48cd-8707-aa708f497d9e": [
+          "3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3"
+        ],
+        "c4114072-2caa-483f-8d2e-1a40a5e5b1e4": [
+          "20074a90-145f-480c-844c-d9a7c426f416"
+        ],
+        "5fb964c6-4178-4a9c-ac90-3b7ae222bca1": [
+          "429eb670-02f1-4065-9076-ed826f5e9bf4"
+        ],
+        "8d337ab7-261a-477f-9f9c-3d8d3c0e67e2": [
+          "49ff5735-0ca6-4bd4-a85c-14337b8e5fcc"
+        ],
+        "eee2133f-1491-413b-8bb2-76de29199f33": [
+          "429eb670-02f1-4065-9076-ed826f5e9bf4"
+        ],
+        "6cd71a44-0bfb-4834-9545-c3f1418cf5af": [
+          "5fb964c6-4178-4a9c-ac90-3b7ae222bca1"
+        ],
+        "43be45de-df70-44db-8b06-efed2aa914de": [
+          "5fb964c6-4178-4a9c-ac90-3b7ae222bca1"
+        ]
+      },
+      "children": {
+        "49ff5735-0ca6-4bd4-a85c-14337b8e5fcc": [
+          "fbd70cea-818f-42b7-b714-2e505bf39111",
+          "8d337ab7-261a-477f-9f9c-3d8d3c0e67e2"
+        ],
+        "3bfef7ee-82dc-44b3-abbf-8e3b1d49cab3": [
+          "5330655a-1d4c-48cd-8707-aa708f497d9e"
+        ],
+        "20074a90-145f-480c-844c-d9a7c426f416": [
+          "c4114072-2caa-483f-8d2e-1a40a5e5b1e4"
+        ],
+        "5fb964c6-4178-4a9c-ac90-3b7ae222bca1": [
+          "6cd71a44-0bfb-4834-9545-c3f1418cf5af",
+          "43be45de-df70-44db-8b06-efed2aa914de"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 20,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Rewrite proofs using SSReflect tactics for conciseness",
+        "description": "Import the SSReflect library from Coq.ssr.ssreflect and replace standard Ltac tactics (like intros, destruct, simpl) with SSReflect equivalents (move=>, case, /=). This can significantly reduce the length of the proof scripts and make the forward reasoning more explicit, potentially improving readability and maintainability of the inductive proofs.",
+        "what_to_optimize": "code_length and proof conciseness",
+        "cautions": "Ensure that the ssreflect plugin is available and properly imported. Avoid mixing legacy Ltac and SSReflect in ways that confuse the proof state, particularly with naming conventions.",
+        "approach_type": "coq.tactics.ssreflect"
+      },
+      {
+        "idea": "Replace tactic-based proofs with exact Gallina proof terms",
+        "description": "Instead of using interactive tactic scripts (induction, destruct, apply) wrapped in Proof/Qed, directly construct the exact Gallina proof terms using fixpoints and match expressions. This completely eliminates tactic execution overhead during compilation and guarantees structural correctness directly at the AST level, serving as a purely functional correct-by-construction approach.",
+        "what_to_optimize": "compilation speed and proof term robustness",
+        "cautions": "Constructing exact proof terms for complex nested inductions can be highly verbose and error-prone. Ensure all dependent pattern matching is fully annotated with return types.",
+        "approach_type": "coq.proofs.gallina"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 1
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Leverage Coq's built-in automation with custom Hint databases and eauto",
+        "description": "Although the current proofs are complete and correct, they are highly manual and step-by-step. By registering the BST constructors and ForallT helper lemmas into a custom Hint database using `Hint Resolve`, we can use `eauto` to automatically discharge many of the structural goals. Furthermore, combining this with `lia` for arithmetic goals via `Hint Extern` will allow the `insert_BST` and `lookup_insert` theorems to be proved in just a few lines of automated tactics. This improves maintainability and readability of the proof script.",
+        "what_to_optimize": "code_length and proof maintainability",
+        "cautions": "Be careful with `eauto` depth limits, as deeply nested trees might cause automation to hang. Ensure that `lia` is only triggered on arithmetic subgoals to maintain fast compilation times.",
+        "approach_type": "coq.tactics.automation",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Utilize Boolean Reflection for arithmetic comparisons",
+        "description": "The current proofs use `destruct (k <? k') eqn:...` followed by `apply Nat.ltb_lt in ...` repeatedly. Instead of manual translation between boolean results and propositions, we can use the `reflect` inductive type from Coq's standard library. By applying a view lemma like `Nat.ltb_spec0` (or `Compare_dec` variants), we can directly destruct the comparison into propositional cases (`k < k'` and `k >= k'`). This removes the need for bookkeeping equations and manual `apply` tactics, streamlining the control flow of the proofs.",
+        "what_to_optimize": "proof structure and clarity",
+        "cautions": "When replacing `destruct eqn:` with boolean reflection, ensure the context is properly updated so that dependent types or subsequent `lia` calls have the correct arithmetic hypotheses available.",
+        "approach_type": "coq.tactics.reflection",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Systematic use of Coq automation tactics (lia, auto) for proof compression",
+        "description": "Although the current program scores 1.0, the proofs are highly explicit and manual. We can improve the proof script elegance and maintainability by systematically applying `lia` for all integer arithmetic goals and `auto` for logical splitting. By using `zify` alongside `lia`, we can directly solve boolean inequality reflections (like `Nat.ltb_lt`) without manual application, drastically reducing the proof size and complexity.",
+        "what_to_optimize": "code_length and proof readability",
+        "cautions": "Ensure that `Require Import Lia.` is present. Overusing `auto` without bounds can increase compilation time.",
+        "approach_type": "coq.tactics.lia",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Correct-by-construction using Coq's Program framework",
+        "description": "Instead of separating the function definitions and their correctness proofs, use Coq's `Program Fixpoint` framework. This allows embedding the preconditions and postconditions directly into the function types (e.g., returning a subset type `{t : tree V | BST t}`). The framework automatically generates proof obligations, ensuring that the implementation and specification are tightly coupled and verified simultaneously.",
+        "what_to_optimize": "structural integration and type safety",
+        "cautions": "Requires importing `Coq.Program.Wf` or similar modules. The syntax for dependent pattern matching and handling subset types can introduce complex convoy patterns.",
+        "approach_type": "coq.program.fixpoint",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Refactor using SSReflect for concise proof scripts",
+        "description": "Utilize the SSReflect extension to streamline the Coq proof scripts. By replacing standard tactics like `intros`, `destruct`, and `simpl` with SSReflect equivalents (`move=>`, `case:`, `rewrite`), the proofs for BST insertion and lookup become much shorter and easier to maintain. This paradigm shift focuses on structured state manipulation and chaining tactics, reducing the overall code length while maintaining correctness.",
+        "what_to_optimize": "code_length",
+        "cautions": "Ensure compatibility with existing Lia automation, as mixing SSReflect with standard arithmetic tactics requires careful context management.",
+        "approach_type": "coq.tactics.ssreflect",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Refactor proofs using explicit forward reasoning",
+        "description": "Rewrite the proofs to heavily utilize forward reasoning (`assert`, `pose proof`, `apply ... in ...`) rather than backward chaining. By building up the exact context of inequalities and ForallT properties before applying the constructors (`BST_T`), the proof flow becomes strictly linear and easier to trace. This avoids complex subgoals generated by backward application and makes the logical progression explicit.",
+        "what_to_optimize": "readability and structural clarity",
+        "cautions": "Forward reasoning can sometimes clutter the context if intermediate hypotheses are not cleared after use. Use `clear` to manage context size.",
+        "approach_type": "coq.tactics.forward",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

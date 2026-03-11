@@ -1,0 +1,296 @@
+{
+  "num_islands": 2,
+  "current_island": 0,
+  "iteration_count": 34,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.2763999946500001,
+        "best_score": 1.0,
+        "improvement_count": 4,
+        "total_evaluations": 15,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.2763999946500001,
+        "best_score": 1.0,
+        "improvement_count": 3,
+        "total_evaluations": 15,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      15,
+      15
+    ],
+    "dimension_rewards": [
+      0.7347778227142772,
+      0.6382907361226334
+    ],
+    "decayed_visits": [
+      7.94108867905351,
+      7.94108867905351
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "99c7e514-fcca-4ce4-a20a-d9501d168110",
+      "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b",
+      "f1dc47f2-e63f-4896-98fa-933af06db7d5",
+      "754b5d4b-19f0-47a8-aa04-82b34ba412d0",
+      "cd42aea5-bc9a-4d19-a750-77cfbc430d56",
+      "2be7aa4e-30b2-411f-9b65-0c771a350e68",
+      "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732",
+      "9ca42e2a-4216-4de1-ab3d-184e9ea90668",
+      "bb249eb1-e196-4f1e-a4d1-50f462bc4553",
+      "dbba4bea-f396-4b88-8c47-0f78574e1ac1"
+    ],
+    [
+      "31814979-fa1f-4c12-8f33-28a66eb1aa9f",
+      "7b4be5be-dd9d-4452-b8ff-3c62e54e767b",
+      "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4",
+      "13d108aa-645d-412e-983c-d6abe7e0f6f1",
+      "f35b3ea2-118f-4799-af27-62cde341eb07",
+      "4cb5292f-0433-42f9-99e6-1098ffefa5d0",
+      "326e35e1-d2f3-4998-86db-ae0174b05c73",
+      "ca1507dc-661b-4a78-9493-3f7364b86b84",
+      "b60837eb-cade-4bcf-9536-a8f2fec5e921",
+      "28f1a22d-3ed0-41ef-9a7e-e755ffcb41ed"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "99c7e514-fcca-4ce4-a20a-d9501d168110": [],
+        "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b": [
+          "99c7e514-fcca-4ce4-a20a-d9501d168110"
+        ],
+        "f1dc47f2-e63f-4896-98fa-933af06db7d5": [
+          "99c7e514-fcca-4ce4-a20a-d9501d168110"
+        ],
+        "754b5d4b-19f0-47a8-aa04-82b34ba412d0": [
+          "f1dc47f2-e63f-4896-98fa-933af06db7d5"
+        ],
+        "cd42aea5-bc9a-4d19-a750-77cfbc430d56": [
+          "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b"
+        ],
+        "2be7aa4e-30b2-411f-9b65-0c771a350e68": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732": [
+          "f35b3ea2-118f-4799-af27-62cde341eb07"
+        ],
+        "9ca42e2a-4216-4de1-ab3d-184e9ea90668": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "bb249eb1-e196-4f1e-a4d1-50f462bc4553": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "dbba4bea-f396-4b88-8c47-0f78574e1ac1": [
+          "063cdd1e-4823-4efa-a9f8-a3d4678da3d7"
+        ]
+      },
+      "children": {
+        "99c7e514-fcca-4ce4-a20a-d9501d168110": [
+          "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b",
+          "f1dc47f2-e63f-4896-98fa-933af06db7d5"
+        ],
+        "f1dc47f2-e63f-4896-98fa-933af06db7d5": [
+          "754b5d4b-19f0-47a8-aa04-82b34ba412d0"
+        ],
+        "9e4fca24-49cd-4b1b-91ae-0c0dcdce3d3b": [
+          "cd42aea5-bc9a-4d19-a750-77cfbc430d56"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "2be7aa4e-30b2-411f-9b65-0c771a350e68",
+          "9ca42e2a-4216-4de1-ab3d-184e9ea90668",
+          "bb249eb1-e196-4f1e-a4d1-50f462bc4553"
+        ],
+        "f35b3ea2-118f-4799-af27-62cde341eb07": [
+          "d00ab91f-0937-4ee2-b4a5-cf0b8e44f732"
+        ],
+        "063cdd1e-4823-4efa-a9f8-a3d4678da3d7": [
+          "dbba4bea-f396-4b88-8c47-0f78574e1ac1"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "31814979-fa1f-4c12-8f33-28a66eb1aa9f": [],
+        "7b4be5be-dd9d-4452-b8ff-3c62e54e767b": [
+          "31814979-fa1f-4c12-8f33-28a66eb1aa9f"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "e400ef62-a719-4afb-91e6-08830c3b15ca"
+        ],
+        "13d108aa-645d-412e-983c-d6abe7e0f6f1": [
+          "7b4be5be-dd9d-4452-b8ff-3c62e54e767b"
+        ],
+        "f35b3ea2-118f-4799-af27-62cde341eb07": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "4cb5292f-0433-42f9-99e6-1098ffefa5d0": [
+          "cd42aea5-bc9a-4d19-a750-77cfbc430d56"
+        ],
+        "326e35e1-d2f3-4998-86db-ae0174b05c73": [
+          "754b5d4b-19f0-47a8-aa04-82b34ba412d0"
+        ],
+        "ca1507dc-661b-4a78-9493-3f7364b86b84": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ],
+        "b60837eb-cade-4bcf-9536-a8f2fec5e921": [
+          "bb249eb1-e196-4f1e-a4d1-50f462bc4553"
+        ],
+        "28f1a22d-3ed0-41ef-9a7e-e755ffcb41ed": [
+          "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4"
+        ]
+      },
+      "children": {
+        "31814979-fa1f-4c12-8f33-28a66eb1aa9f": [
+          "7b4be5be-dd9d-4452-b8ff-3c62e54e767b"
+        ],
+        "7b4be5be-dd9d-4452-b8ff-3c62e54e767b": [
+          "13d108aa-645d-412e-983c-d6abe7e0f6f1"
+        ],
+        "4fe38d7a-ba7c-4fac-9c1b-9c06e72717f4": [
+          "f35b3ea2-118f-4799-af27-62cde341eb07",
+          "ca1507dc-661b-4a78-9493-3f7364b86b84",
+          "28f1a22d-3ed0-41ef-9a7e-e755ffcb41ed"
+        ],
+        "cd42aea5-bc9a-4d19-a750-77cfbc430d56": [
+          "4cb5292f-0433-42f9-99e6-1098ffefa5d0"
+        ],
+        "754b5d4b-19f0-47a8-aa04-82b34ba412d0": [
+          "326e35e1-d2f3-4998-86db-ae0174b05c73"
+        ],
+        "bb249eb1-e196-4f1e-a4d1-50f462bc4553": [
+          "b60837eb-cade-4bcf-9536-a8f2fec5e921"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Leverage List.NoDup and NoDup_incl_length",
+        "description": "Use the provided `excluded_middle` axiom to establish that any list either contains duplicates or is duplicate-free (`forall l, repeats l \\/ NoDup l`). In the main theorem, destruct this property for `l1`. If `repeats l1` holds, the goal is trivially solved. If `NoDup l1` holds, apply the standard library theorem `NoDup_incl_length`, which states that for any lists where `NoDup l1` and `incl l1 l2`, it must be that `length l1 <= length l2`. The given hypothesis `forall x, In x l1 -> In x l2` is definitionally equivalent to `incl l1 l2`. The resulting inequality `length l1 <= length l2` directly contradicts the hypothesis `length l2 < length l1`, which can be solved using the `lia` tactic. This drastically simplifies the proof by eliminating the need for manual list splitting.",
+        "what_to_optimize": "code_length and proof elegance",
+        "cautions": "You must manually prove the helper lemma `repeats l \\/ NoDup l` using list induction and `excluded_middle`. Ensure `Coq.Lists.List` is fully imported to use `NoDup_incl_length`.",
+        "approach_type": "Coq.Lists.List.NoDup"
+      },
+      {
+        "idea": "Index-based formulation using nth_error and finite mappings",
+        "description": "Shift the reasoning from structural list properties to index-based mappings using `nth_error`. First, prove a helper lemma that `repeats l1` is implied by the existence of two distinct indices `i < j < length l1` such that `nth_error l1 i = nth_error l1 j`. Next, use the inclusion hypothesis `forall x, In x l1 -> In x l2` to establish a relation between the valid indices of `l1` and `l2`. Because `length l2 < length l1`, any total relation mapping `length l1` items into `length l2` slots must map two distinct indices of `l1` to the same index in `l2` (the standard arithmetic pigeonhole principle). This implies the elements at those indices in `l1` are identical, satisfying the index-based repetition condition.",
+        "what_to_optimize": "Algorithmic separation of list logic and arithmetic",
+        "cautions": "Since `excluded_middle` is provided but not `constructive_definite_description`, you must use relational reasoning (e.g., `exists j, ...`) rather than constructing a pure Coq function from indices to indices. Managing `nth_error` options requires careful unwrapping.",
+        "approach_type": "Coq.Lists.List.nth_error"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 1
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [
+      {
+        "idea": "Use structural induction on l2 instead of l1",
+        "description": "Instead of inducting on the 'pigeons' (`l1`), generalize the theorem and induct on the 'holes' (`l2`). If `length l2 < length l1`, and all elements of `l1` are in `l2`, inducting on the structure of `l2` allows us to cleanly remove one 'hole' at a time. For each element in `l2`, we can filter or partition `l1` to remove corresponding pigeons and apply the induction hypothesis to the remaining elements. This avoids the need for the `in_split` helper lemma entirely.",
+        "what_to_optimize": "Proof structure and logical flow",
+        "cautions": "Requires `generalize dependent l1` before induction to ensure the induction hypothesis is strong enough. The base case where `l2 = []` requires showing that `l1` is non-empty and deriving a contradiction from `In x []`.",
+        "approach_type": "Coq.Init.Tactics.induction",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use Coq.Sorting.Permutation to establish length bounds",
+        "description": "Leverage the Coq.Sorting.Permutation library to prove the pigeonhole principle. If a list l1 has no repeats, it can be shown to be a sub-permutation of l2 given the inclusion property. The Permutation library provides built-in theorems relating permutations to list lengths, allowing us to deduce length l1 <= length l2 directly. This contradicts the hypothesis length l2 < length l1, thereby proving that l1 must contain repeats. This approach abstracts away the manual list splitting into higher-level permutation concepts.",
+        "what_to_optimize": "code_length and proof modularity",
+        "cautions": "Ensure that the excluded_middle axiom is properly used to simulate decidable equality, which is often required for sub-permutation lemmas.",
+        "approach_type": "Coq.Sorting.Permutation",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use List.remove and induction on list length",
+        "description": "Structure the proof by contradiction: assume the list has no repeats (NoDup) and prove length l1 <= length l2. In the inductive step for l1 = x :: xs, since x is in l2, use a list removal function (like List.remove or a custom split-and-remove) to create l2' with length l2 - 1. Show that xs is included in l2' and apply the induction hypothesis. This decouples the list structural manipulation from the logical contradiction, making the base cases and inductive steps much cleaner and easier for automated tactics like lia to solve.",
+        "what_to_optimize": "proof structure and tactic automation",
+        "cautions": "Handling the element removal requires proving that removing one instance of x decreases the length of l2 by exactly one, and preserves the inclusion of the remaining elements of l1.",
+        "approach_type": "Coq.Lists.List.remove",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Use classical contradiction and NoDup equivalence",
+        "description": "Leverage the excluded_middle axiom to proceed by contradiction. Assume that l1 does not contain repeats. Show that this implies l1 has no duplicates (equivalent to Coq's standard NoDup predicate). Then, prove a helper lemma stating that if NoDup l1 and all elements of l1 are in l2, then length l1 <= length l2. This directly contradicts the given hypothesis length l2 < length l1, discharging the proof.",
+        "what_to_optimize": "proof_elegance_and_modularity",
+        "cautions": "You will need to construct the equivalence between the custom 'repeats' predicate and the standard 'NoDup' predicate, relying on classical logic (excluded middle) to push negations through the recursive definition of 'repeats'.",
+        "approach_type": "Coq.Lists.List.NoDup",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      },
+      {
+        "idea": "Define a custom element removal function using excluded middle",
+        "description": "Since we lack decidable equality on type X, use the excluded_middle axiom to define a non-computational logical relation or function that removes exactly one occurrence of an element from a list. Induct on l1: for each element x in l1, logically remove it from l2 to create a smaller list l2'. The inductive step then applies to l1' and l2', maintaining the invariant that length l2' < length l1'. This avoids the complex list splitting (in_split) and element tracking in the current solution.",
+        "what_to_optimize": "induction_hypothesis_strength",
+        "cautions": "The custom logical remove relation must be carefully defined so you can easily prove that removing an existing element decreases the length of the list by exactly 1, and preserves the inclusion of the remaining elements.",
+        "approach_type": "Coq.Logic.Classical_Prop",
+        "uses": 2,
+        "starting_score": 1.0,
+        "ending_score": 1.0,
+        "score_improvement": 0.0,
+        "outcome": "FAILED"
+      }
+    ],
+    "best_score_at_paradigm_gen": 1.0,
+    "best_score_during_paradigm": 1.0
+  }
+}

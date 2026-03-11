@@ -1,0 +1,237 @@
+{
+  "num_islands": 2,
+  "current_island": 0,
+  "iteration_count": 14,
+  "global_best_score": 1.0,
+  "decay": 0.9,
+  "intensity_min": 0.15,
+  "intensity_max": 0.5,
+  "migration_interval": 10,
+  "diversity_strategy_type": "code",
+  "use_unified_archive": true,
+  "use_adaptive_search": true,
+  "use_ucb_selection": true,
+  "fixed_intensity": 0.4,
+  "adapter": {
+    "states": [
+      {
+        "accumulated_signal": 0.20659999640001678,
+        "best_score": 1.0,
+        "improvement_count": 5,
+        "total_evaluations": 10,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      },
+      {
+        "accumulated_signal": 0.2709999999999999,
+        "best_score": 0.8,
+        "improvement_count": 2,
+        "total_evaluations": 7,
+        "decay": 0.9,
+        "epsilon": 1e-08,
+        "intensity_min": 0.15,
+        "intensity_max": 0.5
+      }
+    ],
+    "dimension_visits": [
+      10,
+      7
+    ],
+    "dimension_rewards": [
+      1.6648704801524168,
+      1.0157399769696756
+    ],
+    "decayed_visits": [
+      6.5132155990000005,
+      5.217031
+    ],
+    "global_best_score": 1.0,
+    "ucb_exploration": 1.41,
+    "min_visits": 3,
+    "decay": 0.9,
+    "epsilon": 1e-08
+  },
+  "island_config_names": [
+    "balanced",
+    "balanced"
+  ],
+  "islands": [
+    [
+      "bb351693-a0fe-4ce8-a513-1c5afb7a29b6",
+      "1397939d-28df-402e-9179-8b8e2ba0af87",
+      "f51975a5-b791-4ed2-a4e2-dfffa9366459",
+      "629e5ff8-ffc9-4d01-88ca-7ea89a57c970",
+      "ee37782f-09f0-4119-949e-7c5644cd524e",
+      "d1322074-4844-477f-b2a4-521d7eac4d15",
+      "1b773223-8810-4e7f-99d3-5a5c4d8b284e",
+      "eda3cb3a-3980-48f7-975b-e7abd8fbea5c",
+      "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8",
+      "37d67b0c-5ca5-4d7e-b592-46ed153a5a18"
+    ],
+    [
+      "7f70ae7d-675b-42fd-ae85-b484736c8170",
+      "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf",
+      "cf1adefe-7f92-47af-9e42-2189ac530896",
+      "71339ae0-21e6-4625-9afa-1d5ad68fe1e7",
+      "abd8a1b8-203b-4f7b-a6f6-961b37141b3b",
+      "c67e5982-037d-4362-a07f-fb8cd5338839",
+      "c6c5c781-0f98-49fa-8323-04e9ed5df8be",
+      "58c582bb-31f6-4bdd-bd71-27f16049e640",
+      "aa5293ac-7af6-4b19-8088-e6555f79c9d6",
+      "6599484b-c6cf-4cb4-88ca-755bdb3c421e"
+    ]
+  ],
+  "archive_genealogies": [
+    {
+      "parents": {
+        "bb351693-a0fe-4ce8-a513-1c5afb7a29b6": [],
+        "1397939d-28df-402e-9179-8b8e2ba0af87": [
+          "bb351693-a0fe-4ce8-a513-1c5afb7a29b6"
+        ],
+        "f51975a5-b791-4ed2-a4e2-dfffa9366459": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "d1322074-4844-477f-b2a4-521d7eac4d15": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "1b773223-8810-4e7f-99d3-5a5c4d8b284e": [
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ],
+        "eda3cb3a-3980-48f7-975b-e7abd8fbea5c": [
+          "f51975a5-b791-4ed2-a4e2-dfffa9366459"
+        ],
+        "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "37d67b0c-5ca5-4d7e-b592-46ed153a5a18": [
+          "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8"
+        ]
+      },
+      "children": {
+        "bb351693-a0fe-4ce8-a513-1c5afb7a29b6": [
+          "1397939d-28df-402e-9179-8b8e2ba0af87"
+        ],
+        "1397939d-28df-402e-9179-8b8e2ba0af87": [
+          "f51975a5-b791-4ed2-a4e2-dfffa9366459",
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "d1322074-4844-477f-b2a4-521d7eac4d15",
+          "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "1b773223-8810-4e7f-99d3-5a5c4d8b284e"
+        ],
+        "f51975a5-b791-4ed2-a4e2-dfffa9366459": [
+          "eda3cb3a-3980-48f7-975b-e7abd8fbea5c"
+        ],
+        "e83a5ac1-3e57-4f89-9064-9e3bfba09cb8": [
+          "37d67b0c-5ca5-4d7e-b592-46ed153a5a18"
+        ]
+      }
+    },
+    {
+      "parents": {
+        "7f70ae7d-675b-42fd-ae85-b484736c8170": [],
+        "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf": [
+          "7f70ae7d-675b-42fd-ae85-b484736c8170"
+        ],
+        "cf1adefe-7f92-47af-9e42-2189ac530896": [
+          "7f70ae7d-675b-42fd-ae85-b484736c8170"
+        ],
+        "71339ae0-21e6-4625-9afa-1d5ad68fe1e7": [
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "c67e5982-037d-4362-a07f-fb8cd5338839": [
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ],
+        "c6c5c781-0f98-49fa-8323-04e9ed5df8be": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "58c582bb-31f6-4bdd-bd71-27f16049e640": [
+          "629e5ff8-ffc9-4d01-88ca-7ea89a57c970"
+        ],
+        "aa5293ac-7af6-4b19-8088-e6555f79c9d6": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ],
+        "6599484b-c6cf-4cb4-88ca-755bdb3c421e": [
+          "ee37782f-09f0-4119-949e-7c5644cd524e"
+        ]
+      },
+      "children": {
+        "7f70ae7d-675b-42fd-ae85-b484736c8170": [
+          "b1398dfd-5dea-4bba-ab4e-bf6b7c2587bf",
+          "cf1adefe-7f92-47af-9e42-2189ac530896"
+        ],
+        "cf1adefe-7f92-47af-9e42-2189ac530896": [
+          "71339ae0-21e6-4625-9afa-1d5ad68fe1e7",
+          "abd8a1b8-203b-4f7b-a6f6-961b37141b3b"
+        ],
+        "abd8a1b8-203b-4f7b-a6f6-961b37141b3b": [
+          "c67e5982-037d-4362-a07f-fb8cd5338839"
+        ],
+        "ee37782f-09f0-4119-949e-7c5644cd524e": [
+          "c6c5c781-0f98-49fa-8323-04e9ed5df8be",
+          "aa5293ac-7af6-4b19-8088-e6555f79c9d6",
+          "6599484b-c6cf-4cb4-88ca-755bdb3c421e"
+        ],
+        "629e5ff8-ffc9-4d01-88ca-7ea89a57c970": [
+          "58c582bb-31f6-4bdd-bd71-27f16049e640"
+        ]
+      }
+    }
+  ],
+  "use_paradigm_breakthrough": true,
+  "paradigm_tracker": {
+    "window_size": 5,
+    "improvement_threshold": 0.02,
+    "max_paradigm_uses": 2,
+    "max_tried_paradigms": 5,
+    "num_paradigms_to_generate": 2,
+    "improvement_history": [
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "active_paradigms": [
+      {
+        "idea": "Discharge the pending lemma by case-analyzing Nat.leb and using le-transitivity",
+        "description": "Prove insert_preserves_sorted by structural induction on the input list l and a case split on Nat.leb a b in the cons case. In the true branch (Nat.leb a b = true), use Nat.leb_le to derive a <= b and construct sorted_cons immediately, preserving the tail\u2019s sortedness from the induction hypothesis. In the false branch, use Nat.leb_gt to derive b < a, and show the result is b :: insert a t, which remains sorted since b <= head(insert a t) holds (establish via a sub-lemma relating the head of insert to the comparison) and the tail is sorted by IH. Add small helper lemmas to reason about the minimum element at the head after insertion into a sorted tail, and use Nat.le_trans to chain inequalities. This keeps the algorithm intact and closes the only Admitted proof, raising Qed and eliminating the deficit in the score. The proof remains lightweight and purely structural, avoiding any heavy library instantiations.",
+        "what_to_optimize": "combined_score by turning the single Admitted into Qed using direct structural proof steps on Nat.leb and sorted constructors",
+        "cautions": "Import Coq.Arith.PeanoNat to use Nat.leb_le and Nat.leb_gt. Keep helper lemmas minimal and local; if you introduce them, prove them fully to avoid new Admitteds. Be precise when reasoning about the head element of insert in the false-branch; ensure you connect the comparison outcome to the constructed sorted_cons obligations using le and transitivity.",
+        "approach_type": "Coq.Arith.PeanoNat.Nat.leb_le"
+      },
+      {
+        "idea": "Swap to the proven library mergesort and bridge its Sorted to the custom sorted",
+        "description": "Replace the custom isort/insert route with the standard library mergesort using the OrderedType instance for nat. Require Coq.Sorting.Mergesort and Coq.Structures.OrdersEx, instantiate Mergesort functor with OrdersEx.Nat_as_OT, and define sort := Mergesort.sort. Leverage the library\u2019s theorems: permutation preservation and Sorted (in the library\u2019s sense) to obtain correctness. Add a short bridging lemma that library Sorted le (or StronglySorted le) implies the custom inductive sorted, proved by simple inversion/constructor chaining using le-transitivity and reflexivity. This eliminates the need for insert-specific lemmas entirely, while providing a battle-tested sorting implementation. The end result is a concise, proven-correct sort function and proof that directly satisfy the is_a_sorting_algorithm spec.",
+        "what_to_optimize": "combined_score by removing custom proof burden and relying on pre-proven correctness, thus eliminating Admitted and simplifying future obligations",
+        "cautions": "Ensure correct imports and module instantiation: use OrdersEx.Nat_as_OT to feed Mergesort. Verify that the comparison used by Mergesort aligns with le on nat. Carefully prove the bridge lemma from the library\u2019s Sorted notion to the custom sorted inductive; ensure no mismatch in definitions (e.g., strong vs weak sortedness) and use le_trans where needed.",
+        "approach_type": "Coq.Sorting.Mergesort.sort"
+      }
+    ],
+    "paradigm_usage_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "current_paradigm_index": 1,
+    "tried_paradigms": [],
+    "best_score_at_paradigm_gen": 0.8,
+    "best_score_during_paradigm": 1.0
+  }
+}
