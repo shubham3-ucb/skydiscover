@@ -3,7 +3,7 @@ Require Import Stdlib.Lists.List.
 Axiom todo : forall {A : Type}, A.
 
 (* Implementation to be synthesized *)
-Parameter all_less_than : list nat -> nat -> bool.
+Definition all_less_than : list nat -> nat -> bool := todo.
 
 (* Specification *)
 Lemma all_less_than_correct : forall (l : list nat) (n : nat),
