@@ -71,14 +71,14 @@ def parse_full_rewrite(llm_response: str, language: str = "python") -> Optional[
     matches = re.findall(solution_block_pattern, llm_response, re.DOTALL)
 
     if matches:
-        return matches[0].strip()
+        return max(matches, key=len).strip()
 
     # Fallback to any solution block
     solution_block_pattern = r"```(.*?)```"
     matches = re.findall(solution_block_pattern, llm_response, re.DOTALL)
 
     if matches:
-        return matches[0].strip()
+        return max(matches, key=len).strip()
 
     # Fallback to plain text
     return llm_response

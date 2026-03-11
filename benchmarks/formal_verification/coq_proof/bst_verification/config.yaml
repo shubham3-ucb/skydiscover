@@ -38,7 +38,7 @@ search:
     paradigm_improvement_threshold: 0.02
     paradigm_num_to_generate: 2
     paradigm_max_uses: 2
-    paradigm_max_tried: 20
+    paradigm_max_tried: 5
     enable_error_retry: true
     max_error_retries: 2
 
@@ -98,6 +98,14 @@ prompt:
     - `generalize dependent` to strengthen the induction hypothesis
     - Inducting on evidence (`induction H`) rather than on the term
     - Introducing helper lemmas about list/nat structure
+
+    ## Output Format
+
+    Output the COMPLETE updated .v file in a SINGLE ```coq code block.
+    Do NOT split the file across multiple code blocks.
+    Do NOT include explanatory text between parts of the code.
+    The code block must contain the ENTIRE file from the first `Require` to
+    the last `.` — nothing may be omitted.
 
     ## Rules
 

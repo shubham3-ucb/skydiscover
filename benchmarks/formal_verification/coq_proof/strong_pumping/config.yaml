@@ -1,6 +1,6 @@
 language: coq
 file_suffix: ".v"
-diff_based_generation: false
+diff_based_generation: true
 max_iterations: 100
 checkpoint_interval: 5
 
@@ -109,6 +109,14 @@ prompt:
     - Avoid `repeat split` with existential variables. Use individual `split`
       followed by `{ exact H. }` or `{ lia. }` for each conjunct.
     - When `lia` fails on a goal involving `length`, try `simpl in *` first.
+
+    ## Output Format
+
+    Output the COMPLETE updated .v file in a SINGLE ```coq code block.
+    Do NOT split the file across multiple code blocks.
+    Do NOT include explanatory text between parts of the code.
+    The code block must contain the ENTIRE file from the first `Require` to
+    the last `.` — nothing may be omitted.
 
     ## Rules
 

@@ -61,7 +61,7 @@ One generic evaluator and prompt across all problems.
 **What:** Prove the strong pumping lemma for regular expressions, including 4 helper lemmas and the main theorem.
 **Initial spec:** 5 `Admitted` (no implementation, pure proof). `pumping_constant` and `napp` functions given.
 **Difficulty:** Very hard (5★ advanced optional in SF). Deep nested induction on `exp_match` evidence with existential witnesses. No implementation — pure proof reasoning.
-**Status:** Running (100 iters, Gemini 3 Pro). Best: 0.83 (5/6 Qed). LLM invented `pumping_strong` helper and generated a mathematically correct full proof — failed only due to Coq tactic timeout (`do 3 eexists` causes infinite unification). Fixed evaluator with 300s timeout + tactic guidance.
+**Status:** Running (fresh restart, 100 iters, Gemini 3 Pro). Previous best: 0.83 (5/6 Qed). LLM proved all 4 helper lemmas; main theorem `pumping` remains. Prior runs hit truncation issues in code extraction (now fixed).
 **Source:** SF Vol. 1 — [IndProp, pumping exercise](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html)
 
 ---

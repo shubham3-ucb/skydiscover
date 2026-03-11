@@ -2,7 +2,7 @@ Require Import Stdlib.Lists.List.
 Import ListNotations.
 Require Import Stdlib.Arith.PeanoNat.
 Require Import Stdlib.Arith.Arith.
-From Coq Require Import Lia.
+From Stdlib Require Import Lia.
 Axiom todo : forall {A : Type}, A.
 
 (* === Regular expression type === *)
@@ -68,7 +68,11 @@ Qed.
 
 Lemma pumping_constant_0_false :
   forall T (re : reg_exp T), pumping_constant re = 0 -> False.
-Proof. Admitted.
+Proof.
+  intros T re H.
+  pose proof (pumping_constant_ge_1 T re).
+  lia.
+Qed.
 
 Lemma napp_plus :
   forall T (n m : nat) (l : list T),
@@ -77,7 +81,7 @@ Proof.
   intros T n m l.
   induction n as [| n' IHn'].
   - simpl. reflexivity.
-  - simpl. rewrite IHn'. rewrite app_assoc. reflexivity.
+  - simpl. rewrite IHn'. rewrite <- app_assoc. reflexivity.
 Qed.
 
 Lemma napp_star :
@@ -85,14 +89,7 @@ Lemma napp_star :
     s1 =~ re ->
     s2 =~ Star re ->
     napp m s1 ++ s2 =~ Star re.
-Proof.
-  intros T m s1 s2 re H1 H2.
-  induction m as [| m' IH].
-  - simpl. exact H2.
-  - simpl. rewrite <- app_assoc. apply MStarApp.
-    + exact H1.
-    + exact IH.
-Qed.
+Proof. Admitted.
 
 (* === Main theorem: strong pumping lemma (5 stars, advanced) === *)
 

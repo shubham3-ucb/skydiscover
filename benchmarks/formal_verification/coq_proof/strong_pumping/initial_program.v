@@ -2,7 +2,7 @@ Require Import Stdlib.Lists.List.
 Import ListNotations.
 Require Import Stdlib.Arith.PeanoNat.
 Require Import Stdlib.Arith.Arith.
-From Coq Require Import Lia.
+From Stdlib Require Import Lia.
 Axiom todo : forall {A : Type}, A.
 
 (* === Regular expression type === *)

@@ -17,7 +17,7 @@
 | regex_matcher | Hard | Yes | 12 | 1.0 |
 | pigeonhole | Hard | Yes | 5 | 1.0 |
 | bst_verification | Hard | Yes | 23 | 1.0 |
-| strong_pumping | 5-star | In progress | 70+ | 0.83 (5/6 Qed) |
+| strong_pumping | 5-star | Running | — | 0.83 best prev |
 | trie_adt | Hard (ADT) | Yes | 24 | 1.0 |
 | binomial_queue | Very hard (ADT) | Running | — | — |
 

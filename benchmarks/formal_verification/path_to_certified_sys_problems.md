@@ -9,7 +9,7 @@
 | pigeonhole | 1 todo defn, 2 Admitted | 2 Qed | Predicate defn (`repeats`) | Gemini 3 Pro | Yes | 5/50 |
 | regex_matcher | 3 todo fns, 5 Admitted + 9 given Qed | 14 Qed total | — | Gemini 3 Pro | Yes | 12/50 |
 | bst_verification | 3 todo fns, 5 Admitted | 9 Qed (invented 4 sub-lemmas) | — | Gemini 3 Pro | Yes | 23/50 |
-| strong_pumping | 5 Admitted | 5/6 Qed so far (LLM invented `pumping_strong` helper) | — | Gemini 3 Pro | 0.83 | 70+ |
+| strong_pumping | 5 Admitted | 4/5 helper Qed, main Admitted | — | Gemini 3 Pro | Running | — |
 | trie_adt | 1 todo defn, 10 Admitted + 2 given Qed | 12 Qed + `is_trie` defn | `is_trie` invariant | Gemini 3 Pro | Yes | 24/100 |
 | binomial_queue | 1 Axiom defn, 20 Admitted + 5 given Qed | — | `priqueue_elems` relation | Gemini 3 Pro | Running | — |
 
