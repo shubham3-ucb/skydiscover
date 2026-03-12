@@ -349,6 +349,30 @@ def _build_feedback(compiles, done, qed, admitted, todo, axioms=0,
     return " ".join(parts)
 
 
+def _initial_proof_slot_count():
+    """Count total proof slots in initial_program.v (lives next to evaluator.py).
+
+    A proof slot is any Qed, Admitted, todo, or non-todo Axiom in the initial
+    file.  We use this as a floor: the submitted program must contain at least
+    this many slots to be considered 'done'.  This prevents the LLM from
+    replacing the entire spec with a trivial one-liner that has no obligations.
+    General: works for any benchmark whose initial_program.v is in the same dir.
+    """
+    ev_dir = os.path.dirname(os.path.abspath(__file__))
+    init_path = os.path.join(ev_dir, "initial_program.v")
+    try:
+        content = open(init_path).read()
+    except OSError:
+        return 0
+    q, a = _count_proof_terms(content)
+    t = _count_todos(content)
+    ax = _count_axiom_obligations(content)
+    return q + a + t + ax
+
+
+_INITIAL_SLOTS = _initial_proof_slot_count()
+
+
 def evaluate(program_path):
     content = open(program_path).read()
     cleaned = _strip_markdown_fences(content)
@@ -367,13 +391,22 @@ def evaluate(program_path):
 
     compiles = rc == 0
     open_obligations = admitted_count + todo_count + axiom_count
-    done = compiles and open_obligations == 0 and qed_count > 0
-
     total = qed_count + open_obligations
+
+    # 'done' requires: compiles, no open obligations, at least as many proof
+    # slots as the initial program (guards against trivial spec replacement).
+    done = (compiles and open_obligations == 0
+            and qed_count > 0
+            and total >= _INITIAL_SLOTS)
+
     if done:
         score = 1.0
     elif total > 0:
-        ratio = qed_count / total
+        # Scale ratio by how many slots the program retains vs the initial spec.
+        # If LLM dropped most of the spec (total << _INITIAL_SLOTS), the effective
+        # denominator is max(total, _INITIAL_SLOTS) so score reflects true progress.
+        effective_total = max(total, _INITIAL_SLOTS) if _INITIAL_SLOTS > 0 else total
+        ratio = qed_count / effective_total
         score = ratio if compiles else 0.5 * ratio
     else:
         score = 0.0
