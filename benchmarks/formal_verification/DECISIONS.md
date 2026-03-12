@@ -20,7 +20,7 @@
 | strong_pumping | 5-star | Yes | 25 | 1.0 |
 | trie_adt | Hard (ADT) | Yes | 24 | 1.0 |
 | binomial_queue | Very hard (ADT) | Running | — | — |
-| redblack_tree | Very hard (RBT) | Not started | — | — |
+| redblack_tree | Very hard (RBT) | Running | — | — |
 
 ---
 
@@ -46,10 +46,10 @@ No explicit proof tree. AdaEvolve maintains a population of partial solutions at
 | State | Score |
 |---|---|
 | Doesn't compile | `0.0` + coqc stderr returned as `error` (triggers retry) |
-| Compiles, work remaining | `Qed / (Qed + Admitted + todo)` |
-| Fully done | `1.0` |
+| Compiles, work remaining | `Qed / (Qed + Admitted + todo + axioms)` |
+| Fully done (qed > 0) | `1.0` |
 
-Score can temporarily dip when the LLM decomposes a `todo` into sub-expressions (adding new `Admitted`/`todo`). AdaEvolve handles this — a monotonic search like `best_of_n` would reject valid progress.
+Open obligations = `Admitted` proofs + `todo` expressions + non-`todo` `Axiom` declarations. Score can temporarily dip when the LLM decomposes a `todo` into sub-expressions (adding new `Admitted`/`todo`). AdaEvolve handles this — a monotonic search like `best_of_n` would reject valid progress.
 
 **Known limitation:** No partial credit for a proof attempt that fails to compile. Causes flat score plateaus when the LLM is stuck on one hard lemma.
 
@@ -85,6 +85,21 @@ The LLM sometimes splits its output across multiple fenced code blocks with expl
 
 ### Tactic timeout trap (strong_pumping)
 Previously, the LLM generated structurally correct proofs that timed out in Coq (`do N eexists`, `repeat rewrite app_assoc`). Fixed by: (1) evaluator timeout raised to 300s, (2) actionable timeout guidance returned on timeout, (3) prompt includes Coq tactic performance rules. The final solved proof uses explicit witnesses and targeted rewrites throughout.
+
+### Verbose error noise (binomial_queue stalling)
+`coqc` error messages for proof failures include an "In environment" block listing every hypothesis in scope — often 15-30 lines. This overwhelmed the LLM and buried the actual error. `binomial_queue` was stuck at score 0.52, repeatedly generating the same broken proofs because the LLM couldn't parse 920-char error dumps.
+
+**Fix:** Evaluator now strips "In environment" blocks from `coqc` stderr using regex-based detection of hypothesis binding patterns. Result: 924 chars → 243 chars (74% reduction), with only the file location and core error message remaining. General to all Coq errors — no problem-specific content.
+
+### Axiom tracking (binomial_queue)
+The `binomial_queue` benchmark uses `Axiom priqueue_elems` as a placeholder for an `Inductive` definition the LLM must invent. The original evaluator only counted `Admitted` and `todo` as open obligations, so replacing this `Axiom` gave no score change.
+
+**Fix:** Evaluator now counts all `Axiom` declarations (excluding the `todo` axiom) as open obligations. Scoring formula: `Qed / (Qed + Admitted + todo + axioms)`. General — works for any benchmark that asks the LLM to replace an `Axiom` with a definition.
+
+### Done-guard (empty file exploit)
+An empty `.v` file or a trivial file with no proofs would compile with 0 open obligations, scoring 1.0 spuriously.
+
+**Fix:** `done` condition now requires `qed_count > 0` — a program must contain at least one successfully proved obligation.
 
 ---
 

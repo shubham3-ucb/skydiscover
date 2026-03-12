@@ -81,7 +81,7 @@ One generic evaluator and prompt across all problems.
 **What:** Verified red-black tree: balanced BST with color invariants. Prove BST preservation through balance/insert, lookup correctness (equational spec), and the red-black height bound.
 **Initial spec:** 14 `Admitted` theorems, 14 given `Qed`. All implementations given (`balance`, `ins`, `insert`, `lookup`). Inlined `int` type from VFA/Extract. 423 lines.
 **Difficulty:** Very hard. 14 exercises totaling ~32 stars (includes 4★ `balance_lookup`, 4★ `ins_RB`, 4★ `redblack_balanced`). Automated case analysis over 58+ balance cases. Three proof domains: BST ordering, equational lookup, red-black color/height.
-**Status:** Not started.
+**Status:** Running (100 iters, Gemini 3 Pro).
 **One-shot baseline:** 0.00 (response truncated to 36 lines, doesn't compile)
 **Source:** SF Vol. 3 (VFA) — [Redblack chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Redblack.html)
 
@@ -93,6 +93,7 @@ One generic evaluator and prompt across all problems.
 **Initial spec:** 1 `Axiom` to replace with `Inductive` (`priqueue_elems`), 20 `Admitted` theorems, 5 given `Qed`. All implementations given. 305 lines.
 **Difficulty:** Very hard. 56 total stars across exercises. Three 5★ theorems (`delete_max_Some_priq`, `delete_max_None_relate`, `delete_max_Some_relate`). LLM must invent the `priqueue_elems` inductive relation and prove correctness of all ADT operations.
 **Status:** Running (100 iters, Gemini 3 Pro).
+**One-shot baseline:** 0.00 (syntax error at line 49, only 4 given Qed survived)
 **Source:** SF Vol. 3 (VFA) — [Binom chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Binom.html)
 
 ---
@@ -178,7 +179,8 @@ Problems targeting the path from textbook proofs toward certified systems.
 ## Escalation Path
 
 ```
-Done (VFA)        →  BST, Trie, Binomial Queue, Red-Black Tree
+Done (VFA)        →  BST, Trie
+Running (VFA)     →  Binomial Queue, Red-Black Tree
 Next (VFA)        →  Graph Coloring (compiler backend)
                                     ↓
 Separation Logic  →  SLF Stack ADT  →  SLF Iterator

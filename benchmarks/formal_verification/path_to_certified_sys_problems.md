@@ -12,9 +12,9 @@
 | strong_pumping | 5 Admitted | 5 Qed (full induction on match evidence, explicit witnesses) | — | Gemini 3 Pro | Yes | 25/100 |
 | trie_adt | 1 todo defn, 10 Admitted + 2 given Qed | 12 Qed + `is_trie` defn | `is_trie` invariant | Gemini 3 Pro | Yes | 24/100 |
 | binomial_queue | 1 Axiom defn, 20 Admitted + 5 given Qed | — | `priqueue_elems` relation | Gemini 3 Pro | Running | — |
-| redblack_tree | 14 Admitted + 14 given Qed | — | — (RB/NearlyRB given) | — | Not started | — |
+| redblack_tree | 14 Admitted + 14 given Qed | — | — (RB/NearlyRB given) | Gemini 3 Pro | Running | — |
 
-All single-file, <=423 lines initial. Coq stdlib only. One generic evaluator and prompt across all problems.
+All single-file, <=423 lines initial. Coq stdlib + VFA/PLF imports where needed. One generic evaluator and prompt across all problems.
 
 ---
 
@@ -60,6 +60,10 @@ Scale reference: FSCQ (verified file system) = ~30k lines Coq, ~40 person-months
 
 **Tactic timeout.** LLM generates structurally correct proofs that hang Coq's unifier (`do N eexists`, `repeat rewrite`). Scores 0.0 with no actionable feedback. Fixed: 300s timeout, actionable timeout guidance, tactic performance hints in prompt.
 
+**Verbose error noise.** `coqc` stderr for proof failures includes "In environment" blocks listing every in-scope hypothesis (15-30 lines). LLM couldn't parse the actual error from the noise. Fixed: evaluator strips environment blocks via regex, surfacing only the core error message (74% reduction in error text size).
+
+**Axiom tracking.** Benchmarks requiring the LLM to replace an `Axiom` with a definition (e.g. `binomial_queue`'s `priqueue_elems`) weren't tracked as open obligations. Fixed: evaluator counts non-`todo` `Axiom` declarations and includes them in the score denominator.
+
 ---
 
 ## Honest Assessment
@@ -77,9 +81,9 @@ Scale reference: FSCQ (verified file system) = ~30k lines Coq, ~40 person-months
 
 ## Next Steps (by impact)
 
-1. Complete `strong_pumping` run — `trie_adt` solved (24 iters, invariant invented). `strong_pumping` has correct proof structure, needs tactic efficiency fix (running with improved evaluator/prompt).
-2. **Multi-file benchmark.** VFA SearchTree importing Maps — minimal setup, tests the core gap.
-3. **Agent context.** On `Require Import Foo`, agent extracts `Foo.v` signatures into LLM context.
-4. **Goal-state feedback.** On proof failure, return Coq's pending goal to the LLM — breaks plateaus.
-5. **Red-black tree** (423 lines, 14 obligations, 3 proof domains) — tests scale. Set up, one-shot baseline: 0.00. Ready to run.
+1. **Complete running benchmarks.** `binomial_queue` (20 obligations, invariant invention) and `redblack_tree` (14 obligations, 3 proof domains, 423 lines) are running with Gemini 3 Pro. Both are genuine 5-star-level problems that failed one-shot.
+2. **Graph coloring (VFA/Color).** Kempe's algorithm with termination proof — a real compiler backend component.
+3. **Multi-file benchmark.** VFA SearchTree importing Maps — minimal setup, tests the core gap.
+4. **Agent context.** On `Require Import Foo`, agent extracts `Foo.v` signatures into LLM context.
+5. **Goal-state feedback.** On proof failure, return Coq's pending goal to the LLM — breaks plateaus.
 6. **VST benchmark** — one C function verified with separation logic.

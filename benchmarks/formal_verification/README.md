@@ -13,8 +13,10 @@ This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal
 | `pigeonhole` | Hard (5★) | Define `repeats` and prove the pigeonhole principle | 1.0 at iter 5 (Gemini 3 Pro) |
 | `regex_matcher` | Hard (2–4★) | Verified regex matcher via Brzozowski derivatives | 1.0 at iter 12 (Gemini 3 Pro) |
 | `bst_verification` | Hard | Implement and verify a binary search tree | 1.0 at iter 23 (Gemini 3 Pro) |
-| `strong_pumping` | Very hard (5★) | Prove the strong pumping lemma | Running |
-| `trie_adt` | Very hard | Define `is_trie` invariant, prove 10 ADT theorems | Running |
+| `strong_pumping` | Very hard (5★) | Prove the strong pumping lemma | 1.0 at iter 25 (Gemini 3 Pro) |
+| `trie_adt` | Very hard | Define `is_trie` invariant, prove 10 ADT theorems | 1.0 at iter 24 (Gemini 3 Pro) |
+| `binomial_queue` | Very hard (56★) | Invent `priqueue_elems`, prove 20 ADT theorems | Running (Gemini 3 Pro) |
+| `redblack_tree` | Very hard (32★) | Prove BST, lookup, and red-black invariants | Running (Gemini 3 Pro) |
 
 See [`coq_proof/PROBLEMS.md`](coq_proof/PROBLEMS.md) for detailed descriptions and SF source links.
 
@@ -62,7 +64,7 @@ initial_program.v                        evaluator.py
 
 Each iteration the LLM takes **one step**: fill one `todo` with a concrete expression, add sub-lemmas as `Admitted.` for any new holes, then prove the parent lemma → `Qed.`
 
-Score is always in [0, 1]: `0.0` if it doesn't compile, `Qed / (Qed + Admitted + todo)` otherwise, `1.0` when fully done.
+Score is always in [0, 1]: `0.0` if it doesn't compile, `Qed / (Qed + Admitted + todo + axioms)` otherwise, `1.0` when fully done (requires `Qed > 0`).
 
 ## Adding a new problem
 

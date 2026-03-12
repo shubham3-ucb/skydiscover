@@ -3,18 +3,22 @@
 Generic for any .v file. Not problem-specific.
 
 Scoring (always in [0, 1]):
-  - Doesn't compile → 0.0, with coqc stderr as error (triggers retry)
-  - Compiles, work remaining → qed / (qed + admitted + todo + axioms), always < 1
   - Compiles, done (no Admitted, no todo, no axioms, qed > 0) → 1.0
+  - Compiles, work remaining → qed / (qed + admitted + todo + axioms), always < 1
+  - Doesn't compile, has real Qed work → 0.5 * qed / (qed + admitted + todo + axioms)
+  - Doesn't compile, no Qed → 0.0
+
+The 0.5 penalty ensures compiling programs always outscore non-compiling ones
+with the same obligation ratio, while still giving partial credit so the search
+retains near-compiling programs instead of discarding them.
 
 Open obligations = Admitted proofs + todo expressions + non-todo Axiom declarations.
-The ratio qed/(qed+obligations) honestly reflects how close to completion the
-program is.  Population-based search (adaevolve) handles temporary score dips fine.
 """
 
 import re
 import subprocess
 import os
+import tempfile
 
 from skydiscover.evaluation.evaluation_result import EvaluationResult
 
@@ -102,14 +106,15 @@ def _postprocess_error(stderr):
     if error_idx is None:
         return "\n".join(lines[-12:]).strip()[-2000:]
 
-    # Keep up to 3 lines before "Error:" as locator (File/line/chars),
-    # but stop if we hit "In environment" — that's context noise.
-    header_start = max(0, error_idx - 3)
+    # Find the "File ..." locator line before "Error:".  The environment
+    # block can be arbitrarily long between the locator and the Error line,
+    # so we scan backward, skipping environment content, to find the locator.
     header = []
-    for line in lines[header_start:error_idx]:
-        if line.strip().startswith("In environment"):
+    for i in range(error_idx - 1, max(-1, error_idx - 50), -1):
+        stripped = lines[i].strip()
+        if stripped.startswith("File "):
+            header = [lines[i]]
             break
-        header.append(line)
 
     # From "Error:" onward, skip "In environment" blocks entirely.
     # Environment lines are hypothesis bindings (name : type) or
@@ -152,9 +157,135 @@ def _run_coqc(filepath):
             capture_output=True, text=True, timeout=300,
             cwd=os.path.dirname(filepath),
         )
-        return r.returncode, r.stderr
+        return r.returncode, r.stdout, r.stderr
     except subprocess.TimeoutExpired:
-        return 1, _TIMEOUT_GUIDANCE
+        return 1, "", _TIMEOUT_GUIDANCE
+
+
+_ADMITTED_PAT = re.compile(r"Admitted\s*\.")
+_THEOREM_HEADING = re.compile(
+    r"^\s*(?:Theorem|Lemma|Corollary|Proposition|Fact|Remark)\s+(\w+)",
+    re.MULTILINE,
+)
+
+
+def _find_admitted_outside_comments(content):
+    """Return match positions of Admitted. that are NOT inside Coq comments."""
+    # Build a set of character positions that are inside comments
+    comment_chars = set()
+    for m in _COQ_COMMENT.finditer(content):
+        comment_chars.update(range(m.start(), m.end()))
+    results = []
+    for m in _ADMITTED_PAT.finditer(content):
+        if m.start() not in comment_chars:
+            results.append(m)
+    return results
+
+
+def _extract_goal_states(filepath, content):
+    """Run a second coqc pass with Show. before each Admitted. to capture goals.
+
+    Returns a list of (theorem_name, goal_text) pairs.  Completely general —
+    works for any .v file.  Only called when the file already compiles
+    (so the Show. pass is guaranteed to succeed).
+    """
+    admitted_matches = _find_admitted_outside_comments(content)
+    if not admitted_matches:
+        return []
+
+    # Inject "Show." before every real Admitted. (in reverse to preserve offsets)
+    injected = content
+    for m in reversed(admitted_matches):
+        injected = injected[:m.start()] + "Show. " + injected[m.start():]
+
+    d = os.path.dirname(os.path.abspath(filepath))
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".v", dir=d, delete=False
+    ) as tmp:
+        tmp.write(injected)
+        tmp_path = tmp.name
+
+    try:
+        r = subprocess.run(
+            ["coqc", os.path.basename(tmp_path)],
+            capture_output=True, text=True, timeout=300,
+            cwd=d,
+        )
+        stdout = r.stdout or ""
+    except (subprocess.TimeoutExpired, OSError):
+        stdout = ""
+    finally:
+        _cleanup_coq_artifacts(tmp_path)
+        try:
+            os.remove(tmp_path)
+        except OSError:
+            pass
+
+    if not stdout.strip():
+        return []
+
+    # Find theorem names (order matches admitted_matches order)
+    headings = list(_THEOREM_HEADING.finditer(content))
+    theorem_names = []
+    for m in admitted_matches:
+        name = "?"
+        for h in reversed(headings):
+            if h.start() < m.start():
+                name = h.group(1)
+                break
+        theorem_names.append(name)
+
+    # Parse goal blocks from stdout — each Show. produces "N goal(s)\n..."
+    # "No more goals." lines are from already-solved-but-Admitted proofs; skip.
+    # Split on goal headers; everything before the first is non-goal output.
+    raw_blocks = re.split(r"(?=^\d+ goals?\s*$)", stdout.strip(),
+                          flags=re.MULTILINE)
+    goal_blocks = [b.strip() for b in raw_blocks
+                   if re.match(r"^\d+ goals?", b.strip())]
+
+    # Map goal blocks back to theorem names.  If a proof was already complete
+    # (Show. prints "No more goals."), it produces no goal block, so we
+    # skip those names.  Count "No more goals." occurrences before each block
+    # to align correctly.
+    no_more = stdout.count("No more goals.")
+    # Simple path: if no "No more goals." lines, 1:1 mapping
+    if no_more == 0:
+        name_iter = iter(theorem_names)
+    else:
+        # Rebuild alignment: walk stdout lines and pair with theorem names
+        name_iter = iter(theorem_names)
+        aligned_names = []
+        for line in stdout.strip().splitlines():
+            if "No more goals" in line:
+                try:
+                    next(name_iter)  # skip this theorem
+                except StopIteration:
+                    break
+            elif re.match(r"^\d+ goals?\s*$", line.strip()):
+                try:
+                    aligned_names.append(next(name_iter))
+                except StopIteration:
+                    aligned_names.append("?")
+        name_iter = iter(aligned_names)
+
+    results = []
+    for i, block in enumerate(goal_blocks):
+        name = next(name_iter, "?")
+        # Trim: stop at Check output or other non-goal lines after the separator
+        lines = block.splitlines()
+        trimmed = []
+        past_separator = False
+        for line in lines:
+            if "======" in line:
+                past_separator = True
+                trimmed.append(line)
+                continue
+            if past_separator and line and not line[0].isspace() and ":" in line:
+                break
+            trimmed.append(line)
+        results.append((name, "\n".join(trimmed[:15]).strip()))
+
+    return results
 
 
 def _cleanup_coq_artifacts(filepath):
@@ -172,13 +303,17 @@ def _cleanup_coq_artifacts(filepath):
         pass
 
 
-def _build_feedback(compiles, done, qed, admitted, todo, axioms=0):
+_FEEDBACK_BUDGET = 1850  # must fit within format_artifacts 2000-char cap (with margin)
+
+
+def _build_feedback(compiles, done, qed, admitted, todo, axioms=0,
+                    goal_states=None):
     """Build natural-language feedback for the LLM."""
-    if not compiles:
-        return None  # coqc stderr is already sent via error key
     if done:
         return "All obligations discharged. The file is complete."
     parts = []
+    if not compiles:
+        parts.append("File does NOT compile (see error above). Fix the error first.")
     remaining = admitted + todo + axioms
     detail = []
     if admitted > 0:
@@ -194,6 +329,23 @@ def _build_feedback(compiles, done, qed, admitted, todo, axioms=0):
         parts.append("Pick one todo expression and replace it with a concrete Coq term.")
     elif admitted > 0:
         parts.append("Prove one Admitted lemma with Qed.")
+
+    if goal_states:
+        header_text = " ".join(parts)
+        goal_parts = [header_text, "\nRemaining proof goals:"]
+        used = len(header_text) + 1 + len("\nRemaining proof goals:")  # +1 for join \n
+        added = 0
+        for name, goals in goal_states:
+            entry = f"\n[{name}]\n{goals}"
+            if used + 1 + len(entry) > _FEEDBACK_BUDGET:
+                omitted = len(goal_states) - added
+                goal_parts.append(f"\n(... {omitted} more goal(s) omitted)")
+                break
+            goal_parts.append(entry)
+            used += 1 + len(entry)
+            added += 1
+        return "\n".join(goal_parts)
+
     return " ".join(parts)
 
 
@@ -210,7 +362,7 @@ def evaluate(program_path):
     axiom_count = _count_axiom_obligations(content)
     code_length = len(content.splitlines())
 
-    rc, stderr = _run_coqc(program_path)
+    rc, stdout, stderr = _run_coqc(program_path)
     _cleanup_coq_artifacts(program_path)
 
     compiles = rc == 0
@@ -218,14 +370,18 @@ def evaluate(program_path):
     done = compiles and open_obligations == 0 and qed_count > 0
 
     total = qed_count + open_obligations
-    if not compiles:
-        score = 0.0
-    elif done:
+    if done:
         score = 1.0
     elif total > 0:
-        score = qed_count / total
+        ratio = qed_count / total
+        score = ratio if compiles else 0.5 * ratio
     else:
         score = 0.0
+
+    # Extract goal states for Admitted proofs (only when file compiles)
+    goal_states = []
+    if compiles and admitted_count > 0:
+        goal_states = _extract_goal_states(program_path, content)
 
     metrics = {
         "combined_score": score,
@@ -243,7 +399,9 @@ def evaluate(program_path):
         metrics["error"] = processed or "Compilation failed (no details from coqc)."
 
     artifacts = {}
-    feedback = _build_feedback(compiles, done, qed_count, admitted_count, todo_count, axiom_count)
+    feedback = _build_feedback(compiles, done, qed_count, admitted_count,
+                               todo_count, axiom_count,
+                               goal_states=goal_states)
     if feedback:
         artifacts["feedback"] = feedback
 

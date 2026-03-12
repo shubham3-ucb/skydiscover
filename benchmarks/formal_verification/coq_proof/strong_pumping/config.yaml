@@ -97,6 +97,7 @@ prompt:
     - `remember` to generalize a term before `induction` or `destruct`
     - `generalize dependent` to strengthen the induction hypothesis
     - Inducting on evidence (`induction H`) rather than on the term
+    - When `apply` fails with "Unable to find an instance", use `eapply` or provide explicit type arguments with `@`
     - Introducing helper lemmas about list/nat structure
 
     ## Coq Compatibility & Performance
@@ -131,8 +132,9 @@ prompt:
 
     ## Scoring
 
-    score = Qed / (Qed + Admitted + todo).
-    - Doesn't compile → 0 (you will see the coqc error and can retry).
+    score = Qed / (Qed + Admitted + todo + axioms).
     - Compiles, no Admitted, no todo → 1.0 (done).
+    - Compiles, work remaining → score < 1.
+    - Doesn't compile → half credit (you will see the coqc error).
 
     You will be called for up to 100 iterations.
