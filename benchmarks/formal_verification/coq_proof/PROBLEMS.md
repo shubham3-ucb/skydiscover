@@ -61,7 +61,7 @@ One generic evaluator and prompt across all problems.
 **What:** Prove the strong pumping lemma for regular expressions, including 4 helper lemmas and the main theorem.
 **Initial spec:** 5 `Admitted` (no implementation, pure proof). `pumping_constant` and `napp` functions given.
 **Difficulty:** Very hard (5★ advanced optional in SF). Deep nested induction on `exp_match` evidence with existential witnesses. No implementation — pure proof reasoning.
-**Status:** Running (fresh restart, 100 iters, Gemini 3 Pro). Previous best: 0.83 (5/6 Qed). LLM proved all 4 helper lemmas; main theorem `pumping` remains. Prior runs hit truncation issues in code extraction (now fixed).
+**Solved:** iter 25/100 · 5 Qed · Gemini 3 Pro. Full induction on `exp_match` evidence with explicit witnesses across all 7 constructors. 200 lines.
 **Source:** SF Vol. 1 — [IndProp, pumping exercise](https://softwarefoundations.cis.upenn.edu/lf-current/IndProp.html)
 
 ---

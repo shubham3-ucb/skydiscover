@@ -17,7 +17,7 @@
 | regex_matcher | Hard | Yes | 12 | 1.0 |
 | pigeonhole | Hard | Yes | 5 | 1.0 |
 | bst_verification | Hard | Yes | 23 | 1.0 |
-| strong_pumping | 5-star | Running | — | 0.83 best prev |
+| strong_pumping | 5-star | Yes | 25 | 1.0 |
 | trie_adt | Hard (ADT) | Yes | 24 | 1.0 |
 | binomial_queue | Very hard (ADT) | Running | — | — |
 
@@ -75,12 +75,15 @@ Implementation algorithm, sub-lemma statements, proof tactics — all by the LLM
 
 ## Key Findings
 
+### Code extraction truncation (all benchmarks)
+The LLM sometimes splits its output across multiple fenced code blocks with explanation text in between. The framework's `parse_full_rewrite` was taking only the first block (`matches[0]`), silently discarding the rest — producing truncated 60-line files that failed to compile with a syntax error on the last line.
+
+**Fix:** Changed `matches[0]` to `max(matches, key=len)` — picks the longest (most complete) code block. 2-line change in `skydiscover/utils/code_utils.py`. Safe: single-block responses (the normal case) behave identically.
+
+**Impact:** `strong_pumping` solved in 25 iterations immediately after the fix. Previously stuck for 70+ iterations at 0.83.
+
 ### Tactic timeout trap (strong_pumping)
-The LLM generated a **mathematically correct** full proof of the 5-star Strong Pumping Lemma (218 lines, 0 Admitted). But it scored 0.0 because `coqc` timed out — tactics like `do 3 eexists` and `repeat rewrite app_assoc` cause infinite Coq unification loops. Manual fix: replace with explicit witnesses and targeted single rewrites. The proof then compiles in <1s.
-
-**Root cause:** The evaluator's 120s timeout killed correct proofs silently. The LLM received no guidance about *why* it failed, so it couldn't self-correct.
-
-**Fix applied (general):** (1) Evaluator timeout raised to 300s. (2) On timeout, evaluator returns actionable guidance about slow tactics. (3) Prompt includes general Coq tactic performance rules (no `eexists`, no `repeat rewrite`). All changes are domain-general — not problem-specific.
+Previously, the LLM generated structurally correct proofs that timed out in Coq (`do N eexists`, `repeat rewrite app_assoc`). Fixed by: (1) evaluator timeout raised to 300s, (2) actionable timeout guidance returned on timeout, (3) prompt includes Coq tactic performance rules. The final solved proof uses explicit witnesses and targeted rewrites throughout.
 
 ---
 
