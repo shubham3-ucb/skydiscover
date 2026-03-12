@@ -4,13 +4,12 @@ Generic for any .v file. Not problem-specific.
 
 Scoring (always in [0, 1]):
   - Doesn't compile → 0.0, with coqc stderr as error (triggers retry)
-  - Compiles, work remaining → qed / (qed + admitted + todo), always < 1
-  - Compiles, done (no Admitted, no todo) → 1.0
+  - Compiles, work remaining → qed / (qed + admitted + todo + axioms), always < 1
+  - Compiles, done (no Admitted, no todo, no axioms, qed > 0) → 1.0
 
-The ratio qed/(qed+admitted+todo) honestly reflects how close to
-completion the program is.  It can temporarily dip when the LLM adds
-new sub-lemmas (Admitted) or branches (todo), but that is the correct
-signal — population-based search (adaevolve) handles this fine.
+Open obligations = Admitted proofs + todo expressions + non-todo Axiom declarations.
+The ratio qed/(qed+obligations) honestly reflects how close to completion the
+program is.  Population-based search (adaevolve) handles temporary score dips fine.
 """
 
 import re
@@ -43,6 +42,14 @@ def _count_todos(content):
     return len(re.findall(r"\btodo\b", without_axiom))
 
 
+def _count_axiom_obligations(content):
+    """Count Axiom declarations that are real obligations (not `Axiom todo`)."""
+    stripped = _strip_comments(content)
+    all_axioms = re.findall(r"^\s*Axiom\b", stripped, re.MULTILINE)
+    todo_axioms = re.findall(r"^\s*Axiom\s+todo\b", stripped, re.MULTILINE)
+    return len(all_axioms) - len(todo_axioms)
+
+
 def _strip_markdown_fences(content):
     """Strip markdown code fences if the LLM wrapped the file in them."""
     lines = content.strip().splitlines()
@@ -61,17 +68,80 @@ def _strip_markdown_fences(content):
 
 
 _TIMEOUT_GUIDANCE = (
-    "Timeout: coqc exceeded 300s. "
-    "Your proof is likely structurally correct but uses tactics that cause "
-    "infinite unification loops. Common culprits:\n"
-    "  - `do N eexists` — use explicit `exists a, b, c` instead\n"
-    "  - `repeat rewrite app_assoc` — use a single targeted `rewrite` or "
-    "`replace ... with ... by (rewrite !app_assoc; reflexivity)`\n"
-    "  - `repeat split` with existential variables — use individual `split` "
-    "followed by the immediate proof of each conjunct\n"
-    "  - `auto` or `eauto` in large contexts — use explicit tactics\n"
-    "Rewrite the proof using explicit witnesses and targeted rewrites."
+    "Timeout: coqc exceeded the time limit. "
+    "The proof likely contains tactics that diverge (cause infinite "
+    "unification or rewriting loops). Common causes in Coq:\n"
+    "  - `repeat rewrite ...` or `repeat (simpl; ...)` — unbounded rewriting\n"
+    "  - `eauto` / `auto` in large contexts — exponential search\n"
+    "  - `repeat split` with existential variables — unbounded goal generation\n"
+    "  - `do N eexists` with large N — creates many unification variables\n"
+    "  - `omega` / `lia` on goals with many hypotheses — expensive decision procedures\n"
+    "Rewrite the proof using explicit, targeted tactics instead of open-ended automation."
 )
+
+def _postprocess_error(stderr):
+    """Trim verbose coqc proof-context dumps to surface the actual error.
+
+    coqc errors for proof failures include an "In environment" block listing
+    every hypothesis in scope — often 15-30 lines. This overwhelms the LLM
+    and buries the actual error message. We strip the environment block and
+    keep only: (1) the File/line locator, (2) the core error message.
+    """
+    if not stderr:
+        return stderr
+
+    lines = stderr.strip().splitlines()
+
+    # Find the first "Error:" line
+    error_idx = None
+    for i, line in enumerate(lines):
+        if "Error:" in line or "Error :" in line:
+            error_idx = i
+            break
+
+    if error_idx is None:
+        return "\n".join(lines[-12:]).strip()[-2000:]
+
+    # Keep up to 3 lines before "Error:" as locator (File/line/chars),
+    # but stop if we hit "In environment" — that's context noise.
+    header_start = max(0, error_idx - 3)
+    header = []
+    for line in lines[header_start:error_idx]:
+        if line.strip().startswith("In environment"):
+            break
+        header.append(line)
+
+    # From "Error:" onward, skip "In environment" blocks entirely.
+    # Environment lines are hypothesis bindings (name : type) or
+    # continuation lines indented further. We detect the end of the
+    # environment block by looking for a line that is NOT a binding
+    # (i.e. doesn't match "identifier : ..." or isn't a continuation).
+    _ENV_BINDING = re.compile(r"^[A-Za-z_][A-Za-z0-9_']*\s*[:,]")
+    body = []
+    in_env = False
+    for line in lines[error_idx:]:
+        stripped = line.strip()
+        if stripped == "In environment":
+            in_env = True
+            continue
+        if in_env:
+            if not stripped:
+                in_env = False
+                continue
+            # Continuation lines of a multi-line type are indented
+            if line.startswith("  ") and not _ENV_BINDING.match(stripped):
+                continue
+            if _ENV_BINDING.match(stripped):
+                continue
+            # Not a binding or continuation — we've exited the env block
+            in_env = False
+            body.append(line)
+            continue
+        body.append(line)
+        if len(body) >= 10:
+            break
+
+    return "\n".join(header + body).strip()[-2000:]
 
 
 def _run_coqc(filepath):
@@ -102,19 +172,28 @@ def _cleanup_coq_artifacts(filepath):
         pass
 
 
-def _build_feedback(compiles, done, qed, admitted, todo):
+def _build_feedback(compiles, done, qed, admitted, todo, axioms=0):
     """Build natural-language feedback for the LLM."""
     if not compiles:
         return None  # coqc stderr is already sent via error key
     if done:
         return "All obligations discharged. The file is complete."
     parts = []
-    remaining = admitted + todo
-    parts.append(f"{remaining} obligation(s) remain: {admitted} Admitted proof(s), {todo} todo expression(s).")
+    remaining = admitted + todo + axioms
+    detail = []
+    if admitted > 0:
+        detail.append(f"{admitted} Admitted proof(s)")
     if todo > 0:
+        detail.append(f"{todo} todo expression(s)")
+    if axioms > 0:
+        detail.append(f"{axioms} Axiom placeholder(s) to define")
+    parts.append(f"{remaining} obligation(s) remain: {', '.join(detail)}.")
+    if axioms > 0:
+        parts.append("Replace one Axiom placeholder with a proper definition.")
+    elif todo > 0:
         parts.append("Pick one todo expression and replace it with a concrete Coq term.")
     elif admitted > 0:
-        parts.append("All expressions are filled. Prove one Admitted lemma with Qed.")
+        parts.append("Prove one Admitted lemma with Qed.")
     return " ".join(parts)
 
 
@@ -128,15 +207,17 @@ def evaluate(program_path):
 
     qed_count, admitted_count = _count_proof_terms(content)
     todo_count = _count_todos(content)
+    axiom_count = _count_axiom_obligations(content)
     code_length = len(content.splitlines())
 
     rc, stderr = _run_coqc(program_path)
     _cleanup_coq_artifacts(program_path)
 
     compiles = rc == 0
-    done = compiles and admitted_count == 0 and todo_count == 0
+    open_obligations = admitted_count + todo_count + axiom_count
+    done = compiles and open_obligations == 0 and qed_count > 0
 
-    total = qed_count + admitted_count + todo_count
+    total = qed_count + open_obligations
     if not compiles:
         score = 0.0
     elif done:
@@ -152,15 +233,17 @@ def evaluate(program_path):
         "qed_count": float(qed_count),
         "admitted_count": float(admitted_count),
         "todo_count": float(todo_count),
+        "axiom_count": float(axiom_count),
         "code_length": float(code_length),
         "done": 1.0 if done else 0.0,
     }
 
-    if not compiles and stderr:
-        metrics["error"] = stderr[-2000:]
+    if not compiles:
+        processed = _postprocess_error(stderr) if stderr else ""
+        metrics["error"] = processed or "Compilation failed (no details from coqc)."
 
     artifacts = {}
-    feedback = _build_feedback(compiles, done, qed_count, admitted_count, todo_count)
+    feedback = _build_feedback(compiles, done, qed_count, admitted_count, todo_count, axiom_count)
     if feedback:
         artifacts["feedback"] = feedback
 

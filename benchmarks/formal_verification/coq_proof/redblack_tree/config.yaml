@@ -56,9 +56,8 @@ prompt:
 
     The .v file contains:
     - `Axiom todo : forall {A : Type}, A.` — typed hole for unfinished expressions
-    - A verified red-black tree implementation (balance, ins, insert, lookup).
+    - Implementations and invariant definitions (all given).
     - Lemmas/theorems marked `Admitted.` — placeholder for unfinished proofs.
-    - All implementations and invariant definitions are given.
 
     Your goal: prove every `Admitted.` lemma with `Qed.`
     After your edit, the file MUST compile with `coqc`.
@@ -68,22 +67,8 @@ prompt:
     steps or generating the full solution in one call.
 
     In each call, prove ONE `Admitted.` lemma with `Qed.`
-    When choosing which `Admitted.` lemma to prove, prefer ones that do NOT
-    depend on other `Admitted.` lemmas — prove prerequisites first.
-
-    ## Proof Strategy
-
-    When a proof attempt does not go through, consider:
-    - Red-black tree proofs heavily use automated case analysis: `unfold balance`
-      followed by `repeat match goal with ... end` to destruct colors and trees.
-    - Use `bdestruct` to destruct boolean comparisons and get the Prop form.
-    - `ForallT_imp`, `ForallT_greater`, `ForallT_less` are provided helpers
-      for transitivity of ordering across tree nodes.
-    - For `balance_lookup` and similar: unfold balance, then automated case
-      analysis with `bdestruct` and `try lia` for the arithmetic.
-    - `inv H` is provided as a tactic for `inversion H; subst; clear H`.
-    - `remember` to generalize a term before `induction` or `destruct`
-    - `generalize dependent` to strengthen the induction hypothesis
+    When choosing which obligation to tackle, prefer ones that do NOT depend on
+    other unfinished obligations — work bottom-up, proving prerequisites first.
 
     ## Output Format
 
@@ -97,19 +82,25 @@ prompt:
 
     - The file MUST compile with `coqc` after every edit.
     - Do NOT remove or rename existing lemmas/theorems, or change their statements.
-      Only fill in proofs.
     - Do NOT use `exact todo.` or a similar trivial tactic to close a proof —
       that defeats the purpose. Only close proofs with real tactics.
     - Do NOT prove multiple `Admitted.` lemmas in one call.
-    - Add `Require Import` statements as needed.
+    - Read the existing code carefully — tactics, helpers, and definitions
+      already in the file are there for you to use.
+
+    ## Proof Strategy
+
+    When a proof attempt does not go through, consider:
+    - `remember` to generalize a term before `induction` or `destruct`
+    - `generalize dependent` to strengthen the induction hypothesis
+    - Inducting on evidence (`induction H`) rather than on the term
 
     ## Coq Compatibility & Performance
 
     - Use `From Stdlib Require Import` NOT `From Coq Require Import` (Coq 9.x).
     - NEVER use `do N eexists` — always provide explicit witnesses.
-    - NEVER use `repeat rewrite` — use targeted single rewrites.
+    - Avoid `repeat rewrite` — it can cause infinite loops. Use targeted single rewrites.
     - Avoid `repeat split` with existential variables.
-    - When `lia` fails on a goal involving `length`, try `simpl in *` first.
 
     ## Scoring
 

@@ -1,0 +1,11 @@
+{
+  "score": 1.0,
+  "compiles": true,
+  "qed": 5,
+  "admitted": 0,
+  "todo": 0,
+  "done": true,
+  "lines": 200,
+  "iteration": 10,
+  "model": "gemini-3-pro-preview"
+}
