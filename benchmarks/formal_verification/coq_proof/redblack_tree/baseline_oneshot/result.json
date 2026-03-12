@@ -1,0 +1,11 @@
+{
+  "score": 0.0,
+  "compiles": false,
+  "qed": 0,
+  "admitted": 0,
+  "todo": 0,
+  "done": false,
+  "lines": 37,
+  "error": "File \"./tmprz1gjk5h.v\", line 1, characters 0-2:\nError: Syntax error: illegal begin of vernac.\n\n",
+  "llm_time_s": 120.5
+}

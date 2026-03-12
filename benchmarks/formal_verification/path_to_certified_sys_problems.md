@@ -12,8 +12,9 @@
 | strong_pumping | 5 Admitted | 5 Qed (full induction on match evidence, explicit witnesses) | — | Gemini 3 Pro | Yes | 25/100 |
 | trie_adt | 1 todo defn, 10 Admitted + 2 given Qed | 12 Qed + `is_trie` defn | `is_trie` invariant | Gemini 3 Pro | Yes | 24/100 |
 | binomial_queue | 1 Axiom defn, 20 Admitted + 5 given Qed | — | `priqueue_elems` relation | Gemini 3 Pro | Running | — |
+| redblack_tree | 14 Admitted + 14 given Qed | — | — (RB/NearlyRB given) | — | Not started | — |
 
-All single-file, <310 lines initial. Coq stdlib only. One generic evaluator and prompt across all problems.
+All single-file, <=423 lines initial. Coq stdlib only. One generic evaluator and prompt across all problems.
 
 ---
 
@@ -80,5 +81,5 @@ Scale reference: FSCQ (verified file system) = ~30k lines Coq, ~40 person-months
 2. **Multi-file benchmark.** VFA SearchTree importing Maps — minimal setup, tests the core gap.
 3. **Agent context.** On `Require Import Foo`, agent extracts `Foo.v` signatures into LLM context.
 4. **Goal-state feedback.** On proof failure, return Coq's pending goal to the LLM — breaks plateaus.
-5. **Red-black tree** (~500 lines, 15+ obligations) — tests scale.
+5. **Red-black tree** (423 lines, 14 obligations, 3 proof domains) — tests scale. Set up, one-shot baseline: 0.00. Ready to run.
 6. **VST benchmark** — one C function verified with separation logic.

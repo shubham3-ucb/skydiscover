@@ -20,6 +20,7 @@
 | strong_pumping | 5-star | Yes | 25 | 1.0 |
 | trie_adt | Hard (ADT) | Yes | 24 | 1.0 |
 | binomial_queue | Very hard (ADT) | Running | — | — |
+| redblack_tree | Very hard (RBT) | Not started | — | — |
 
 ---
 

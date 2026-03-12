@@ -76,6 +76,17 @@ One generic evaluator and prompt across all problems.
 
 ---
 
+## redblack_tree
+
+**What:** Verified red-black tree: balanced BST with color invariants. Prove BST preservation through balance/insert, lookup correctness (equational spec), and the red-black height bound.
+**Initial spec:** 14 `Admitted` theorems, 14 given `Qed`. All implementations given (`balance`, `ins`, `insert`, `lookup`). Inlined `int` type from VFA/Extract. 423 lines.
+**Difficulty:** Very hard. 14 exercises totaling ~32 stars (includes 4★ `balance_lookup`, 4★ `ins_RB`, 4★ `redblack_balanced`). Automated case analysis over 58+ balance cases. Three proof domains: BST ordering, equational lookup, red-black color/height.
+**Status:** Not started.
+**One-shot baseline:** 0.00 (response truncated to 36 lines, doesn't compile)
+**Source:** SF Vol. 3 (VFA) — [Redblack chapter](https://softwarefoundations.cis.upenn.edu/vfa-current/Redblack.html)
+
+---
+
 ## binomial_queue
 
 **What:** Verified mergeable priority queue (binomial heap). Invent `priqueue_elems` abstraction relation, prove 20 theorems about invariant preservation and abstraction correctness — including three 5★ theorems about `delete_max`.
@@ -100,8 +111,9 @@ Single LLM call, no feedback, no retry. Shows which problems actually need itera
 | `trie_adt` | 0.00 | No | Failed — `look_ins_other` proof incomplete |
 | `strong_pumping` | 0.00 | No | Completely failed — 0 Qed, tactic syntax errors |
 | `binomial_queue` | 0.00 | No | Completely failed — only 4 given Qed survived |
+| `redblack_tree` | 0.00 | No | Completely failed — response truncated to 36 lines |
 
-**Takeaway:** 3 easy problems are solvable in one shot. The 5 hard ones (`bst_verification`, `regex_matcher`, `trie_adt`, `strong_pumping`, `binomial_queue`) fail without iterative co-synthesis.
+**Takeaway:** 3 easy problems are solvable in one shot. The 6 hard ones (`bst_verification`, `regex_matcher`, `trie_adt`, `strong_pumping`, `binomial_queue`, `redblack_tree`) fail without iterative co-synthesis.
 
 Raw results in each problem's `baseline_oneshot/` folder.
 
@@ -166,7 +178,7 @@ Problems targeting the path from textbook proofs toward certified systems.
 ## Escalation Path
 
 ```
-Done (VFA)        →  BST, Trie, Binomial Queue (benchmarks)
+Done (VFA)        →  BST, Trie, Binomial Queue, Red-Black Tree
 Next (VFA)        →  Graph Coloring (compiler backend)
                                     ↓
 Separation Logic  →  SLF Stack ADT  →  SLF Iterator
