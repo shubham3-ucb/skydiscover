@@ -19,9 +19,7 @@ Comparison of two approaches on 9 Coq proof synthesis benchmarks.
 | `trie_adt` | ⭐⭐ | **1.00** | iter **28** | **1.00** | iter 25 |
 | `strong_pumping` | ⭐⭐⭐ | 0.80 | ❌ (100 iters) | **1.00** | iter **10** |
 | `binomial_queue` | ⭐⭐⭐⭐ | 0.76 | ❌ (200 iters) | 0.76 | ❌ (200 iters) |
-| `redblack_tree` | ⭐⭐⭐⭐ | 0.9655¹ | ❌ (crashed@47) | 0.9655 | ❌ (200 iters) |
-
-¹ Iterative baseline crashed at iter 47 (LLM returned None) after reaching 28/29 Qed; rerun in progress.
+| `redblack_tree` | ⭐⭐⭐⭐ | 0.9655 | ❌ (crashed@47) | 0.9655 | ❌ (200 iters) |
 
 **Solved: Iterative 6/9 · AdaEvolve 7/9**
 
@@ -37,11 +35,13 @@ For problems ≤⭐⭐ difficulty, the iterative baseline is **faster to first s
 
 ### Both fail on the hardest two
 `binomial_queue` and `redblack_tree` are unsolved by both approaches at 200 iterations:
-- **RB**: both reach 0.9655 (28/29 Qed). The final lemma (`ins_RB`) requires a `balance_NearlyRB` helper that neither approach has discovered.
-- **BQ**: both plateau at 0.76 (19/25 Qed). The `carry_elems`/`join_elems`/`*_relate` cluster requires coordinated multi-lemma proofs that exceed single-turn LLM capacity.
+- **RB**: both reach 0.9655 (28/29 Qed). The final lemma (`ins_RB`) is a conjunction requiring mutual inductive strength. The LLM splits it into separate helpers, losing the mutual IH — a dead-end decomposition trap.
+- **BQ**: both plateau at 0.76 (19/25 Qed). The `join_valid`/`*_elems`/`*_relate` cluster requires coordinated multi-lemma proofs that exceed single-turn LLM capacity.
 
-### Compile failure rate
-The iterative baseline suffers heavy FAIL rates on hard problems (>80% of iters after stalling). Each failed attempt wastes ~135s on coqc timeout. AdaEvolve's population keeps multiple working programs alive, avoiding the "revert to best" loop.
+### v5 fixes (in progress)
+- **Anti-inflation scoring guard**: penalizes dead-end decompositions where LLM adds unsolvable helper lemmas
+- **Prompt proof patterns**: conjunctive induction (don't split P/\Q), generalize before induction, function case analysis
+- v5 reruns in progress for RB (200 iters) and BQ (200 iters)
 
 ---
 

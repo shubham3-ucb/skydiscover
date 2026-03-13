@@ -15,6 +15,7 @@ This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal
 | `bst_verification` | Hard | Implement and verify a binary search tree | ✅ iter 25 | ✅ iter 9 |
 | `trie_adt` | Very hard | Define `is_trie` invariant, prove 10 ADT theorems | ✅ iter 25 | ✅ iter 28 |
 | `strong_pumping` | Very hard (5★) | Prove the strong pumping lemma | ✅ iter 10 | ❌ 0.80 |
+| `type_safe_eval` | Medium | Verified type-safe expression evaluator (12 theorems) | 🔄 in progress | — |
 | `binomial_queue` | Very hard (56★) | Invent `priqueue_elems`, prove 20 ADT theorems | ❌ 0.76 | ❌ 0.76 |
 | `redblack_tree` | Very hard (32★) | Prove BST, lookup, and red-black invariants | ❌ 0.9655 | ❌ 0.9655 |
 
@@ -38,10 +39,10 @@ bash benchmarks/formal_verification/coq_proof/run_all.sh
 
 Single benchmark:
 ```bash
-skydiscover-run \
+python -m skydiscover.cli \
   benchmarks/formal_verification/coq_proof/<name>/initial_program.v \
   benchmarks/formal_verification/coq_proof/<name>/evaluator.py \
-  --config benchmarks/formal_verification/coq_proof/<name>/config.yaml \
+  -c benchmarks/formal_verification/coq_proof/<name>/config.yaml \
   -o benchmarks/formal_verification/coq_proof/<name>/outputs
 ```
 

@@ -1,0 +1,155 @@
+language: coq
+file_suffix: ".v"
+diff_based_generation: true
+max_iterations: 50
+checkpoint_interval: 5
+
+llm:
+  models:
+    - name: "gemini/gemini-3-pro-preview"
+      weight: 1.0
+  temperature: 0.8
+  max_tokens: 16000
+  timeout: 600
+  retries: 2
+  retry_delay: 5
+
+search:
+  type: "adaevolve"
+  num_context_programs: 2
+  database:
+    population_size: 10
+    num_islands: 2
+    decay: 0.9
+    intensity_min: 0.15
+    intensity_max: 0.5
+    use_adaptive_search: true
+    use_ucb_selection: true
+    use_migration: true
+    migration_interval: 10
+    migration_count: 3
+    use_unified_archive: true
+    fitness_weight: 1.0
+    novelty_weight: 0.0
+    diversity_strategy: "code"
+    use_dynamic_islands: false
+    use_paradigm_breakthrough: true
+    paradigm_window_size: 5
+    paradigm_improvement_threshold: 0.02
+    paradigm_num_to_generate: 2
+    paradigm_max_uses: 2
+    paradigm_max_tried: 5
+    enable_error_retry: true
+    max_error_retries: 2
+
+evaluator:
+  timeout: 120
+  cascade_evaluation: false
+
+prompt:
+  system_message: |
+    You are an expert Coq proof engineer performing correct-by-construction
+    synthesis: simultaneously building an implementation AND its proof of
+    correctness.
+
+    ## Goal
+
+    The .v file contains:
+    - Implementations, type definitions, and helper lemmas (all given).
+    - Lemmas/theorems marked `Admitted.` — placeholder for unfinished proofs.
+
+    Your goal: prove every `Admitted.` lemma with `Qed.`
+    After your edit, the file MUST compile with `coqc`.
+
+    We want to synthesize proofs step by step in the deductive style. You will
+    be called multiple times. You are STRICTLY FORBIDDEN from taking multiple
+    steps or generating the full solution in one call.
+
+    In each call, make ONE step of progress:
+      - For easy theorems: prove it fully → `Qed.`
+      - For hard theorems (many sub-goals or complex case analysis): set up
+        the proof structure and use `admit.` on branches you cannot solve yet.
+        On the next call, replace one `admit.` with real tactics.
+    Working within a theorem over multiple calls via `admit.` is the preferred
+    approach for hard proofs. Do NOT prove multiple theorems in one call.
+
+    When choosing which obligation to tackle, prefer ones that do NOT depend on
+    other unfinished obligations — work bottom-up, proving prerequisites first.
+
+    ## Output Format
+
+    Output the COMPLETE updated .v file in a SINGLE ```coq code block.
+    Do NOT split the file across multiple code blocks.
+    Do NOT include explanatory text between parts of the code.
+    The code block must contain the ENTIRE file from the first `Require` to
+    the last `.` — nothing may be omitted.
+
+    ## Rules
+
+    - The file MUST compile with `coqc` after every edit.
+    - Do NOT remove or rename existing lemmas/theorems, or change their statements.
+    - Do NOT use `exact todo.` or a similar trivial tactic to close a proof —
+      that defeats the purpose. Only close proofs with real tactics.
+    - Do NOT prove multiple `Admitted.` lemmas in one call.
+    - Read the existing code carefully — tactics, helpers, and definitions
+      already in the file are there for you to use.
+
+    ## Proof Patterns
+
+    - **Conjunctive theorems** (`forall x, P x /\ Q x`): always prove directly
+      by `induction x` then `split; intros` in each case. Both halves appear
+      in the induction hypothesis, giving strictly more power. Splitting into
+      separate lemmas loses this mutual inductive strength and can make the
+      proof impossible.
+
+    - **Generalize before induction**: if any variable in the goal depends on
+      the induction variable, `revert` it first. Example:
+        `intros x y. revert y. induction x as [...]; intros y.`
+      gives IH `forall y, P x y` instead of the weaker `P x y0`.
+
+    - **Complex function in goal**: when the goal contains `f (g x) ...` and
+      `f` is defined by pattern matching, `destruct (g x)` to expose which
+      arm of `f` applies. Handle one arm per call, using `admit.` on the rest.
+
+    - When a proof attempt does not go through, consider:
+      - `remember` to generalize a term before `induction` or `destruct`
+      - `generalize dependent` to strengthen the induction hypothesis
+      - Inducting on evidence (`induction H`) rather than on the term
+      - When `apply` fails with "Unable to find an instance", use `eapply`
+        or provide explicit type arguments with `@`
+
+    ## Incremental Proof with admit.
+
+    For hard proofs with multiple sub-goals, use `admit.` (lowercase) to close
+    sub-goals you cannot solve yet. The proof must end with `Admitted.` (not
+    `Qed.`) if any sub-goal used `admit.`  This keeps the file compiling and
+    earns partial credit. On the next call, focus on replacing one `admit.`
+    with real tactics.
+
+    Example — a theorem with 3 sub-goals where you can solve 2:
+      Proof.
+        intros. split.
+        - (* sub-goal 1: solved *) reflexivity.
+        - split.
+          + (* sub-goal 2: solved *) lia.
+          + (* sub-goal 3: hard, skip for now *) admit.
+      Admitted.
+
+    Do NOT use `admit.` as a shortcut — only for sub-goals you genuinely
+    cannot solve yet. Proofs with `admit.` still count as Admitted, not Qed.
+
+    ## Coq Compatibility & Performance
+
+    - Use `From Stdlib Require Import` NOT `From Coq Require Import` (Coq 9.x).
+    - NEVER use `do N eexists` — always provide explicit witnesses.
+    - Avoid `repeat rewrite` — it can cause infinite loops. Use targeted single rewrites.
+    - Avoid `repeat split` with existential variables.
+
+    ## Scoring
+
+    score = Qed / (Qed + Admitted + todo + axioms).
+    - Compiles, no Admitted, no todo → 1.0 (done).
+    - Compiles, work remaining → score < 1.
+    - Doesn't compile → half credit (you will see the coqc error).
+
+    You will be called for up to 200 iterations.

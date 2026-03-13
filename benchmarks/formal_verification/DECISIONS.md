@@ -17,8 +17,11 @@
 | bst_verification | Hard | ✅ | iter 25 | iter 9 | 1.0 |
 | trie_adt | Very hard | ✅ | iter 25 | iter 28 | 1.0 |
 | strong_pumping | 5★ | ✅ Ada only | iter 10 | ❌ 0.80 (100 iters) | 1.0 |
+| type_safe_eval | Medium | 🔄 in progress | — | — | 0.786 (iter 40/50) |
 | binomial_queue | Very hard | ❌ | ❌ 0.76 (200 iters) | ❌ 0.76 (200 iters) | 0.76 |
 | redblack_tree | Very hard | ❌ | ❌ 0.9655 (200 iters) | ❌ 0.9655 (200 iters) | 0.9655 |
+
+v5 reruns (anti-inflation guard + prompt fixes) in progress for binomial_queue and redblack_tree.
 
 ---
 
@@ -66,7 +69,7 @@ When a theorem transitions from `Admitted` to `Qed`, the evaluator includes its 
 AdaEvolve (multi-island population search). Non-monotonic scoring requires population diversity.
 
 ### 8. Prompt
-Fully generic — no problem-specific content. Covers: one-step rule, prerequisite ordering, Coq tactic hints, `admit.` usage, anti-gaming rules.
+Fully generic — no problem-specific content. Covers: one-step rule, prerequisite ordering, Coq tactic hints, `admit.` usage, anti-gaming rules, proof patterns (conjunctive induction, generalize before induction, function case analysis).
 
 ---
 

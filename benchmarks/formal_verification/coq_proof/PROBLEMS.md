@@ -76,13 +76,23 @@ One generic evaluator and prompt across all problems.
 
 ---
 
+## type_safe_eval
+
+**What:** Verified type-safe expression evaluator. Small typed language (nat/bool, plus, mult, eq, le, not, and, if-then-else). Prove type soundness and progress.
+**Spec:** 12 `Admitted`, 2 given `Qed`. 255 lines. All implementations given.
+**Difficulty:** Medium. Proofs are structural induction over the typing relation — no invention required.
+**Status:** 🔄 In progress — 11/14 Qed (0.786) at iter 40/50.
+**Source:** Original — standard PL textbook type safety proof.
+
+---
+
 ## binomial_queue
 
 **What:** Verified mergeable priority queue. Invent `priqueue_elems` relation, prove 20 theorems.
 **Spec:** 1 `Axiom` → `Inductive`, 20 `Admitted`, 5 given `Qed`. 305 lines.
 **Difficulty:** Very hard (56 total ★, three 5★ theorems).
 **Best so far:** 19/25 Qed (0.76) — both AdaEvolve (200 iters) and iterative baseline (200 iters). Proved `carry_valid`, `smash_elems`, `insert_priq`. Stuck on `join_valid`/`*_elems`/`*_relate` cluster.
-**Status:** Unsolved.
+**Status:** Unsolved. v5 rerun in progress.
 **One-shot baseline:** 0.00
 **Source:** [VFA Binom](https://softwarefoundations.cis.upenn.edu/vfa-current/Binom.html)
 
@@ -93,8 +103,8 @@ One generic evaluator and prompt across all problems.
 **What:** Verified red-black tree. Prove BST + lookup + RB-balance properties.
 **Spec:** 14 `Admitted`, 14 given `Qed`. All implementations given. 423 lines.
 **Difficulty:** Very hard (~32★, includes 4★ `balance_lookup`, 4★ `ins_RB`).
-**Best so far:** 28/29 Qed (0.9655) — both AdaEvolve (200 iters) and iterative baseline. Only `ins_RB` (4★) remains — needs `balance_NearlyRB` helper decomposition.
-**Status:** Unsolved.
+**Best so far:** 28/29 Qed (0.9655) — both AdaEvolve (200 iters) and iterative baseline. Only `ins_RB` (4★) remains — LLM falls into dead-end decomposition trap (splits conjunction, loses mutual IH).
+**Status:** Unsolved. v5 rerun in progress (anti-inflation guard penalizes decomposition trap).
 **One-shot baseline:** 0.00
 **Source:** [VFA Redblack](https://softwarefoundations.cis.upenn.edu/vfa-current/Redblack.html)
 
