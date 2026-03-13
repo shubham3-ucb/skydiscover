@@ -6,17 +6,17 @@ This benchmark asks SkyDiscover to perform **co-synthesis**: given only a formal
 
 ## Problems
 
-| Problem | Difficulty | Description | Result |
-|---|---|---|---|
-| `all_less_than` | Easy | Check all list elements are below a bound | 1.0 at iter 1 (GPT-5) |
-| `insertion_sort` | Medium | Implement and verify a sorting algorithm | 1.0 at iter 14 (GPT-5) |
-| `pigeonhole` | Hard (5★) | Define `repeats` and prove the pigeonhole principle | 1.0 at iter 5 (Gemini 3 Pro) |
-| `regex_matcher` | Hard (2–4★) | Verified regex matcher via Brzozowski derivatives | 1.0 at iter 12 (Gemini 3 Pro) |
-| `bst_verification` | Hard | Implement and verify a binary search tree | 1.0 at iter 23 (Gemini 3 Pro) |
-| `strong_pumping` | Very hard (5★) | Prove the strong pumping lemma | 1.0 at iter 25 (Gemini 3 Pro) |
-| `trie_adt` | Very hard | Define `is_trie` invariant, prove 10 ADT theorems | 1.0 at iter 24 (Gemini 3 Pro) |
-| `binomial_queue` | Very hard (56★) | Invent `priqueue_elems`, prove 20 ADT theorems | Running (Gemini 3 Pro) |
-| `redblack_tree` | Very hard (32★) | Prove BST, lookup, and red-black invariants | Running (Gemini 3 Pro) |
+| Problem | Difficulty | Description | AdaEvolve | Iterative Baseline |
+|---|---|---|---|---|
+| `all_less_than` | Easy | Check all list elements are below a bound | ✅ iter 5 | ✅ iter 3 |
+| `insertion_sort` | Medium | Implement and verify a sorting algorithm | ✅ iter 15 | ✅ iter 2 |
+| `pigeonhole` | Hard (5★) | Define `repeats` and prove the pigeonhole principle | ✅ iter 5 | ✅ iter 3 |
+| `regex_matcher` | Hard (2–4★) | Verified regex matcher via Brzozowski derivatives | ✅ iter 15 | ✅ iter 8 |
+| `bst_verification` | Hard | Implement and verify a binary search tree | ✅ iter 25 | ✅ iter 9 |
+| `trie_adt` | Very hard | Define `is_trie` invariant, prove 10 ADT theorems | ✅ iter 25 | ✅ iter 28 |
+| `strong_pumping` | Very hard (5★) | Prove the strong pumping lemma | ✅ iter 10 | ❌ 0.80 |
+| `binomial_queue` | Very hard (56★) | Invent `priqueue_elems`, prove 20 ADT theorems | ❌ 0.76 | ❌ 0.76 |
+| `redblack_tree` | Very hard (32★) | Prove BST, lookup, and red-black invariants | ❌ 0.9655 | ❌ 0.9655 |
 
 See [`coq_proof/PROBLEMS.md`](coq_proof/PROBLEMS.md) for detailed descriptions and SF source links.
 
@@ -64,7 +64,7 @@ initial_program.v                        evaluator.py
 
 Each iteration the LLM takes **one step**: fill one `todo` with a concrete expression, add sub-lemmas as `Admitted.` for any new holes, then prove the parent lemma → `Qed.`
 
-Score is always in [0, 1]: `0.0` if it doesn't compile, `Qed / (Qed + Admitted + todo + axioms)` otherwise, `1.0` when fully done (requires `Qed > 0`).
+Score is always in [0, 1]: `0.0` if it doesn't compile (0.5× partial credit if some Qed), `Qed / (Qed + admitted_weight + todo + axioms)` if it compiles, `1.0` when fully done. Admitted proofs where the LLM used `admit.` for sub-goals count as 0.5 instead of 1.0 in the denominator, rewarding incremental proof progress.
 
 ## Adding a new problem
 

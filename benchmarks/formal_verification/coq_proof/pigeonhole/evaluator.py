@@ -4,13 +4,14 @@ Generic for any .v file. Not problem-specific.
 
 Scoring (always in [0, 1]):
   - Compiles, done (no Admitted, no todo, no axioms, qed > 0) → 1.0
-  - Compiles, work remaining → qed / (qed + admitted + todo + axioms), always < 1
-  - Doesn't compile, has real Qed work → 0.5 * qed / (qed + admitted + todo + axioms)
+  - Compiles, work remaining → qed / (qed + admitted_weight + todo + axioms), < 1
+  - Doesn't compile, has real Qed work → 0.5 * above ratio
   - Doesn't compile, no Qed → 0.0
 
-The 0.5 penalty ensures compiling programs always outscore non-compiling ones
-with the same obligation ratio, while still giving partial credit so the search
-retains near-compiling programs instead of discarding them.
+admitted_weight: each Admitted proof normally counts as 1.0 open obligation.
+If the proof used admit. for sub-goals (Coq reports "No more goals, but there
+are some goals you gave up"), it counts as 0.5 — rewarding incremental proof
+progress within a single theorem.
 
 Open obligations = Admitted proofs + todo expressions + non-todo Axiom declarations.
 """
@@ -182,12 +183,19 @@ def _find_admitted_outside_comments(content):
     return results
 
 
+_GAVE_UP_RE = re.compile(r"No more goals, but there are some goals you gave up")
+
+
 def _extract_goal_states(filepath, content):
     """Run a second coqc pass with Show. before each Admitted. to capture goals.
 
-    Returns a list of (theorem_name, goal_text) pairs.  Completely general —
-    works for any .v file.  Only called when the file already compiles
-    (so the Show. pass is guaranteed to succeed).
+    Returns a list of (theorem_name, goal_text, gave_up) triples.
+    ``gave_up`` is True when Coq reports "No more goals, but there are some
+    goals you gave up" — meaning the LLM used ``admit.`` to close sub-goals,
+    making real progress inside this theorem even though it ends with Admitted.
+
+    Completely general — works for any .v file.  Only called when the file
+    already compiles (so the Show. pass is guaranteed to succeed).
     """
     admitted_matches = _find_admitted_outside_comments(content)
     if not admitted_matches:
@@ -235,47 +243,80 @@ def _extract_goal_states(filepath, content):
                 break
         theorem_names.append(name)
 
-    # Parse goal blocks from stdout — each Show. produces "N goal(s)\n..."
-    # "No more goals." lines are from already-solved-but-Admitted proofs; skip.
-    # Split on goal headers; everything before the first is non-goal output.
-    raw_blocks = re.split(r"(?=^\d+ goals?\s*$)", stdout.strip(),
-                          flags=re.MULTILINE)
-    goal_blocks = [b.strip() for b in raw_blocks
-                   if re.match(r"^\d+ goals?", b.strip())]
+    # Split stdout into per-Show blocks.  Each Show. output is separated by
+    # either a "N goal(s)" header or a "No more goals, but..." header.
+    # We walk line-by-line to pair each block with its theorem name and detect
+    # the "gave up" marker.
+    stdout_lines = stdout.strip().splitlines()
 
-    # Map goal blocks back to theorem names.  If a proof was already complete
-    # (Show. prints "No more goals."), it produces no goal block, so we
-    # skip those names.  Count "No more goals." occurrences before each block
-    # to align correctly.
-    no_more = stdout.count("No more goals.")
-    # Simple path: if no "No more goals." lines, 1:1 mapping
-    if no_more == 0:
-        name_iter = iter(theorem_names)
-    else:
-        # Rebuild alignment: walk stdout lines and pair with theorem names
-        name_iter = iter(theorem_names)
-        aligned_names = []
-        for line in stdout.strip().splitlines():
-            if "No more goals" in line:
-                try:
-                    next(name_iter)  # skip this theorem
-                except StopIteration:
-                    break
-            elif re.match(r"^\d+ goals?\s*$", line.strip()):
-                try:
-                    aligned_names.append(next(name_iter))
-                except StopIteration:
-                    aligned_names.append("?")
-        name_iter = iter(aligned_names)
+    # Each Show. produces one of:
+    #   A) "N goal(s)\n<goal content>"          — real unsolved goals
+    #   B) "No more goals, but ...\nN goal(s)\n<gave-up content>\nYou need..."
+    #      — all real goals solved, only admitted sub-goals remain
+    #   C) "No more goals."                     — fully proved (shouldn't happen
+    #      for Admitted. but possible with admit-all)
 
+    blocks = []  # list of (goal_text_lines, gave_up_bool)
+    current_lines = []
+    current_gave_up = False
+    in_block = False
+
+    for line in stdout_lines:
+        stripped = line.strip()
+        # Detect "No more goals, but there are some goals you gave up"
+        if _GAVE_UP_RE.search(stripped):
+            # Start a new block marked as gave_up
+            if in_block:
+                blocks.append((list(current_lines), current_gave_up))
+            current_lines = []
+            current_gave_up = True
+            in_block = True
+            continue
+        # Detect "N goal(s)" header
+        if re.match(r"^\d+ goals?\s*$", stripped):
+            if in_block and not current_gave_up:
+                # Previous block was a normal goals block; save it
+                blocks.append((list(current_lines), current_gave_up))
+                current_lines = []
+                current_gave_up = False
+            elif not in_block:
+                current_lines = []
+                current_gave_up = False
+            in_block = True
+            current_lines.append(line)
+            continue
+        # Detect bare "No more goals." (fully proved — skip this theorem)
+        if stripped == "No more goals.":
+            if in_block:
+                blocks.append((list(current_lines), current_gave_up))
+                current_lines = []
+                current_gave_up = False
+                in_block = False
+            # This represents a fully-proved Admitted; add empty block
+            blocks.append(([], False))
+            continue
+        # "You need to go back and solve them." — end of a gave_up block
+        if "You need to go back" in stripped:
+            if in_block:
+                blocks.append((list(current_lines), current_gave_up))
+                current_lines = []
+                current_gave_up = False
+                in_block = False
+            continue
+        if in_block:
+            current_lines.append(line)
+
+    if in_block and current_lines:
+        blocks.append((list(current_lines), current_gave_up))
+
+    # Pair blocks with theorem names (1:1 order)
     results = []
-    for i, block in enumerate(goal_blocks):
-        name = next(name_iter, "?")
-        # Trim: stop at Check output or other non-goal lines after the separator
-        lines = block.splitlines()
+    for i, (block_lines, gave_up) in enumerate(blocks):
+        name = theorem_names[i] if i < len(theorem_names) else "?"
+        # Trim: stop at Check output or other non-goal lines after separator
         trimmed = []
         past_separator = False
-        for line in lines:
+        for line in block_lines:
             if "======" in line:
                 past_separator = True
                 trimmed.append(line)
@@ -283,7 +324,8 @@ def _extract_goal_states(filepath, content):
             if past_separator and line and not line[0].isspace() and ":" in line:
                 break
             trimmed.append(line)
-        results.append((name, "\n".join(trimmed[:15]).strip()))
+        goal_text = "\n".join(trimmed[:15]).strip()
+        results.append((name, goal_text, gave_up))
 
     return results
 
@@ -306,8 +348,77 @@ def _cleanup_coq_artifacts(filepath):
 _FEEDBACK_BUDGET = 1850  # must fit within format_artifacts 2000-char cap (with margin)
 
 
+def _recently_proved_bodies(content):
+    """Extract proof bodies for theorems that were Admitted in initial_program.v
+    but are now Qed in the current program.  Returns [(name, body_snippet)].
+
+    This lets the LLM see its own successful proof patterns and reuse them
+    for structurally similar theorems.  No leakage — bodies come from the
+    LLM's own output, not from any solution.
+    """
+    ev_dir = os.path.dirname(os.path.abspath(__file__))
+    init_path = os.path.join(ev_dir, "initial_program.v")
+    try:
+        init_content = open(init_path).read()
+    except OSError:
+        return []
+
+    # Find which theorems are Admitted in initial
+    init_admitted = set()
+    current_name = None
+    for line in _strip_comments(init_content).splitlines():
+        m = re.match(r"\s*(?:Theorem|Lemma|Corollary|Proposition|Fact)\s+(\w+)", line)
+        if m:
+            current_name = m.group(1)
+        if "Admitted." in line and current_name:
+            init_admitted.add(current_name)
+            current_name = None
+
+    if not init_admitted:
+        return []
+
+    # Find which of those are now Qed in current, and extract proof body.
+    # Walk the file line-by-line to correctly pair theorem names with their
+    # proof bodies, avoiding cross-boundary regex matches.
+    stripped = _strip_comments(content)
+    results = []
+    current_name = None
+    in_proof = False
+    proof_lines = []
+
+    for line in stripped.splitlines():
+        heading = re.match(
+            r"\s*(?:Theorem|Lemma|Corollary|Proposition|Fact)\s+(\w+)", line
+        )
+        if heading:
+            current_name = heading.group(1)
+            in_proof = False
+            proof_lines = []
+        if re.match(r"\s*Proof\b", line):
+            in_proof = True
+            proof_lines = []
+            continue
+        if in_proof and re.search(r"\b(?:Qed|Defined)\s*\.", line):
+            if current_name and current_name in init_admitted and proof_lines:
+                snippet = "\n".join(proof_lines[:10])
+                if len(proof_lines) > 10:
+                    snippet += "\n  ..."
+                results.append((current_name, snippet))
+            in_proof = False
+            current_name = None
+            continue
+        if in_proof and re.search(r"\bAdmitted\s*\.", line):
+            in_proof = False
+            current_name = None
+            continue
+        if in_proof:
+            proof_lines.append(line.strip())
+
+    return results
+
+
 def _build_feedback(compiles, done, qed, admitted, todo, axioms=0,
-                    goal_states=None):
+                    goal_states=None, proof_patterns=None):
     """Build natural-language feedback for the LLM."""
     if done:
         return "All obligations discharged. The file is complete."
@@ -330,33 +441,56 @@ def _build_feedback(compiles, done, qed, admitted, todo, axioms=0,
     elif admitted > 0:
         parts.append("Prove one Admitted lemma with Qed.")
 
-    if goal_states:
-        header_text = " ".join(parts)
-        goal_parts = [header_text, "\nRemaining proof goals:"]
-        used = len(header_text) + 1 + len("\nRemaining proof goals:")  # +1 for join \n
-        added = 0
-        for name, goals in goal_states:
-            entry = f"\n[{name}]\n{goals}"
-            if used + 1 + len(entry) > _FEEDBACK_BUDGET:
-                omitted = len(goal_states) - added
-                goal_parts.append(f"\n(... {omitted} more goal(s) omitted)")
+    header_text = " ".join(parts)
+    sections = [header_text]
+    used = len(header_text)
+
+    # Proof patterns (recently proved bodies the LLM can reuse)
+    if proof_patterns:
+        pp_header = "\nRecently proved (patterns to reuse):"
+        sections.append(pp_header)
+        used += len(pp_header)
+        for name, body in proof_patterns[-3:]:
+            entry = f"\n[{name}] Proof.\n  {body}\n  Qed."
+            if used + len(entry) > _FEEDBACK_BUDGET:
                 break
-            goal_parts.append(entry)
-            used += 1 + len(entry)
+            sections.append(entry)
+            used += len(entry)
+
+    # Goal states for remaining Admitted proofs
+    if goal_states:
+        gs_header = "\nRemaining proof goals:"
+        sections.append(gs_header)
+        used += len(gs_header)
+        added = 0
+        for item in goal_states:
+            name, goals = item[0], item[1]
+            gave_up = item[2] if len(item) > 2 else False
+            marker = " (has sub-goal progress via admit.)" if gave_up else ""
+            entry = f"\n[{name}]{marker}\n{goals}"
+            if used + len(entry) > _FEEDBACK_BUDGET:
+                omitted = len(goal_states) - added
+                sections.append(f"\n(... {omitted} more goal(s) omitted)")
+                break
+            sections.append(entry)
+            used += len(entry)
             added += 1
-        return "\n".join(goal_parts)
 
-    return " ".join(parts)
+    return "\n".join(sections)
 
 
-def _initial_proof_slot_count():
-    """Count total proof slots in initial_program.v (lives next to evaluator.py).
+def _initial_proof_obligation_count():
+    """Count proof obligations (Qed + Admitted) in initial_program.v.
 
-    A proof slot is any Qed, Admitted, todo, or non-todo Axiom in the initial
-    file.  We use this as a floor: the submitted program must contain at least
-    this many slots to be considered 'done'.  This prevents the LLM from
-    replacing the entire spec with a trivial one-liner that has no obligations.
-    General: works for any benchmark whose initial_program.v is in the same dir.
+    Used as a floor in two places:
+    1. Score denominator: prevents gaming by dropping most of the spec.
+    2. Done guard: the program must have at least this many Qed+Admitted
+       to be considered complete (prevents trivial spec replacement).
+
+    Only counts Qed + Admitted (proof terms), NOT todo or Axiom.  Todos
+    consolidate when implemented (e.g. 2 todos in a function body become
+    0 when the function is filled in), so counting them would make the
+    floor too high for solved programs.
     """
     ev_dir = os.path.dirname(os.path.abspath(__file__))
     init_path = os.path.join(ev_dir, "initial_program.v")
@@ -365,12 +499,10 @@ def _initial_proof_slot_count():
     except OSError:
         return 0
     q, a = _count_proof_terms(content)
-    t = _count_todos(content)
-    ax = _count_axiom_obligations(content)
-    return q + a + t + ax
+    return q + a
 
 
-_INITIAL_SLOTS = _initial_proof_slot_count()
+_INITIAL_PROOF_OBLS = _initial_proof_obligation_count()
 
 
 def evaluate(program_path):
@@ -390,31 +522,40 @@ def evaluate(program_path):
     _cleanup_coq_artifacts(program_path)
 
     compiles = rc == 0
-    open_obligations = admitted_count + todo_count + axiom_count
-    total = qed_count + open_obligations
-
-    # 'done' requires: compiles, no open obligations, at least as many proof
-    # slots as the initial program (guards against trivial spec replacement).
-    done = (compiles and open_obligations == 0
-            and qed_count > 0
-            and total >= _INITIAL_SLOTS)
-
-    if done:
-        score = 1.0
-    elif total > 0:
-        # Scale ratio by how many slots the program retains vs the initial spec.
-        # If LLM dropped most of the spec (total << _INITIAL_SLOTS), the effective
-        # denominator is max(total, _INITIAL_SLOTS) so score reflects true progress.
-        effective_total = max(total, _INITIAL_SLOTS) if _INITIAL_SLOTS > 0 else total
-        ratio = qed_count / effective_total
-        score = ratio if compiles else 0.5 * ratio
-    else:
-        score = 0.0
 
     # Extract goal states for Admitted proofs (only when file compiles)
     goal_states = []
     if compiles and admitted_count > 0:
         goal_states = _extract_goal_states(program_path, content)
+
+    # Compute admitted weight: proofs where the LLM used admit. for sub-goals
+    # count as 0.5 instead of 1.0, rewarding incremental proof progress.
+    gave_up_count = sum(1 for gs in goal_states if gs[2])
+    normal_admitted = admitted_count - gave_up_count
+    admitted_weight = normal_admitted + 0.5 * gave_up_count
+
+    open_obligations = admitted_weight + todo_count + axiom_count
+    total = qed_count + open_obligations
+
+    # 'done' requires: compiles, no open obligations, at least one Qed, and
+    # at least as many proof terms (Qed) as the initial program had proof
+    # obligations (Qed+Admitted).  This prevents trivial spec replacement
+    # while allowing todo consolidation (todos merge when implemented).
+    done = (compiles and admitted_count == 0 and todo_count == 0
+            and axiom_count == 0 and qed_count > 0
+            and qed_count >= _INITIAL_PROOF_OBLS)
+
+    if done:
+        score = 1.0
+    elif total > 0:
+        effective_total = max(total, _INITIAL_PROOF_OBLS) if _INITIAL_PROOF_OBLS > 0 else total
+        ratio = qed_count / effective_total
+        score = ratio if compiles else 0.5 * ratio
+    else:
+        score = 0.0
+
+    # Extract recently proved proof patterns for feedback
+    proof_patterns = _recently_proved_bodies(content) if compiles else []
 
     metrics = {
         "combined_score": score,
@@ -434,7 +575,8 @@ def evaluate(program_path):
     artifacts = {}
     feedback = _build_feedback(compiles, done, qed_count, admitted_count,
                                todo_count, axiom_count,
-                               goal_states=goal_states)
+                               goal_states=goal_states,
+                               proof_patterns=proof_patterns)
     if feedback:
         artifacts["feedback"] = feedback
 

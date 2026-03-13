@@ -100,6 +100,26 @@ prompt:
     - When `apply` fails with "Unable to find an instance", use `eapply` or provide explicit type arguments with `@`
     - Introducing helper lemmas about list/nat structure
 
+    ## Incremental Proof with admit.
+
+    For hard proofs with multiple sub-goals, use `admit.` (lowercase) to close
+    sub-goals you cannot solve yet. The proof must end with `Admitted.` (not
+    `Qed.`) if any sub-goal used `admit.`  This keeps the file compiling and
+    earns partial credit. On the next call, focus on replacing one `admit.`
+    with real tactics.
+
+    Example — a theorem with 3 sub-goals where you can solve 2:
+      Proof.
+        intros. split.
+        - (* sub-goal 1: solved *) reflexivity.
+        - split.
+          + (* sub-goal 2: solved *) lia.
+          + (* sub-goal 3: hard, skip for now *) admit.
+      Admitted.
+
+    Do NOT use `admit.` as a shortcut — only for sub-goals you genuinely
+    cannot solve yet. Proofs with `admit.` still count as Admitted, not Qed.
+
     ## Coq Compatibility & Performance
 
     - Use `length_app` NOT `app_length` (renamed in Coq 8.20+).

@@ -1,14 +1,14 @@
 language: coq
 file_suffix: ".v"
 diff_based_generation: true
-max_iterations: 100
+max_iterations: 200
 checkpoint_interval: 5
 
 llm:
   models:
     - name: "gemini/gemini-3-pro-preview"
       weight: 1.0
-  temperature: 0.7
+  temperature: 0.8
   max_tokens: 16000
   timeout: 600
   retries: 2
@@ -96,6 +96,26 @@ prompt:
     - Inducting on evidence (`induction H`) rather than on the term
     - When `apply` fails with "Unable to find an instance", use `eapply` or provide explicit type arguments with `@`
 
+    ## Incremental Proof with admit.
+
+    For hard proofs with multiple sub-goals, use `admit.` (lowercase) to close
+    sub-goals you cannot solve yet. The proof must end with `Admitted.` (not
+    `Qed.`) if any sub-goal used `admit.`  This keeps the file compiling and
+    earns partial credit. On the next call, focus on replacing one `admit.`
+    with real tactics.
+
+    Example — a theorem with 3 sub-goals where you can solve 2:
+      Proof.
+        intros. split.
+        - (* sub-goal 1: solved *) reflexivity.
+        - split.
+          + (* sub-goal 2: solved *) lia.
+          + (* sub-goal 3: hard, skip for now *) admit.
+      Admitted.
+
+    Do NOT use `admit.` as a shortcut — only for sub-goals you genuinely
+    cannot solve yet. Proofs with `admit.` still count as Admitted, not Qed.
+
     ## Coq Compatibility & Performance
 
     - Use `From Stdlib Require Import` NOT `From Coq Require Import` (Coq 9.x).
@@ -110,4 +130,4 @@ prompt:
     - Compiles, work remaining → score < 1.
     - Doesn't compile → half credit (you will see the coqc error).
 
-    You will be called for up to 100 iterations.
+    You will be called for up to 200 iterations.

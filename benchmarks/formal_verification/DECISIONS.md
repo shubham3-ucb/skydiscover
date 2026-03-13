@@ -4,23 +4,21 @@
 
 **Problem:** Given a formal specification (Coq type signature + correctness theorem), automatically synthesize both the implementation and a machine-checked proof of correctness.
 
-**Why it's hard:** Implementation and proof are mutually dependent — the proof structure dictates how the function must be written, and vice versa. Every intermediate state must type-check; the search space is enormous; the feedback signal is sparse (compile or not, proved or not).
+**Approach:** SkyDiscover evolves a Coq `.v` file iteratively. Each iteration the LLM takes one deductive step — fill one `todo`, prove one lemma — until the file compiles fully with no holes.
 
-**Approach:** SkyDiscover evolves a Coq `.v` file iteratively. Each iteration the LLM takes one deductive step — fill one `todo`, prove its lemma — until the file compiles fully with no holes.
+**Results (AdaEvolve · Gemini 3 Pro Preview):**
 
-**Results:**
-
-| Problem | Difficulty | Solved | Iter | Score |
-|---|---|---|---|---|
-| all_less_than | Easy | Yes | 1 | 1.0 |
-| insertion_sort | Medium | Yes | 14 | 1.0 |
-| regex_matcher | Hard | Yes | 12 | 1.0 |
-| pigeonhole | Hard | Yes | 5 | 1.0 |
-| bst_verification | Hard | Yes | 23 | 1.0 |
-| strong_pumping | 5-star | Yes | 25 | 1.0 |
-| trie_adt | Hard (ADT) | Yes | 24 | 1.0 |
-| binomial_queue | Very hard (ADT) | Running | — | — |
-| redblack_tree | Very hard (RBT) | Running | — | — |
+| Problem | Difficulty | Solved | Ada first solved | Iterative first solved | Best score |
+|---|---|---|---|---|---|
+| all_less_than | Easy | ✅ | iter 5 | iter 3 | 1.0 |
+| insertion_sort | Medium | ✅ | iter 15 | iter 2 | 1.0 |
+| pigeonhole | Hard | ✅ | iter 5 | iter 3 | 1.0 |
+| regex_matcher | Hard | ✅ | iter 15 | iter 8 | 1.0 |
+| bst_verification | Hard | ✅ | iter 25 | iter 9 | 1.0 |
+| trie_adt | Very hard | ✅ | iter 25 | iter 28 | 1.0 |
+| strong_pumping | 5★ | ✅ Ada only | iter 10 | ❌ 0.80 (100 iters) | 1.0 |
+| binomial_queue | Very hard | ❌ | ❌ 0.76 (200 iters) | ❌ 0.76 (200 iters) | 0.76 |
+| redblack_tree | Very hard | ❌ | ❌ 0.9655 (200 iters) | ❌ 0.9655 (200 iters) | 0.9655 |
 
 ---
 
@@ -28,8 +26,8 @@
 
 | File | Role | Problem-specific? |
 |---|---|---|
-| `initial_program.v` | Formal spec with `todo`/`Admitted.` holes for the LLM to fill | **Yes** — one per problem |
-| `evaluator.py` | Runs `coqc`, counts Qed/Admitted/todo, scores, returns NL feedback | **No** — generic for any `.v` file |
+| `initial_program.v` | Formal spec with `todo`/`Admitted.` holes | **Yes** — one per problem |
+| `evaluator.py` | Runs `coqc`, counts Qed/Admitted/todo, scores, returns feedback | **No** — generic for any `.v` file |
 | `config.yaml` | Search config + system prompt | **No** — only `max_iterations` may vary |
 
 ---
@@ -37,74 +35,54 @@
 ## Design Decisions
 
 ### 1. One step per iteration
-One action per LLM call: replace one `todo` with a concrete expression, prove its parent lemma to `Qed.`, add sub-lemmas as `Admitted.` for any new `todo`s introduced. Enforced via prompt only — not mechanically. If the LLM takes a bigger leap and it compiles, fine. If it breaks, score = 0 and retry fires.
+One action per LLM call: replace one `todo`, prove one lemma, or define one `Axiom`. If the LLM takes a bigger leap and it compiles, fine. If it breaks, score drops and retry fires.
 
 ### 2. Backtracking
-No explicit proof tree. AdaEvolve maintains a population of partial solutions at different progress levels. A broken state (score = 0) causes the sampler to pick a different parent. When all islands stagnate, paradigm breakthrough generates a qualitatively new high-level strategy.
+No explicit proof tree. AdaEvolve maintains a population of partial solutions. A broken state causes the sampler to pick a different parent. Paradigm breakthrough generates qualitatively new strategies when all islands stagnate.
 
 ### 3. Scoring
 | State | Score |
 |---|---|
-| Doesn't compile | `0.0` + coqc stderr returned as `error` (triggers retry) |
-| Compiles, work remaining | `Qed / (Qed + Admitted + todo + axioms)` |
-| Fully done (qed > 0) | `1.0` |
+| Compiles, done | `1.0` |
+| Compiles, work remaining | `qed / (qed + admitted_weight + todo + axioms)` |
+| Doesn't compile, has Qed work | `0.5 * above ratio` |
+| Doesn't compile, no Qed | `0.0` |
 
-Open obligations = `Admitted` proofs + `todo` expressions + non-`todo` `Axiom` declarations. Score can temporarily dip when the LLM decomposes a `todo` into sub-expressions (adding new `Admitted`/`todo`). AdaEvolve handles this — a monotonic search like `best_of_n` would reject valid progress.
+`admitted_weight`: each `Admitted` proof counts as 1.0 open obligation, **except** when the LLM used `admit.` for sub-goals (Coq reports "No more goals, but gave up"), it counts as 0.5. This rewards incremental proof progress within a single hard theorem.
 
-**Known limitation:** No partial credit for a proof attempt that fails to compile. Causes flat score plateaus when the LLM is stuck on one hard lemma.
+The denominator is floored at `_INITIAL_PROOF_OBLS` (Qed + Admitted count in `initial_program.v`) to prevent trivial spec replacement.
 
 ### 4. Feedback to LLM
-- `metrics["error"]` — coqc stderr on compile failure, shown on retry
-- `artifacts["feedback"]` — natural language count of remaining `Admitted`/`todo` and what to do next
+- `metrics["error"]` — coqc stderr on compile failure (environment blocks stripped)
+- `artifacts["feedback"]` — remaining obligations count + Coq goal states for each `Admitted` proof (via `Show.` injection) + recently proved proof bodies (patterns to reuse)
 
-### 5. Search
-AdaEvolve (multi-island population search). Non-monotonic scoring requires population diversity — single-path search rejects valid decomposition steps.
+### 5. Incremental proof via admit.
+The prompt teaches the LLM to use `admit.` (lowercase) for hard sub-goals within a proof. This keeps the file compiling (Coq accepts `admit.` + `Admitted.`) and lets the search retain partial proof progress. The evaluator detects `admit.` usage via the "gave up" marker in Coq's `Show.` output and rewards it with reduced obligation weight (0.5 instead of 1.0).
 
-### 6. Prompt
-Fully generic — no problem-specific content. Covers: the one-step action definition, prerequisite ordering, standard Coq tactic hints (`remember`, `generalize dependent`, induction on evidence). Anti-gaming rules prevent closing proofs with `exact todo`.
+### 6. Proof-pattern feedback
+When a theorem transitions from `Admitted` to `Qed`, the evaluator includes its proof body (truncated to 10 lines) in feedback. This helps the LLM reuse successful tactics on structurally similar remaining proofs.
 
-### 7. Initial program shape
-`Definition f := todo.` + `Theorem spec ... Proof. Admitted.` Pre-proved helper lemmas are fine — they raise the starting score, but `1.0` requires all `Admitted.` and `todo` gone.
+### 7. Search
+AdaEvolve (multi-island population search). Non-monotonic scoring requires population diversity.
 
-### 8. Typed holes
-`Axiom todo : forall {A : Type}, A.` — a Coq idiom for a typed hole at any type. The evaluator excludes this declaration from the `todo` count.
-
-### 9. LLM owns all synthesis decisions
-Implementation algorithm, sub-lemma statements, proof tactics — all by the LLM. The system provides no hints about proof structure or algorithm.
+### 8. Prompt
+Fully generic — no problem-specific content. Covers: one-step rule, prerequisite ordering, Coq tactic hints, `admit.` usage, anti-gaming rules.
 
 ---
 
 ## Key Findings
 
-### Code extraction truncation (all benchmarks)
-The LLM sometimes splits its output across multiple fenced code blocks with explanation text in between. The framework's `parse_full_rewrite` was taking only the first block (`matches[0]`), silently discarding the rest — producing truncated 60-line files that failed to compile with a syntax error on the last line.
+### Code extraction truncation
+LLM splits output across multiple fenced code blocks. `parse_full_rewrite` took only the first block. **Fix:** `max(matches, key=len)` — picks the longest block.
 
-**Fix:** Changed `matches[0]` to `max(matches, key=len)` — picks the longest (most complete) code block. 2-line change in `skydiscover/utils/code_utils.py`. Safe: single-block responses (the normal case) behave identically.
+### Verbose error noise
+`coqc` error messages include "In environment" blocks (15-30 lines of hypotheses). **Fix:** Evaluator strips environment blocks via regex, surfacing only file location + core error (74% size reduction).
 
-**Impact:** `strong_pumping` solved in 25 iterations immediately after the fix. Previously stuck for 70+ iterations at 0.83.
+### Axiom tracking
+Benchmarks requiring `Axiom` → `Inductive` replacement weren't tracked. **Fix:** Count non-`todo` `Axiom` declarations as open obligations.
 
-### Tactic timeout trap (strong_pumping)
-Previously, the LLM generated structurally correct proofs that timed out in Coq (`do N eexists`, `repeat rewrite app_assoc`). Fixed by: (1) evaluator timeout raised to 300s, (2) actionable timeout guidance returned on timeout, (3) prompt includes Coq tactic performance rules. The final solved proof uses explicit witnesses and targeted rewrites throughout.
+### Trivial spec replacement
+LLM replaced entire spec with `Theorem dummy : True. Proof. exact I. Qed.` scoring 1.0. **Fix:** `done` requires `qed_count >= _INITIAL_PROOF_OBLS` (Qed+Admitted count in initial file). Score denominator floored at this value.
 
-### Verbose error noise (binomial_queue stalling)
-`coqc` error messages for proof failures include an "In environment" block listing every hypothesis in scope — often 15-30 lines. This overwhelmed the LLM and buried the actual error. `binomial_queue` was stuck at score 0.52, repeatedly generating the same broken proofs because the LLM couldn't parse 920-char error dumps.
-
-**Fix:** Evaluator now strips "In environment" blocks from `coqc` stderr using regex-based detection of hypothesis binding patterns. Result: 924 chars → 243 chars (74% reduction), with only the file location and core error message remaining. General to all Coq errors — no problem-specific content.
-
-### Axiom tracking (binomial_queue)
-The `binomial_queue` benchmark uses `Axiom priqueue_elems` as a placeholder for an `Inductive` definition the LLM must invent. The original evaluator only counted `Admitted` and `todo` as open obligations, so replacing this `Axiom` gave no score change.
-
-**Fix:** Evaluator now counts all `Axiom` declarations (excluding the `todo` axiom) as open obligations. Scoring formula: `Qed / (Qed + Admitted + todo + axioms)`. General — works for any benchmark that asks the LLM to replace an `Axiom` with a definition.
-
-### Done-guard (empty file exploit)
-An empty `.v` file or a trivial file with no proofs would compile with 0 open obligations, scoring 1.0 spuriously.
-
-**Fix:** `done` condition now requires `qed_count > 0` — a program must contain at least one successfully proved obligation.
-
----
-
-## Open Questions
-
-- **Plateau problem:** Stuck on one hard lemma → score flat, no gradient. Directions: expose Coq goal state as feedback, partial credit for proof subgoals.
-- **Dependency inference:** LLM must read code to know which `Admitted.` lemmas block others. Explicit dependency graph in feedback could help.
-- **Scoring granularity:** Score is binary per obligation (proved or not). Finer signal (e.g. remaining subgoals) could help escape plateaus.
+### Proof plateaus
+When stuck on one hard lemma, score is flat. **Fix (v4):** `admit.` for sub-goals gives fractional credit + goal-state feedback shows remaining sub-goals + proved-pattern feedback enables tactic reuse.
