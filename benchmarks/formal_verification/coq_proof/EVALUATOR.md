@@ -71,9 +71,18 @@ Returns `[(theorem_name, goal_text, gave_up), ...]` — one entry per `Admitted.
 ## Step 5 — Admitted Weight (partial credit for admit.)
 
 ```python
-gave_up_count  = sum(1 for gs in goal_states if gs[2])
-normal_admitted = admitted_count - gave_up_count
-admitted_weight = normal_admitted + 0.5 * gave_up_count
+gave_up_count     = sum(1 for gs in goal_states if gs[2])
+total_proof_terms = qed_count + admitted_count
+
+if _INITIAL_PROOF_OBLS > 0 and total_proof_terms > _INITIAL_PROOF_OBLS:
+    # Obligation inflation: LLM added new Admitted stubs.
+    # No gave_up discount — prevents dead-end decompositions from
+    # scoring higher than the unsplit original.
+    admitted_weight = admitted_count
+else:
+    # No inflation: gave_up discount applies normally.
+    normal_admitted = admitted_count - gave_up_count
+    admitted_weight = normal_admitted + 0.5 * gave_up_count
 ```
 
 When the LLM writes `admit.` (lowercase) for hard sub-goals and ends with `Admitted.`:
@@ -81,7 +90,13 @@ When the LLM writes `admit.` (lowercase) for hard sub-goals and ends with `Admit
 - The "gave up" marker appears in `Show.` output
 - That theorem counts as **0.5** open obligation instead of **1.0**
 
-This rewards incremental proof progress within a single hard theorem.
+**Anti-inflation guard:** The 0.5 discount only applies when the total number of proof terms (Qed + Admitted) has not exceeded `_INITIAL_PROOF_OBLS`. If the LLM added new `Admitted` stubs (e.g., splitting a conjunctive theorem into separate helper lemmas), all Admitted get full 1.0 weight. This prevents dead-end decompositions — where the LLM adds unsolvable helpers to get the parent theorem to Qed — from scoring higher than keeping the original theorem as Admitted.
+
+**Example (RB tree `ins_RB`):** Original has 28 proof obligations (14 Qed + 14 Admitted). If the LLM splits `ins_RB` into two helper lemmas, proves `ins_RB` by applying them (Qed!), but the helpers are Admitted with admit.:
+- Without guard: qed=28, weight=1.0 (2×0.5), total=29, score=28/29=0.9655
+- With guard: qed=28, weight=2.0 (no discount), total=30, score=28/30=0.9333
+- Pre-split: qed=27, weight=1.0, total=28, score=27/28=0.9643
+- The guard makes the dead-end split score **lower** (0.9333) than keeping `ins_RB` as Admitted (0.9643), steering the search away from the trap.
 
 ---
 

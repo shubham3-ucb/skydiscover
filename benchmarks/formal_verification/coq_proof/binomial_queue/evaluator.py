@@ -528,11 +528,20 @@ def evaluate(program_path):
     if compiles and admitted_count > 0:
         goal_states = _extract_goal_states(program_path, content)
 
-    # Compute admitted weight: proofs where the LLM used admit. for sub-goals
-    # count as 0.5 instead of 1.0, rewarding incremental proof progress.
+    # Compute admitted weight.
+    # admit. (gave_up) gets 0.5 weight ONLY when the LLM has not inflated
+    # obligations by adding new Admitted stubs.  If total proof terms
+    # (Qed+Admitted) exceed the initial count, all Admitted get full weight.
+    # This prevents dead-end decompositions (e.g. splitting a conjunctive
+    # theorem into separate lemmas that lose inductive strength) from
+    # scoring higher than the unsplit original.
     gave_up_count = sum(1 for gs in goal_states if gs[2])
-    normal_admitted = admitted_count - gave_up_count
-    admitted_weight = normal_admitted + 0.5 * gave_up_count
+    total_proof_terms = qed_count + admitted_count
+    if _INITIAL_PROOF_OBLS > 0 and total_proof_terms > _INITIAL_PROOF_OBLS:
+        admitted_weight = float(admitted_count)
+    else:
+        normal_admitted = admitted_count - gave_up_count
+        admitted_weight = normal_admitted + 0.5 * gave_up_count
 
     open_obligations = admitted_weight + todo_count + axiom_count
     total = qed_count + open_obligations

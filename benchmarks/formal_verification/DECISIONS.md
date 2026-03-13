@@ -48,7 +48,7 @@ No explicit proof tree. AdaEvolve maintains a population of partial solutions. A
 | Doesn't compile, has Qed work | `0.5 * above ratio` |
 | Doesn't compile, no Qed | `0.0` |
 
-`admitted_weight`: each `Admitted` proof counts as 1.0 open obligation, **except** when the LLM used `admit.` for sub-goals (Coq reports "No more goals, but gave up"), it counts as 0.5. This rewards incremental proof progress within a single hard theorem.
+`admitted_weight`: each `Admitted` proof counts as 1.0 open obligation, **except** when the LLM used `admit.` for sub-goals (Coq reports "No more goals, but gave up"), it counts as 0.5 — but only if the LLM has NOT inflated the total obligation count by adding new Admitted stubs. If `qed + admitted > _INITIAL_PROOF_OBLS`, all Admitted get full 1.0 weight (anti-inflation guard — see Key Findings).
 
 The denominator is floored at `_INITIAL_PROOF_OBLS` (Qed + Admitted count in `initial_program.v`) to prevent trivial spec replacement.
 
@@ -86,3 +86,12 @@ LLM replaced entire spec with `Theorem dummy : True. Proof. exact I. Qed.` scori
 
 ### Proof plateaus
 When stuck on one hard lemma, score is flat. **Fix (v4):** `admit.` for sub-goals gives fractional credit + goal-state feedback shows remaining sub-goals + proved-pattern feedback enables tactic reuse.
+
+### Dead-end decomposition trap (v5)
+The LLM splits a conjunctive theorem (`P /\ Q`) into two separate helper lemmas, proves the parent by applying them (→ Qed!), but the helpers are individually unprovable because each loses half the induction hypothesis. The `admit.` discount made this score *higher* than the unsplit original, creating a trap state the search cannot escape.
+
+**Root cause:** The 0.5 gave_up discount was only ever effective when `total > floor` — i.e., when the LLM had added new Admitted stubs. For original-spec Admitted proofs, the floor absorbed the discount and it had no effect. The incentive was exactly backwards.
+
+**Fix (v5):** Anti-inflation guard — the gave_up discount only applies when `qed_count + admitted_count <= _INITIAL_PROOF_OBLS`. If the LLM inflated obligations, all Admitted get full 1.0 weight.
+
+**Prompt fix (v5):** Reframed "prove ONE Admitted with Qed per call" → "make ONE step of progress" with admit.-based incremental work as the *preferred* approach for hard proofs. Added general proof patterns: conjunctive induction (don't split), generalize before induction, function case analysis via destruct.

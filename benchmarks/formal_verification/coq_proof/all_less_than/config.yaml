@@ -1,14 +1,14 @@
 language: coq
 file_suffix: ".v"
 diff_based_generation: true
-max_iterations: 50
+max_iterations: 200
 checkpoint_interval: 5
 
 llm:
   models:
-    - name: "gpt-5"
+    - name: "gemini/gemini-3-pro-preview"
       weight: 1.0
-  temperature: 0.7
+  temperature: 0.8
   max_tokens: 16000
   timeout: 600
   retries: 2
@@ -38,7 +38,7 @@ search:
     paradigm_improvement_threshold: 0.02
     paradigm_num_to_generate: 2
     paradigm_max_uses: 2
-    paradigm_max_tried: 20
+    paradigm_max_tried: 5
     enable_error_retry: true
     max_error_retries: 2
 
@@ -56,48 +56,68 @@ prompt:
 
     The .v file contains:
     - `Axiom todo : forall {A : Type}, A.` — typed hole for unfinished expressions
-    - A function signature with `todo` as the body.
-    - A lemma stating the specification of the function which is `Admitted.` —
-      placeholder for an unfinished proof.
+    - Implementations and invariant definitions (all given).
+    - Lemmas/theorems marked `Admitted.` — placeholder for unfinished proofs.
 
-    Your goal: fill every `todo`, and prove every lemma marked `Admitted.` with
-    `Qed.` After your edit, the file MUST compile with `coqc`. In particular, the
-    function should be fully implemented, and the lemma should prove its correctness.
+    Your goal: prove every `Admitted.` lemma with `Qed.`
+    After your edit, the file MUST compile with `coqc`.
 
-    We want to synthesize the program and generate its proof step by step in the
-    deductive synthesis style. You will be called multiple times. You are STRICTLY
-    FORBIDDEN from taking multiple steps or generating the full solution in one call.
+    We want to synthesize proofs step by step in the deductive style. You will
+    be called multiple times. You are STRICTLY FORBIDDEN from taking multiple
+    steps or generating the full solution in one call.
 
-    In each call, **replace exactly one `todo` with an expression and prove its
-    corresponding lemma**. Fill a `todo` with one concrete expression:
-       - A value: `true`, `0`, `nil`, etc.
-       - A pattern match: `match x with | C1 => todo | C2 y => todo end`
-       - A conditional: `if cond then todo else todo`
-       - A recursive or function call
-       Note that all the sub-expressions are `todo`.
-       Leave all other `todo`s untouched.
-       Add sub-lemmas (with appropriate preconditions) for any new `todo`
-       expression, and declare them as `Admitted.` If the expression is a leaf,
-       no new sub-lemma is declared.
-       Use the sub-lemmas to prove the lemma for the filled `todo` expression
-       (`Admitted.` → `Qed.`).
-       Example: `Definition f : (nat -> bool) := todo.` becomes
-       `Fixpoint f (n : nat) : bool := match n with | O => todo | S m => todo end.`
-       and the main lemma for `f` is proved by induction using the sub-lemmas for
-       the `todo`s in the base and inductive cases, which are declared `Admitted.`
+    In each call, make ONE step of progress:
+      - For easy theorems: prove it fully → `Qed.`
+      - For hard theorems (many sub-goals or complex case analysis): set up
+        the proof structure and use `admit.` on branches you cannot solve yet.
+        On the next call, replace one `admit.` with real tactics.
+    Working within a theorem over multiple calls via `admit.` is the preferred
+    approach for hard proofs. Do NOT prove multiple theorems in one call.
 
-    If there are standalone `Admitted.` lemmas with no corresponding `todo`
-    (all expressions already filled), you may prove one such lemma directly.
-    When choosing which `Admitted.` lemma to prove, prefer ones that do NOT
-    depend on other `Admitted.` lemmas — prove prerequisites first.
+    When choosing which obligation to tackle, prefer ones that do NOT depend on
+    other unfinished obligations — work bottom-up, proving prerequisites first.
 
-    ## Proof Strategy
+    ## Output Format
 
-    When a proof attempt does not go through, consider:
-    - `remember` to generalize a term before `induction` or `destruct`
-    - `generalize dependent` to strengthen the induction hypothesis
-    - Inducting on evidence (`induction H`) rather than on the term
-    - When `apply` fails with "Unable to find an instance", use `eapply` or provide explicit type arguments with `@`
+    Output the COMPLETE updated .v file in a SINGLE ```coq code block.
+    Do NOT split the file across multiple code blocks.
+    Do NOT include explanatory text between parts of the code.
+    The code block must contain the ENTIRE file from the first `Require` to
+    the last `.` — nothing may be omitted.
+
+    ## Rules
+
+    - The file MUST compile with `coqc` after every edit.
+    - Do NOT remove or rename existing lemmas/theorems, or change their statements.
+    - Do NOT use `exact todo.` or a similar trivial tactic to close a proof —
+      that defeats the purpose. Only close proofs with real tactics.
+    - Do NOT prove multiple `Admitted.` lemmas in one call.
+    - Read the existing code carefully — tactics, helpers, and definitions
+      already in the file are there for you to use.
+
+    ## Proof Patterns
+
+    - **Conjunctive theorems** (`forall x, P x /\ Q x`): always prove directly
+      by `induction x` then `split; intros` in each case. Both halves appear
+      in the induction hypothesis, giving strictly more power. Splitting into
+      separate lemmas loses this mutual inductive strength and can make the
+      proof impossible.
+
+    - **Generalize before induction**: if any variable in the goal depends on
+      the induction variable, `revert` it first. Example:
+        `intros x y. revert y. induction x as [...]; intros y.`
+      gives IH `forall y, P x y` instead of the weaker `P x y0`.
+
+    - **Complex function in goal**: when the goal contains `f (g x) ...` and
+      `f` is defined by pattern matching, `destruct (g x)` to expose which
+      arm of `f` applies. Handle one arm per call, using `admit.` on the rest.
+
+    - When a proof attempt does not go through, consider:
+      - `remember` to generalize a term before `induction` or `destruct`
+      - `generalize dependent` to strengthen the induction hypothesis
+      - Inducting on evidence (`induction H`) rather than on the term
+      - When `apply` fails with "Unable to find an instance", use `eapply`
+        or provide explicit type arguments with `@`
 
     ## Incremental Proof with admit.
 
@@ -119,26 +139,12 @@ prompt:
     Do NOT use `admit.` as a shortcut — only for sub-goals you genuinely
     cannot solve yet. Proofs with `admit.` still count as Admitted, not Qed.
 
-    - Introducing helper lemmas about list/nat structure
+    ## Coq Compatibility & Performance
 
-    ## Output Format
-
-    Output the COMPLETE updated .v file in a SINGLE ```coq code block.
-    Do NOT split the file across multiple code blocks.
-    Do NOT include explanatory text between parts of the code.
-    The code block must contain the ENTIRE file from the first `Require` to
-    the last `.` — nothing may be omitted.
-
-    ## Rules
-
-    - The file MUST compile with `coqc` after every edit.
-    - Do NOT remove or rename existing lemmas/theorems, or change their statements.
-      Only fill in proofs.
-    - Do NOT use `exact todo.` or a similar trivial tactic to close a proof —
-      that defeats the purpose. Only close proofs with real tactics.
-    - Do NOT replace multiple `todo`s in one call.
-    - Do NOT prove multiple `Admitted.` lemmas in one call.
-    - Add `Require Import` statements as needed.
+    - Use `From Stdlib Require Import` NOT `From Coq Require Import` (Coq 9.x).
+    - NEVER use `do N eexists` — always provide explicit witnesses.
+    - Avoid `repeat rewrite` — it can cause infinite loops. Use targeted single rewrites.
+    - Avoid `repeat split` with existential variables.
 
     ## Scoring
 
@@ -147,4 +153,4 @@ prompt:
     - Compiles, work remaining → score < 1.
     - Doesn't compile → half credit (you will see the coqc error).
 
-    You will be called for up to 50 iterations.
+    You will be called for up to 200 iterations.

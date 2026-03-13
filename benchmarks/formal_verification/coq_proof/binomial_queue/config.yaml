@@ -56,22 +56,23 @@ prompt:
 
     The .v file contains:
     - `Axiom todo : forall {A : Type}, A.` — typed hole for unfinished expressions
-    - `Axiom` declarations that should be replaced with proper `Inductive` definitions.
-    - Functions/definitions with `todo` as the body — to be filled with real implementations.
+    - Implementations and invariant definitions (all given).
     - Lemmas/theorems marked `Admitted.` — placeholder for unfinished proofs.
 
-    Your goal: replace each `Axiom` placeholder with a proper definition, fill
-    every `todo` with a concrete Coq term, and prove every `Admitted.` with `Qed.`
+    Your goal: prove every `Admitted.` lemma with `Qed.`
     After your edit, the file MUST compile with `coqc`.
 
-    We want to synthesize the program and generate its proof step by step in the
-    deductive synthesis style. You will be called multiple times. You are STRICTLY
-    FORBIDDEN from taking multiple steps or generating the full solution in one call.
+    We want to synthesize proofs step by step in the deductive style. You will
+    be called multiple times. You are STRICTLY FORBIDDEN from taking multiple
+    steps or generating the full solution in one call.
 
-    In each call, do ONE of:
-    1. Replace one `Axiom` placeholder with a proper definition.
-    2. Replace one `todo` with a concrete Coq expression.
-    3. Prove one `Admitted.` lemma with `Qed.`
+    In each call, make ONE step of progress:
+      - For easy theorems: prove it fully → `Qed.`
+      - For hard theorems (many sub-goals or complex case analysis): set up
+        the proof structure and use `admit.` on branches you cannot solve yet.
+        On the next call, replace one `admit.` with real tactics.
+    Working within a theorem over multiple calls via `admit.` is the preferred
+    approach for hard proofs. Do NOT prove multiple theorems in one call.
 
     When choosing which obligation to tackle, prefer ones that do NOT depend on
     other unfinished obligations — work bottom-up, proving prerequisites first.
@@ -94,13 +95,29 @@ prompt:
     - Read the existing code carefully — tactics, helpers, and definitions
       already in the file are there for you to use.
 
-    ## Proof Strategy
+    ## Proof Patterns
 
-    When a proof attempt does not go through, consider:
-    - `remember` to generalize a term before `induction` or `destruct`
-    - `generalize dependent` to strengthen the induction hypothesis
-    - Inducting on evidence (`induction H`) rather than on the term
-    - When `apply` fails with "Unable to find an instance", use `eapply` or provide explicit type arguments with `@`
+    - **Conjunctive theorems** (`forall x, P x /\ Q x`): always prove directly
+      by `induction x` then `split; intros` in each case. Both halves appear
+      in the induction hypothesis, giving strictly more power. Splitting into
+      separate lemmas loses this mutual inductive strength and can make the
+      proof impossible.
+
+    - **Generalize before induction**: if any variable in the goal depends on
+      the induction variable, `revert` it first. Example:
+        `intros x y. revert y. induction x as [...]; intros y.`
+      gives IH `forall y, P x y` instead of the weaker `P x y0`.
+
+    - **Complex function in goal**: when the goal contains `f (g x) ...` and
+      `f` is defined by pattern matching, `destruct (g x)` to expose which
+      arm of `f` applies. Handle one arm per call, using `admit.` on the rest.
+
+    - When a proof attempt does not go through, consider:
+      - `remember` to generalize a term before `induction` or `destruct`
+      - `generalize dependent` to strengthen the induction hypothesis
+      - Inducting on evidence (`induction H`) rather than on the term
+      - When `apply` fails with "Unable to find an instance", use `eapply`
+        or provide explicit type arguments with `@`
 
     ## Incremental Proof with admit.
 

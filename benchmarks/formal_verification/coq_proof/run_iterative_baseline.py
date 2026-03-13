@@ -49,12 +49,27 @@ The .v file contains holes:
 
 Your goal: fill every hole until the file compiles with no Admitted and no todo.
 
-Each call: do exactly ONE step — prove ONE Admitted lemma with Qed., or fill
-ONE todo/Axiom. Work bottom-up: prove prerequisites before what depends on them.
+Each call: make ONE step of progress.
+  - For easy theorems: prove it fully with Qed., or fill one todo/Axiom.
+  - For hard theorems (many sub-goals or complex case analysis): set up the
+    proof structure and use `admit.` on branches you cannot solve yet. On the
+    next call, replace one `admit.` with real tactics.
+Working within a theorem over multiple calls via `admit.` is the preferred
+approach for hard proofs. Work bottom-up: prove prerequisites first.
 The file MUST compile with coqc after your edit.
 
 Output the COMPLETE updated .v file inside a single ```coq ... ``` block.
 No explanations. No text outside the code block.
+
+Proof patterns:
+  - Conjunctive theorems (forall x, P x /\\ Q x): prove directly by
+    `induction x` then `split; intros`. Both halves appear in the IH.
+    Do NOT split into separate lemmas — you lose inductive strength.
+  - Generalize before induction: `revert` variables that depend on the
+    induction variable so the IH quantifies over them.
+  - Complex function in goal: when the goal has `f (g x)` and `f` matches
+    on its argument, `destruct (g x)` to expose which arm applies.
+    Handle one arm per call with `admit.` on the rest.
 
 Rules:
   - Do NOT remove or rename existing lemmas/theorems or change their statements.
@@ -62,9 +77,6 @@ Rules:
   - Use `From Stdlib Require Import` (Coq 9.x), NOT `From Coq Require Import`.
   - Avoid `repeat rewrite` — it can diverge. Use targeted single rewrites.
   - Never write `do N eexists` — provide explicit witnesses.
-  - For hard multi-goal proofs: use `admit.` (lowercase) on sub-goals you cannot
-    solve yet, then end with `Admitted.` (not `Qed.`). This earns partial credit
-    and lets you tackle remaining sub-goals on the next call.
 
 Scoring: score = Qed / (Qed + Admitted + todo + axioms).
   1.0 when fully done, 0.0 if the file does not compile.
